@@ -1,0 +1,10 @@
+{
+    "name": "application/vendor",
+    "description": "Latihan membuat skeleton, semangat!",
+    "config": {
+        "vendor-dir": "application/vendor"
+    },
+    "require": {
+    	"twig/twig": "^1.30"
+    }
+}
