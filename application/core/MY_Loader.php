@@ -28,10 +28,6 @@ class MY_Loader extends MX_Loader
         if (isset($vars)) {
             $this->_ci_cached_vars = array_merge($this->_ci_cached_vars, (array) $vars);
         }
-        // print_r($_ci_path);
-        // print_r($_ci_file);
-        // print_r($this->_ci_cached_vars);
-        // print_r($return);
         return $this->twig->render($_ci_path, $_ci_file, $this->_ci_cached_vars, $return);
     }
     
