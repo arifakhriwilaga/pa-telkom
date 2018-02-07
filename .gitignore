@@ -56,8 +56,8 @@ composer\.lock
 
 # Folders to ignore
 #----------------------------------
-# assets/includes
-# node_modules
+node_modules
+assets/includes
 # \.sass-cache
 
 # CodeIgniter Files

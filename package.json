@@ -1,0 +1,23 @@
+{
+  "name": "codeigniter",
+  "version": "1.0.0",
+  "description": "What is CodeIgniter ###################",
+  "main": "index.js",
+  "scripts": {
+    "test": "APP.init()"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://hanaervani@bitbucket.org/hanaervani/codeigniter.git"
+  },
+  "author": "hanaervani@gmail.com",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/hanaervani/codeigniter#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
