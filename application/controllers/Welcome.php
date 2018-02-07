@@ -12,8 +12,4 @@ class Welcome extends CI_Controller {
 			);
 		$this->load->render('main', $data);
 	}
-
-	public function entahlah() {
-		$this->load->render('hoho');
-	}
 }

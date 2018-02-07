@@ -25,29 +25,17 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-workspace
 *.sublime-project
 
-# OS or Editor folders
-#----------------------------------
-^\._
-\.cache
-\.DS_Store
-\.project
-\.settings
-\.tmproj
-\.esproj$
-Thumbs\.db
-
 # Numerous always-ignore extensions
 #----------------------------------
-\.diff$
-\.err$
-\.log$
-\.orig$
-\.rej$
-\.swo$
-\.swp$
-\.vi$
-\.zip$
-~$
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
 
 # Composer Files
 #----------------------------------
@@ -59,12 +47,3 @@ composer\.lock
 node_modules
 assets/includes
 # \.sass-cache
-
-# CodeIgniter Files
-#----------------------------------
-application/cache/(?!(\.htaccess|index\.html))
-application/logs/(?!(index\.html))
-application/config/development/(?!(index\.html))
-\.orig\..*$
-\.chg\..*$
-\.conflict\~$
