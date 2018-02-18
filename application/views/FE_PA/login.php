@@ -12,33 +12,29 @@
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 
-        <link rel="stylesheet" href="assets/css/navmenu/styles.css">
-        <link rel="stylesheet" href="assets/css/portfolio.jquery.css">
-        <link rel="stylesheet" href="assets/css/fonticons.css">
-        <link rel="stylesheet" href="assets/style.css">
-        <link rel="stylesheet" href="assets/fonts/stylesheet.css">
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        <!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
-        <link rel="stylesheet" href="assets/css/bootstrap.css">
-        <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/navmenu/styles.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/portfolio.jquery.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/fonticons.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/style.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/fonts/stylesheet.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/font-awesome.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.css') ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap-theme.min.css') ?>">
 
 
         <!--For Plugins external css-->
-        <link rel="stylesheet" href="assets/css/plugins.css" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/plugins.css') ?>" />
 
         <!--Theme custom css -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/style.css') ?>">
 
         <!--Theme Responsive css-->
-        <link rel="stylesheet" href="assets/css/responsive.css" />
+        <link rel="stylesheet" href="<?php echo base_url('assets/css/responsive.css') ?>" />
 
-        <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="<?php echo base_url('assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') ?>"></script>
     </head>
     <body data-spy="scroll" data-target=".navbar-collapse">
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
         <!--Home page style-->
         <header>
 
@@ -46,7 +42,7 @@
                 <div class="nav-top clearfix">
                     <div class="logo">
                         <div class="col-md-3" style="padding-right:0;padding-left:0">
-                        <a  href="" class="navbar-brand"><img src="assets/images/logo.png" alt="Logo" /></a>
+                        <a  href="" class="navbar-brand"><img src="<?php echo base_url('assets/images/logo.png') ?>" alt="Logo" /></a>
                         </div>
                         <div class="col-md-8" style="padding-top:2%;padding-left:3px;padding-right:0">
                             <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Makanan Pada Solusi Penyakit</strong></span>
@@ -78,7 +74,7 @@
             <div class="main-nav navbar-collapse collapse">
                 <div class="container">
                     <div class="minilogo">
-                        <a  href="" class="navbar-brand"><img src="assets/images/logo2.png" alt="Logo" /></a>
+                        <a  href="" class="navbar-brand"><img src="<?php echo base_url('assets/images/logo2.png') ?>" alt="Logo" /></a>
                     </div>
                     <ul class="nav nav-justified">
                         <li><a href="index.html">HOME</a></li>
@@ -133,17 +129,17 @@
          </div>
         </section>
 
-        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
-        <script src="assets/js/bootstrap.js"></script>
+        <script src="<?php echo base_url('assets/js/vendor/jquery-1.11.2.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/bootstrap.js') ?>"></script>
 
-        <script src="assets/js/jquery.easypiechart.min.js"></script>
-        <script src="assets/js/portfolio.jquery.js"></script>
-        <script src="assets/js/jquery.mixitup.min.js"></script>
-        <script src="assets/js/jquery.easing.1.3.js"></script>
-        <script src="assets/js/jquery.slicknav.min.js"></script>
+        <script src="<?php echo base_url('assets/js/jquery.easypiechart.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/portfolio.jquery.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.mixitup.min.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.easing.1.3.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/jquery.slicknav.min.js') ?>"></script>
         <!--This is link only for gmaps-->
         <script src="http://maps.google.com/maps/api/js"></script>
-        <script src="assets/js/gmaps.min.js"></script>
+        <script src="<?php echo base_url('assets/js/gmaps.min.js') ?>"></script>
         <script>
             // var map = new GMaps({
             //     el: '.ourmaps',
@@ -158,8 +154,8 @@
 
 
 
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="<?php echo base_url('assets/js/plugins.js') ?>"></script>
+        <script src="<?php echo base_url('assets/js/main.js') ?>"></script>
 
     </body>
 </html>

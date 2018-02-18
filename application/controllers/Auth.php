@@ -1,15 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Auth extends CI_Controller {
 	public function __construct() {
         parent::__construct();
     }
 
 	public function index()	{
-		$data = array(
-			'post' => "Aduh kenapa ini?"
-			);
-		$this->load->render('main', $data);
+		$this->load->view('FE_PA/login');
+	}
+
+	public function registrasi() {
+		$this->load->view('FE_PA/register');
 	}
 }
