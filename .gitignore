@@ -44,6 +44,5 @@ composer\.lock
 
 # Folders to ignore
 #----------------------------------
-node_modules
-assets/includes
-# \.sass-cache
+node_modules/*
+assets/includes/*

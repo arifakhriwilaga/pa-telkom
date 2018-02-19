@@ -1157,7 +1157,7 @@ a i{
 /* Register */
 .panel-form{
   background: #fff;
-  border: 1px solid #ccc;
+  border: solid 1px rgba(216,216,216,0.5);
   padding: 20px 30px 0 !important;
   margin: 20px 0;
 }
@@ -1184,30 +1184,49 @@ text-align: center;
 
 
 .basic-form{
-     padding: 20px 20px 0;
-     overflow: hidden;
-     margin-bottom: -5px;
-  }
-  .basic-form .col-md-6{
+    padding: 20px 20px 0;
+    overflow: hidden;
+    margin-bottom: -5px;
+}
+.basic-form .col-md-6{
     padding-right: 0;
     width: 48%;
-  }
-  .basic-form h2{
-font-size: 20px;
-margin: 0 0 20px
-  }
-   .basic-form label{
+}
+.basic-form h2{
+    font-size: 20px;
+    margin: 0 0 20px
+}
+.basic-form label{
     text-align: left;
     display: block;
     color: #5c5c5c;
-   }
-   .basic-form .checkbox{
+}
+.basic-form .checkbox{
     font-size: 14px;
     padding-left: 25px;
-   }
-    .basic-form .footer-form{
-      margin: 0 -30px;
-     }
+}
+.basic-form .footer-form{
+    margin: 0 -30px;
+}
+
+.btn-login:hover {
+    background-color:#4BB2BC;
+    border-color:#4BB2BC;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-login {
+    color: #fff;
+    background-color: #22a6b3;
+    border-color: #22a6b3;
+    transition: .5s;    
+}
+.btn-login:hover {
+    color: #fff;
+    background-color: #4BB2BC;
+    border-color: #4BB2BC;
+}
 
 
 /* etc */
@@ -1215,3 +1234,4 @@ margin: 0 0 20px
   margin: 0 auto;
   float: none;
 }
+
