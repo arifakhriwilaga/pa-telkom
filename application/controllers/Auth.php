@@ -9,11 +9,21 @@ class Auth extends CI_Controller {
     }
 
 	public function index()	{
-		$this->load->render('FE_PA/login');
+		$page_title = "Masuk Akun";
+		$data = array(
+			'page_title' => $page_title
+		);
+
+		$this->load->render('FE_PA/login', $data);
 	}
 
 	public function registrasi() {
-		$this->load->render('FE_PA/register');
+		$page_title = "Daftar Akun Baru";
+		$data = array(
+			'page_title' => $page_title
+		);
+
+		$this->load->render('FE_PA/register', $data);
 	}
 
 	public function save()

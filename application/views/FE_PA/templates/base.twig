@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'FE_PA/templates/header.twig' %}
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <header>
+            {% include 'FE_PA/templates/menu.twig' %}
+        </header>
+        <section class="main-content">
+            {% block content %}
+            {% endblock %}
+        </section>
+
+        {% block contact %}
+        {% endblock %}
+
+        {% include 'FE_PA/templates/footer.twig' %}
+        {% block footer %}
+        {% endblock %}
+    </body>
+</html>

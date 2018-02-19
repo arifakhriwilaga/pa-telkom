@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include 'templates/header.twig' %}
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body class="hold-transition login-page">
+        {% block content %}
+        {% endblock %}
+
+        {% include 'templates/footer.twig' %}
+        {% block footer %}
+        {% endblock %}
+    </body>
+</html>
