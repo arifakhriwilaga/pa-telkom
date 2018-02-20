@@ -16,8 +16,12 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "3.2.1",
+    "bootstrap": "3",
     "font-awesome": "^4.7.0",
     "formvalidation": "^1.2.0",
-    "jquery": "3.2.1"
+    "pg-calendar": "^1.4.27",
+    "google-maps": "^3.2.1",
+    "datatables.net-bs": "^2.1.1"
   }
 }

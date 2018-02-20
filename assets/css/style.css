@@ -1234,4 +1234,27 @@ text-align: center;
   margin: 0 auto;
   float: none;
 }
+.carousel-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding-top: 20px;
+  height: 280px; /* Full height (cover the whole page) */
 
+  /*padding-bottom: 20px;*/
+  color: #000;
+  text-align: left;
+  font-weight: bold;
+  text-shadow: none;
+  /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
+}
+.carousel-caption {
+    right: 0;
+    left: 0;
+    padding-bottom: 0;
+}
+.carousel-indicators {
+    display: none;
+}
