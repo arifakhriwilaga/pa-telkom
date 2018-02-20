@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Authentication extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('Users');
@@ -26,11 +26,9 @@ class Auth extends CI_Controller {
 		$this->load->render('FE_PA/register', $data);
 	}
 
-	public function save()
+	public function simpan()
 	{
-		if ($this->Users->validation('save')) {
-			$this->Users->save();
-			redirect('index');
-		}
+		$this->Users->save();
+		redirect('index');
 	}
 }
