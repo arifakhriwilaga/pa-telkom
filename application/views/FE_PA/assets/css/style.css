@@ -1235,3 +1235,34 @@ text-align: center;
   float: none;
 }
 
+/* notification */
+.badge1 {
+   position:relative;
+   vertical-align: middle;
+}
+.badge1[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top: -8px;
+   right: -5px;
+   font-size: 0.5em;
+   font-family: 'Helvetica';
+   font-weight:  bold;
+   background:#eb4d4b;
+   color:white;
+   width: 19px;
+   height: 18px;
+   line-height: 1.7;
+   border-radius:50%;
+   box-shadow:0 0 1px #eb4d4b;
+   padding-left: 1px;
+}
+
+
+/* avatar */
+.avatar {
+  vertical-align: middle;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}

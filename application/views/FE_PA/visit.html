@@ -14,7 +14,6 @@
 
         <link rel="stylesheet" href="assets/css/navmenu/styles.css">
         <link rel="stylesheet" href="assets/css/fonticons.css">
-        <!-- <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet"> -->
         <link rel="stylesheet" href="assets/style.css">
         <link rel="stylesheet" href="assets/fonts/stylesheet.css">
         <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -58,7 +57,10 @@
                     </div>
 
                     <div class="head_top_social pull-right">
-                        <span class="head-customer"><a href="login.html">Login</a> | <a href="register.html">Register</a> </span>
+                        <span class="head-customer">
+                            <a href="#" class=""><i class="fa fa-fw fa-bell badge1" data-badge="27" style="font-size: 20px;color:#2c3e50"></i></a> 
+                            <a href="#" style="color: color:#2c3e50"><span rel="popover" id="profile" style=""><img src="https://collaborativecbt.com/wp-content/uploads/2016/12/default-avatar-300x300.png" alt="Avatar" class="avatar" > Rinez</span></span></a>
+                            <a href="#" style="margin-left:20px"><span style="color:#636e72"><i class="fa fa-fw fa-sign-out" style="font-size: 20px;margin-right: 0;color:#2c3e50"></i></span></a>
                     </div>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
@@ -121,6 +123,8 @@
                 </div>
             </div>
         </section>
+
+        <div id="popover_profile"><a href="">Logout</a></div>
 
         <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
         <script src="assets/js/bootstrap.js"></script>
@@ -192,6 +196,15 @@
                     // format: 'YYYY-MM-DD'
                 });
             });
+            // $('#profile').popover({
+            //     html: true,
+            //     placement: 'bottom',
+            //     trigger:'click',
+            //     content: $("#popover_profile").html()
+            // });
+            // $('#profile').click(function(){
+            //     $('#profile').popover('show');
+            // })
         </script>
 
 
