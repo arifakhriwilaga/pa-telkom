@@ -35,7 +35,7 @@ class Users extends CI_Model
 		$result = array(
 			'status' => true,
 			'message' => 'Login berhasil!',
-			'data' => $query->num_rows()
+			'data' => $query->result()
 		);
 		return $result;
 	}

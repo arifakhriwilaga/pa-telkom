@@ -20,7 +20,7 @@ class Authentication extends CI_Controller {
 	public function login()	{
 		$result = $this->Users->login();
 		if ($result['status']) {
-			$this->session->set_userdata('logged_in',$result['data']);
+			$this->session->set_userdata('user', $result['data']);
 		}
 		$this->output
                 ->set_content_type('json')
@@ -28,8 +28,9 @@ class Authentication extends CI_Controller {
 	}
 
 	function logout() {
-		$this->session->sess_destroy();
-		redirect(base_url('authentication'));
+		$this->session->userdata = array();
+        $this->session->sess_destroy();
+		redirect(base_url('/'));
 	}
 
 	public function registrasi() {

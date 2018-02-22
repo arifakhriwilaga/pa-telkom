@@ -26,6 +26,7 @@ class Twig
     {
         $this->twig->addFunction(new Twig_SimpleFunction('function', array($this, 'exec_function')));
         $this->twig->addFunction(new Twig_SimpleFunction('fn', array($this, 'exec_function')));
+        $this->twig->addFunction(new Twig_SimpleFunction('session', array($this, 'exec_session')));
     }
 
     public function exec_function($function_name)
@@ -36,5 +37,12 @@ class Twig
             $function_name = trim($function_name);
         }
         return call_user_func_array($function_name, ($args));
+    }
+
+    public function exec_session($user_data) 
+    {
+        $ci = get_instance();
+        // var_dump($ci->session->userdata($user_data));exit();
+        return $ci->session->userdata($user_data);
     }
 }
