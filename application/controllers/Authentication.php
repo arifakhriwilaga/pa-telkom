@@ -16,6 +16,21 @@ class Authentication extends CI_Controller {
 
 		$this->load->render('FE_PA/login', $data);
 	}
+	
+	public function login()	{
+		$result = $this->Users->login();
+		if ($result['status']) {
+			$this->session->set_userdata('logged_in',$result['data']);
+		}
+		$this->output
+                ->set_content_type('json')
+                ->set_output(json_encode($result));
+	}
+
+	function logout() {
+		$this->session->sess_destroy();
+		redirect(base_url('authentication'));
+	}
 
 	public function registrasi() {
 		$page_title = "Daftar Akun Baru";
@@ -26,9 +41,10 @@ class Authentication extends CI_Controller {
 		$this->load->render('FE_PA/register', $data);
 	}
 
-	public function simpan()
-	{
-		$this->Users->save();
-		redirect('index');
+	public function simpan() {
+		$result = $this->Users->save();
+		$this->output
+                ->set_content_type('json')
+                ->set_output(json_encode($result));
 	}
 }
