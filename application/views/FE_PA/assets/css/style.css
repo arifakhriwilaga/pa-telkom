@@ -1270,3 +1270,89 @@ text-align: center;
 textarea {
     resize: none;
 }
+
+
+
+/* consul doctor */
+.avatar-card {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container-card {
+    padding: 2px 16px;
+}
+
+.panel-form.basic-form-card h2{
+text-align: center;
+}
+.panel-form.basic-form-card {
+    margin: 70px 0;
+}
+.panel-form.basic-form-card p{font-size: 14px;color: #5c5c5c;}
+.panel-form.basic-form-card.forgot p{
+      margin: 20px 40px;
+}
+.forgot .help-block{
+  margin: 20px 0 !important
+}
+.panel-form.basic-form-card.forgot form{
+  min-height: 100px;
+  margin-bottom: 20px;
+}
+
+
+.basic-form-card{
+    padding: 20px 20px 0;
+    overflow: hidden;
+    margin-bottom: -5px;
+}
+.basic-form-card:hover{
+    background-color: rgba(223,230,233, 0.3);
+    width: 100%;
+    cursor: pointer;
+    /*height: 750px;*/
+    /*padding: 20px 20px 0;*/
+    /*overflow: hidden;*/
+    /*margin-bottom: -5px;*/
+}
+.active-card{
+    background-color: rgba(223,230,233, 0.3);
+    width: 100%;
+    cursor: pointer;
+    /*height: 750px;*/
+    /*padding: 20px 20px 0;*/
+    /*overflow: hidden;*/
+    /*margin-bottom: -5px;*/
+}
+.basic-form-card .col-md-6{
+    padding-right: 0;
+    width: 48%;
+}
+.basic-form-card h2{
+    font-size: 20px;
+    margin: 0 0 20px
+}
+.basic-form-card label{
+    text-align: left;
+    display: block;
+    color: #5c5c5c;
+}
+.basic-form-card .checkbox{
+    font-size: 14px;
+    padding-left: 25px;
+}
+.basic-form-card .footer-form{
+    margin: 0 -30px;
+}
