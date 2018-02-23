@@ -44,29 +44,33 @@
             username: {
                 validators: {
                     notEmpty: {
-                        message: 'The username is required'
+                        message: 'Username tidak boleh kosong'
                     },
-                    stringLength: {
-                        max: 30,
-                        message: 'The username must be less than 30 characters long'
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: 'The username can only consist of alphabetical, number, dot and underscore'
-                    }
+                    // stringLength: {
+                    //     max: 30,
+                    //     message: 'The username must be less than 30 characters long'
+                    // },
+                    // regexp: {
+                    //     regexp: /^[a-zA-Z0-9_\.]+$/,
+                    //     message: 'Username tidak boleh mengandung symbol'
+                    // }
                 }
             },
             password: {
                 validators: {
-                    stringLength: {
-                        min: 6,
-                        max: 15,
-                        message: 'The password must be more than 6 and less than 30 characters long'
-                    }
+                    notEmpty: {
+                        message: 'Password tidak boleh kosong'
+                    },
+                    // stringLength: {
+                    //     min: 6,
+                    //     max: 15,
+                    //     message: 'The password must be more than 6 and less than 30 characters long'
+                    // }
                 }
             }
         }
     }).on('success.form.fv', function(e) {
+        console.log(e)
         e.preventDefault();
         var $form = $(e.target),
             fv    = $form.data('formValidation');
@@ -76,7 +80,7 @@
             data: $form.serialize()
         }).done(function(data) {
             if (data.status) {
-                window.location = site_url('home');
+                window.location = site_url('/');
             } else {
                 toastr.error(data.message);
             }
