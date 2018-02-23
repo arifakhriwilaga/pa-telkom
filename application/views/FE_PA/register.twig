@@ -46,7 +46,7 @@
                             </div>
                             <button type="submit" class="btn btn-block btn-login btn-lg">Daftar</button><br>
                         </form>
-                        <p>Sudah punya akun?  <a href="{{ function('site_url','authentication') }}">masuk disini</a></p>
+                        <p>Sudah punya akun?  <a href="{{ function('site_url','login') }}">masuk disini</a></p>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
         }).done(function(data) {
             if (data.status) {
                 toastr.success(data.message);
-                setTimeout(function(){ window.location = site_url('authentication'); }, 2000);
+                setTimeout(function(){ window.location = site_url('login'); }, 2000);
             } else {
                 toastr.error(data.message);
             }
