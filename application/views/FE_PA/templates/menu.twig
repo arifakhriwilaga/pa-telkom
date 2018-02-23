@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="head_top_social pull-right">
-                        <span class="head-customer"><a href="{{ function('site_url', 'authentication') }}">Login</a> | <a href="{{ function('site_url', 'authentication/registrasi') }}">Daftar</a> </span>
+                        <span class="head-customer"><a href="{{ function('site_url', 'masuk-akun') }}">Login</a> | <a href="{{ function('site_url', 'registrasi') }}">Daftar</a> </span>
                     </div>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
@@ -60,11 +60,11 @@
                 </div>
                 <ul class="nav nav-justified">
                     <li><a href="{{ function('site_url', '/') }}">HOME</a></li>
-                    <li><a href="#">PERIKSA</a></li>
-                    <li><a href="#">KONSUL DOKTER</a></li>
-                    <li><a href="{{ function('site_url', 'home/info') }}">INFO SEHAT</a></li>
+                    <li><a href="{{ function('site_url', 'periksa/step-1') }}">PERIKSA</a></li>
+                    <li><a href="{{ function('site_url', 'konsul-dokter') }}">KONSUL DOKTER</a></li>
+                    <li><a href="{{ function('site_url', 'info-sehat') }}">INFO SEHAT</a></li>
                     {% if _user %}
-                    <li><a href="{{ function('site_url', 'home/visit') }}">KUNJUNGAN</a></li>
+                    <li><a href="{{ function('site_url', 'kunjungan') }}">KUNJUNGAN</a></li>
                     {% endif %}
                 </ul>
             </div>

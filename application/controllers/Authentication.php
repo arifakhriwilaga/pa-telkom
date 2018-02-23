@@ -33,7 +33,7 @@ class Authentication extends CI_Controller {
 		redirect(base_url('/'));
 	}
 
-	public function registrasi() {
+	public function register() {
 		$page_title = "Daftar Akun Baru";
 		$data = array(
 			'page_title' => $page_title
