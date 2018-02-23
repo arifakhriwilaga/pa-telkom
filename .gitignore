@@ -12,8 +12,6 @@ user_guide_src/build/*
 user_guide_src/cilexer/build/*
 user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
-/vendor/
-/application/vendor
 
 # IDE Files
 #-------------------------
@@ -27,5 +25,25 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-workspace
 *.sublime-project
 
-# CodeIgniter Files
+# Numerous always-ignore extensions
+#----------------------------------
+*.diff
+*.err
+*.log
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.zip
+
+# Composer Files
+#----------------------------------
 application/vendor
+composer\.lock
+
+# Folders to ignore
+#----------------------------------
+/node_modules
+assets/includes
+application/config/database.php
