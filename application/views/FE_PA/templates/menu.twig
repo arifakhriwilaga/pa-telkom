@@ -59,12 +59,12 @@
                     <a href="#" class="navbar-brand"><img src="{{ function('base_url', 'assets/images/logo2.png') }}" alt="Logo" /></a>
                 </div>
                 <ul class="nav nav-justified">
-                    <li><a href="{{ function('site_url', '/') }}">HOME</a></li>
-                    <li><a href="{{ function('site_url', 'periksa/step-1') }}">PERIKSA</a></li>
-                    <li><a href="{{ function('site_url', 'konsul-dokter') }}">KONSUL DOKTER</a></li>
-                    <li><a href="{{ function('site_url', 'info-sehat') }}">INFO SEHAT</a></li>
+                    <li><a class="{{ page_title == 'Home' ? 'active' : '' }}" href="{{ function('site_url', '/') }}">HOME</a></li>
+                    <li><a class="{{ page_title == 'Periksa' ? 'active' : '' }}" href="{{ function('site_url', 'periksa/step-1') }}">PERIKSA</a></li>
+                    <li><a class="{{ page_title == 'Konsul Dokter' ? 'active' : '' }}" href="{{ function('site_url', 'konsul-dokter') }}">KONSUL DOKTER</a></li>
+                    <li><a class="{{ page_title == 'Info Sehat' ? 'active' : '' }}" href="{{ function('site_url', 'info-sehat') }}">INFO SEHAT</a></li>
                     {% if _user %}
-                    <li><a href="{{ function('site_url', 'kunjungan') }}">KUNJUNGAN</a></li>
+                    <li><a class="{{page_title == 'Kunjungan' ? 'active' : ''}}" href="{{ function('site_url', 'kunjungan') }}">KUNJUNGAN</a></li>
                     {% endif %}
                 </ul>
             </div>
