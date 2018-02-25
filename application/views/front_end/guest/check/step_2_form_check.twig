@@ -1,4 +1,4 @@
-{% extends "FE_PA/templates/base.twig" %}
+{% extends "front_end/base.twig" %}
 
 {% block head %}
 {% endblock %}
@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
            <div class="col-md-10 col-center form-account">
-              <div class="panel-form basic-form ">
+              <div class="panel-form basic-form form">
                  <h2 style="text-align: left">Gejala-gejala yang Anda Alami :</h2>
                     <form>
                     <div class="form-group">
@@ -72,7 +72,7 @@
                     </div>
                     <!-- <div class="row"> -->
                     <div style="text-align: center;">
-                        <a href="step_final_form_check.html"> <button type="button" class="btn btn-login btn-lg pull-right" style="min-width:170px;margin-bottom:3%">Submit</button></a>
+                        <a href="{{ function('site_url', 'periksa/step-final') }}"> <button type="button" class="btn btn-login btn-lg pull-right" style="min-width:170px;margin-bottom:3%">Simpan</button></a>
                     </div>
                     <!-- </div> -->
                     </form>

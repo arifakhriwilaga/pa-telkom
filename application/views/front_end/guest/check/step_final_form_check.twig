@@ -1,4 +1,4 @@
-{% extends "FE_PA/templates/base.twig" %}
+{% extends "front_end/base.twig" %}
 
 {% block head %}
 {% endblock %}
@@ -7,31 +7,33 @@
     <div class="container">
         <div class="row">
            <div class="col-md-10 col-center form-account">
-              <div class="panel-form basic-form ">
+              <div class="panel-form basic-form form">
                 <h2 style="text-align: left">Berdasarkan Diagnosa Yang Anda Alami :</h2>
+                    <div class="row row-final">
                     <div class="form-group">
-                        <div class="col-md-5">
-                            <button type="button" class="btn btn-login btn-block btn-lg" style="margin-bottom:3%;background-color: #6ab04c;border-color: #6ab04c" >Lihat Hasil Diagnosa Penyakit</button>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-final btn-green btn-block">Lihat Hasil Diagnosa Penyakit</button>
                         </div>
-                        <div class="col-md-5">
-                            <button type="button" class="btn btn-login btn-block btn-lg" style="margin-bottom:3%;background-color: #f0932b;border-color: #f0932b">Lihat Rekomendasi Makanan</button>
+                        <div class="col-md-6 pull-right">
+                            <button type="button" class="btn btn-final btn-orange btn-block btn-lg">Lihat Rekomendasi Makanan</button>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <button type="button" class="btn btn-login btn-block btn-lg" style="margin-bottom:3%">Lihat Solusi</button>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6 pull-right">
                             <button type="button" class="btn btn-login btn-block btn-lg" style="margin-bottom:3%;background-color: #eb4d4b;border-color: #eb4d4b">Surat Keterangan Penyakit</button>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <button type="button" class="btn btn-login btn-block btn-lg" style="margin-bottom:3%;background-color: #f9ca24;border-color: #f9ca24">Lihat Saran</button>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6 pull-right">
                             <button type="button" class="btn btn-login btn-block btn-lg" style="margin-bottom:3%;background-color: #686de0;border-color: #686de0">Cetak Surat Prediksi Penyakit</button>
                         </div>
+                    </div>
                     </div>
                  </div>
               </div>

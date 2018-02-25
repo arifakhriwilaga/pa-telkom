@@ -1,4 +1,4 @@
-{% extends "FE_PA/templates/base.twig" %}
+{% extends "front_end/base.twig" %}
 
 {% block head %}
 {% endblock %}
@@ -50,17 +50,19 @@
         });
         $(function () {
             $('.calendar').pignoseCalendar({
+                initialize:false,
+                week: 1,
                 format: 'YYYY-MM-DD',
                 weeks: [
                     'Min',
                     'Sen',
                     'Sel',
                     'Rab',
+                    'Kam',
                     'Jum',
-                    'Thu',
                     'Sab'
                 ],
-                monthLong: [
+                monthsLong: [
                     'Januari',
                     'Februari',
                     'Maret',
@@ -68,7 +70,7 @@
                     'Mei',
                     'Juni',
                     'Juli',
-                    'Agust',
+                    'Agustus',
                     'September',
                     'Oktober',
                     'November',
@@ -92,18 +94,6 @@
                     ok: 'OK',
                     cancel: 'Cancel'
                 }
-                // initialize: false 
-                // additional custom languages.
-                // languages: {
-                // Check schema of this value at below link.
-                // link: https://github.com/KennethanCeyer/pg-calendar/wiki/Language#basic-best-practice
-                // },
-
-                // default first week (0-6), 0 means sunday.
-                // week: 1,
-
-                // default date format, it follow moment format rule.
-                // format: 'YYYY-MM-DD'
             });
         });
     </script>

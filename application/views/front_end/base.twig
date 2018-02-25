@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% include 'FE_PA/templates/header.twig' %}
+        {% include 'front_end/shared/header.twig' %}
         {% block head %}
         {% endblock %}
     </head>
     <body>
-        <header>
-            {% include 'FE_PA/templates/menu.twig' %}
+        <header class="{{ (page_title == 'Periksa') or (page_title == 'Konsul Dokter') or (page_title == 'Kunjungan') ? 'header-nonform' :'' }}">
+            {% include 'front_end/shared/menu.twig' %}
         </header>
         <section class="main-content">
             {% block content %}
@@ -18,7 +18,7 @@
         {% block contact %}
         {% endblock %}
 
-        {% include 'FE_PA/templates/footer.twig' %}
+        {% include 'front_end/shared/footer.twig' %}
         {% block footer %}
         {% endblock %}
     </body>
