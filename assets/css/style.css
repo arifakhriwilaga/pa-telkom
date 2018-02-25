@@ -89,6 +89,9 @@ input[type="color"],
 .uneditable-input {
     outline: none;
 }
+textarea{
+    resize: none;
+}
 .form-control {
     border: 1px solid rgba(0, 0, 0, 0.08);
     font-size: 16px;
@@ -96,8 +99,8 @@ input[type="color"],
 }
 .form-control {
     display: inline-block!important;
-    width: 100%!important;
-    height: 34px!important;
+    width: 100%;
+    height: 34px;
     padding: 6px 12px!important;
     font-size: 14px!important;
     line-height: 1.42857143!important;
@@ -1293,6 +1296,16 @@ text-align: center;
   margin-bottom: 20px;
 }
 
+.basic-form-card:hover{
+    background-color: rgba(223,230,233, 0.3);
+    width: 100%;
+    cursor: pointer;
+    /*height: 750px;*/
+    /*padding: 20px 20px 0;*/
+    /*overflow: hidden;*/
+    /*margin-bottom: -5px;*/
+}
+
 .btn-login:hover {
     background-color:#4BB2BC;
     border-color:#4BB2BC;
@@ -1384,12 +1397,6 @@ text-align: center;
 
 
 /* consul doctor */
-.avatar-card {
-  vertical-align: middle;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -1411,28 +1418,4 @@ text-align: center;
   border-radius: 50%;
   margin-top: 5px;
   margin-left:10px
-}
-
-.basic-form-card{
-    padding: 20px 20px 0;
-    overflow: hidden;
-    margin-bottom: -5px;
-}
-.basic-form-card:hover{
-    background-color: rgba(223,230,233, 0.3);
-    width: 100%;
-    cursor: pointer;
-    /*height: 750px;*/
-    /*padding: 20px 20px 0;*/
-    /*overflow: hidden;*/
-    /*margin-bottom: -5px;*/
-}
-.active-card{
-    background-color: rgba(223,230,233, 0.3);
-    width: 100%;
-    cursor: pointer;
-    /*height: 750px;*/
-    /*padding: 20px 20px 0;*/
-    /*overflow: hidden;*/
-    /*margin-bottom: -5px;*/
 }
