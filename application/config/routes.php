@@ -53,9 +53,11 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['widgets/(:any)'] = 'widgets/$1/Widget';
-$route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
+// $route['authentication'] = '';
+// $route['widgets/(:any)'] = 'widgets/$1/Widget';
+// $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
 
+// $route['home'] = 'home';
 
 // guest routes
 // authentications
@@ -68,3 +70,4 @@ $route['periksa/step-1'] = 'home/check_step_1';
 $route['periksa/step-2'] = 'home/check_step_2';
 $route['periksa/step-final'] = 'home/check_step_final';
 $route['konsul-dokter'] = 'home/consul_doctor';
+$route['notifikasi'] = 'home/notification';
