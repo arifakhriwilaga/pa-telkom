@@ -1,6 +1,7 @@
 {
-  "name": "codeigniter",
-  "description": "What is CodeIgniter ###################",
+  "name": "RMPSP",
+  "description": "RMPSP is app of food recommendations on medium disease solutions such as flu, cough magh and others.
+Using codeigniter framwork version 3",
   "main": "assets/js/function.js",
   "authors": [
     "hanaervani@gmail.com"
