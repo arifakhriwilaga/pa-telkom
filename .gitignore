@@ -47,3 +47,4 @@ composer\.lock
 application/config/development
 /node_modules
 assets/includes
+application/config/database.php

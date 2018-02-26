@@ -14,7 +14,7 @@ class Authentication extends CI_Controller {
 			'page_title' => $page_title
 		);
 
-		$this->load->render('FE_PA/login', $data);
+		$this->load->render('front_end/guest/login', $data);
 	}
 	
 	public function login()	{
@@ -33,13 +33,13 @@ class Authentication extends CI_Controller {
 		redirect(base_url('/'));
 	}
 
-	public function registrasi() {
+	public function register() {
 		$page_title = "Daftar Akun Baru";
 		$data = array(
 			'page_title' => $page_title
 		);
 
-		$this->load->render('FE_PA/register', $data);
+		$this->load->render('front_end/guest/register', $data);
 	}
 
 	public function simpan() {

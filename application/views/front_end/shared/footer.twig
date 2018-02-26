@@ -1,0 +1,26 @@
+        <!--Dependencies Package-->
+        <script src="{{ function('base_url','assets/includes/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/pg-calendar/dist/js/pignose.calendar.full.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/form.validation/dist/js/formValidation.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/form.validation/dist/js/framework/bootstrap.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/toastr/toastr.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/moment/min/moment.min.js') }}"></script>
+        <script src="{{ function('base_url','assets/includes/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js') }}"></script>
+
+        <!--This is link only for gmaps-->
+        {# <script src="{{ function('base_url','assets/includes/google-maps/lib/Google.min.js') }}"></script> #}
+        {# <script src="{{ function('base_url','assets/js/gmaps.min.js') }}"></script> #}
+        
+        <!--Custom JS-->
+        <script src="{{ function('base_url','assets/js/functions.js') }}"></script>
+        <script>
+            function base_url(path) {
+                return {{ function('base_url')|json_encode|raw }} + path.replace(/^\//g, '');
+            }
+            function site_url(path) {
+                return {{ function('site_url')|json_encode|raw }} + path.replace(/^\//g, '');
+            }
+        </script>

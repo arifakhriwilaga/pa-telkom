@@ -1,6 +1,7 @@
 {
-    "name": "application/vendor",
-    "description": "Latihan membuat skeleton, semangat!",
+    "name": "RMPSP",
+    "description": "RMPSP is app of food recommendations on medium disease solutions such as flu, cough magh and others.
+Using codeigniter framwork version 3",
     "config": {
         "vendor-dir": "application/vendor"
     },
