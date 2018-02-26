@@ -44,5 +44,6 @@ composer\.lock
 
 # Folders to ignore
 #----------------------------------
+application/config/development
 /node_modules
 assets/includes
