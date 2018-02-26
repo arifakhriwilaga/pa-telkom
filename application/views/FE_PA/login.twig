@@ -1,0 +1,100 @@
+{% extends "FE_PA/templates/base.twig" %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-center form-account">
+                <div class="box">
+                    <div class="panel-form basic-form ">
+                        <h2>MASUK AKUN</h2>
+                        <form id="login">
+                            <div class="form-group">
+                                <input type="text" name="username" id="username" class="form-control" placeholder="Nama Pengguna">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Kata sandi">
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5" style="padding:0">
+                                    <div class="checkbox checkbox-primary"> <input id="remember_me" type="checkbox" name="remember_me" class=""> <label for="remember_me" style="padding:0"> Ingat Saya </label> </div> 
+                                </div>
+                                <div class="col-md-7" style="padding:8px 0 0 0">
+                                    <a href="" class="pull-right">Lupa kata sandi?</a>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-block btn-login btn-lg">Masuk</button><br>
+                        </form>
+                        <p>Belum punya akun?  <a href="{{ function('site_url','authentication/registrasi') }}">daftar disini</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+    <script>
+    $('#login').formValidation({
+        framework: 'bootstrap',
+        fields: {
+            username: {
+                validators: {
+                    notEmpty: {
+                        message: 'The username is required'
+                    },
+                    stringLength: {
+                        max: 30,
+                        message: 'The username must be less than 30 characters long'
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: 'The username can only consist of alphabetical, number, dot and underscore'
+                    }
+                }
+            },
+            password: {
+                validators: {
+                    stringLength: {
+                        min: 6,
+                        max: 15,
+                        message: 'The password must be more than 6 and less than 30 characters long'
+                    }
+                }
+            }
+        }
+    }).on('success.form.fv', function(e) {
+        e.preventDefault();
+        var $form = $(e.target),
+            fv    = $form.data('formValidation');
+        $.ajax({
+            url: site_url('authentication/login'),
+            type: 'POST',
+            data: $form.serialize()
+        }).done(function(data) {
+            if (data.status) {
+                window.location = site_url('home');
+            } else {
+                toastr.error(data.message);
+            }
+        }).fail(function (xhr, status, error) {
+            var msg = '';
+            if (xhr.status === 404) {
+                msg = 'Requested page not found.';
+            } else if (xhr.status === 500) {
+                msg = 'Internal Server Error.';
+            } else if (error === 'parsererror') {
+                msg = 'Requested failed.';
+            } else if (error === 'timeout') {
+                msg = 'Time out error.';
+            } else if (error === 'abort') {
+                msg = 'Request aborted.';
+            }
+            toastr.error(msg);
+        });
+    });
+    </script>
+{% endblock %}

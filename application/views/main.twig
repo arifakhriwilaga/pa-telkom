@@ -2,14 +2,38 @@
 <html>
 <head>
 	<title>Ayolah</title>
+	<link href="{{ function('base_url','assets/includes/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ function('base_url','assets/includes/formvalidation/formvalidation.css') }}" rel="stylesheet">
 </head>
 <body>
-	<h4>yes</h4>
-	aduh aduh aduh audh audh uahdjascbkajec jhbaskcb k ajs 
-	{{ data }}
-	{{ kalau }}
-	<script type="text/javascript">
-	console.log('hore adaan')
-	</script>
+	{{ post }}
+	<div id="coba-widget"></div>
+
 </body>
+<footer>
+	<script>
+		function base_url(path) {
+            return {{ function('base_url')|json_encode|raw }} + path.replace(/^\//g, '');
+        }
+        function site_url(path) {
+            return {{ function('site_url')|json_encode|raw }} + path.replace(/^\//g, '');
+        }
+	</script>
+
+	<script src="{{ function('base_url','assets/includes/jquery/dist/jquery.min.js') }}"></script>
+	<script src="{{ function('base_url','assets/includes/bootstrap/assets/javascripts/bootstrap.min.js') }}"></script>
+	<script src="{{ function('base_url','assets/includes/formvalidation/formvalidation.js') }}"></script>
+	<script src="{{ function('base_url','assets/js/functions.js') }}"></script>
+
+	<script>
+	APP.WIDGET.Loader('coba', {
+		container: 'coba-widget',
+		data: {
+			page: 1
+		}
+	}, function() {
+		console.log('callback');
+	});
+	</script>
+</footer>
 </html>
