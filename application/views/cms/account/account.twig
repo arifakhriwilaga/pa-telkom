@@ -5,79 +5,94 @@
 
 {% block content %}
     <section class="content-header">
-      <h1>
-        Kelola Akun
-        <!-- <small>Control panel</small> -->
-      </h1>
-      <!-- <ol class="breadcrumb"> -->
-        <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
-        <!-- <li class="active">Dashboard</li> -->
-      <!-- </ol> -->
+        <h1>
+            Kelola Akun
+        </h1>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-      <!-- Main row -->
-      <div class="row">
-        <div class="col-xs-12">
-
-          <div class="box">
-            <div class="box-header">
-              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <table id="table-accounts" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NAMA</th>
+                                    <th>EMAIL</th>
+                                    <th>JENIS KELAMIN</th>
+                                    <th>TANGGAL LAHIR</th>
+                                    <th>NAMA PENGGUNA</th>
+                                    <th>OPSI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>NAMA</th>
-                  <th>EMAIL</th>
-                  <th>JENIS KELAMIN</th>
-                  <th>TANGGAL LAHIR</th>
-                  <th>NAMA PENGGUNA</th>
-                  <!-- <th>JAWABAN</th> -->
-                  <!-- <th>KONFIRMASI</th> -->
-                  <th>OPSI</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>U001</td>
-                  <td>Peldi Rian</td>
-                  <td>peldi03@yahoo.com</td>
-                  <td>Laki-laki</td>
-                  <td>12-12-1998</td>
-                  <td>Perldi03</td>
-                  <td><a href="#">Hapus</a></td>
-                </tr>
-                <tr>
-                  <td>U002</td>
-                  <td>Rico Jerico</td>
-                  <td>ricojer@gmail.com</td>
-                  <td>Laki-laki</td>
-                  <td>11-01-1994</td>
-                  <td>Rico21</td>
-                  <td><a href="#">Hapus</a></td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row (main row) -->
-
     </section>
 {% endblock %}
 
 {% block footer %}
     <script>
-        $(function () {
-            $("#example1").DataTable();
-        });
+        var table;
+        $(document)
+                .ready(function () {
+                    table = $('#table-accounts').DataTable({
+                        "processing": true,
+                        "serverSide": true,
+                        "order": [],
+                        "ajax": {
+                            "url": site_url('cms/account_management/get_accounts'),
+                            "type": "POST"
+                        },
+                        "columnDefs": [
+                            {
+                                "targets": [0],
+                                "orderable": false,
+                            },
+                            {
+                                "targets": [6],
+                                "orderable": false,
+                            },
+                        ],
+                    });
+                })
+                .on('click', '.delete-acc', function () {
+                    if (confirm('Anda yakin ingin menghapus akun ' + $(this).data('name') + '?')) {
+                        $.ajax({
+                            url: site_url('cms/account_management/delete_account'),
+                            type: 'POST',
+                            data: {
+                                user_id: $(this).attr('id')
+                            }
+                        }).done(function (data) {
+                            if (data.status) {
+                                toastr.success(data.message);
+                                table.ajax.reload(null, false);
+                            } else {
+                                toastr.error(data.message);
+                            }
+                        }).fail(function (xhr, status, error) {
+                            var msg = '';
+                            if (xhr.status === 404) {
+                                msg = 'Requested page not found.';
+                            } else if (xhr.status === 500) {
+                                msg = 'Internal Server Error.';
+                            } else if (error === 'parsererror') {
+                                msg = 'Requested failed.';
+                            } else if (error === 'timeout') {
+                                msg = 'Time out error.';
+                            } else if (error === 'abort') {
+                                msg = 'Request aborted.';
+                            }
+                            toastr.error(msg);
+                        });
+                    }
+                });
     </script>
 {% endblock %}

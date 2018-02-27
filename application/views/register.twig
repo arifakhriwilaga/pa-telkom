@@ -189,7 +189,7 @@
         }).done(function(data) {
             if (data.status) {
                 toastr.success(data.message);
-                setTimeout(function(){ window.location = site_url('login'); }, 2000);
+                setTimeout(function(){ window.location = site_url('masuk-akun'); }, 2000);
             } else {
                 toastr.error(data.message);
             }
