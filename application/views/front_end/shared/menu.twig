@@ -1,0 +1,74 @@
+        {% if (_user and _user.level_user == 'user') %}
+            <div class="container">
+                <div class="nav-top clearfix">
+                    <div class="logo">
+                        <div class="col-md-3" style="padding-right:0;padding-left:0">
+                        <a  href="{{ function('site_url', '/') }}" class="navbar-brand"><img src="{{ function('base_url', 'assets/images/home/header/logo.png') }}" alt="Logo" /></a>
+                        </div>
+                        <div class="col-md-8" style="padding-top:2%;padding-left:3px;padding-right:0">
+                            <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Makanan Pada Solusi Penyakit</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="head_top_social pull-right">
+                        <span class="head-customer">
+                            <a href="{{ function('site_url', 'notifikasi') }}" class=""><i class="fa fa-fw fa-bell badge1" data-badge="22" style="font-size: 20px;color:#2c3e50"></i></a> 
+                            {# <a href="#" class=""><i class="fa fa-fw fa-bell badge1" style="font-size: 20px;color:#2c3e50"></i></a>  #}
+                            <a href="#" style="color: color:#2c3e50">
+                                {# <span rel="popover" id="profile" style=""> #}
+                                    <img src="{{ function('base_url','assets/images/home/header/default-avatar.png') }}" alt="Avatar" class="avatar-header">
+                                    {{ _user.name }}
+                                {# </span> #}
+                            </a>
+                        </span>
+                            <a href="{{ function('site_url','authentication/logout') }}" style="margin-left:20px"><span style="color:#636e72"><i class="fa fa-fw fa-sign-out" style="font-size: 20px;margin-right: 0;color:#2c3e50;vertical-align:middle"></i></span></a>
+                    </div>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+                    </button>
+
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <div class="nav-top clearfix">
+                    <div class="logo">
+                        <div class="col-md-3" style="padding-right:0;padding-left:0">
+                            <a  href="{{ function('site_url', '/') }}" class="navbar-brand"><img src="{{ function('base_url', 'assets/images/home/header/logo.png') }}" alt="Logo" /></a>
+                        </div>
+                        <div class="col-md-8" style="padding-top:2%;padding-left:3px;padding-right:0">
+                            <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Makanan Pada Solusi Penyakit</strong></span>
+                        </div>
+                    </div>
+
+                    <div class="head_top_social pull-right">
+                        <span class="head-customer"><a class="{{page_title == 'Masuk Akun' ? 'active' :''}}" href="{{ function('site_url', 'masuk-akun') }}">Login</a> | <a class="{{page_title == 'Daftar Akun Baru' ? 'active' :''}}" href="{{ function('site_url', 'registrasi') }}">Daftar</a> </span>
+                    </div>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
+                    </button>
+
+                </div>
+            </div>
+        {% endif %}
+
+        {% if (page_title != 'Periksa') and ((page_title != 'Konsul Dokter') and (page_title != 'Kunjungan'))  %}
+        <div class="main-nav navbar-collapse collapse">
+            <div class="container">
+                <div class="minilogo">
+                    <a href="#" class="navbar-brand"><img src="{{ function('base_url', 'assets/images/home/header/logo.png') }}" alt="Logo" /></a>
+                </div>
+                <ul class="nav nav-justified">
+                    <li><a class="{{ page_title == 'Home' ? 'active' : '' }}" href="{{ function('site_url', '/') }}">HOME</a></li>
+                    <li><a class="{{ page_title == 'Periksa' ? 'active' : '' }}" href="{{ function('site_url', 'periksa/step-1') }}">PERIKSA</a></li>
+                    <li><a class="{{ page_title == 'Konsul Dokter' ? 'active' : '' }}" href="{{ function('site_url', 'konsul-dokter') }}">KONSUL DOKTER</a></li>
+                    <li><a class="{{ page_title == 'Info Sehat' ? 'active' : '' }}" href="{{ function('site_url', 'info-sehat') }}">INFO SEHAT</a></li>
+                    {% if (_user and _user.level_user == 'user') %}
+                    <li><a class="{{page_title == 'Kunjungan' ? 'active' : ''}}" href="{{ function('site_url', 'kunjungan') }}">KUNJUNGAN</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div> 
+        {% endif %}

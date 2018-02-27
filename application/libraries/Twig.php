@@ -42,7 +42,6 @@ class Twig
     public function exec_session($user_data) 
     {
         $ci = get_instance();
-        // var_dump($ci->session->userdata($user_data));exit();
         return $ci->session->userdata($user_data);
     }
 }
