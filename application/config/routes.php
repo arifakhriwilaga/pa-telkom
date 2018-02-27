@@ -63,6 +63,7 @@ $route['translate_uri_dashes'] = FALSE;
 // authentications
 $route['masuk-akun'] = 'authentication';
 $route['registrasi'] = 'authentication/register';
+$route['lupa-password'] = 'authentication/forgot_password';
 // contents
 $route['info-sehat'] = 'home/healthy_info';
 $route['kunjungan'] = 'home/visit';
