@@ -13,7 +13,7 @@ class Authentication extends CI_Controller {
 			'page_title' => $page_title
 		);
 
-		$this->load->render('front_end/login', $data);
+		$this->load->render('login', $data);
 	}
 	
 	public function login()	{
@@ -49,7 +49,7 @@ class Authentication extends CI_Controller {
 			'page_title' => $page_title
 		);
 
-		$this->load->render('front_end/register', $data);
+		$this->load->render('register', $data);
 	}
 
 	public function simpan() {
