@@ -5,7 +5,6 @@ class Authentication extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('Users');
-
     }
 
 	public function index()	{
@@ -14,13 +13,24 @@ class Authentication extends CI_Controller {
 			'page_title' => $page_title
 		);
 
-		$this->load->render('FE_PA/login', $data);
+		$this->load->render('login', $data);
 	}
 	
 	public function login()	{
 		$result = $this->Users->login();
 		if ($result['status']) {
-			$this->session->set_userdata('user', $result['data']);
+			$user = array(
+				'user_id' => $result['data']->user_id,
+				'username' => $result['data']->username,
+				'name' => $result['data']->name,
+				'email' => $result['data']->email,
+				'gender' => $result['data']->gender,
+				'born_date' => $result['data']->born_date,
+				'password' => $result['data']->password,
+				'level_user' => $result['data']->level_user,
+				'created_date' => $result['data']->created_date
+			);
+			$this->session->set_userdata('user', $user);
 		}
 		$this->output
                 ->set_content_type('json')
@@ -33,13 +43,13 @@ class Authentication extends CI_Controller {
 		redirect(base_url('/'));
 	}
 
-	public function registrasi() {
+	public function register() {
 		$page_title = "Daftar Akun Baru";
 		$data = array(
 			'page_title' => $page_title
 		);
 
-		$this->load->render('FE_PA/register', $data);
+		$this->load->render('register', $data);
 	}
 
 	public function simpan() {

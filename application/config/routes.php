@@ -49,9 +49,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'front_end/front_end/home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// Routes HMVC
 $route['widgets/(:any)'] = 'widgets/$1/Widget';
 $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
+
+// authentications
+$route['masuk-akun'] = 'authentication';
+$route['registrasi'] = 'authentication/register';
+
+// Front End
+$route['info-sehat'] = 'front_end/healty_info';
+$route['kunjungan'] = 'front_end/visit';
+$route['periksa/step-1'] = 'front_end/check';
+$route['periksa/step-2'] = 'front_end/check/check_step_2';
+$route['periksa/step-final'] = 'front_end/check/check_step_final';
+$route['konsul-dokter'] = 'front_end/consul_doctor';
+$route['notifikasi'] = 'front_end/notification';
+
+// Routes CMS
+$route['dasbor'] = 'cms/dashboard';
+$route['kelola-akun'] = 'cms/account_management';
+$route['kelola-notifikasi'] = 'cms/notification_management';
+$route['kelola-konsultasi'] = 'cms/consultation_management';
+$route['detail-konsultasi'] = 'cms/consultation_management/detail_consul';
+$route['cetak-riwayat'] = 'cms/consultation_management/detail_history';
