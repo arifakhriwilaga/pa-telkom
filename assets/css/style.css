@@ -1307,34 +1307,41 @@ text-align: center;
 }
 
 .btn-login:hover {
-    background-color:#4BB2BC;
-    border-color:#4BB2BC;
+    /*background-color:#4BB2BC;*/
+    /*border-color:#4BB2BC;*/
     color: #fff;
     text-decoration: none;
+    opacity: 0.85;
 }
 
 .btn-login {
     color: #fff;
     background-color: #22a6b3;
     border-color: #22a6b3;
+    font-size: 18px;
     transition: .5s;
-}
-.btn-final {
-    margin-bottom:3%;
 }
 .btn-green {
     color: #fff;
     background-color: #6ab04c;
-    border-color: #6ab04c
+    border-color: #6ab04c;
 }
-.btn-green:hover {
-    background-color:rgb(255,255,255,0.99);
-}
-
 .btn-orange {
     background-color: #f0932b;
     border-color: #f0932b;
     color: #fff;
+}
+.btn-yellow {
+    background-color: #f6b93b;
+    border-color: #f6b93b;
+}
+.btn-red {
+    background-color: #eb4d4b;
+    border-color: #eb4d4b;
+}
+.btn-purple {
+    background-color: #686de0;
+    border-color: #686de0;
 }
 
 .row-final {
