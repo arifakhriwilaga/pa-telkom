@@ -1,4 +1,4 @@
-        {% if _user %}
+        {% if (_user and _user.level_user == 'user') %}
             <div class="container">
                 <div class="nav-top clearfix">
                     <div class="logo">
@@ -65,7 +65,7 @@
                     <li><a class="{{ page_title == 'Periksa' ? 'active' : '' }}" href="{{ function('site_url', 'periksa/step-1') }}">PERIKSA</a></li>
                     <li><a class="{{ page_title == 'Konsul Dokter' ? 'active' : '' }}" href="{{ function('site_url', 'konsul-dokter') }}">KONSUL DOKTER</a></li>
                     <li><a class="{{ page_title == 'Info Sehat' ? 'active' : '' }}" href="{{ function('site_url', 'info-sehat') }}">INFO SEHAT</a></li>
-                    {% if _user %}
+                    {% if (_user and _user.level_user == 'user') %}
                     <li><a class="{{page_title == 'Kunjungan' ? 'active' : ''}}" href="{{ function('site_url', 'kunjungan') }}">KUNJUNGAN</a></li>
                     {% endif %}
                 </ul>

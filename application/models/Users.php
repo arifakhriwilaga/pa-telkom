@@ -35,7 +35,7 @@ class Users extends CI_Model
 		$result = array(
 			'status' => true,
 			'message' => 'Login berhasil!',
-			'data' => $query->result()
+			'data' => $query->row()
 		);
 		return $result;
 	}
@@ -49,7 +49,7 @@ class Users extends CI_Model
 			"born_date" => $this->input->post('born_date'),
 			"gender" => $this->input->post('gender'),
 			"password" => md5($this->input->post('password')),
-			"user_level" => $this->input->post('user_level')
+			"level_user" => $this->input->post('level_user')
 		);
 		if ($this->db->insert('users', $data)) {
 			$result = array(

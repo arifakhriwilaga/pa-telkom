@@ -80,7 +80,11 @@
             data: $form.serialize()
         }).done(function(data) {
             if (data.status) {
-                window.location = site_url('/');
+                if (data.data.level_user == 'user') {
+                    window.location = site_url('/');
+                } else {
+                    window.location = site_url('dasbor');
+                }
             } else {
                 toastr.error(data.message);
             }

@@ -2,18 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% include 'CMS_PA/templates/header.twig' %}
+        {% include 'cms/shared/header.twig' %}
         {% block head %}
         {% endblock %}
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                {% include 'CMS_PA/templates/menu_header.twig' %}
+                {% include 'cms/shared/menu_header.twig' %}
             </header>
 
             <aside class="main-sidebar">
-                {% include 'CMS_PA/templates/menu_sidebar.twig' %}
+                {% include 'cms/shared/menu_sidebar.twig' %}
             </aside>
 
             <div class="content-wrapper">
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        {% include 'CMS_PA/templates/footer.twig' %}
+        {% include 'cms/shared/footer.twig' %}
         {% block footer %}
         {% endblock %}
     </body>

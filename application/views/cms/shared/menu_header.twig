@@ -11,12 +11,12 @@
         <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ function('base_url','assets/images/man3.png') }}" class="user-image" alt="User Image">
+                    <img src="{{ function('base_url','assets/images/home/header/default-avatar.png') }}" class="user-image" alt="User Image">
                     <span class="hidden-xs">Admin</span>
                 </a>
                 <ul class="dropdown-menu">
                     <li class="user-header">
-                        <img src="{{ function('base_url','assets/images/man3.png') }}" class="img-circle" alt="User Image">
+                        <img src="{{ function('base_url','assets/images/home/header/default-avatar.png') }}" class="img-circle" alt="User Image">
                         <p>
                             Admin Name
                         </p>
@@ -26,7 +26,7 @@
                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
-                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                            <a href="{{ function('site_url','authentication/logout') }}" class="btn btn-default btn-flat">Sign out</a>
                         </div>
                     </li>
                 </ul>
