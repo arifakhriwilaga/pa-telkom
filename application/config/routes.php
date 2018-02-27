@@ -71,9 +71,12 @@ $route['konsul-dokter'] = 'front_end/consul_doctor';
 $route['notifikasi'] = 'front_end/notification';
 
 // Routes CMS
-$route['dasbor'] = 'cms/dashboard';
-$route['kelola-akun'] = 'cms/account_management';
-$route['kelola-notifikasi'] = 'cms/notification_management';
-$route['kelola-konsultasi'] = 'cms/consultation_management';
-$route['detail-konsultasi'] = 'cms/consultation_management/detail_consul';
-$route['cetak-riwayat'] = 'cms/consultation_management/detail_history';
+$route['lupa-password'] = 'authentication/forgot_password';
+// contents
+$route['info-sehat'] = 'home/healthy_info';
+$route['kunjungan'] = 'home/visit';
+$route['periksa/step-1'] = 'home/check_step_1';
+$route['periksa/step-2'] = 'home/check_step_2';
+$route['periksa/step-final'] = 'home/check_step_final';
+$route['konsul-dokter'] = 'home/consul_doctor';
+$route['notifikasi'] = 'home/notification';

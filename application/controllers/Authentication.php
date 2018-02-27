@@ -52,6 +52,15 @@ class Authentication extends CI_Controller {
 		$this->load->render('front_end/register', $data);
 	}
 
+	public function forgot_password() {
+		$page_title = "Lupa Password";
+		$data = array(
+			'page_title' => $page_title
+		);
+
+		$this->load->render('front_end/forgot_password', $data);
+	}
+
 	public function simpan() {
 		$result = $this->Users->save();
 		$this->output
