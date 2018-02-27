@@ -4,10 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Authentication extends CI_Controller {
 	public function __construct() {
         parent::__construct();
-        $this->load->model('Users');
+        $this->load->model('Auth');
     }
 
 	public function index()	{
+		$user = $this->session->userdata('user');
+	    if ($user) {
+	    	if ($user['level_user'] == 'user') {
+		    	redirect('/');
+	    	} elseif ($user['level_user'] == 'admin') {
+		    	redirect('dasbor');
+		    }
+	    }
+		
 		$page_title = "Masuk Akun";
 		$data = array(
 			'page_title' => $page_title
@@ -17,7 +26,7 @@ class Authentication extends CI_Controller {
 	}
 	
 	public function login()	{
-		$result = $this->Users->login();
+		$result = $this->Auth->login();
 		if ($result['status']) {
 			$user = array(
 				'user_id' => $result['data']->user_id,
@@ -62,7 +71,7 @@ class Authentication extends CI_Controller {
 	}
 
 	public function simpan() {
-		$result = $this->Users->save();
+		$result = $this->Auth->save();
 		$this->output
                 ->set_content_type('json')
                 ->set_output(json_encode($result));
