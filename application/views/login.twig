@@ -70,7 +70,6 @@
             }
         }
     }).on('success.form.fv', function(e) {
-        console.log(e)
         e.preventDefault();
         var $form = $(e.target),
             fv    = $form.data('formValidation');
@@ -82,7 +81,7 @@
             if (data.status) {
                 if (data.data.level_user == 'user') {
                     window.location = site_url('/');
-                } else {
+                } else if (data.data.level_user == 'admin') {
                     window.location = site_url('dasbor');
                 }
             } else {

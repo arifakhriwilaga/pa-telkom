@@ -2,7 +2,7 @@
 <?php
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users extends CI_Model
+class Auth extends CI_Model
 {
 	public function login()
 	{
@@ -39,6 +39,7 @@ class Users extends CI_Model
 		);
 		return $result;
 	}
+	
 	public function save()
 	{
 		$result = array();
