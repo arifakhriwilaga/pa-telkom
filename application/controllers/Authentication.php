@@ -53,6 +53,15 @@ class Authentication extends CI_Controller {
 	}
 
 	public function register() {
+		$user = $this->session->userdata('user');
+	    if ($user) {
+	    	if ($user['level_user'] == 'user') {
+		    	redirect('/');
+	    	} elseif ($user['level_user'] == 'admin') {
+		    	redirect('dasbor');
+		    }
+	    }
+	    
 		$page_title = "Daftar Akun Baru";
 		$data = array(
 			'page_title' => $page_title
