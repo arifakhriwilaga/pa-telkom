@@ -57,7 +57,7 @@ class Auth extends CI_Model {
         if ($this->db->insert('users', $data)) {
             $result = array(
                 'status' => true,
-                'message' => 'Data berhasil disimpan!',
+                'message' => 'Selamat akun anda berhasil dibuat silahkan login!',
                 'data' => null
             );
             return $result;

@@ -27,6 +27,7 @@ class Twig
         $this->twig->addFunction(new Twig_SimpleFunction('function', array($this, 'exec_function')));
         $this->twig->addFunction(new Twig_SimpleFunction('fn', array($this, 'exec_function')));
         $this->twig->addFunction(new Twig_SimpleFunction('session', array($this, 'exec_session')));
+        $this->twig->addFunction(new Twig_SimpleFunction('flashdata', array($this, 'exec_flashdata')));
     }
 
     public function exec_function($function_name)
@@ -43,5 +44,11 @@ class Twig
     {
         $ci = get_instance();
         return $ci->session->userdata($user_data);
+    }
+
+    public function exec_flashdata($status) 
+    {
+        $ci = get_instance();
+        return $ci->session->flashdata($status);
     }
 }

@@ -40,10 +40,16 @@ class Authentication extends CI_Controller {
 				'created_date' => $result['data']->created_date
 			);
 			$this->session->set_userdata('user', $user);
+			$this->session->set_flashdata('success', $result['message']);
+			if ($result['data']->level_user == 'user') {
+				return redirect('/');
+			} elseif ($result['data']->level_user == 'admin') {
+				return redirect('dasbor');
+			}
+		} else {
+			$this->session->set_flashdata('error', $result['message']);
+			return redirect('masuk-akun');
 		}
-		$this->output
-                ->set_content_type('json')
-                ->set_output(json_encode($result));
 	}
 
 	function logout() {
@@ -79,10 +85,15 @@ class Authentication extends CI_Controller {
 		$this->load->render('front_end/forgot_password', $data);
 	}
 
-	public function simpan() {
+	public function save() {
 		$result = $this->Auth->save();
-		$this->output
-                ->set_content_type('json')
-                ->set_output(json_encode($result));
+		if ($result['status']) {
+			$this->session->set_flashdata('success', $result['message']);
+			return redirect('masuk-akun');
+		} else {
+			$this->session->set_flashdata('error', $result['message']);
+			
+			return redirect('registrasi');
+		}
 	}
 }
