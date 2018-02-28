@@ -1,0 +1,14 @@
+/* Custom ADMINLTE */
+.skin-blue-light .main-header .logo {
+    background-color : #f9fafc !important;
+    color : #e67e22 !important;
+    border-bottom : 0 solid transparent !important;
+}
+
+.skin-blue-light .main-header .navbar {
+	background-color: #22a6b3;
+}
+
+.skin-blue-light .main-header li.user-header {
+	background-color: #22a6b3;
+}
