@@ -48,9 +48,9 @@
                   <td>Laki-laki</td>
                   <td>20th</td>
                   <td>12-09-1992</td>
-                  <td><a href="{{ function('site_url','detail-konsultasi') }}">Lihat Detail</a></td>
-                  <td><a href="#">Hapus</a></td>
-                  <td><a href="#">Edit</a></td>
+                  <td><a href="{{ function('site_url','detail-konsultasi') }}"><button class="btn btn-info btn-sm" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
+                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
+                  {# <td></td> #}
                 </tr>
                 <tr>
                   <td>K002</td>
@@ -59,9 +59,10 @@
                   <td>Perempuan</td>
                   <td>21th</td>
                   <td>11-01-1997</td>
-                  <td><a href="{{ function('site_url','detail-konsultasi') }}">Lihat Detail</a></td>
-                  <td><a href="#">Hapus</a></td>
-                  <td><a href="#">Edit</a></td>
+                  <td><a href="{{ function('site_url','detail-konsultasi') }}"><button class="btn btn-info btn-sm" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
+                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
+                  {# <td><a href="#">Hapus</a></td> #}
+                  {# <td><a href="#">Edit</a></td> #}
                 </tr>
                 <tr>
                   <td>K003</td>
@@ -70,9 +71,10 @@
                   <td>Perempuan</td>
                   <td>22th</td>
                   <td>19-02-1993</td>
-                  <td><a href="{{ function('site_url','detail-konsultasi') }}">Lihat Detail</a></td>
-                  <td><a href="#">Hapus</a></td>
-                  <td><a href="#">Edit</a></td>
+                  <td><a href="{{ function('site_url','detail-konsultasi') }}"><button class="btn btn-info btn-sm action" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
+                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
+                  {# <td><a href="#">Hapus</a></td> #}
+                  {# <td><a href="#">Edit</a></td> #}
                 </tr>
                 <tr>
                   <td>K004</td>
@@ -81,9 +83,10 @@
                   <td>Laki-laki</td>
                   <td>25th</td>
                   <td>02-02-1995</td>
-                  <td><a href="{{ function('site_url','detail-konsultasi') }}">Lihat Detail</a></td>
-                  <td><a href="#">Hapus</a></td>
-                  <td><a href="#">Edit</a></td>
+                    <td><a href="{{ function('site_url','detail-konsultasi') }}"><button class="btn btn-info btn-sm" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
+                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
+                  {# <td><a href="#">Hapus</a></td> #}
+                  {# <td><a href="#">Edit</a></td> #}
                 </tr>
                 </tbody>
               </table>
@@ -102,7 +105,27 @@
 {% block footer %}
     <script>
         $(function () {
-            $("#example1").DataTable();
+            $("#example1").DataTable({
+                "language": {
+                    "search": "Cari data:",
+                    "lengthMenu": "Filter _MENU_ data",
+                    "zeroRecords": "Data tidak tersedia",
+                    // "infoEmpty": "Data user belum tersedia",
+                    // "info": "Halaman _PAGE_ dari _PAGES_ tersedia _MAX_ data",
+                    "paginate": {
+                        "first":      "Pertama",
+                        "last":       "Terakhir",
+                        "next":       "Selanjutnya",
+                        "previous":   "Kembali"
+                    },
+                    // "emptyTable":     "No data available in table",
+                    "info":           "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+                    "infoEmpty":      "Data 0 - 0 dari 0 data",
+                    // "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    // Showing _START_ to _END_ of _TOTAL_ entries
+                    // "infoFiltered": "(filtered from _MAX_ total records)"
+                },
+            });
         });
     </script>
 {% endblock %}

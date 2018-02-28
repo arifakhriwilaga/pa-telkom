@@ -1426,3 +1426,8 @@ text-align: center;
   margin-top: 5px;
   margin-left:10px
 }
+
+.btn.focus, .btn:focus, .btn:hover {
+    color: #fff!important;
+    text-decoration:none;
+}

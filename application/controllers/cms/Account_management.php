@@ -4,19 +4,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Account_management extends CI_Controller {
 
+    public $user;
+
     public function __construct() {
         parent::__construct();
         $this->load->model('Accounts', 'accounts');
-        $user = $this->session->userdata('user');
-        if (empty($user) || $user['level_user'] == 'user') {
+        $this->user = $this->session->userdata('user');
+        if (empty($this->user) || $this->user['level_user'] == 'user') {
             redirect('/');
         }
-    }
+      }
 
     public function index() {
         $page_title = "Kelola Akun";
         $data = array(
-            'page_title' => $page_title
+            'page_title' => $page_title,
+            'user' => $this->user
         );
 
         $this->load->render('cms/account/account', $data);
@@ -35,7 +38,7 @@ class Account_management extends CI_Controller {
             $row[] = $accounts->gender;
             $row[] = $accounts->born_date;
             $row[] = $accounts->username;
-            $row[] = '<a href="#" class="delete-acc" id="' . $accounts->user_id . '" data-name="' . $accounts->username . '">Hapus</a>';
+            $row[] = '<button class="btn btn-danger btn-sm delete-acc" id="' . $accounts->user_id . '" data-name="' . $accounts->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
 
             $data[] = $row;
         }
