@@ -90,6 +90,7 @@ $route['periksa/step-2'] = 'front_end/check/check_step_2';
 $route['periksa/step-final'] = 'front_end/check/check_step_final';
 $route['konsul-dokter'] = 'front_end/consul_doctor';
 $route['notifikasi'] = 'front_end/notification';
+$route['detail-notifikasi'] = 'front_end/notification/detail';
 
 // Routes CMS
 $route['dasbor'] = 'cms/dashboard';
