@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Authentication extends CI_Controller {
 	public function __construct() {
         parent::__construct();
-        $this->load->model('Auth');
+        $this->load->model('Auth', 'auth');
     }
 
 	public function index()	{
@@ -25,8 +25,8 @@ class Authentication extends CI_Controller {
 		$this->load->render('login', $data);
 	}
 	
-	public function login()	{
-		$result = $this->Auth->login();
+	public function do_login()	{
+		$result = $this->auth->login();
 		if ($result['status']) {
 			$user = array(
 				'user_id' => $result['data']->user_id,
@@ -76,6 +76,18 @@ class Authentication extends CI_Controller {
 		$this->load->render('register', $data);
 	}
 
+	public function do_register() {
+		$result = $this->auth->save();
+		if ($result['status']) {
+			$this->session->set_flashdata('success', $result['message']);
+			return redirect('masuk-akun');
+		} else {
+			$this->session->set_flashdata('error', $result['message']);
+			
+			return redirect('registrasi');
+		}
+	}
+
 	public function forgot_password() {
 		$page_title = "Lupa Password";
 		$data = array(
@@ -85,15 +97,15 @@ class Authentication extends CI_Controller {
 		$this->load->render('front_end/forgot_password', $data);
 	}
 
-	public function save() {
-		$result = $this->Auth->save();
+	public function do_reset_password() {
+		$result = $this->auth->reset_password();
 		if ($result['status']) {
 			$this->session->set_flashdata('success', $result['message']);
 			return redirect('masuk-akun');
 		} else {
 			$this->session->set_flashdata('error', $result['message']);
 			
-			return redirect('registrasi');
+			return redirect('lupa-kata-sandi');
 		}
 	}
 }

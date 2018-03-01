@@ -52,33 +52,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'home';
 $route['default_controller'] = 'front_end/front_end/home';
- $route['404_override'] = '';
- $route['translate_uri_dashes'] = FALSE;
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
  
-// $route['authentication'] = '';
-// $route['widgets/(:any)'] = 'widgets/$1/Widget';
-// $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
 // Routes HMVC
 $route['widgets/(:any)'] = 'widgets/$1/Widget';
 $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
  
-// $route['home'] = 'home';
-
-// guest routes
 // authentications
 $route['masuk-akun'] = 'authentication';
 $route['registrasi'] = 'authentication/register';
-$route['lupa-password'] = 'authentication/forgot_password';
+$route['lupa-kata-sandi'] = 'authentication/forgot_password';
 $route['edit-profile'] = 'front_end/profile';
-
-// contents
-// $route['info-sehat'] = 'home/healthy_info';
-// $route['kunjungan'] = 'home/visit';
-// $route['periksa/step-1'] = 'home/check_step_1';
-// $route['periksa/step-2'] = 'home/check_step_2';
-// $route['periksa/step-final'] = 'home/check_step_final';
-// $route['konsul-dokter'] = 'home/consul_doctor';
-// $route['notifikasi'] = 'home/notification';
 
 // Front End
 $route['info-sehat'] = 'front_end/healty_info';
