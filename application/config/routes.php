@@ -63,7 +63,7 @@ $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
 $route['masuk-akun'] = 'authentication';
 $route['registrasi'] = 'authentication/register';
 $route['lupa-kata-sandi'] = 'authentication/forgot_password';
-$route['edit-profile'] = 'front_end/profile';
+$route['ubah-profil'] = 'front_end/profile';
 
 // Front End
 $route['info-sehat'] = 'front_end/healty_info';

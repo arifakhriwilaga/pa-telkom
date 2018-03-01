@@ -66,6 +66,44 @@ class Accounts extends CI_Model {
         return $this->db->count_all_results();
     }
 
+    public function update($user_id) {
+        $date = preg_split('/\//', strval($this->input->post('born_date')));
+        $born_date = $date[2] . '-' . $date[1] . '-' . $date[0];
+        $data = array(
+            "username" => $this->input->post('username'),
+            "name" => $this->input->post('name'),
+            "email" => $this->input->post('email'),
+            "born_date" => $born_date,
+            "gender" => $this->input->post('gender'),
+            "level_user" => $this->input->post('level_user')
+        );
+        if ($this->input->post('password')) {
+            $data["password"] = md5($this->input->post('password'));
+        }
+
+        $this->db->where('user_id', $user_id);
+        if ($this->db->update($this->table, $data)) {
+            $result = array(
+                'status' => true,
+                'message' => 'Profil berhasil diubah!',
+                'data' => $this->db->get($this->table)->row()
+            );
+            return $result;
+        } else {
+            $error = $this->db->error();
+            $result = array(
+                'status' => false,
+                'message' => $error['message'],
+                'data' => null
+            );
+            return $result;
+        }
+    }
+
+    public function update_picture($user_id, $picture) {
+        # code...
+    }
+
     public function delete_account() {
         $result = array();
         $user_id = $this->input->post('user_id');
@@ -74,7 +112,7 @@ class Accounts extends CI_Model {
         if ($this->db->delete($this->table)) {
             $result = array(
                 'status' => true,
-                'message' => 'Data berhasil dihapus!',
+                'message' => 'Akun berhasil dihapus!',
                 'data' => null
             );
             return $result;

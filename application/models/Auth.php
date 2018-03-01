@@ -16,7 +16,7 @@ class Auth extends CI_Model {
         if (!$username) {
             $result = array(
                 'status' => false,
-                'message' => 'Username tidak ada!',
+                'message' => 'Nama pengguna tidak ada!',
                 'data' => null
             );
             return $result;
@@ -79,11 +79,11 @@ class Auth extends CI_Model {
             'password' => $password
         );
 
-        $username = $this->db->where('username', $username);;
+        $username = $this->db->where('username', $username);
         if (!$username) {
             $result = array(
                 'status' => false,
-                'message' => 'Username tidak ada!',
+                'message' => 'Nama pengguna tidak ada!',
                 'data' => null
             );
             return $result;
