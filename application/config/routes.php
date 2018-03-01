@@ -69,24 +69,28 @@ $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
 $route['masuk-akun'] = 'authentication';
 $route['registrasi'] = 'authentication/register';
 $route['lupa-password'] = 'authentication/forgot_password';
+$route['edit-profile'] = 'front_end/profile';
 
 // contents
-$route['info-sehat'] = 'home/healthy_info';
-$route['kunjungan'] = 'home/visit';
-$route['periksa/step-1'] = 'home/check_step_1';
-$route['periksa/step-2'] = 'home/check_step_2';
-$route['periksa/step-final'] = 'home/check_step_final';
-$route['konsul-dokter'] = 'home/consul_doctor';
-$route['notifikasi'] = 'home/notification';
+// $route['info-sehat'] = 'home/healthy_info';
+// $route['kunjungan'] = 'home/visit';
+// $route['periksa/step-1'] = 'home/check_step_1';
+// $route['periksa/step-2'] = 'home/check_step_2';
+// $route['periksa/step-final'] = 'home/check_step_final';
+// $route['konsul-dokter'] = 'home/consul_doctor';
+// $route['notifikasi'] = 'home/notification';
 
 // Front End
 $route['info-sehat'] = 'front_end/healty_info';
+$route['info-sehat/13-tips-makan-sehat-untuk-orang-sibuk'] = 'front_end/healty_info/detail1';
+$route['info-sehat/makan-daging-tingkatkan-risiko-diabetes'] = 'front_end/healty_info/detail2';
 $route['kunjungan'] = 'front_end/visit';
 $route['periksa/step-1'] = 'front_end/check';
 $route['periksa/step-2'] = 'front_end/check/check_step_2';
 $route['periksa/step-final'] = 'front_end/check/check_step_final';
 $route['konsul-dokter'] = 'front_end/consul_doctor';
 $route['notifikasi'] = 'front_end/notification';
+$route['detail-notifikasi'] = 'front_end/notification/detail';
 
 // Routes CMS
 $route['dasbor'] = 'cms/dashboard';

@@ -1,31 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Notification extends CI_Controller {
+class Profile extends CI_Controller {
 
 	public function __construct() {
     parent::__construct();
     $user = $this->session->userdata('user');
+    if (empty($user)) {
+    	redirect('masuk-akun');
+    }
     if ($user['level_user'] == 'admin') {
     	redirect('dasbor');
     }
   }
 
 	public function index()	{
-		$page_title = "Notifikasi";
+		$page_title = "Edit Profile";
 		$data = array(
 			'page_title' => $page_title
 		);
 
-		$this->load->render('front_end/user/notification',$data);
-	}
-
-	public function detail()	{
-		$page_title = "Notifikasi";
-		$data = array(
-			'page_title' => $page_title
-		);
-
-		$this->load->render('front_end/user/detail_notification',$data);
+		$this->load->render('front_end/user/edit_profile',$data);
 	}
 }
