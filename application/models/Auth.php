@@ -12,8 +12,8 @@ class Auth extends CI_Model {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $username = $this->db->where('username', $username);;
-        if (!$username) {
+        $q_username = $this->db->get_where($this->table, array('username' => $username))->row();
+        if (!$q_username) {
             $result = array(
                 'status' => false,
                 'message' => 'Nama pengguna tidak ada!',
@@ -22,9 +22,8 @@ class Auth extends CI_Model {
             return $result;
         }
 
-        $this->db->where('password', md5($password));
-        $query = $this->db->get($this->table);
-        if ($query->num_rows() == 0) {
+        $q_userpass = $this->db->get_where($this->table, array('username' => $username,'password' => md5($password)))->row();
+        if (!$q_userpass) {
             $result = array(
                 'status' => false,
                 'message' => 'Kata sandi salah!',
@@ -33,10 +32,11 @@ class Auth extends CI_Model {
             return $result;
         }
 
+
         $result = array(
             'status' => true,
             'message' => 'Login berhasil!',
-            'data' => $query->row()
+            'data' => $q_userpass
         );
         return $result;
     }

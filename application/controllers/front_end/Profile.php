@@ -5,7 +5,7 @@ class Profile extends CI_Controller {
 
 	public function __construct() {
     parent::__construct();
-    $this->load->model('Accounts', 'account');
+    $this->load->model('User', 'user');
     $user = $this->session->userdata('user');
     if (empty($user)) {
     	redirect('masuk-akun');
@@ -26,20 +26,10 @@ class Profile extends CI_Controller {
 	}
 
     public function update_profile($user_id) {
-        $result = $this->account->update($user_id);
+        $result = $this->user->update($user_id);
         if ($result['status']) {
             $this->session->userdata = array();
-            $user = array(
-                'user_id' => $result['data']->user_id,
-                'username' => $result['data']->username,
-                'name' => $result['data']->name,
-                'email' => $result['data']->email,
-                'gender' => $result['data']->gender,
-                'born_date' => $result['data']->born_date,
-                'password' => $result['data']->password,
-                'level_user' => $result['data']->level_user,
-                'created_date' => $result['data']->created_date
-            );
+            $user = $this->user->get_user($result['data']->user_id);
             $this->session->set_userdata('user', $user);
             $this->session->set_flashdata('success', $result['message']);
             return redirect('ubah-profil');
@@ -51,11 +41,11 @@ class Profile extends CI_Controller {
     }
 
     public function upload_picture($id) {
-        $json['status'] = 'error';
+        $result = array();
         if (file_exists($_FILES['profile_picture']['tmp_name'])) {
-            $params['user_id'] = $id;
-            $user = $this->api->get_user($id);
+            $user = $this->session->userdata('user');
             if (file_exists('.'.$user['profile_picture'])) {
+                chmod("." . $user['profile_picture'], 0777);
                 unlink("." . $user['profile_picture']);
             }
             $config = array(
@@ -69,24 +59,29 @@ class Profile extends CI_Controller {
             $this->upload->initialize($config);
             if ($this->upload->do_upload('profile_picture')) {
                 $uploaded = $this->upload->data();
-                $params['profile_picture'] = '/uploads/profile_picture/' . $uploaded['file_name'];
-                $result = $this->api->set_user($this->_user['user_id'], $params);
-                if ($result) {
-                    $user = $this->api->get_user($id);
-                    $newdata = array(
-                        'userIncubatorLogin' => $user
-                    );
-                    $this->session->set_userdata($newdata);
-                    $json['status'] = 'success';
-                } else {
-                    $json['message'] = $this->api->get_error_msg();
+                $picture['profile_picture'] = '/uploads/profile_picture/' . $uploaded['file_name'];
+                $result = $this->user->update_picture($user['user_id'], $picture);
+                if ($result['status']) {
+                    $this->session->userdata = array();
+                    $this->session->set_userdata('user', $this->user->get_user($id));
                 }
             } else {
-                $json['message'] = $this->upload->display_errors();
+                $error = $this->upload->display_errors();
+                $result = array(
+                    'status' => false,
+                    'message' => $error,
+                    'data' => null
+                );
             }
+        } else {
+            $result = array(
+                'status' => false,
+                'message' => 'Ukuran gambar tidak mendukung!',
+                'data' => null
+            );
         }
         $this->output
                 ->set_content_type('json')
-                ->set_output(json_encode($json));
+                ->set_output(json_encode($result));
     }
 }

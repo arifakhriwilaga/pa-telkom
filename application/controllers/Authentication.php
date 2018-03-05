@@ -5,6 +5,7 @@ class Authentication extends CI_Controller {
 	public function __construct() {
         parent::__construct();
         $this->load->model('Auth', 'auth');
+        $this->load->model('User', 'user');
     }
 
 	public function index()	{
@@ -28,17 +29,7 @@ class Authentication extends CI_Controller {
 	public function do_login()	{
 		$result = $this->auth->login();
 		if ($result['status']) {
-			$user = array(
-				'user_id' => $result['data']->user_id,
-				'username' => $result['data']->username,
-				'name' => $result['data']->name,
-				'email' => $result['data']->email,
-				'gender' => $result['data']->gender,
-				'born_date' => $result['data']->born_date,
-				'password' => $result['data']->password,
-				'level_user' => $result['data']->level_user,
-				'created_date' => $result['data']->created_date
-			);
+			$user = $this->user->get_user($result['data']->user_id);
 			$this->session->set_userdata('user', $user);
 			$this->session->set_flashdata('success', $result['message']);
 			if ($result['data']->level_user == 'user') {
