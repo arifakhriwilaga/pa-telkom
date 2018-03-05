@@ -14,13 +14,13 @@
                             <div class="form-group">
                                 <div class="ava-image">
                                     <span>
-                                        <img class="placeholder-img"  src="{{ function('base_url', user.picture|default('assets/images/home/header/default-avatar.png')) }}" alt="{{ user.name }}" />
+                                        <img id="profile-image" class="placeholder-img" src="{{ function('base_url', user.profile_picture|default('assets/images/home/header/default-avatar.png')) }}" alt="{{ user.name }}" />
                                     </span>
 
-                                    <label for="imgInput-avatar" class="edit-photo">
+                                    <label for="input-profile-picture" class="edit-photo">
                                         <i class="fa fa-pencil" style="padding-left:25%"></i>
                                     </label>
-                                    <input type="file" name="profile_picture" accept="image/*" id="imgInput-avatar">
+                                    <input type="file" name="profile_picture" accept="image/*" id="input-profile-picture">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -31,7 +31,7 @@
                                 <input type="text" name="email" value="{{ user.email }}" class="form-control" placeholder="Email" required="" autocomplete="false">
                             </div>
                             <div class="form-group">
-                                <input type="text" name="username" value="{{ user.username }}" class="form-control" placeholder="Nama Pengguna" disabled="">
+                                <input type="text" name="username" value="{{ user.username }}" class="form-control" placeholder="Nama Pengguna" readonly="">
                             </div>
                             <div class="form-group">
                                 <label class="col-xs-3 control-label no-padding" style="text-align:left">Jenis Kelamin </label>
@@ -65,7 +65,9 @@
 {% endblock %}
 
 {% block footer %}
+    <script type="text/javascript" src="{{ function('base_url','assets/includes/jquery-form/dist/jquery.form.min.js') }}"></script>
     <script>
+        var user_id = {{ user.user_id|json_encode|raw }}
         // config datepicker borndate
         $('#born_date').datetimepicker({
             locale: moment.locale('id', {
@@ -161,6 +163,19 @@
                     }
                 }
             }
+        });
+        $("#edit-profile #input-profile-picture").on('change', function () {
+            var input = this;
+            $("#edit-profile").ajaxSubmit({
+                type: "post",
+                url: site_url('front_end/profile/upload_picture/'+user_id),
+                dataType: 'json',
+                success: function (status, message, data) {
+                    if (status) {
+                        $('#profile-image').attr('src', base_url(data.responseJSON.data));
+                    }
+                }
+            });
         });
     </script>
 {% endblock %}
