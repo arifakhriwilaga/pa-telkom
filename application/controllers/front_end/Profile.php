@@ -18,8 +18,7 @@ class Profile extends CI_Controller {
 	public function index()	{
 		$page_title = "Edit Profile";
 		$data = array(
-			'page_title' => $page_title,
-            'user' => $this->session->userdata('user')
+			'page_title' => $page_title
 		);
 
 		$this->load->render('front_end/user/edit_profile',$data);
