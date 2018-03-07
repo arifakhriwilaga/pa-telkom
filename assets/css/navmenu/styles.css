@@ -309,10 +309,26 @@ nav.small .minilogo {
 
 /* avatar */
 .avatar-header {
-  vertical-align: middle;
-  width: 35px;
-  height: 35px;
-  /*width:70px;*/
-  border-radius: 50%;
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 0.45px solid #f4f8fb;
 }
 
+.avatar-header:hover {
+    /*box-shadow: rgba(0,0,0,1) ;*/
+    border: 0.45px solid rgba(193,193,193,.8);
+    /*width: 35px;*/
+    /*height: 35px;*/
+}
+
+
+.notification {
+    color:#777777;
+    font-size: 20px;
+}
+
+.notification:hover {
+    color:#2c3e50
+}
