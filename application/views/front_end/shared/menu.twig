@@ -1,4 +1,4 @@
-        {% if (_user and _user.level_user == 'user') %}
+        {% if (user and user.level_user == 'user') %}
             <div class="container">
                 <div class="nav-top clearfix">
                     <div class="logo">
@@ -12,14 +12,11 @@
                     {% if (page_title != 'Edit Profile') %}
                     <div class="head_top_social pull-right">
                         <span class="head-customer">
-                            <a href="{{ function('site_url', 'notifikasi') }}" class=""><i class="fa fa-fw fa-bell badge1 notification" data-badge="22"></i></a> 
+                            <a href="{{ function('site_url', 'notifikasi') }}" class=""><i class="fa fa-fw fa-bell badge1" data-badge="22" style="font-size: 20px;color:#2c3e50"></i></a>
                             {# <a href="#" class=""><i class="fa fa-fw fa-bell badge1" style="font-size: 20px;color:#2c3e50"></i></a>  #}
-                            <a href="#" data-toggle="popover" style="color: color:#2c3e50" >
-                            {# <a href="{{ function('site_url', 'ubah-profil') }}" data-toggle="popover" style="color: color:#2c3e50"> #}
-                                {# <span rel="popover" id="profile" style=""> #}
-                                    <img src="{{ function('base_url','assets/images/home/header/default-avatar.png') }}" alt="Avatar" class="avatar-header">
-                                    {# {{ _user.name }} #}
-                                {# </span> #}
+                            <a data-toggle="popover" href="#" style="color: color:#2c3e50">
+                                <img src="{{ function('base_url', user.profile_picture|default('assets/images/home/header/default-avatar.png')) }}" alt="Avatar" class="avatar-header">
+                                {{ user.name }}
                             </a>
                         </span>
                     </div>
@@ -66,7 +63,7 @@
                     <li><a class="{{ page_title == 'Periksa' ? 'active' : '' }}" href="{{ function('site_url', 'periksa/step-1') }}">Periksa</a></li>
                     <li><a class="{{ page_title == 'Konsul Dokter' ? 'active' : '' }}" href="{{ function('site_url', 'konsul-dokter') }}">Konsul Dokter</a></li>
                     <li><a class="{{ page_title == 'Info Sehat' ? 'active' : page_title == 'Terlalu Sering Makan Daging Bisa Kena Diabetes, Kok Bisa?' ? 'active' : page_title == '13 Tips Makan Sehat untuk Orang Sibuk' ? 'active' : '' }}" href="{{ function('site_url', 'info-sehat') }}">Info Sehat</a></li>
-                    {% if _user %}
+                    {% if user %}
                     <li><a class="{{page_title == 'Kunjungan' ? 'active' : ''}}" href="{{ function('site_url', 'kunjungan') }}">Kunjungan</a></li>
                     {% endif %}
                 </ul>
