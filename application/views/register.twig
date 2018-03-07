@@ -6,11 +6,17 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-center form-account">
+            <div class="col-md-6" style="text-align:left">
+                <img src="{{ function('base_url', 'assets/images/home/register-left-banner.png') }}" style="width:250px;height:450px;margin-top:100px" alt="Logo" />
+            </div>
+            <div class="col-md-6" style="text-align:right">
+                <img src="{{ function('base_url', 'assets/images/home/register-right-banner.png') }}" style="width:250px;height:450px;margin-top:100px" alt="Logo" />
+            </div>
+            <div class="col-md-5 col-center form-account" style="position:absolute;left:25%;right:25%;">
                 <div class="box">
                     <div class="panel-form basic-form form">
                         <h2>REGISTRASI</h2>
-                        <form action="{{ function('site_url','authentication/do_register') }}" method="POST" id="register" class="form-horizontal">
+                        <form action="{{ function('site_url','authentication/do_register') }}" method="POST" id="register" class="form-horizontal" style="padding-left:15px;padding-right:15px">
                             <div class="form-group">
                                 <input type="hidden" name="level_user" value="user" id="level_user" class="form-control">
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Nama Lengkap" required="" autocomplete="false">
@@ -43,9 +49,11 @@
                             <div class="form-group">
                                 <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Ulang Kata sandi" required="" maxlength="15">
                             </div>
+                            <div class="row">
                             <button type="submit" name="submitButton" class="btn btn-block btn-login btn-lg">Daftar</button><br>
+                            <p>Sudah punya akun?  <a href="{{ function('site_url','login') }}">masuk disini</a></p>
+                            </div>
                         </form>
-                        <p>Sudah punya akun?  <a href="{{ function('site_url','login') }}">masuk disini</a></p>
                     </div>
                 </div>
             </div>

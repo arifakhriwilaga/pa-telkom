@@ -10,7 +10,7 @@
                 <div class="box">
                     <div class="panel-form basic-form form">
                         <h2>Edit Profile</h2>
-                        <form action="{{ function('site_url','front_end/profile/update_profile/'~user.user_id) }}" method="POST" enctype="multipart/form-data" id="edit-profile" class="form-horizontal">
+                        <form action="{{ function('site_url','front_end/profile/update_profile/'~user.user_id) }}" method="POST" enctype="multipart/form-data" id="edit-profile" class="form-horizontal" style="padding-left:15px;padding-right:15px">
                             <div class="form-group">
                                 <div class="ava-image">
                                     <span>
@@ -54,7 +54,9 @@
                             <div class="form-group">
                                 <input type="password" name="confirm_password" class="form-control" placeholder="Ulang Kata sandi">
                             </div>
-                            <button type="submit" name="submitButton" class="btn btn-block btn-login btn-lg">Simpan</button><br>
+                            <div class="row">
+                            <button type="submit" name="submitButton" class="btn btn-block btn-login btn-lg">Simpan</button>
+                            </div>
                         </form>
                     </div>
                 </div>

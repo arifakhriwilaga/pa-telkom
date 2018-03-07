@@ -12,16 +12,16 @@
                     {% if (page_title != 'Edit Profile') %}
                     <div class="head_top_social pull-right">
                         <span class="head-customer">
-                            <a href="{{ function('site_url', 'notifikasi') }}" class=""><i class="fa fa-fw fa-bell badge1" data-badge="22" style="font-size: 20px;color:#2c3e50"></i></a> 
+                            <a href="{{ function('site_url', 'notifikasi') }}" class=""><i class="fa fa-fw fa-bell badge1 notification" data-badge="22"></i></a> 
                             {# <a href="#" class=""><i class="fa fa-fw fa-bell badge1" style="font-size: 20px;color:#2c3e50"></i></a>  #}
-                            <a href="{{ function('site_url', 'ubah-profil') }}" style="color: color:#2c3e50">
+                            <a href="#" data-toggle="popover" style="color: color:#2c3e50" >
+                            {# <a href="{{ function('site_url', 'ubah-profil') }}" data-toggle="popover" style="color: color:#2c3e50"> #}
                                 {# <span rel="popover" id="profile" style=""> #}
                                     <img src="{{ function('base_url','assets/images/home/header/default-avatar.png') }}" alt="Avatar" class="avatar-header">
-                                    {{ _user.name }}
+                                    {# {{ _user.name }} #}
                                 {# </span> #}
                             </a>
                         </span>
-                            <a href="{{ function('site_url','authentication/logout') }}" style="margin-left:20px"><span style="color:#636e72"><i class="fa fa-fw fa-sign-out" style="font-size: 20px;margin-right: 0;color:#2c3e50;vertical-align:middle"></i></span></a>
                     </div>
                     {% endif %}
                     
@@ -55,7 +55,7 @@
             </div>
         {% endif %}
 
-        {% if (page_title != 'Edit Profile') and (page_title != 'Periksa') and ((page_title != 'Konsul Dokter') and (page_title != 'Kunjungan'))  %}
+        {% if ((page_title != 'Masuk Akun') and (page_title != 'Daftar Akun Baru') and (page_title != 'Edit Profile') and (page_title != 'Periksa') and (page_title != 'Konsul Dokter') and (page_title != 'Kunjungan'))  %}
         <div class="main-nav navbar-collapse collapse">
             <div class="container">
                 <div class="minilogo">

@@ -46,5 +46,17 @@
                 image.src = base_url('assets/images/home/header/default-avatar.png');
                 return true;
             }
+
+            // $(document).ready(function(){
+                $('[data-toggle="popover"]').popover({
+                    html: true,
+                    content: function() {
+                        return $('#popover-content-profile').html();
+                    },
+                    placement: "bottom"
+                });
+                // $('[data-toggle="popover"]').popover({ // config
+                // }); 
+            // })
         </script>
         <script src="{{ function('base_url','assets/js/functions.js') }}"></script>
