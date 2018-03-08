@@ -15,12 +15,48 @@
         {# <script src="{{ function('base_url','assets/js/gmaps.min.js') }}"></script> #}
         
         <!--Custom JS-->
-        <script src="{{ function('base_url','assets/js/functions.js') }}"></script>
         <script>
+            // Function base_url for javascript
             function base_url(path) {
                 return {{ function('base_url')|json_encode|raw }} + path.replace(/^\//g, '');
             }
+            // Function site_url for javascript
             function site_url(path) {
                 return {{ function('site_url')|json_encode|raw }} + path.replace(/^\//g, '');
             }
+
+            // Get Flasdata
+            var success = {{ flashdata('success')|json_encode|raw }}
+            var error = {{ flashdata('error')|json_encode|raw }}
+            var warning = {{ flashdata('warning')|json_encode|raw }}
+            var info = {{ flashdata('info')|json_encode|raw }}
+            if (success) {
+                toastr.success(success);
+            } else if (error) {
+                toastr.error(error);
+            } else if (warning) {
+                toastr.warning(warning);
+            } else if (info) {
+                toastr.info(info);
+            }
+
+            // Function image on error
+            function imgError(image) {
+                image.onerror = "";
+                image.src = base_url('assets/images/home/header/default-avatar.png');
+                return true;
+            }
+
+            // $(document).ready(function(){
+                $('[data-toggle="popover"]').popover({
+                    html: true,
+                    content: function() {
+                        return $('#popover-content-profile').html();
+                    },
+                    placement: "bottom"
+                });
+                // $('[data-toggle="popover"]').popover({ // config
+                // }); 
+            // })
         </script>
+        <script src="{{ function('base_url','assets/js/functions.js') }}"></script>

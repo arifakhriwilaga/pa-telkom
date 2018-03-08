@@ -7,7 +7,7 @@ class Visit extends CI_Controller {
     parent::__construct();
     $user = $this->session->userdata('user');
     if (empty($user)) {
-    	redirect('/');
+    	redirect('masuk-akun');
     }
     if ($user['level_user'] == 'admin') {
     	redirect('dasbor');

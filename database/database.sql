@@ -37,6 +37,7 @@ CREATE TABLE `users` (
   `born_date` date NOT NULL,
   `password` varchar(250) NOT NULL,
   `level_user` varchar(150) NOT NULL,
+  `profile_picture` VARCHAR(250) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

@@ -47,3 +47,4 @@ composer\.lock
 application/config/development
 /node_modules
 assets/includes
+uploads/profile_picture

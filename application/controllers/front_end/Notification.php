@@ -19,4 +19,13 @@ class Notification extends CI_Controller {
 
 		$this->load->render('front_end/user/notification',$data);
 	}
+
+	public function detail()	{
+		$page_title = "Notifikasi";
+		$data = array(
+			'page_title' => $page_title
+		);
+
+		$this->load->render('front_end/user/detail_notification',$data);
+	}
 }

@@ -6,6 +6,9 @@ class Consul_doctor extends CI_Controller {
 	public function __construct() {
     parent::__construct();
     $user = $this->session->userdata('user');
+    if (empty($user)) {
+    	redirect('masuk-akun');
+    }
     if ($user['level_user'] == 'admin') {
     	redirect('dasbor');
     }

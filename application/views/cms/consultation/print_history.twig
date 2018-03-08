@@ -6,7 +6,7 @@
 {% block content %}
     <section class="content-header">
       <h1>
-        Detail Konsultasi
+        Cetak Riwayat
         <!-- <small>Control panel</small> -->
       </h1>
       <!-- <ol class="breadcrumb"> -->
@@ -21,7 +21,7 @@
       <div class="row">
         <div class="col-xs-12">
 
-          <div class="box">
+          <div class="box box-info">
             <div class="box-header">
               <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
             </div>
@@ -43,7 +43,7 @@
                   <td>Lala</td>
                   <td>laladipsi</td>
                   <td>12-05-2016</td>
-                  <td><a href="#">Hapus</a></td>
+                  <td><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style=""><i class="glyphicon glyphicon-trash"></i></button></td>
                   <!-- <td>Batuk</td> -->
                   <!-- <td>Jangan begadang</td> -->
                   <!-- <td>Minum adem sari</td> -->
@@ -65,7 +65,27 @@
 {% block footer %}
     <script>
         $(function () {
-            $("#example1").DataTable();
+            $("#example1").DataTable({
+              "language": {
+                "search": "Cari data:",
+                "lengthMenu": "Filter _MENU_ data",
+                "zeroRecords": "Data tidak tersedia",
+                // "infoEmpty": "Data user belum tersedia",
+                // "info": "Halaman _PAGE_ dari _PAGES_ tersedia _MAX_ data",
+                "paginate": {
+                    "first":      "Pertama",
+                    "last":       "Terakhir",
+                    "next":       "Selanjutnya",
+                    "previous":   "Kembali"
+                },
+                // "emptyTable":     "No data available in table",
+                "info":           "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+                "infoEmpty":      "Data 0 - 0 dari 0 data",
+                // "infoFiltered":   "(filtered from _MAX_ total entries)",
+                // Showing _START_ to _END_ of _TOTAL_ entries
+                // "infoFiltered": "(filtered from _MAX_ total records)"
+            },
+            });
         });
     </script>
 {% endblock %}

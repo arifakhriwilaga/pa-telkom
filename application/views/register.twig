@@ -6,11 +6,17 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-5 col-center form-account">
+            <div class="col-md-6" style="text-align:left">
+                <img src="{{ function('base_url', 'assets/images/home/register-left-banner.png') }}" style="width:250px;height:450px;margin-top:100px" alt="Logo" />
+            </div>
+            <div class="col-md-6" style="text-align:right">
+                <img src="{{ function('base_url', 'assets/images/home/register-right-banner.png') }}" style="width:250px;height:450px;margin-top:100px" alt="Logo" />
+            </div>
+            <div class="col-md-5 col-center form-account" style="position:absolute;left:25%;right:25%;">
                 <div class="box">
-                    <div class="panel-form basic-form form">
+                    <div class="panel-form basic-form form" style="margin:15px 0">
                         <h2>REGISTRASI</h2>
-                        <form method="POST" id="register" class="form-horizontal">
+                        <form action="{{ function('site_url','authentication/do_register') }}" method="POST" id="register" class="form-horizontal" style="padding-left:15px;padding-right:15px">
                             <div class="form-group">
                                 <input type="hidden" name="level_user" value="user" id="level_user" class="form-control">
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Nama Lengkap" required="" autocomplete="false">
@@ -26,9 +32,6 @@
                                 <label class="col-xs-3 control-label no-padding" style="text-align:left">Jenis Kelamin </label>
                                 <div class="col-xs-9 no-padding">
                                 <div class="radio no-padding">
-                                    {# <label>
-                                        <input type="radio" name="gender" value="male" /> Male
-                                    </label> #}
                                     <label><input type="radio" name="gender" value="male">Laki-laki</label>
                                     <label><input type="radio" name="gender" value="female">Perempuan</label>
                                 </div>
@@ -36,24 +39,20 @@
                             </div>
 
                             <div class="form-group">
-                                {# <div class="input-group date"> #}
-                                    <input  type="text" name="born_date" id="born_date" class="form-control" placeholder="Tanggal Lahir" required="" autocomplete="false">
-                                    {# <div class="input-group-addon" > #}
-                                        {# <span class="glyphicon glyphicon-calendar"></span> #}
-                                    {# </div> #}
-                                {# </div> #}
+                                <input  type="text" name="born_date" id="born_date" class="form-control" placeholder="Tanggal Lahir" required="" autocomplete="false">
                             </div>
 
                             <div class="form-group">
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Kata sandi" required="" maxlength="15">
                             </div>
-
                             <div class="form-group">
                                 <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Ulang Kata sandi" required="" maxlength="15">
                             </div>
+                            <div class="row">
                             <button type="submit" name="submitButton" class="btn btn-block btn-login btn-lg">Daftar</button><br>
+                            <p>Sudah punya akun?  <a href="{{ function('site_url','login') }}">masuk disini</a></p>
+                            </div>
                         </form>
-                        <p>Sudah punya akun?  <a href="{{ function('site_url','login') }}">masuk disini</a></p>
                     </div>
                 </div>
             </div>
@@ -64,8 +63,6 @@
 
 {% block footer %}
     <script>
-    // $(function () {
-
     // config datepicker borndate
     $('#born_date').datetimepicker({
         locale: moment.locale('id', {
@@ -75,13 +72,10 @@
         format: 'DD/MM/YYYY',
         maxDate: moment().add(-20, 'years').endOf('years'), // set last month of -20 years from now
         minDate: moment().add(-28, 'years').endOf('years'), // set last month of -2 years from now
-        // useCurrent : true,
         defaultDate: ''
     });
     $('#born_date').val('') // remove initial value
-    // });
 
-    // APP.handleDatePicker('#born_date');
     $('#born_date').on('dp.change dp.show', function() {
         $('#register').formValidation('revalidateField', 'born_date');
     });
@@ -147,10 +141,6 @@
             },
             password: {
                 validators: {
-                    // identical: {
-                    //     field: 'confirm_password',
-                    //     message: 'Password tidak sesuai'
-                    // },
                     notEmpty: {
                         message: 'Password tidak boleh kosong'
                     },
@@ -169,45 +159,10 @@
                     identical: {
                         field: 'password',
                         message: 'Password tidak sesuai'
-                    },
-                    // stringLength: {
-                    //     min: 6,
-                    //     max: 15,
-                    //     message: 'Konfirmasi password terlalu pendek'
-                    // }
+                    }
                 }
             }
         }
-    }).on('success.form.fv', function(e) {
-        e.preventDefault();
-        var $form = $(e.target),
-            fv    = $form.data('formValidation');
-        $.ajax({
-            url: site_url('authentication/simpan'),
-            type: 'POST',
-            data: $form.serialize()
-        }).done(function(data) {
-            if (data.status) {
-                toastr.success(data.message);
-                setTimeout(function(){ window.location = site_url('login'); }, 2000);
-            } else {
-                toastr.error(data.message);
-            }
-        }).fail(function (xhr, status, error) {
-            var msg = '';
-            if (xhr.status === 404) {
-                msg = 'Requested page not found.';
-            } else if (xhr.status === 500) {
-                msg = 'Internal Server Error.';
-            } else if (error === 'parsererror') {
-                msg = 'Requested failed.';
-            } else if (error === 'timeout') {
-                msg = 'Time out error.';
-            } else if (error === 'abort') {
-                msg = 'Request aborted.';
-            }
-            toastr.error(msg);
-        });
     });
     </script>
 {% endblock %}
