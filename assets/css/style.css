@@ -1769,3 +1769,23 @@ ul.circle {
     box-shadow:none;
     text-shadow:none
 }
+
+.sharedaddy .sd-content ul li, .entry-header .sharedaddy .sd-content ul li {
+    vertical-align:top!important;
+    margin:8px 0 8px 5px!important;
+    line-height:1!important
+}
+
+.sd-content ul li {
+    display:inline-block;
+    margin:0 5px 5px 0;
+    padding:0;
+}
+
+.sd-content ul li :hover {
+    filter: brightness(110%);
+    cursor: pointer;
+    /*display:inline-block;
+    margin:0 5px 5px 0;
+    padding:0;*/
+}

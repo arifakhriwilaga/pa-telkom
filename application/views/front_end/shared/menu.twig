@@ -62,7 +62,7 @@
                     <li><a class="{{ page_title == 'Home' ? 'active' : '' }}" href="{{ function('site_url', '/') }}">Home</a></li>
                     <li><a class="{{ page_title == 'Periksa' ? 'active' : '' }}" href="{{ function('site_url', 'periksa/step-1') }}">Periksa</a></li>
                     <li><a class="{{ page_title == 'Konsul Dokter' ? 'active' : '' }}" href="{{ function('site_url', 'konsul-dokter') }}">Konsul Dokter</a></li>
-                    <li><a class="{{ page_title == 'Info Sehat' ? 'active' : page_title == 'Terlalu Sering Makan Daging Bisa Kena Diabetes, Kok Bisa?' ? 'active' : page_title == '13 Tips Makan Sehat untuk Orang Sibuk' ? 'active' : '' }}" href="{{ function('site_url', 'info-sehat') }}">Info Sehat</a></li>
+                    <li><a class="{{ (page_title == 'Notifikasi' or page_title == 'Kunjungan' or page_title == 'Home' or page_title == 'Edit Profile' or page_title == 'Masuk Akun' or page_title == 'Daftar Akun Baru' or page_title == 'Periksa' or page_title == 'Konsul Dokter' or page_title == 'Kunjungan') ? '' : 'active' }}" href="{{ function('site_url', 'info-sehat') }}">Info Sehat</a></li>
                     {% if user %}
                     <li><a class="{{page_title == 'Kunjungan' ? 'active' : ''}}" href="{{ function('site_url', 'kunjungan') }}">Kunjungan</a></li>
                     {% endif %}
