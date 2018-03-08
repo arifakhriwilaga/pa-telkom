@@ -1049,9 +1049,23 @@ a i{
     font-size: 0.8125rem;
     padding-bottom: 2px;
     display: inline-block;
-
-
 }
+
+.social-media-footer:hover {
+    /*opacity: 0.8;*/
+    filter: brightness(90%);
+}
+.social-media-footer{
+    color:#fff;
+    font-size: 16px;
+    /*color: #000;*/
+    /*font-size: 0.8125rem;*/
+    /*padding-bottom: 2px;*/
+    /*display: inline-block;*/
+}/*
+.social-media-footer:hover{
+    opacity: 0.5;
+}*/
 
 /*footer section*/
 .footer{
@@ -1151,7 +1165,8 @@ a i{
 }
 
 .detail-info-slider:hover {
-    color: #000
+    color: #000;
+    opacity : .7;
 }
 
 .pointer {
@@ -1688,3 +1703,69 @@ ul.circle {
     height: 450px;
     overflow: auto;
 }*/
+
+.form-email-subscribe::-moz-placeholder {
+  color: #777;
+  opacity: 1;
+}
+.form-email-subscribe:-ms-input-placeholder {
+  color: #777;
+}
+.form-email-subscribe::-webkit-input-placeholder {
+  color: #777;
+}
+
+
+/* subsriber */
+.hc2-subscribe-container{
+    text-align:center;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    padding:55px 0;
+    background-size:cover;
+    background-image: url(../images/home/content/subscriber.jpg);
+}
+
+.hc2-subscribe-container .hc2-subscribe-title {
+    font-size:32px;
+    font-weight:600;
+    color:#22a6b3;
+    line-height:1.13;
+    margin-bottom:45px
+}
+.hc2-subscribe-container .hc2-subscribe-form input[type=text], .hc2-single-sidebar-blue .hc2-subscribe-form.hc2-subscribe-form-small input[type=text], .hc2-subscribe-container#mc_embed_signup input.email {
+    height:52px;
+    border-radius:50px;
+    background-color:#fff;
+    border:solid 1px #9b9b9b;
+    width:550px;
+    color:#636e72;
+    margin-right:-176px;
+    box-sizing:border-box;
+    padding:3px 200px 3px 70px;
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAMAAACgaw2xAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAADPUExURQAAAJubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubmzCYIyIAAABEdFJOUwAFgRTFvv4iDvtS25je9nA2AtkLHQrrF7SXvVQooK7ngN1LQ0mjOWasRVjm7/MEG7nIyRMBnCODn8scWuHw+RWa5fFX6OQWmQAAAKFJREFUGNN1jkUCgwAMBBctVnd3d3fP/99UqFEJc9rMXAJoPgYN2B6IIXDFjljO2PPhgjkfTpianPcfMRuO//16A1jCoKR/a30pCCvQJIdQ5NObDSxkgv1zMBxPqy+tWlE0++QEokwMte7DFytIppxxD9TrQGo5oyDBSJAbiOoaDEXJQss/Bd6ft2FTLdNvIJJFUXYvkAfeQee9ihEfFHhxA+3wYq99fmhEAAAAAElFTkSuQmCC)!important;background-repeat:no-repeat;background-position:30px center;display:inline-block
+    
+}
+.hc2-subscribe-container .hc2-subscribe-form input[type=submit], .hc2-single-sidebar-blue .hc2-subscribe-form.hc2-subscribe-form-small input[type=submit] {
+    padding:0;
+    width:170px;
+    line-height:30px;
+    border:1px solid #22a6b3
+}
+
+.hc2-loadmore-button, .hc2-single-sidebar-blue .hc2-subscribe-form input[type=submit], .hc2-subscribe-container .hc2-subscribe-form input[type=submit] {
+    height:50px;
+    line-height:50px;
+    font-size:15px;
+    font-weight:700;
+    color:#fff!important;
+    text-decoration:none;
+    display:inline-block;
+    border-radius:25px;
+    background-color:#22a6b3;
+    text-transform:uppercase;
+    /*padding:0 68px;*/
+    text-align:center;
+    box-shadow:none;
+    text-shadow:none
+}
