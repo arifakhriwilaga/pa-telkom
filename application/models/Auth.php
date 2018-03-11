@@ -5,38 +5,38 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Auth extends CI_Model {
+    var $table = 'users';
 
     public function login() {
         $result = array();
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $this->db->where('username', $username);
-        $username = $this->db->get('users');
-        if ($username->num_rows() == 0) {
+        $q_username = $this->db->get_where($this->table, array('username' => $username))->row();
+        if (!$q_username) {
             $result = array(
                 'status' => false,
-                'message' => 'Username does not exist!',
+                'message' => 'Nama pengguna tidak ada!',
                 'data' => null
             );
             return $result;
         }
 
-        $this->db->where('password', md5($password));
-        $query = $this->db->get('users');
-        if ($query->num_rows() == 0) {
+        $q_userpass = $this->db->get_where($this->table, array('username' => $username,'password' => md5($password)))->row();
+        if (!$q_userpass) {
             $result = array(
                 'status' => false,
-                'message' => 'Password incorrect',
+                'message' => 'Kata sandi salah!',
                 'data' => null
             );
             return $result;
         }
+
 
         $result = array(
             'status' => true,
             'message' => 'Login berhasil!',
-            'data' => $query->row()
+            'data' => $q_userpass
         );
         return $result;
     }
@@ -54,10 +54,10 @@ class Auth extends CI_Model {
             "password" => md5($this->input->post('password')),
             "level_user" => $this->input->post('level_user')
         );
-        if ($this->db->insert('users', $data)) {
+        if ($this->db->insert($this->table, $data)) {
             $result = array(
                 'status' => true,
-                'message' => 'Data berhasil disimpan!',
+                'message' => 'Selamat akun anda berhasil dibuat silahkan login!',
                 'data' => null
             );
             return $result;
@@ -70,6 +70,32 @@ class Auth extends CI_Model {
             );
             return $result;
         }
+    }
+
+    public function reset_password() {
+        $username = $this->input->post('username');
+        $password = md5($this->input->post('password'));
+        $data = array(
+            'password' => $password
+        );
+
+        $username = $this->db->where('username', $username);
+        if (!$username) {
+            $result = array(
+                'status' => false,
+                'message' => 'Nama pengguna tidak ada!',
+                'data' => null
+            );
+            return $result;
+        }
+        
+        $this->db->update($this->table, $data);
+        $result = array(
+            'status' => true,
+            'message' => 'Kata sandi berhasil diubah, silahkan login!',
+            'data' => null
+        );
+        return $result;
     }
 
 }

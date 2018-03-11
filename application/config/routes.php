@@ -52,38 +52,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['default_controller'] = 'home';
 $route['default_controller'] = 'front_end/front_end/home';
- $route['404_override'] = '';
- $route['translate_uri_dashes'] = FALSE;
+$route['404_override'] = '';
+$route['translate_uri_dashes'] = FALSE;
  
-// $route['authentication'] = '';
-// $route['widgets/(:any)'] = 'widgets/$1/Widget';
-// $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
 // Routes HMVC
 $route['widgets/(:any)'] = 'widgets/$1/Widget';
 $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
  
-// $route['home'] = 'home';
-
-// guest routes
 // authentications
 $route['masuk-akun'] = 'authentication';
 $route['registrasi'] = 'authentication/register';
-$route['lupa-password'] = 'authentication/forgot_password';
-$route['edit-profile'] = 'front_end/profile';
-
-// contents
-// $route['info-sehat'] = 'home/healthy_info';
-// $route['kunjungan'] = 'home/visit';
-// $route['periksa/step-1'] = 'home/check_step_1';
-// $route['periksa/step-2'] = 'home/check_step_2';
-// $route['periksa/step-final'] = 'home/check_step_final';
-// $route['konsul-dokter'] = 'home/consul_doctor';
-// $route['notifikasi'] = 'home/notification';
+$route['lupa-kata-sandi'] = 'authentication/forgot_password';
+$route['ubah-profil'] = 'front_end/profile';
 
 // Front End
+
 $route['info-sehat'] = 'front_end/healty_info';
 $route['info-sehat/13-tips-makan-sehat-untuk-orang-sibuk'] = 'front_end/healty_info/detail1';
 $route['info-sehat/makan-daging-tingkatkan-risiko-diabetes'] = 'front_end/healty_info/detail2';
+$route['info-sehat/mengenal-asam-amino-fungsinya-bagi-tubuh-dan-sumber-makanannya'] = 'front_end/healty_info/detail3';
+$route['info-sehat/5-resep-brunch-lezat-buat-anda-yang-suka-sarapan-siang-siang'] = 'front_end/healty_info/detail4';
+$route['info-sehat/4-manfaat-jamu-kunyit-asam-tak-cuma-redakan-nyeri-haid-lho'] = 'front_end/healty_info/detail5';
+$route['info-sehat/berapa-batas-asupan-karbohidrat-yang-ideal-per-hari'] = 'front_end/healty_info/detail6';
+$route['info-sehat/mengapa-semakin-tua-kebutuhan-kalori-semakin-berkurang'] = 'front_end/healty_info/detail7';
+$route['info-sehat/bolehkah-ngemil-dulu-sebelum-menyantap-menu-makanan-utama'] = 'front_end/healty_info/detail8';
+$route['info-sehat/makanan-untuk-ambeien-mana-yang-harus-dikonsumsi-mana-yang-dihindari'] = 'front_end/healty_info/detail9';
+$route['info-sehat/3-makanan-sumber-gandum-utuh-yang-sehat-untuk-sarapan'] = 'front_end/healty_info/detail10';
+
+
 $route['kunjungan'] = 'front_end/visit';
 $route['periksa/step-1'] = 'front_end/check';
 $route['periksa/step-2'] = 'front_end/check/check_step_2';

@@ -1,4 +1,4 @@
-{% set _user = session('user') %}
+{% set user = session('user') %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,7 +7,7 @@
         {% endblock %}
     </head>
     <body>
-        <header class="{{ (page_title == 'Periksa') or (page_title == 'Konsul Dokter') or (page_title == 'Kunjungan') ? 'header-nonform' :'' }}">
+        <header class="{{ (page_title == 'Edit Profile') or (page_title == 'Masuk Akun') or (page_title == 'Daftar Akun Baru') or (page_title == 'Periksa') or (page_title == 'Konsul Dokter') or (page_title == 'Kunjungan') ? 'header-nonform' :'' }}">
             {% include 'front_end/shared/menu.twig' %}
         </header>
         <section class="main-content">
@@ -17,7 +17,39 @@
 
         {% block contact %}
         {% endblock %}
-
+        <div id="popover-content-profile" class="hide" style="top:500px;">
+            <div class="row" style="padding-bottom:25px;border-bottom:1px solid rgba(193,193,193,.8)">
+                <div class="col-md-12" style="text-align:center">
+                <img src="{{ function('base_url', user.profile_picture|default('assets/images/home/header/default-avatar.png')) }}" alt="Avatar" class="avatar-header" style="width:75px;height:75px;margin-top:5%;margin-bottom:5%"><br>
+                <span style="font-size:18px;text-align:center">{{ user.name }}</span><br>
+                </div>
+            </div>
+            <div class="col-md-6 no-padding">
+            <div class="row list-popover-profile" style="height:50px;text-align:center">
+                <a href="{{ function('site_url', 'ubah-profil') }}"><div class="col-md-6" style="padding-top:15px">
+                    <span style="font-size:16px;color:#fff;"><i class="glyphicon glyphicon-user" style="color:#fff"></i> Profile</span>
+                </div></a>
+            </div>
+            </div>
+            <div class="col-md-6" style="border-left: 1px solid rgba(193,193,193,.8) !important">
+                <div class="row list-popover-profile" style="height:50px;text-align:center">
+                <a href="{{ function('site_url','authentication/logout') }}"><div class="col-md-6" style="padding-top:15px">
+                    <span style="font-size:16px;color:#fff"><i class="glyphicon glyphicon-share-alt" style="color:#fff"></i> Keluar</span>
+                </div></a>
+            </div>
+            </div>
+        </div>
+        {% if  (page_title != 'Notifikasi') and (page_title != 'Kunjungan') and  (page_title != 'Home') and  (page_title != 'Edit Profile') and (page_title != 'Masuk Akun') and (page_title != 'Daftar Akun Baru') and (page_title != 'Periksa') and (page_title != 'Konsul Dokter') and (page_title != 'Kunjungan') %}
+        <section id="footer_widget" class="footer_widget" style="height:55px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p style="font-size:15px;color:#fff;text-align:center;max-width:100%;margin-top:17px"> &copy;2018 Rekomendasi Makanan Pada Solusi Penyakit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
         {% include 'front_end/shared/footer.twig' %}
         {% block footer %}
         {% endblock %}

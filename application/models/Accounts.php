@@ -13,11 +13,6 @@ class Accounts extends CI_Model {
     // default order 
     var $order = array('user_id' => 'asc');
 
-    public function __construct() {
-        parent::__construct();
-        $this->load->database();
-    }
-
     private function _get_accounts_query() {
 
         $this->db->from($this->table);
@@ -74,7 +69,7 @@ class Accounts extends CI_Model {
         if ($this->db->delete($this->table)) {
             $result = array(
                 'status' => true,
-                'message' => 'Data berhasil dihapus!',
+                'message' => 'Akun berhasil dihapus!',
                 'data' => null
             );
             return $result;
