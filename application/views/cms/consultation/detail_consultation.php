@@ -1,10 +1,4 @@
-{% extends "cms/base.twig" %}
-
-{% block head %}
-{% endblock %}
-
-{% block content %}
-    <section class="content-header">
+<section class="content-header">
       <h1>
         Detail Konsultasi
         <!-- <small>Control panel</small> -->
@@ -71,32 +65,3 @@
       <!-- /.row (main row) -->
 
     </section>
-{% endblock %}
-
-{% block footer %}
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "language": {
-                    "search": "Cari data:",
-                    "lengthMenu": "Filter _MENU_ data",
-                    "zeroRecords": "Data tidak tersedia",
-                    // "infoEmpty": "Data user belum tersedia",
-                    // "info": "Halaman _PAGE_ dari _PAGES_ tersedia _MAX_ data",
-                    "paginate": {
-                        "first":      "Pertama",
-                        "last":       "Terakhir",
-                        "next":       "Selanjutnya",
-                        "previous":   "Kembali"
-                    },
-                    // "emptyTable":     "No data available in table",
-                    "info":           "Menampilkan _START_ - _END_ dari _TOTAL_ data",
-                    "infoEmpty":      "Data 0 - 0 dari 0 data",
-                    // "infoFiltered":   "(filtered from _MAX_ total entries)",
-                    // Showing _START_ to _END_ of _TOTAL_ entries
-                    // "infoFiltered": "(filtered from _MAX_ total records)"
-                },
-            });
-        });
-    </script>
-{% endblock %}

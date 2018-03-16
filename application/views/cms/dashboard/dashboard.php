@@ -1,20 +1,5 @@
-{% extends "cms/base.twig" %}
-
-{% block head %}
-{% endblock %}
-
-{% block content %}
 	<section class="content-header">
-      {# <h1>
-        Invoice
-        <small>#007612</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Invoice</li>
-      </ol> #}
-    </section>
+  </section>
   <div class="container">
 	<div class="row" >
     <div class="col-md-6" style="left:22%;right:25%">
@@ -22,11 +7,11 @@
       <div class="box box-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header bg-aqua-active">
-          <h3 class="widget-user-username">{{user['name']}}</h3>
+          <h3 class="widget-user-username"><?php echo $user['name']; ?></h3>
           <h5 class="widget-user-desc">Admin RMPSP</h5>
         </div>
         <div class="widget-user-image">
-          <img class="img-circle" src="http://localhost/codeigniter/assets/images/home/header/default-avatar.png" alt="User Avatar">
+          <img class="img-circle" src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" alt="User Avatar">
         </div>
         <div class="box-body" style="padding-top:50px">
         	<div class="col-md-6">
@@ -34,12 +19,12 @@
           <strong><i class="fa fa-calendar margin-r-5"></i> Tanggal Lahir</strong>
 
           <p class="text-muted">
-            {{born_date}}
+            <?php echo $born_date; ?>
           </p>
           <hr>
           <strong><i class="fa fa-venus-mars margin-r-5"></i> Jenis Kelamin</strong>
           <p class="text-muted">
-            {{user['gender'] == "male" ? 'Laki-laki' : 'Perempuan'}}
+            <?php echo($user['gender'] == "male" ? 'Laki-laki' : 'Perempuan'); ?>
           </p>
 
           <hr>
@@ -47,7 +32,7 @@
         	<strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
 
           <p class="text-muted">
-            {{user['email']}}
+            <?php echo $user['email']; ?>
           </p>
 
           <hr>
@@ -58,7 +43,6 @@
           	<ul class="products-list product-list-in-box">
             <li class="item">
               <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
               </div>
               <div class="">
                 <a href="javascript:void(0)" class="product-title">Senin
@@ -71,7 +55,6 @@
             <!-- /.item -->
             <li class="item">
               <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
               </div>
               <div class="">
                 <a href="javascript:void(0)" class="product-title">Selasa
@@ -84,7 +67,6 @@
             <!-- /.item -->
             <li class="item">
               <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
               </div>
               <div class="">
                 <a style="left:0" href="javascript:void(0)" class="product-title">Rabu <span class="label label-danger pull-right">04.30</span></a>
@@ -96,7 +78,6 @@
             <!-- /.item -->
             <li class="item">
               <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
               </div>
               <div class="">
                 <a href="javascript:void(0)" class="product-title">Kamis
@@ -108,7 +89,6 @@
             </li>
             <li class="item">
               <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
               </div>
               <div class="">
                 <a href="javascript:void(0)" class="product-title">Jumat
@@ -125,18 +105,5 @@
       </div>
       <!-- /.widget-user -->
     </div>
-    {# <div class="col-md-5">
-		<div class="pad margin no-print">
-      <div class="callout callout-info" style="margin-bottom: 0!important;">
-        <h4><i class="fa fa-info-circle"></i> Hallo {{user['name']}} :)</h4>
-        Jangan lupa balas konsul dokter, check konsultasi dan cetak riwayat bila diperlukan ya.
-      </div>
-    </div>
-    </div> #}
-
   </div>
 </div>
-{% endblock %}
-
-{% block footer %}
-{% endblock %}

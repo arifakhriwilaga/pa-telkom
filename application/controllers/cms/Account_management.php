@@ -17,10 +17,12 @@ class Account_management extends CI_Controller {
         $page_title = "Kelola Akun";
         
         $data = array(
-            'page_title' => $page_title
+            'page_title' => $page_title,
+            '_content' => 'cms/account/account',
+            '_js' => 'assets/js/cms/account/account.js'
         );
 
-        $this->load->render('cms/account/account', $data);
+        $this->load->view('cms/base', $data);
     }
 
     public function get_accounts() {

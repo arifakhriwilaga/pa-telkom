@@ -15,9 +15,11 @@ class Notification_management extends CI_Controller {
 		$page_title = "Kelola Notifikasi";
 
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'cms/notification/notification',
+			'_js' => 'assets/js/cms/notification/notification.js'
 		);
 
-		$this->load->render('cms/notification/notification', $data);
+		$this->load->view('cms/base', $data);
 	}
 }
