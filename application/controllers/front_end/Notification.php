@@ -14,18 +14,22 @@ class Notification extends CI_Controller {
 	public function index()	{
 		$page_title = "Notifikasi";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'front_end/user/notification',
+			'_js' => 'assets/js/front_end/user/notification.js'
 		);
 
-		$this->load->render('front_end/user/notification',$data);
+		$this->load->view('front_end/base',$data);
 	}
 
 	public function detail()	{
 		$page_title = "Notifikasi";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'front_end/user/detail_notification',
+			'_js' => 'assets/js/front_end/user/detail_notification.js'
 		);
 
-		$this->load->render('front_end/user/detail_notification',$data);
+		$this->load->view('front_end/base',$data);
 	}
 }

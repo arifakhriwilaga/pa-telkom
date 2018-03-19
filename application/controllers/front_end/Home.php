@@ -15,9 +15,12 @@ class Home extends CI_Controller {
 		$page_title = "Home";
 
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'front_end/home',
+			'_contact' => true,
+			'_js' => 'assets/js/front_end/home/home.js'
 		);
 
-		$this->load->render('front_end/index',$data);
+		$this->load->view('front_end/base',$data);
 	}
 }

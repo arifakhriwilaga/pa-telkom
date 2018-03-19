@@ -20,10 +20,12 @@ class Authentication extends CI_Controller {
 		
 		$page_title = "Masuk Akun";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'authentication/login',
+			'_js' => 'assets/js/authentication/login.js'
 		);
 
-		$this->load->render('login', $data);
+		$this->load->view('front_end/base', $data);
 	}
 	
 	public function do_login()	{
@@ -61,10 +63,12 @@ class Authentication extends CI_Controller {
 	    
 		$page_title = "Daftar Akun Baru";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'authentication/register',
+			'_js' => 'assets/js/authentication/register.js'
 		);
 
-		$this->load->render('register', $data);
+		$this->load->view('front_end/base', $data);
 	}
 
 	public function do_register() {
@@ -82,10 +86,12 @@ class Authentication extends CI_Controller {
 	public function forgot_password() {
 		$page_title = "Lupa Password";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'authentication/forgot_password',
+			'_js' => 'assets/js/authentication/forgot_password.js'
 		);
 
-		$this->load->render('front_end/forgot_password', $data);
+		$this->load->view('front_end/base', $data);
 	}
 
 	public function do_reset_password() {
