@@ -17,9 +17,11 @@ class Visit extends CI_Controller {
 	public function index()	{
 		$page_title = "Kunjungan";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+            '_content' => 'front_end/visit/visit',
+            '_js' => 'assets/js/front_end/visit/visit.js'
 		);
 
-		$this->load->render('front_end/visit/visit',$data);
+		$this->load->view('front_end/base',$data);
 	}
 }

@@ -18,10 +18,15 @@ class Profile extends CI_Controller {
 	public function index()	{
 		$page_title = "Edit Profile";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+            '_content' => 'front_end/user/edit_profile',
+            '_js' => array(
+                        'assets/js/front_end/user/edit_profile.js',
+                        'assets/includes/jquery-form/dist/jquery.form.min.js'
+                    )
 		);
 
-		$this->load->render('front_end/user/edit_profile',$data);
+		$this->load->view('front_end/base',$data);
 	}
 
     public function update_profile($user_id) {

@@ -15,29 +15,35 @@ class Consultation_management extends CI_Controller {
 		$page_title = "Konsultasi";
 
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'cms/consultation/consultation',
+			'_js' => 'assets/js/cms/consultation/consultation.js'
 		);
 
-		$this->load->render('cms/consultation/consultation', $data);
+		$this->load->view('cms/base', $data);
 	}
 	
 	public function detail_consul()	{
 		$page_title = "Detail Konsultasi";
 		
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'cms/consultation/detail_consultation',
+			'_js' => 'assets/js/cms/consultation/detail_consultation.js'
 		);
 
-		$this->load->render('cms/consultation/detail_consultation', $data);
+		$this->load->view('cms/base', $data);
 	}
 	
 	public function detail_history()	{
 		$page_title = "Cetak Riwayat";
 		
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+			'_content' => 'cms/consultation/print_history',
+			'_js' => 'assets/js/cms/consultation/print_history.js'
 		);
 
-		$this->load->render('cms/consultation/print_history', $data);
+		$this->load->view('cms/base', $data);
 	}
 }

@@ -12,7 +12,6 @@ class Dashboard extends CI_Controller {
     $date = preg_split('/\-/', strval($user['born_date']));
     
     $this->born_date = $date[2] . '/' . $date[1] . '/' . $date[0];
-    // var_dump($born_date);exit();
     if (empty($user) || $user['level_user'] == 'user') {
     	redirect('/');
     }
@@ -37,11 +36,12 @@ class Dashboard extends CI_Controller {
 
 		$data = array(
 			'page_title' => $page_title,
+			'_content' => 'cms/dashboard/dashboard',
 			'born_date' => $this->born_date,
 			'login_histories' => $login_histories
 		);
 
-		$this->load->render('cms/dashboard/dashboard', $data);
+		$this->load->view('cms/base', $data);
 	}
 
 	public function change_format_day($date) {

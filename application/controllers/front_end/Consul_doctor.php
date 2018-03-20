@@ -19,10 +19,12 @@ class Consul_doctor extends CI_Controller {
 	public function index()	{
 		$page_title = "Konsul Dokter";
 		$data = array(
-			'page_title' => $page_title
+			'page_title' => $page_title,
+            '_content' => 'front_end/consul_doctor/consul_doctor',
+            '_js' => 'assets/js/front_end/consul_doctor/consul_doctor.js'
 		);
 
-		$this->load->render('front_end/consul_doctor/consul_doctor',$data);
+		$this->load->view('front_end/base',$data);
 	}
 
     public function do_consul($user_id) {
