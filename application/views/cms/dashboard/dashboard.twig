@@ -56,69 +56,21 @@
         		<h3 class="box-title">History Login</h3>
 
           	<ul class="products-list product-list-in-box">
-            <li class="item">
-              <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
-              </div>
-              <div class="">
-                <a href="javascript:void(0)" class="product-title">Senin
-                  <span class="label label-warning pull-right">12.00</span></a>
-                    <span class="product-description">
-                      26/02/2018
-                    </span>
-              </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-              <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
-              </div>
-              <div class="">
-                <a href="javascript:void(0)" class="product-title">Selasa
-                  <span class="label label-info pull-right">21.00</span></a>
-                    <span class="product-description">
-                      27/02/2018
-                    </span>
-              </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-              <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
-              </div>
-              <div class="">
-                <a style="left:0" href="javascript:void(0)" class="product-title">Rabu <span class="label label-danger pull-right">04.30</span></a>
-                    <span class="product-description">
-                      28/02/2018
-                    </span>
-              </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-              <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
-              </div>
-              <div class="">
-                <a href="javascript:void(0)" class="product-title">Kamis
-                  <span class="label label-success pull-right">08.46</span></a>
-                    <span class="product-description">
-                      1/03/2018
-                    </span>
-              </div>
-            </li>
-            <li class="item">
-              <div class="product-img">
-                {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
-              </div>
-              <div class="">
-                <a href="javascript:void(0)" class="product-title">Jumat
-                  <span class="label label-success pull-right">09.00</span></a>
-                    <span class="product-description">
-                      2/03/2018
-                    </span>
-              </div>
-            </li>
-            <!-- /.item -->
+            {% for history in login_histories %}
+              <li class="item">
+                <div class="product-img">
+                  {# <img src="dist/img/default-50x50.gif" alt="Product Image"> #}
+                </div>
+                <div class="">
+                  <span href="javascript:void(0)" class="product-title">{{history.day}}
+                    <span class="label label-info pull-right">{{ history.time }}</span></span>
+                      <span class="product-description">
+                        {{ history.date }}
+                      </span>
+                    {# </span> #}
+                </div>
+              </li>
+            {% endfor %}
           </ul>
           </div>
         </div>
