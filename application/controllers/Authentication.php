@@ -6,6 +6,7 @@ class Authentication extends CI_Controller {
         parent::__construct();
         $this->load->model('Auth', 'auth');
         $this->load->model('User', 'user');
+        $this->load->model('LoginHistory', 'login_history');
     }
 
 	public function index()	{
@@ -35,7 +36,11 @@ class Authentication extends CI_Controller {
 			if ($result['data']->level_user == 'user') {
 				return redirect('/');
 			} elseif ($result['data']->level_user == 'admin') {
-				return redirect('dasbor');
+      	$result_record = $this->login_history->post($result['data']->user_id);
+      	return $result_record ? redirect('dasbor') : $this->logout();
+        // var_dump($result_record);exit();
+        // echo "<pre>"; $result_record ;"</pre>";exit();
+				;
 			}
 		} else {
 			$this->session->set_flashdata('error', $result['message']);
