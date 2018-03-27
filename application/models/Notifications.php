@@ -24,24 +24,26 @@ class Notifications extends CI_Model {
 
     private function _get_notifications_query() {
 
-        $this->db->from($this->table);
-
+        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');    
+        $this->db->from('consul_doctors');
+        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');   
+        // var_dump($query);die();
         $i = 0;
 
         foreach ($this->column_search as $item) { // loop column 
             if ($_POST['search']['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
-                    var_dump($this->db->group_start());die();
+                    // var_dump($this->db->group_start());die();
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
                     $this->db->like($item, $_POST['search']['value']);
-                    var_dump($this->db->like($item, $_POST['search']['value']));die();
+                    // var_dump($this->db->like($item, $_POST['search']['value']));die();
                 } else {
-                    var_dump($this->db->or_like($item, $_POST['search']['value']));die();
+                    // var_dump($this->db->or_like($item, $_POST['search']['value']));die();
                     $this->db->or_like($item, $_POST['search']['value']);
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
-                    var_dump($this->db->group_end());die();
+                    // var_dump($this->db->group_end());die();
                     $this->db->group_end(); //close bracket
             }
             $i++;
@@ -83,6 +85,27 @@ class Notifications extends CI_Model {
             $result = array(
                 'status' => true,
                 'message' => 'Akun berhasil dihapus!',
+                'data' => null
+            );
+            return $result;
+        } else {
+            $error = $this->db->error();
+            $result = array(
+                'status' => false,
+                'message' => $error['message'],
+                'data' => null
+            );
+            return $result;
+        }
+    }
+
+    public function post($data=[])
+    {
+        $query = $this->db->where('consul_id',$data['consul_id']);
+        if ($this->db->update($this->table, $data)) {
+            $result = array(
+                'status' => true,
+                'message' => 'Jawaban berhasil disimpan',
                 'data' => null
             );
             return $result;

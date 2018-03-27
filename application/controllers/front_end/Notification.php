@@ -16,8 +16,6 @@ class Notification extends CI_Controller {
 		// var_dump($this->consul_doctor);exit();
 		$page_title = "Notifikasi";
 		$data = array(
-			'page_title' => $page_title
-			// 'data' => $this->consol_doctor
 			'page_title' => $page_title,
 			'_content' => 'front_end/user/notification',
 			'_js' => 'assets/js/front_end/user/notification.js'

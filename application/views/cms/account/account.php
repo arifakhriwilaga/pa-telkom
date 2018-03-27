@@ -12,13 +12,13 @@
                     <table id="table-accounts" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>NAMA</th>
-                                <th>EMAIL</th>
-                                <th>JENIS KELAMIN</th>
-                                <th>TANGGAL LAHIR</th>
-                                <th>NAMA PENGGUNA</th>
-                                <th>OPSI</th>
+                                <th width="10px" class="text-center">Id</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Email</th>
+                                <th width="50px" class="text-center">Jenis Kelamin</th>
+                                <th width="100px" class="text-center">Tanggal Lahir</th>
+                                <th width="130px" class="text-center">Nama Pengguna</th>
+                                <th width="10px" class="text-center">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>
