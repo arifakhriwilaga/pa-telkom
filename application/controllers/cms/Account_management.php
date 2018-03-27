@@ -30,13 +30,16 @@ class Account_management extends CI_Controller {
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $accounts) {
+            $date = preg_split('/\-/', strval($accounts->born_date));
+            $born_date = $date[2] . '/' . $date[1] . '/' . $date[0];;
+            
             $no++;
             $row = array();
             $row[] = $accounts->user_id;
             $row[] = $accounts->name;
             $row[] = $accounts->email;
-            $row[] = $accounts->gender;
-            $row[] = $accounts->born_date;
+            $row[] = $accounts->gender == 'male' ? 'Laki-laki' : 'Perempuan';
+            $row[] = $born_date ;
             $row[] = $accounts->username;
             $row[] = '<button class="btn btn-danger btn-sm delete-acc" id="' . $accounts->user_id . '" data-name="' . $accounts->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
 
