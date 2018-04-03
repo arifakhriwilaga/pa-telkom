@@ -18,6 +18,7 @@ class Consul_doctor extends CI_Controller {
 
 	public function index()	{
 		$page_title = "Konsul Dokter";
+        
 		$data = array(
 			'page_title' => $page_title,
             '_content' => 'front_end/consul_doctor/consul_doctor',

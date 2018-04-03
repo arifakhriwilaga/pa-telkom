@@ -23,6 +23,11 @@
     function site_url(path) {
         return <?php echo json_encode(site_url()); ?> + path.replace(/^\//g, '');
     }
+    function imgError(image) {
+        image.onerror = "";
+        image.src = base_url('assets/images/home/header/default-avatar.png');
+        return true;
+    }
     <?php if($this->session->flashdata('success')){ ?>
         toastr.success("<?php echo $this->session->flashdata('success'); ?>");
     <?php }else if($this->session->flashdata('error')){  ?>

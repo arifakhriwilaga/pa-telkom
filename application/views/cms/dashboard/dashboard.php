@@ -10,7 +10,7 @@
           <h5 class="widget-user-desc">Admin RMPSP</h5>
         </div>
         <div class="widget-user-image">
-          <img class="img-circle" src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" alt="User Avatar">
+          <img class="img-circle" src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" onerror="imgError(this);" alt="User Avatar">
         </div>
         <div class="box-body" style="padding-top:50px">
         	<div class="col-md-6">
