@@ -1,4 +1,3 @@
-
 <?php
 
 if (!defined('BASEPATH'))
@@ -7,11 +6,11 @@ if (!defined('BASEPATH'))
 class ConsulDoctor extends CI_Model {
     var $table = 'consul_doctors';
 
-    public function post($id) {
+    public function post() {
         $data = array(
-            'user_id' => $id,
-            'doctor_id' => ($this->input->post('doctor_1') == "true" ? 1 : 2),
-            'questions' => $this->input->post('questions'),
+            'user_id' => $this->input->post('user_id'),
+            'doctor_id' => $this->input->post('doctor_id'),
+            'questions' => $this->input->post('question'),
             'answer_status' => 'false'
         );
         if ($this->db->insert($this->table, $data)) {

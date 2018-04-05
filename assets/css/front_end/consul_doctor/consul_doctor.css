@@ -1,0 +1,13 @@
+.consul-title{
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+}
+.doctor-name{
+    font-size: 20px;
+}
+.btn-consul{
+    min-width: 170px;
+    margin-bottom: 3%;
+    font-size: 22px;
+}

@@ -36,14 +36,6 @@
     <?php }else if($this->session->flashdata('info')){  ?>
         toastr.info("<?php echo $this->session->flashdata('info'); ?>");
     <?php } ?>
-
-    // Function image on error
-    function imgError(image) {
-        image.onerror = "";
-        image.src = base_url('assets/images/home/header/default-avatar.png');
-        return true;
-    }
-
     $('[data-toggle="popover"]').popover({
         html: true,
         content: function() {
