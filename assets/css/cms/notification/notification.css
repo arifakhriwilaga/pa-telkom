@@ -1,0 +1,7 @@
+#answerModal .modal-dialog{
+    border-radius: 50%;
+}
+#answerModal .modal-header{
+    background-color: #00acd6;
+    color: #fff;
+}

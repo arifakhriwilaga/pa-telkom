@@ -3,20 +3,15 @@ var table = $('#table-notifications').DataTable({
         "search": "Cari data:",
         "lengthMenu": "Lihat _MENU_ data",
         "zeroRecords": "Data tidak tersedia",
-        // "infoEmpty": "Data user belum tersedia",
-        // "info": "Halaman _PAGE_ dari _PAGES_ tersedia _MAX_ data",
         "paginate": {
-            "first":      "Pertama",
-            "last":       "Terakhir",
-            "next":       "Selanjutnya",
-            "previous":   "Kembali"
+            "first": "Pertama",
+            "last": "Terakhir",
+            "next": "Selanjutnya",
+            "previous": "Kembali"
         },
-        // "emptyTable":     "No data available in table",
-        "info":           "Menampilkan _START_ - _END_ dari _TOTAL_ data",
-        "infoEmpty":      "Data 0 - 0 dari 0 data",
-        "infoFiltered":   "",
-        // Showing _START_ to _END_ of _TOTAL_ entries
-        // "infoFiltered": "(filtered from _MAX_ total records)"
+        "info": "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+        "infoEmpty": "Data 0 - 0 dari 0 data",
+        "infoFiltered": "",
     },
     "processing": true,
     "serverSide": true,
@@ -29,26 +24,23 @@ var table = $('#table-notifications').DataTable({
         {
             "targets": [0],
             "orderable": false,
-        },
-        // {
-        //     "targets": [6],
-        //     "orderable": false,
-        // },
+        }
     ]
 });
 
-var consul_id = null;
+var consul_id;
 
 function showModal(id) {
     consul_id = id;
     $('#answerModal').modal('show');
 }
 function hideModal() {
-    $('#answerModal').modal('hide')
+    $('#answerModal').modal('hide');
     $('#answer').val('');
 }
-$(document).on('shown.bs.modal', '#answerModal', function() {
+$(document).on('shown.bs.modal', '#answerModal', function () {
     $('#answer').focus();
+    $('#consul_id').val(consul_id);
     // baru validasinya
     $('#answerForm').formValidation({
         framework: 'bootstrap',
@@ -61,49 +53,10 @@ $(document).on('shown.bs.modal', '#answerModal', function() {
             answer: {
                 validators: {
                     notEmpty: {
-                        message: 'Pertanyaan tidak boleh kosong'
+                        message: 'Jawaban tidak boleh kosong!'
                     }
                 }
             }
         }
     });
-
-    // set url
-    // var url = $('#answerForm').attr('action');
-    // $('#consul_id').attr('value',consul_id);
-
-    $('#btnanswer').click(function(){
-        $.ajax({
-            url: site_url('cms/notification_management/post_answer'),
-            type: 'POST',
-            data: {
-                consul_id: consul_id,
-                answer: $('#answer').val()
-            }
-        }).done(function (data) {
-            if (data.status) {
-                toastr.success(data.message);
-                table.ajax.reload(null, true);
-                hideModal();
-            } else {
-                toastr.error(data.message);
-            }
-        }).fail(function (xhr, status, error) {
-            var msg = '';
-            if (xhr.status === 404) {
-                msg = 'Requested page not found.';
-            } else if (xhr.status === 500) {
-                msg = 'Internal Server Error.';
-            } else if (error === 'parsererror') {
-                msg = 'Requested failed.';
-            } else if (error === 'timeout') {
-                msg = 'Time out error.';
-            } else if (error === 'abort') {
-                msg = 'Request aborted.';
-            }
-            toastr.error(msg);
-        });
-    })
-
-
 });
