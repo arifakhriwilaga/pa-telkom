@@ -78,8 +78,8 @@ class Notifications extends CI_Model {
 
     public function delete_notifications() {
         $result = array();
-        $user_id = $this->input->post('user_id');
-        $this->db->where('user_id', $user_id);
+        $consul_id = $this->input->post('consul_id');
+        $this->db->where('consul_id', $consul_id);
 
         if ($this->db->delete($this->table)) {
             $result = array(

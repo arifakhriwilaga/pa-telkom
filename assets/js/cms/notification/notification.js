@@ -38,25 +38,58 @@ function hideModal() {
     $('#answerModal').modal('hide');
     $('#answer').val('');
 }
-$(document).on('shown.bs.modal', '#answerModal', function () {
-    $('#answer').focus();
-    $('#consul_id').val(consul_id);
-    // baru validasinya
-    $('#answerForm').formValidation({
-        framework: 'bootstrap',
-        icon: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            answer: {
-                validators: {
-                    notEmpty: {
-                        message: 'Jawaban tidak boleh kosong!'
+$(document)
+        .on('shown.bs.modal', '#answerModal', function () {
+            $('#answer').focus();
+            $('#consul_id').val(consul_id);
+            // baru validasinya
+            $('#answerForm').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    answer: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Jawaban tidak boleh kosong!'
+                            }
+                        }
                     }
                 }
+            });
+        })
+        .on('click', '.delete-acc', function () {
+            if (confirm('Anda yakin ingin menghapus akun ' + $(this).data('name') + '?')) {
+                $.ajax({
+                    url: site_url('cms/notification_management/delete'),
+                    type: 'POST',
+                    data: {
+                        consul_id: $(this).attr('id')
+                    }
+                }).done(function (data) {
+                    if (data.status) {
+                        toastr.success(data.message);
+                        table.ajax.reload(null, false);
+                    } else {
+                        toastr.error(data.message);
+                    }
+                }).fail(function (xhr, status, error) {
+                    var msg = '';
+                    if (xhr.status === 404) {
+                        msg = 'Requested page not found.';
+                    } else if (xhr.status === 500) {
+                        msg = 'Internal Server Error.';
+                    } else if (error === 'parsererror') {
+                        msg = 'Requested failed.';
+                    } else if (error === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (error === 'abort') {
+                        msg = 'Request aborted.';
+                    }
+                    toastr.error(msg);
+                });
             }
-        }
-    });
-});
+        });

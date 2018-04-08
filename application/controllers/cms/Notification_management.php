@@ -79,7 +79,10 @@ class Notification_management extends CI_Controller {
     }
     
     public function delete() {
-        
+        $result = $this->notifications->delete_notifications();
+        $this->output
+                ->set_content_type('json')
+                ->set_output(json_encode($result));
     }
 
 }
