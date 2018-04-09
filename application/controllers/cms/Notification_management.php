@@ -3,6 +3,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Notification_management extends CI_Controller {
+
     public function __construct() {
         parent::__construct();
         $this->load->model('Notifications', 'notifications');
@@ -40,7 +41,7 @@ class Notification_management extends CI_Controller {
             $row[] = $notifications->name;
             $row[] = $notifications->username;
             $row[] = $notifications->questions;
-            $row[] = $notifications->answer;
+            $row[] = $this->checkSend($notifications->send_status, $notifications);
             $row[] = $this->checkAnswer($notifications->answer_status, $notifications);
 
             $data[] = $row;
@@ -56,11 +57,24 @@ class Notification_management extends CI_Controller {
     }
 
     public function checkAnswer($status = '', $data = '') {
+        $button = '<button class="btn btn-danger btn-sm delete-acc" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
         if ($status == 'false') {
-            return '<button class="btn btn-danger btn-sm delete-acc" id="' . $data->consul_id . '" data-name="' . $data->questions . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button> <button class="btn btn-success btn-sm" id="' . $data->consul_id . '" data-name="' . $data->questions . '" title="Jawab" onclick="showModal(' . $data->consul_id . ')"><i class="fa fa-share"></i></button>';
-        } else {
-            return '<button class="btn btn-danger btn-sm delete-acc" id="' . $data->consul_id . '" data-name="' . $data->questions . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+            $button .= '&nbsp;<button class="btn btn-success btn-sm" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab" onclick="showModal(' . $data->consul_id . ')">'
+                    . '<i class="fa fa-share"></i>'
+                    . '</button>';
         }
+        return $button;
+    }
+
+    public function checkSend($status = '', $data = '') {
+        $result = '';
+        if (!$status && $data->answer) {
+            $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab">'
+                    . '<i class="fa fa-send"></i>'
+                    . '</button>';
+        }
+        $result .= '<div style="width:85%">' . $data->answer . '</div>';
+        return $result;
     }
 
     public function post_answer() {
@@ -77,9 +91,21 @@ class Notification_management extends CI_Controller {
         }
         return redirect('kelola-notifikasi');
     }
+
+    public function delete_notification() {
+        $result = $this->notifications->delete_notification();
+        $this->output
+                ->set_content_type('json')
+                ->set_output(json_encode($result));
+    }
     
-    public function delete() {
-        $result = $this->notifications->delete_notifications();
+    public function send_answer() {
+        $data = array(
+            "consul_id" => $this->input->post('consul_id'),
+            "send_status" => 'true',
+            "read_status" => 'false'
+        );
+        $result = $this->notifications->send_answer($data);
         $this->output
                 ->set_content_type('json')
                 ->set_output(json_encode($result));

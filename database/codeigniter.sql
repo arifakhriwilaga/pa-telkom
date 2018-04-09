@@ -31,8 +31,10 @@ CREATE TABLE `consul_doctors` (
   `user_id` varchar(30) NOT NULL,
   `doctor_id` varchar(250) NOT NULL,
   `questions` varchar(250) NOT NULL,
-  `answer_status` varchar(5) NOT NULL,
   `answer` varchar(100) NOT NULL,
+  `answer_status` varchar(5) NOT NULL,
+  `send_status` VARCHAR(5) NOT NULL,
+  `read_status` VARCHAR(5) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

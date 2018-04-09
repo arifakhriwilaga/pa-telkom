@@ -37,6 +37,7 @@ function showModal(id) {
 function hideModal() {
     $('#answerModal').modal('hide');
     $('#answer').val('');
+    $('#consul_id').val('');
 }
 $(document)
         .on('shown.bs.modal', '#answerModal', function () {
@@ -62,9 +63,41 @@ $(document)
             });
         })
         .on('click', '.delete-acc', function () {
-            if (confirm('Anda yakin ingin menghapus akun ' + $(this).data('name') + '?')) {
+            if (confirm('Anda yakin ingin menghapus pertanyaan ' + $(this).data('name') + '?')) {
                 $.ajax({
-                    url: site_url('cms/notification_management/delete'),
+                    url: site_url('cms/notification_management/delete_notification'),
+                    type: 'POST',
+                    data: {
+                        consul_id: $(this).attr('id')
+                    }
+                }).done(function (data) {
+                    if (data.status) {
+                        toastr.success(data.message);
+                        table.ajax.reload(null, false);
+                    } else {
+                        toastr.error(data.message);
+                    }
+                }).fail(function (xhr, status, error) {
+                    var msg = '';
+                    if (xhr.status === 404) {
+                        msg = 'Requested page not found.';
+                    } else if (xhr.status === 500) {
+                        msg = 'Internal Server Error.';
+                    } else if (error === 'parsererror') {
+                        msg = 'Requested failed.';
+                    } else if (error === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (error === 'abort') {
+                        msg = 'Request aborted.';
+                    }
+                    toastr.error(msg);
+                });
+            }
+        })
+        .on('click', '.btn-send-answer', function () {
+            if (confirm('Anda yakin ingin mengirim jawaban kepada ' + $(this).data('name') + '?')) {
+                $.ajax({
+                    url: site_url('cms/notification_management/send_answer'),
                     type: 'POST',
                     data: {
                         consul_id: $(this).attr('id')

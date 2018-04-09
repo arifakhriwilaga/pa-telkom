@@ -76,7 +76,7 @@ class Notifications extends CI_Model {
         return $this->db->count_all_results();
     }
 
-    public function delete_notifications() {
+    public function delete_notification() {
         $result = array();
         $consul_id = $this->input->post('consul_id');
         $this->db->where('consul_id', $consul_id);
@@ -105,7 +105,28 @@ class Notifications extends CI_Model {
         if ($this->db->update($this->table, $data)) {
             $result = array(
                 'status' => true,
-                'message' => 'Jawaban berhasil disimpan',
+                'message' => 'Jawaban berhasil disimpan!',
+                'data' => null
+            );
+            return $result;
+        } else {
+            $error = $this->db->error();
+            $result = array(
+                'status' => false,
+                'message' => $error['message'],
+                'data' => null
+            );
+            return $result;
+        }
+    }
+    
+    public function send_answer($data=[])
+    {
+        $query = $this->db->where('consul_id',$data['consul_id']);
+        if ($this->db->update($this->table, $data)) {
+            $result = array(
+                'status' => true,
+                'message' => 'Jawaban berhasil dikirim!',
                 'data' => null
             );
             return $result;
