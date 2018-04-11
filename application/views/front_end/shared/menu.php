@@ -12,8 +12,8 @@
                     <?php if ($page_title!= 'Edit Profile') { ?>
                     <div class="head_top_social pull-right">
                         <span class="head-customer">
-                            <a href="<?php echo site_url('notifikasi'); ?>" class=""><i class="fa fa-fw fa-bell badge1" data-badge="22" style="font-size: 20px;color:#2c3e50"></i></a>
-                            <a data-toggle="popover" href="#" style="color: color:#2c3e50">
+                            <a href="<?php echo site_url('notifikasi'); ?>"><i id="count-notif" class="fa fa-fw fa-bell badge1" data-badge="0" style="font-size: 20px;color:#2c3e50"></i></a>
+                            <a data-toggle="popover" href="#" style="color: #2c3e50">
                                 <img src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" onerror="imgError(this);" alt="Avatar" class="avatar-header">
                                 <?php echo $user['name']; ?>
                             </a>

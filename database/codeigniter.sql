@@ -51,7 +51,8 @@ CREATE TABLE `doctors` (
   `gender` varchar(250) NOT NULL,
   `born_date` date NOT NULL,
   `phone` varchar(250) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `answer_date` TIMESTAMP NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

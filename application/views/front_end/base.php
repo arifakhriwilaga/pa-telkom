@@ -18,7 +18,7 @@
         <div id="popover-content-profile" class="hide" style="top:500px;">
             <div class="row" style="padding-bottom:25px;border-bottom:1px solid rgba(193,193,193,.8)">
                 <div class="col-md-12" style="text-align:center">
-                <img src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" alt="Avatar" class="avatar-header" style="width:75px;height:75px;margin-top:5%;margin-bottom:5%"><br>
+                <img src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" onerror="imgError(this);" alt="Avatar" class="avatar-header" style="width:75px;height:75px;margin-top:5%;margin-bottom:5%"><br>
                 <span style="font-size:18px;text-align:center"><?php echo $user['name']; ?></span><br>
                 </div>
             </div>

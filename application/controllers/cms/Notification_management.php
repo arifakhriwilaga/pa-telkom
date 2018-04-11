@@ -80,10 +80,10 @@ class Notification_management extends CI_Controller {
     public function post_answer() {
         $data = array(
             "consul_id" => $this->input->post('consul_id'),
-            "answer" => $this->input->post('answer'),
+            "answer" => addslashes($this->input->post('answer')),
             "answer_status" => 'true'
         );
-        $result = $this->notifications->post($data);
+        $result = $this->notifications->post_answer($data);
         if ($result['status']) {
             $this->session->set_flashdata('success', $result['message']);
         } else {
@@ -103,7 +103,8 @@ class Notification_management extends CI_Controller {
         $data = array(
             "consul_id" => $this->input->post('consul_id'),
             "send_status" => 'true',
-            "read_status" => 'false'
+            "read_status" => 'false',
+            "answer_date" => date('Y-m-d H:i:s')
         );
         $result = $this->notifications->send_answer($data);
         $this->output

@@ -22,11 +22,7 @@
     function site_url(path) {
         return <?php echo json_encode(site_url()); ?> + path.replace(/^\//g, '');
     }
-    function imgError(image) {
-        image.onerror = "";
-        image.src = base_url('assets/images/home/header/default-avatar.png');
-        return true;
-    }
+    
     <?php if($this->session->flashdata('success')){ ?>
         toastr.success("<?php echo $this->session->flashdata('success'); ?>");
     <?php }else if($this->session->flashdata('error')){  ?>
@@ -36,13 +32,8 @@
     <?php }else if($this->session->flashdata('info')){  ?>
         toastr.info("<?php echo $this->session->flashdata('info'); ?>");
     <?php } ?>
-    $('[data-toggle="popover"]').popover({
-        html: true,
-        content: function() {
-            return $('#popover-content-profile').html();
-        },
-        placement: "bottom"
-    });
+        
+    var user_id = "<?php echo $user['user_id']; ?>";
 </script>
 <script src="<?php echo base_url('assets/js/functions.js'); ?>"></script>
 <?php

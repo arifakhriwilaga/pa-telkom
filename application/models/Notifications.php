@@ -16,7 +16,7 @@ class Notifications extends CI_Model {
 
     var $table = 'consul_doctors';
     //set column field database for datatable orderable
-    var $column_order = array(null, null, null, 'questions', 'answer_status', 'answer',null);
+    var $column_order = array(null, null, null, 'questions', 'answer_status', 'answer', null);
     //set column field database for datatable searchable 
     var $column_search = array('questions', 'answer');
     // default order 
@@ -24,10 +24,9 @@ class Notifications extends CI_Model {
 
     private function _get_notifications_query() {
 
-        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');    
+        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');
         $this->db->from('consul_doctors');
-        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');   
-        // var_dump($query);die();
+        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');
         $i = 0;
 
         foreach ($this->column_search as $item) { // loop column 
@@ -43,7 +42,7 @@ class Notifications extends CI_Model {
                 }
 
                 if (count($this->column_search) - 1 == $i) //last loop
-                    // var_dump($this->db->group_end());die();
+                // var_dump($this->db->group_end());die();
                     $this->db->group_end(); //close bracket
             }
             $i++;
@@ -99,9 +98,8 @@ class Notifications extends CI_Model {
         }
     }
 
-    public function post($data=[])
-    {
-        $query = $this->db->where('consul_id',$data['consul_id']);
+    public function post_answer($data = []) {
+        $query = $this->db->where('consul_id', $data['consul_id']);
         if ($this->db->update($this->table, $data)) {
             $result = array(
                 'status' => true,
@@ -119,10 +117,9 @@ class Notifications extends CI_Model {
             return $result;
         }
     }
-    
-    public function send_answer($data=[])
-    {
-        $query = $this->db->where('consul_id',$data['consul_id']);
+
+    public function send_answer($data = []) {
+        $this->db->where('consul_id', $data['consul_id']);
         if ($this->db->update($this->table, $data)) {
             $result = array(
                 'status' => true,
@@ -139,6 +136,41 @@ class Notifications extends CI_Model {
             );
             return $result;
         }
+    }
+    
+    public function get_all($user_id) {
+        $this->db->select('consul_doctors.*, CONCAT(doctors.name) AS doctor');
+        $this->db->from('consul_doctors');
+        $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id AND consul_doctors.user_id = '.$user_id, 'left');
+        $this->db->where('consul_doctors.send_status', 'true');
+        $this->db->order_by('consul_doctors.created_date', 'DESC');
+        $query = $this->db->get();
+//        $sql = $this->db->last_query();
+//        var_dump($sql);die();
+//        var_dump($query->result());die();
+        return $query->result();
+    }
+    
+    public function detail($id) {
+        $this->db->select('consul_doctors.*, CONCAT(doctors.name) AS doctor');
+        $this->db->from('consul_doctors');
+        $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id', 'left');
+        $this->db->where('consul_doctors.consul_id', $id);
+        $query = $this->db->get();
+        $sql = $this->db->last_query();
+//        var_dump($sql);die();
+//        var_dump($query->result());die();
+        return $query->result();
+    }
+    
+    public function read_notif($id) {
+        $this->db->where('consul_id', $id);
+        $this->db->update($this->table, array('read_status' => 'true'));
+    }
+    
+    public function count_notif($user_id) {
+        $query = $this->db->get_where($this->table, array('user_id' => $user_id, 'read_status' => 'false'));
+        return $query->num_rows();
     }
 
 }

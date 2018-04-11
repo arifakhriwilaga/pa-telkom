@@ -69,3 +69,10 @@ COMMIT;
 
 -- Senin 9 April 2018
 ALTER TABLE `consul_doctors` ADD `send_status` VARCHAR(5) NOT NULL AFTER `answer`, ADD `read_status` VARCHAR(5) NOT NULL AFTER `send_status`;
+
+-- Senin 11 April 2018
+ALTER TABLE `consul_doctors` ADD `answer_date` TIMESTAMP NOT NULL AFTER `created_date`;
+
+ALTER TABLE `consul_doctors`
+    CHANGE `questions` `questions` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+    CHANGE `answer_status` `answer_status` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
