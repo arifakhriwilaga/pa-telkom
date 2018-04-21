@@ -32,6 +32,18 @@ class Auth extends CI_Model {
             return $result;
         }
 
+        // config create cookie
+        $key = random_string('alnum', 64);
+        set_cookie('lrmps', $key, 3600*24*30); // set expired 30 days
+        
+        $remember_me = $this->input->post('remember_me') == 'on' ? true : false;
+        $data = array(
+            'remember' => $remember_me, 
+            'cookie' => $remember_me ? $key : ''
+        );
+
+        $this->db->where('username', $username);
+        $this->db->update($this->table, $data);
 
         $result = array(
             'status' => true,

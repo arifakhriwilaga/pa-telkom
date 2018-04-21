@@ -7,6 +7,7 @@ class Authentication extends CI_Controller {
         $this->load->model('Auth', 'auth');
         $this->load->model('User', 'user');
         $this->load->model('LoginHistory', 'login_history');
+        $this->load->helper(array('Form', 'Cookie', 'String'));
     }
 
 	public function index()	{
@@ -35,6 +36,7 @@ class Authentication extends CI_Controller {
 			$user = $this->user->get_user($result['data']->user_id);
 			$this->session->set_userdata('user', $user);
 			$this->session->set_flashdata('success', $result['message']);
+			
 			if ($result['data']->level_user == 'user') {
 				return redirect('/');
 			} elseif ($result['data']->level_user == 'admin') {
