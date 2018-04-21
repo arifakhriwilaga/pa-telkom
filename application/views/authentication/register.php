@@ -9,7 +9,7 @@
             <div class="col-md-5 col-center form-account" style="position:absolute;left:25%;right:25%;">
                 <div class="box">
                     <div class="panel-form basic-form form" style="margin:15px 0">
-                        <h2>REGISTRASI</h2>
+                        <h2 class="text-center">REGISTRASI</h2>
                         <form action="<?php echo site_url('authentication/do_register'); ?>" method="POST" id="register" class="form-horizontal" style="padding-left:15px;padding-right:15px">
                             <div class="form-group">
                                 <input type="hidden" name="level_user" value="user" id="level_user" class="form-control">
@@ -44,7 +44,7 @@
                             </div>
                             <div class="row">
                             <button type="submit" name="submitButton" class="btn btn-block btn-login btn-lg">Daftar</button><br>
-                            <p>Sudah punya akun?  <a href="<?php echo site_url('login'); ?>">masuk disini</a></p>
+                            <p>Sudah punya akun?  <a href="<?php echo site_url('masuk-akun'); ?>">masuk disini</a></p>
                             </div>
                         </form>
                     </div>

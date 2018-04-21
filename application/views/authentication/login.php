@@ -6,7 +6,7 @@
             <div class="col-md-4 form-account">
                 <div class="box">
                     <div class="panel-form basic-form ">
-                        <h2>MASUK AKUN</h2>
+                        <h2 class="text-center">MASUK AKUN</h2>
                         <form action="<?php echo site_url('authentication/do_login'); ?>" method="POST" id="login">
                             <div class="form-group">
                                 <input type="text" name="username" id="username" class="form-control" placeholder="Nama Pengguna" autocomplete="false">

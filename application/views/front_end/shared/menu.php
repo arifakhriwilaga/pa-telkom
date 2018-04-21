@@ -58,7 +58,7 @@
                             <li><a class="<?php echo($page_title == 'Home' ? 'active' : ''); ?>" href="<?php echo site_url('/'); ?>">Home</a></li>
                             <li><a class="<?php echo($page_title == 'Periksa' ? 'active' : ''); ?>" href="<?php echo site_url('periksa/step-1'); ?>">Periksa</a></li>
                             <li><a class="<?php echo($page_title == 'Konsul Dokter' ? 'active' : ''); ?>" href="<?php echo site_url('konsul-dokter'); ?>">Konsul Dokter</a></li>
-                            <li><a class="<?php echo($page_title == 'Notifikasi' or $page_title == 'Kunjungan' or $page_title == 'Home' or $page_title == 'Edit Profile' or $page_title == 'Masuk Akun' or $page_title == 'Daftar Akun Baru' or $page_title == 'Periksa' or $page_title == 'Konsul Dokter' or $page_title == 'Kunjungan' ? '' : 'active'); ?>" href="<?php echo site_url('info-sehat'); ?>">Info Sehat</a></li>
+                            <li><a class="<?php echo($page_title != 'Masuk Akun' && $page_title != 'Daftar Akun Baru' && $page_title != 'Edit Profile'&& $page_title != 'Periksa' && $page_title != 'Konsul Dokter' && $page_title != 'Kunjungan' && $page_title != 'Notifikasi' && $page_title != 'Home' ? 'active' : ''); ?>" href="<?php echo site_url('info-sehat'); ?>">Info Sehat</a></li>
                             <?php if (isset($user)) { ?>
                                 <li><a class="<?php echo($page_title == 'Kunjungan' ? 'active' : ''); ?>" href="<?php echo site_url('kunjungan'); ?>">Kunjungan</a></li>
                             <?php } ?>
