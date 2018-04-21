@@ -22,6 +22,7 @@ class Notifications extends CI_Model {
     // default order 
     var $order = array('consul_id' => 'asc');
 
+
     private function _get_notifications_query() {
 
         $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');
@@ -143,6 +144,7 @@ class Notifications extends CI_Model {
         $this->db->from('consul_doctors');
         $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id AND consul_doctors.user_id = '.$user_id, 'left');
         $this->db->where('consul_doctors.send_status', 'true');
+        $this->db->where('consul_doctors.user_id', $user_id);
         $this->db->order_by('consul_doctors.created_date', 'DESC');
         $query = $this->db->get();
 //        $sql = $this->db->last_query();
@@ -173,4 +175,14 @@ class Notifications extends CI_Model {
         return $query->num_rows();
     }
 
+    // public function get_notifications_user($user_id) {
+    //     $this->db->select('consul_doctors.*, CONCAT(doctors.name) AS doctor');
+    //     $this->db->from('consul_doctors');
+    //     $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id AND consul_doctors.user_id = '.$user_id, 'left');
+    //     $this->db->where('consul_doctors.user_id', $user_id);
+    //     $query = $this->db->get();
+    //     return $query;
+    // }
+
 }
+    
