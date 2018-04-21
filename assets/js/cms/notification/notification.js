@@ -72,10 +72,10 @@ $(document)
                     }
                 }).done(function (data) {
                     if (data.status) {
-                        toastr.success(data.message);
+                        toastr.success(data.message,'',config.toastr);
                         table.ajax.reload(null, false);
                     } else {
-                        toastr.error(data.message);
+                        toastr.error(data.message,'',config.toastr);
                     }
                 }).fail(function (xhr, status, error) {
                     var msg = '';
@@ -104,10 +104,10 @@ $(document)
                     }
                 }).done(function (data) {
                     if (data.status) {
-                        toastr.success(data.message);
+                        toastr.success(data.message,'',config.toastr);
                         table.ajax.reload(null, false);
                     } else {
-                        toastr.error(data.message);
+                        toastr.error(data.message,'',config.toastr);
                     }
                 }).fail(function (xhr, status, error) {
                     var msg = '';
