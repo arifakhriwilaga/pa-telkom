@@ -26,46 +26,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>K001</td>
-                  <td>Peldi Rian</td>
-                  <td>peldi03</td>
-                  <td>Laki-laki</td>
-                  <td>20th</td>
-                  <td>12-09-1992</td>
-                  <td><a href="<?php echo site_url('detail-konsultasi'); ?>"><button class="btn btn-info btn-sm" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
-                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
-                </tr>
-                <tr>
-                  <td>K002</td>
-                  <td>Putri Titian</td>
-                  <td>putrisian</td>
-                  <td>Perempuan</td>
-                  <td>21th</td>
-                  <td>11-01-1997</td>
-                  <td><a href="<?php echo site_url('detail-konsultasi'); ?>"><button class="btn btn-info btn-sm" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
-                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
-                </tr>
-                <tr>
-                  <td>K003</td>
-                  <td>Nana Isyawati</td>
-                  <td>isyanana</td>
-                  <td>Perempuan</td>
-                  <td>22th</td>
-                  <td>19-02-1993</td>
-                  <td><a href="<?php echo site_url('detail-konsultasi'); ?>"><button class="btn btn-info btn-sm action" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
-                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
-                </tr>
-                <tr>
-                  <td>K004</td>
-                  <td>Rico Jerico</td>
-                  <td>Valrico1</td>
-                  <td>Laki-laki</td>
-                  <td>25th</td>
-                  <td>02-02-1995</td>
-                    <td><a href="<?php echo site_url('detail-konsultasi'); ?>"><button class="btn btn-info btn-sm" id="" name="" title="Detail Konsultasi"><i class="glyphicon glyphicon-info-sign"></i></button></a></td>
-                  <td><button class="btn btn-default btn-sm action" id="" name="" title="Edit"><i class="fa fa-pencil"></i></button><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style="margin-left:5px"><i class="glyphicon glyphicon-trash"></i></button></td>
-                </tr>
+                <!-- <tr>
+                  <td>H001</td>
+                  <td>Lala</td>
+                  <td>laladipsi</td>
+                  <td>12-05-2016</td>
+                  <td><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style=""><i class="glyphicon glyphicon-trash"></i></button></td>
+                </tr> -->
                 </tbody>
               </table>
             </div>

@@ -20,13 +20,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <!-- <tr>
                   <td>H001</td>
                   <td>Lala</td>
                   <td>laladipsi</td>
                   <td>12-05-2016</td>
                   <td><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style=""><i class="glyphicon glyphicon-trash"></i></button></td>
-                </tr>
+                </tr> -->
                 </tbody>
               </table>
             </div>
