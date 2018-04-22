@@ -26,7 +26,7 @@
                             <button type="button" class="btn btn-login btn-yellow btn-block btn-lg" data-toggle="modal" data-target="#modal5"><i class="glyphicon glyphicon-glass"></i> Lihat Saran</button>
                         </div>
                         <div class="col-md-6 pull-right">
-                            <button type="button" class="btn btn-login btn-purple btn-block btn-lg" data-toggle="modal" data-target="#modal6"><i class="glyphicon glyphicon-print"></i> Cetak Surat Prediksi Penyakit</button>
+                            <button class="btn btn-login btn-purple btn-block btn-lg" onclick="location.href='<?php echo site_url('front_end/check/print_sick_letter') ?>'"><i class="glyphicon glyphicon-print"></i> Cetak Surat Prediksi Penyakit</button>
                         </div>
                     </div>
                     </div>
