@@ -36,6 +36,7 @@
     <?php } ?>
         
     var user_id = "<?php echo $user['user_id']; ?>";
+    count_notification(user_id);
 
     $(window).on('unload', function(e) {
         document.cookie = '';

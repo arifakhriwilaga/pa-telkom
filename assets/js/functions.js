@@ -50,9 +50,6 @@ $('[data-toggle="popover"]').popover({
     },
     placement: "bottom"
 });
-if (user_id) {
-    count_notification();
-}
 
 function imgError(image) {
     image.onerror = "";
@@ -60,7 +57,7 @@ function imgError(image) {
     return true;
 }
 
-function count_notification() {
+function count_notification(user_id) {
     $.ajax({
         url: site_url('front_end/notification/count_notif'),
         type: 'POST',
@@ -74,6 +71,9 @@ function count_notification() {
         } else {
             $('#count-notif').removeClass('badge1');        
         }
+        setTimeout(function () {
+            count_notification(user_id);
+        }, 3000);
     }).fail(function (xhr, status, error) {
         var msg = '';
         if (xhr.status === 404) {
@@ -89,7 +89,4 @@ function count_notification() {
         }
         console.log(msg);
     });
-    setTimeout(function () {
-        count_notification();
-    }, 3000);
 }

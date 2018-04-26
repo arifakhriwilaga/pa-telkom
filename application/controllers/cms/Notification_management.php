@@ -40,7 +40,7 @@ class Notification_management extends CI_Controller {
             $row[] = $notifications->consul_id;
             $row[] = $notifications->name;
             $row[] = $notifications->username;
-            $row[] = $notifications->questions;
+            $row[] = (strlen($notifications->questions) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . $notifications->questions . '</div>' : $notifications->questions);
             $row[] = $this->checkSend($notifications->send_status, $notifications);
             $row[] = $this->checkAnswer($notifications->answer_status, $notifications);
 
@@ -68,12 +68,14 @@ class Notification_management extends CI_Controller {
 
     public function checkSend($status = '', $data = '') {
         $result = '';
+        $style = '';
         if (!$status && $data->answer) {
             $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab">'
                     . '<i class="fa fa-send"></i>'
                     . '</button>';
+            $style = "width:85%;";
         }
-        $result .= '<div style="width:85%">' . $data->answer . '</div>';
+        $result .= (strlen($data->answer) > 240 ? '<div style="'. $style .'max-height:150px;overflow-y:scroll;">' . $data->answer . '</div>' : $data->answer);
         return $result;
     }
 

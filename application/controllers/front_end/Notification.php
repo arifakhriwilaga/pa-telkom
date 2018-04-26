@@ -20,6 +20,7 @@ class Notification extends CI_Controller {
             'page_title' => $page_title,
             'notifications' => $notifications,
             '_content' => 'front_end/user/notification',
+            '_css' => 'assets/css/front_end/user/notification.css',
             '_js' => 'assets/js/front_end/user/notification.js'
         );
 
@@ -34,6 +35,7 @@ class Notification extends CI_Controller {
             'page_title' => $page_title,
             'notif' => $notif[0],
             '_content' => 'front_end/user/detail_notification',
+            '_css' => 'assets/css/front_end/user/detail_notification.css',
             '_js' => 'assets/js/front_end/user/detail_notification.js'
         );
 
