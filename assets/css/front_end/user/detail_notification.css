@@ -1,0 +1,35 @@
+.panel-notif {
+  margin: 70px 145px;
+}
+.chat-img {
+    width: 55px;
+}
+#question {
+  font-size: 23px;
+  color: #565656;
+  max-width: 95%;
+  line-height: 1.4;
+  margin: 0 5px 0 10px;
+}
+.question {
+  max-height: 94px;
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btn-show:hover {
+    background-color: #ddd;
+} 
+.btn-show {
+    margin-left: 9%;
+    background-color: #e2e6ea;
+    font-size: 12px;
+    width: 70px;
+    height: 24px;
+    padding: 3px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
