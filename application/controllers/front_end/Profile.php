@@ -32,8 +32,8 @@ class Profile extends CI_Controller {
     public function update_profile($user_id) {
         $result = $this->user->update($user_id);
         if ($result['status']) {
-            $this->session->userdata = array();
-            $user = $this->user->get_user($result['data']->user_id);
+            // $this->session->userdata = array();
+            $user = $this->user->get_user($user_id);
             $this->session->set_userdata('user', $user);
             $this->session->set_flashdata('success', $result['message']);
             return redirect('ubah-profil');

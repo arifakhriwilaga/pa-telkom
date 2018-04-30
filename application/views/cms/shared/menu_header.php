@@ -1,6 +1,6 @@
 <a href="index2.html" class="logo">
     <span class="logo-mini"><img src="<?php echo base_url('assets/images/cms/logo.png'); ?>" class="logo-header" width="70%"></span>
-    <span class="logo-lg"> <img src="<?php echo base_url('assets/images/cms/logo.png'); ?>" class="logo-header" width="18%"> ARMPSP</span>
+    <span class="logo-lg"> <img src="<?php echo base_url('assets/images/cms/logo.png'); ?>" class="logo-header" width="18%"> KESDIKA</span>
 </a>
 <nav class="navbar navbar-static-top">
     <div class="navbar-custom-menu">

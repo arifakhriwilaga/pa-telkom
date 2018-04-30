@@ -11,11 +11,11 @@
                         <thead>
                             <tr>
                                 <th width="10px" class="text-center">ID</th>
-                                <th width="150px" class="text-center">Name</th>
-                                <th width="150px" class="text-center">Userame</th>
-                                <th width="200px" class="text-center">Questions</th>
-                                <th width="200px" class="text-center">Answer</th>
-                                <th width="50px" class="text-center">Opsi</th>
+                                <th width="150px" class="text-center">NAMA</th>
+                                <th width="150px" class="text-center">NAMA PENGGUNA</th>
+                                <th width="200px" class="text-center">PERTANYAAN</th>
+                                <th width="200px" class="text-center">JAWABAN</th>
+                                <th width="50px" class="text-center">OPSI</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-12">
       <div class="col-md-3" style="">
-      <img src="<?php echo base_url('assets/images/home/header/logo.png'); ?>" alt="Logo" style="width:160px;height: 50px;margin-left:105px"/>
-          <span style="font-size:18px;color:#e67e22"><strong style="position: absolute;top: 20px;right:95px;font-family: 'latolight'">Rekomendasi Makanan Pada Solusi Penyakit</strong></span>
+      <img src="<?php echo base_url('assets/images/home/header/logo.png'); ?>" alt="Logo" style="width:160px;height: 50px;margin-left:0px"/>
+          <span style="font-size:18px;color:#e67e22"><strong style="position: absolute;top: 20px;font-family: 'latolight'">Rekomendasi Kesehatan Untuk Prediksi Penyakit</strong></span>
       </div>
   </div>
   <div class="col-md-12" style="padding-top: 50px">
   <div class="row">
-  <h3 style="font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;"> Surat Prediksi Penyakit :</h3>
+  <!-- <h3 style="font-family: inherit;font-weight: 500;line-height: 1.1;color: inherit;"> Surat Prediksi Penyakit :</h3> -->
   </div>
   <div class="row" style="padding-top: 5px">
       <table>
@@ -32,7 +32,7 @@
   </div>
   <div class="col-md-7 pull-right" style="text-align:center;padding-top: 50px">
     <label style="font-size:14px;">Bandung, <?php echo($users['today']); ?></label><br><br><br><br><br>
-    <span style="font-size:12px;"><u>Aplikasi Rekomendasi Makanan Pada Solusi Penyakit</u></span><br>
+    <!-- <span style="font-size:12px;"><u>Rekomendasi Kesehatan Untuk Prediksi Penyakit</u></span><br> -->
     <label>Dr. Yuan Miko</label>
   </div>
   </div>

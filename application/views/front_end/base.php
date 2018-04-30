@@ -37,12 +37,12 @@
             </div>
             </div>
         </div>
-        <?php if(($page_title != 'Notifikasi') and ($page_title != 'Kunjungan') &&  ($page_title != 'Home') and  ($page_title != 'Edit Profile') and ($page_title != 'Masuk Akun') and ($page_title != 'Daftar Akun Baru') and ($page_title != 'Periksa') and ($page_title != 'Konsul Dokter') and ($page_title != 'Kunjungan')) { ?>
+        <?php if(($page_title != 'Lupa Password') and ($page_title != 'Notifikasi') and ($page_title != 'Kunjungan') &&  ($page_title != 'Home') and  ($page_title != 'Edit Profile') and ($page_title != 'Masuk Akun') and ($page_title != 'Daftar Akun Baru') and ($page_title != 'Periksa') and ($page_title != 'Konsul Dokter') and ($page_title != 'Kunjungan')) { ?>
         <section id="footer_widget" class="footer_widget" style="height:55px">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <p style="font-size:15px;color:#fff;text-align:center;max-width:100%;margin-top:17px"> &copy;2018 Rekomendasi Makanan Pada Solusi Penyakit</p>
+                        <p style="font-size:15px;color:#fff;text-align:center;max-width:100%;margin-top:17px"> &copy;2018 Rekomendasi Kesehatan Untuk Prediksi Penyakit</p>
                     </div>
                 </div>
             </div>

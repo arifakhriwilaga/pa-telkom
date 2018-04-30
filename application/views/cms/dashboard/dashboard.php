@@ -7,7 +7,7 @@
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header bg-aqua-active">
           <h3 class="widget-user-username"><?php echo $user['name']; ?></h3>
-          <h5 class="widget-user-desc">Admin RMPSP</h5>
+          <h5 class="widget-user-desc">Admin Kesdika</h5>
         </div>
         <div class="widget-user-image">
           <img class="img-circle" src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" onerror="imgError(this);" alt="User Avatar">

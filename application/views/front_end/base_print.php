@@ -6,7 +6,7 @@
     <link href="<?php echo base_url('assets/images/home/header/logo-icon.png'); ?>" rel="shortcut icon"/>
         <!-- <link rel="stylesheet" href="<?php echo base_url('assets/includes/bootstrap/dist/css/bootstrap.min.css'); ?>"> -->
         <!-- <link rel="stylesheet" href="<?php echo base_url('assets/includes/font-awesome/css/font-awesome.min.css'); ?>"> -->
-    <title>RMPSP | <?php echo $page_title; ?></title>
+    <title>KESDIKA | <?php echo $page_title; ?></title>
 
   <style type="text/css">
     @font-face {

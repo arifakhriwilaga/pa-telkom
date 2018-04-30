@@ -9,6 +9,7 @@
 <script src="<?php echo base_url('assets/includes/toastr/toastr.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/moment/min/moment.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'); ?>"></script>
+<script src="<?php echo base_url('assets/includes/select2/dist/js/select2.min.js') ?>"></script>
 
 <!--This is link only for gmaps-->
 <!-- <script src="<?php echo base_url('assets/includes/google-maps/lib/Google.min.js'); ?>"></script> -->

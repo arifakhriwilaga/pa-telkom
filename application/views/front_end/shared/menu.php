@@ -6,7 +6,7 @@
                         <a  href="<?php echo site_url('/'); ?>" class="navbar-brand"><img src="<?php echo base_url('assets/images/home/header/logo.png'); ?>" alt="Logo" /></a>
                         </div>
                         <div class="col-md-8" style="padding-top:2%;padding-left:3px;padding-right:0">
-                            <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Makanan Pada Solusi Penyakit</strong></span>
+                            <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Kesehatan Untuk Prediksi Penyakit</strong></span>
                         </div>
                     </div>
                     <?php if ($page_title!= 'Edit Profile') { ?>
@@ -33,12 +33,12 @@
                             <a  href="<?php echo site_url('/'); ?>" class="navbar-brand"><img src="<?php echo base_url('assets/images/home/header/logo.png'); ?>" alt="Logo" /></a>
                         </div>
                         <div class="col-md-8" style="padding-top:2%;padding-left:3px;padding-right:0">
-                            <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Makanan Pada Solusi Penyakit</strong></span>
+                            <span style="font-size:18px;color:#e67e22"><strong>Rekomendasi Kesehatan Untuk Prediksi Penyakit</strong></span>
                         </div>
                     </div>
 
                     <div class="head_top_social pull-right">
-                        <span class="head-customer"><a class="<?php echo($page_title == 'Masuk Akun' ? 'active' : ''); ?>" href="<?php echo site_url('masuk-akun'); ?>">Login</a> | <a class="<?php echo($page_title == 'Daftar Akun Baru' ? 'active' : ''); ?>" href="<?php echo site_url('registrasi'); ?>">Daftar</a> </span>
+                        <span class="head-customer"><a class="<?php echo($page_title == 'Masuk Akun' ? 'active' : ''); ?>" href="<?php echo site_url('masuk-akun'); ?>">Login</a> | <a class="<?php echo($page_title == 'Daftar Akun Baru' ? 'active' : ''); ?>" href="<?php echo site_url('registrasi'); ?>">Registrasi</a> </span>
                     </div>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button">
@@ -56,7 +56,7 @@
                         </div>
                         <ul class="nav nav-justified">
                             <li><a class="<?php echo($page_title == 'Home' ? 'active' : ''); ?>" href="<?php echo site_url('/'); ?>">Home</a></li>
-                            <li><a class="<?php echo($page_title == 'Periksa' ? 'active' : ''); ?>" href="<?php echo site_url('periksa/step-1'); ?>">Periksa</a></li>
+                            <li><a class="<?php echo($page_title == 'Periksa' ? 'active' : ''); ?>" style="color:#00FF00" href="<?php echo site_url('periksa/step-1'); ?>">Periksa</a></li>
                             <li><a class="<?php echo($page_title == 'Konsul Dokter' ? 'active' : ''); ?>" href="<?php echo site_url('konsul-dokter'); ?>">Konsul Dokter</a></li>
                             <li><a class="<?php echo($page_title != 'Masuk Akun' && $page_title != 'Daftar Akun Baru' && $page_title != 'Edit Profile'&& $page_title != 'Periksa' && $page_title != 'Konsul Dokter' && $page_title != 'Kunjungan' && $page_title != 'Notifikasi' && $page_title != 'Home' ? 'active' : ''); ?>" href="<?php echo site_url('info-sehat'); ?>">Info Sehat</a></li>
                             <?php if (isset($user)) { ?>

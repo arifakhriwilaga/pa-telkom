@@ -15,8 +15,8 @@ class Check extends CI_Controller {
 		$page_title = "Periksa";
 		$data = array(
 			'page_title' => $page_title,
-			'_content' => 'front_end/check/step_1_form_check',
-			'_js' => 'assets/js/front_end/check/step_1.js'
+			'_content' => 'front_end/check/form_check',
+			'_js' => 'assets/js/front_end/check/form_check.js'
 		);
 
 		$this->load->view('front_end/base',$data);

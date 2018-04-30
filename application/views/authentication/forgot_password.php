@@ -3,7 +3,7 @@
             <div class="col-md-5 col-center form-account">
                 <div class="box">
                     <div class="panel-form basic-form">
-                        <h2>Lupa Password</h2>
+                        <h2 class="text-center">Lupa Password</h2>
                         <form action="<?php echo site_url('authentication/do_reset_password'); ?>" method="post" id="forgot-password">
                             <div class="form-group">
                                 <input type="text" name="username" id="username" class="form-control" placeholder="Nama Pengguna" autocomplete="false">

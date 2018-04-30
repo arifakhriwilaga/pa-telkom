@@ -1,7 +1,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="<?php echo base_url('assets/images/home/header/logo-icon.png'); ?>" rel="shortcut icon"/>
-        <title>RMPSP | <?php echo $page_title; ?></title>
+        <title>KESDIKA | <?php echo $page_title; ?></title>
 
         <!--Dependencies Package-->
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/bootstrap/dist/css/bootstrap.min.css'); ?>">
@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/pg-calendar/dist/css/pignose.calendar.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/toastr/toastr.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/includes/select2/dist/css/select2.min.css')?>" rel="stylesheet" />
         
         <!--External Dependencies-->
         <link rel="stylesheet" href="<?php echo base_url('assets/fonts/stylesheet.css'); ?>">

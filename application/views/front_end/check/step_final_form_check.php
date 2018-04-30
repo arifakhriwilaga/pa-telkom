@@ -4,10 +4,19 @@
               <div class="panel-form basic-form form">
                 <h2 style="text-align: left">Berdasarkan Diagnosa Yang Anda Alami :</h2>
                     <div class="row row-final">
+                    <div class="form-group text-center">
+                        <div class="col-md-12 pull-right">
+                            <button type="button" class="btn btn-login btn-green" data-toggle="modal" data-target="#modal1" style="min-width:330px"><i class="glyphicon glyphicon-book" style="text-align: center;
+    margin: auto;"></i> Lihat Hasil Diagnosa Penyakit</button>
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <button type="button" class="btn btn-login btn-green btn-block" data-toggle="modal" data-target="#modal1"><i class="glyphicon glyphicon-book" style="text-align: center;
     margin: auto;"></i> Lihat Hasil Diagnosa Penyakit</button>
+                        </div> -->
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-login btn-block btn-lg" data-toggle="modal" data-target="#modal3"><i class="glyphicon glyphicon-glass"></i> Lihat Solusi & Saran</button>
                         </div>
                         <div class="col-md-6 pull-right">
                             <button type="button" class="btn btn-login btn-orange btn-block btn-lg" data-toggle="modal" data-target="#modal2"><i class="fa fa-spoon" style="font-size:24px"></i> Lihat Rekomendasi Makanan</button>
@@ -15,20 +24,17 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-login btn-block btn-lg" data-toggle="modal" data-target="#modal3"><i class="glyphicon glyphicon-list"></i> Lihat Solusi</button>
-                        </div>
-                        <div class="col-md-6 pull-right">
                             <button type="button" class="btn btn-login btn-red btn-block btn-lg" data-toggle="modal" data-target="#modal4"><i class="glyphicon glyphicon-file"></i> Surat Keterangan Penyakit</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-login btn-yellow btn-block btn-lg" data-toggle="modal" data-target="#modal5"><i class="glyphicon glyphicon-glass"></i> Lihat Saran</button>
                         </div>
                         <div class="col-md-6 pull-right">
                             <button class="btn btn-login btn-purple btn-block btn-lg" onclick="location.href='<?php echo site_url('front_end/check/print_sick_letter') ?>'"><i class="glyphicon glyphicon-print"></i> Cetak Surat Prediksi Penyakit</button>
                         </div>
                     </div>
+                    <!-- <div class="form-group"> -->
+                        <!-- <div class="col-md-6">
+                            <button type="button" class="btn btn-login btn-yellow btn-block btn-lg" data-toggle="modal" data-target="#modal5"><i class="glyphicon glyphicon-glass"></i> Lihat Saran</button>
+                        </div> -->
+                    <!-- </div> -->
                     </div>
                  </div>
               </div>
@@ -80,7 +86,7 @@
         <div class="modal-content">
           <div class="modal-header" style="background-color:#22a6b3;color:#fff">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-list"></i> Hasil Solusi Penyakit Yang Di Derita</h4>
+            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-glass"></i> Hasil Solusi & Saran Penyakit Yang Di Derita</h4>
           </div>
           <div class="modal-body">
             St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm St Lorem ipsum dolor, grou ingotufmm
@@ -128,7 +134,7 @@
           <div class="modal-footer" style="text-align:center">
             <div class="col-md-7 pull-right" style="text-align:center">
                 <label style="font-size:14px;">Bandung, 10 Oktober 2017</label><br><br><br>
-                <span style="font-size:12px;"><u>Aplikasi Rekomendasi Makanan Pada Solusi Penyakit</u></span><br>
+                <span style="font-size:12px;"><u>Rekomendasi Kesehatan Untuk Prediksi Penyakit</u></span><br>
                 <label>Dr. Yuan Miko</label>
             </div>
             <div class="col-md-12" style="text-align:center">
