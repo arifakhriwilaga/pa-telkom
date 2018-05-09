@@ -27,7 +27,7 @@
                             <button type="button" class="btn btn-login btn-red btn-block btn-lg" data-toggle="modal" data-target="#modal4"><i class="glyphicon glyphicon-file"></i> Surat Keterangan Penyakit</button>
                         </div>
                         <div class="col-md-6 pull-right">
-                            <button class="btn btn-login btn-purple btn-block btn-lg" onclick="location.href='<?php echo site_url('front_end/check/print_sick_letter') ?>'"><i class="glyphicon glyphicon-print"></i> Cetak Surat Prediksi Penyakit</button>
+                            <a href="<?php echo site_url('front_end/check/print_sick_letter') ?>" target="_blank" class="btn btn-login btn-purple btn-block btn-lg"><i class="glyphicon glyphicon-print"></i> Cetak Surat Prediksi Penyakit</a>
                         </div>
                     </div>
                     <!-- <div class="form-group"> -->

@@ -5,7 +5,6 @@
         "vendor-dir": "application/vendor"
     },
     "require": {
-    	"twig/twig": "^1.30",
-			"dompdf/dompdf" : "^0.8.2"
+		"dompdf/dompdf" : "^0.8.2"
     }
 }
