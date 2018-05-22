@@ -7,6 +7,9 @@ class Check extends CI_Controller {
 	    parent::__construct();
 	    $this->load->model('CheckUp', 'checkup');
 	    $this->user = $this->session->userdata('user','User');
+	    if (empty($this->user)) {
+            redirect('masuk-akun');
+        }
 	    if ($this->user['level_user'] == 'admin') {
 	    	redirect('dasbor');
 	    }
@@ -90,7 +93,7 @@ class Check extends CI_Controller {
 			'_js' => 'assets/js/front_end/check/step_final.js',
 			'sickness' => $sickness
 		);
-		print_r($sickness);die();
+		// print_r($sickness);die();
 		$this->load->view('front_end/base',$data);
 	}
 

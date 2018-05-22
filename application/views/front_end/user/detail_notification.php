@@ -12,7 +12,7 @@
                                 <span class="glyphicon glyphicon-time"></span><?php echo time_since(strtotime($notif->created_date)); ?></small>
                         </div>
                         <div id="question">
-                            <?php echo $notif->questions; ?>
+                            <?php echo replace_newline($notif->questions); ?>
                         </div>
                     </div>
                     <div class="btn-show">

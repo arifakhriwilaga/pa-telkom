@@ -51,3 +51,8 @@ function time_since($time) {
 
     return $print;
 }
+
+function replace_newline($string) {
+    $result = preg_replace("/[\n\r]/", "<br/>", $string);
+    return $result;
+}
