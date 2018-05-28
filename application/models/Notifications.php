@@ -5,15 +5,6 @@ if (!defined('BASEPATH'))
 
 class Notifications extends CI_Model {
 
-    public function __construct() {
-        // parent::__construct();
-        // $user = $this->session->userdata('user');
-        // if ($user['level_user'] == 'admin') {
-        //     redirect('dasbor');
-        // }
-        // var_dump($this->db->from($this->table));exit();
-    }
-
     var $table = 'consul_doctors';
     //set column field database for datatable orderable
     var $column_order = array(null, null, null, 'questions', 'answer_status', 'answer', null);
@@ -147,9 +138,6 @@ class Notifications extends CI_Model {
         $this->db->where('consul_doctors.user_id', $user_id);
         $this->db->order_by('consul_doctors.created_date', 'DESC');
         $query = $this->db->get();
-//        $sql = $this->db->last_query();
-//        var_dump($sql);die();
-//        var_dump($query->result());die();
         return $query->result();
     }
     
@@ -160,8 +148,6 @@ class Notifications extends CI_Model {
         $this->db->where('consul_doctors.consul_id', $id);
         $query = $this->db->get();
         $sql = $this->db->last_query();
-//        var_dump($sql);die();
-//        var_dump($query->result());die();
         return $query->result();
     }
     
@@ -174,15 +160,5 @@ class Notifications extends CI_Model {
         $query = $this->db->get_where($this->table, array('user_id' => $user_id, 'read_status' => 'false'));
         return $query->num_rows();
     }
-
-    // public function get_notifications_user($user_id) {
-    //     $this->db->select('consul_doctors.*, CONCAT(doctors.name) AS doctor');
-    //     $this->db->from('consul_doctors');
-    //     $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id AND consul_doctors.user_id = '.$user_id, 'left');
-    //     $this->db->where('consul_doctors.user_id', $user_id);
-    //     $query = $this->db->get();
-    //     return $query;
-    // }
-
 }
     

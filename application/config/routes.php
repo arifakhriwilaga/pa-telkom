@@ -94,4 +94,4 @@ $route['kelola-akun'] = 'cms/account_management';
 $route['kelola-notifikasi'] = 'cms/notification_management';
 $route['kelola-konsultasi'] = 'cms/consultation_management';
 $route['detail-konsultasi'] = 'cms/consultation_management/detail_consul';
-$route['cetak-riwayat'] = 'cms/consultation_management/detail_history';
+$route['cetak-riwayat'] = 'cms/cetak_riwayat';

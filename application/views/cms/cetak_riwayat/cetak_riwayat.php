@@ -9,7 +9,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="tabel_cetak_riwayat" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>ID</th>
@@ -20,13 +20,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- <tr>
-                  <td>H001</td>
-                  <td>Lala</td>
-                  <td>laladipsi</td>
-                  <td>12-05-2016</td>
-                  <td><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style=""><i class="glyphicon glyphicon-trash"></i></button></td>
-                </tr> -->
                 </tbody>
               </table>
             </div>

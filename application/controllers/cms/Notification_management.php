@@ -15,16 +15,11 @@ class Notification_management extends CI_Controller {
 
     public function index() {
         $page_title = "Kelola Notifikasi";
-        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');
-        $this->db->from('consul_doctors');
-        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');
-        $query = $this->db->get();
         $data = array(
             'page_title' => $page_title,
             '_content' => 'cms/notification/notification',
             '_css' => 'assets/css/cms/notification/notification.css',
-            '_js' => 'assets/js/cms/notification/notification.js',
-            'query' => $query
+            '_js' => 'assets/js/cms/notification/notification.js'
         );
 
         $this->load->view('cms/base', $data);

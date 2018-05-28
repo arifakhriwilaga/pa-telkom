@@ -36,16 +36,4 @@ class Consultation_management extends CI_Controller {
         $this->load->view('cms/base', $data);
     }
 
-    public function detail_history() {
-        $page_title = "Cetak Riwayat";
-
-        $data = array(
-            'page_title' => $page_title,
-            '_content' => 'cms/consultation/print_history',
-            '_js' => 'assets/js/cms/consultation/print_history.js'
-        );
-
-        $this->load->view('cms/base', $data);
-    }
-
 }
