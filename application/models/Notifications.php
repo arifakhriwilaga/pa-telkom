@@ -5,13 +5,19 @@ if (!defined('BASEPATH'))
 
 class Notifications extends CI_Model {
 
+<<<<<<< Updated upstream
     var $table = 'consul_doctors';
+=======
+    public function __construct() {    }
+
+    var $tabel = 'consul_doctors';
+>>>>>>> Stashed changes
     //set column field database for datatable orderable
-    var $column_order = array(null, null, null, 'questions', 'answer_status', 'answer', null);
+    var $urutan_kolom = array(null, null, null, 'questions', 'answer_status', 'answer', null);
     //set column field database for datatable searchable 
-    var $column_search = array('questions', 'answer');
+    var $pencarian_kolom = array('questions', 'answer');
     // default order 
-    var $order = array('consul_id' => 'asc');
+    var $urutan = array('consul_id' => 'asc');
 
 
     private function _get_notifications_query() {
@@ -21,30 +27,26 @@ class Notifications extends CI_Model {
         $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');
         $i = 0;
 
-        foreach ($this->column_search as $item) { // loop column 
+        foreach ($this->pencarian_kolom as $item) { // loop column 
             if ($_POST['search']['value']) { // if datatable send POST for search
                 if ($i === 0) { // first loop
-                    // var_dump($this->db->group_start());die();
                     $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
                     $this->db->like($item, $_POST['search']['value']);
-                    // var_dump($this->db->like($item, $_POST['search']['value']));die();
                 } else {
-                    // var_dump($this->db->or_like($item, $_POST['search']['value']));die();
                     $this->db->or_like($item, $_POST['search']['value']);
                 }
 
-                if (count($this->column_search) - 1 == $i) //last loop
-                // var_dump($this->db->group_end());die();
+                if (count($this->pencarian_kolom) - 1 == $i) //last loop
                     $this->db->group_end(); //close bracket
             }
             $i++;
         }
 
         if (isset($_POST['order'])) { // here order processing
-            $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-        } else if (isset($this->order)) {
-            $order = $this->order;
-            $this->db->order_by(key($order), $order[key($order)]);
+            $this->db->order_by($this->urutan_kolom[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else if (isset($this->urutan)) {
+            $urutan = $this->urutan;
+            $this->db->order_by(key($urutan), $urutan[key($urutan)]);
         }
     }
 
@@ -63,7 +65,7 @@ class Notifications extends CI_Model {
     }
 
     public function count_all() {
-        $this->db->from($this->table);
+        $this->db->from($this->tabel);
         return $this->db->count_all_results();
     }
 
@@ -72,7 +74,7 @@ class Notifications extends CI_Model {
         $consul_id = $this->input->post('consul_id');
         $this->db->where('consul_id', $consul_id);
 
-        if ($this->db->delete($this->table)) {
+        if ($this->db->delete($this->tabel)) {
             $result = array(
                 'status' => true,
                 'message' => 'Akun berhasil dihapus!',
@@ -92,7 +94,7 @@ class Notifications extends CI_Model {
 
     public function post_answer($data = []) {
         $query = $this->db->where('consul_id', $data['consul_id']);
-        if ($this->db->update($this->table, $data)) {
+        if ($this->db->update($this->tabel, $data)) {
             $result = array(
                 'status' => true,
                 'message' => 'Jawaban berhasil disimpan!',
@@ -112,7 +114,7 @@ class Notifications extends CI_Model {
 
     public function send_answer($data = []) {
         $this->db->where('consul_id', $data['consul_id']);
-        if ($this->db->update($this->table, $data)) {
+        if ($this->db->update($this->tabel, $data)) {
             $result = array(
                 'status' => true,
                 'message' => 'Jawaban berhasil dikirim!',
@@ -153,11 +155,11 @@ class Notifications extends CI_Model {
     
     public function read_notif($id) {
         $this->db->where('consul_id', $id);
-        $this->db->update($this->table, array('read_status' => 'true'));
+        $this->db->update($this->tabel, array('read_status' => 'true'));
     }
     
     public function count_notif($user_id) {
-        $query = $this->db->get_where($this->table, array('user_id' => $user_id, 'read_status' => 'false'));
+        $query = $this->db->get_where($this->tabel, array('user_id' => $user_id, 'read_status' => 'false'));
         return $query->num_rows();
     }
 }
