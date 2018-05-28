@@ -56,3 +56,49 @@ function replace_newline($string) {
     $result = preg_replace("/[\n\r]/", "<br/>", $string);
     return $result;
 }
+
+function date_formater($date) {
+    $result = explode(' ', $date);
+    return $result[0] ." ". change_month($result[1]) ." ". $result[2];
+}
+
+function change_month($month) {
+    switch ($month) {
+        case 'January':
+            return 'Januari';
+            break;
+        case 'February':
+            return 'Februari';
+            break;
+        case 'March':
+            return 'Maret';
+            break;
+        case 'April':
+            return 'April';
+            break;
+        case 'May':
+            return 'Mei';
+            break;
+        case 'June':
+            return 'Juni';
+            break;
+        case 'July':
+            return 'Juli';
+            break;
+        case 'August':
+            return 'Agustus';
+            break;
+        case 'September':
+            return 'September';
+            break;
+        case 'October':
+            return 'Oktober';
+            break;
+        case 'November':
+            return 'November';
+            break;
+        default:
+            return 'Desember';
+            break;
+        }
+}

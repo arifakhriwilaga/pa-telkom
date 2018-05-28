@@ -52,4 +52,14 @@ class CheckUp extends CI_Model {
         );
         $this->db->insert('periksa', $data);
     }
+
+    public function hasil_periksa($id_pengguna) {
+        $periksa = $this->db->where('id_pengguna', $id_pengguna)
+                        ->order_by('tanggal_dibuat', 'DESC')
+                        ->limit(1)
+                        ->get('periksa')
+                        ->row();
+        $penyakit = $this->get_sickness_by_id($periksa->id_penyakit);
+        return $penyakit;
+    }
 }

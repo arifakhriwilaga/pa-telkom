@@ -124,10 +124,7 @@
                                 <td style="width:150px;border-top:0">Nama</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo $user['name']; ?></td>
                             </tr>
                             <tr>
-                                <td style="width:150px;border-top:0">Usia</td><td style="width:10px;border-top:0">:</td><td style="border-top:0">20 Tahun</td>
-                            </tr>
-                            <tr>
-                                <td style="width:150px;border-top:0">Tanggal Lahir</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo $user['born_date']; ?></td>
+                                <td style="width:150px;border-top:0">Tanggal Lahir</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo date_formater(date('j F Y',strtotime($user['born_date']))); ?></td>
                             </tr>
                         </table>
                     </div>
@@ -140,7 +137,7 @@
             </div>
             <div class="modal-footer" style="text-align:center">
                 <div class="col-md-7 pull-right" style="text-align:center">
-                    <label style="font-size:14px;">Bandung, 10 Oktober 2017</label><br><br><br>
+                    <label style="font-size:14px;">Bandung, <?php echo date_formater(date('j F Y')); ?></label><br><br><br>
                     <span style="font-size:12px;"><u>Rekomendasi Kesehatan Untuk Prediksi Penyakit</u></span><br>
                     <label>Dr. Yuan Miko</label>
                 </div>
