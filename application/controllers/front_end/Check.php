@@ -77,15 +77,16 @@ class Check extends CI_Controller {
 	public function check_step_final() {
 		$page_title = "Periksa";
 		$answer = $this->session->flashdata('answer');
-		$sickness_id = null;
+		$id_penyakit = null;
 
-		if ($answer) {
-			$sickness_id = $this->session->flashdata('sickness_true');
+		if ($answer=="true") {
+			$id_penyakit = $this->session->flashdata('sickness_true');
 		} else {
-			$sickness_id = $this->session->flashdata('sickness_true');
+			$id_penyakit = $this->session->flashdata('sickness_false');
 		}
 
-		$sickness = $this->checkup->get_sickness_by_id($sickness_id);
+		$sickness = $this->checkup->get_sickness_by_id($id_penyakit);
+		$this->checkup->pos_periksa($this->user['user_id'], $id_penyakit);
 
 		$data = array(
 			'page_title' => $page_title,
@@ -93,7 +94,6 @@ class Check extends CI_Controller {
 			'_js' => 'assets/js/front_end/check/step_final.js',
 			'sickness' => $sickness
 		);
-		// print_r($sickness);die();
 		$this->load->view('front_end/base',$data);
 	}
 

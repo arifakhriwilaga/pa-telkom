@@ -44,4 +44,12 @@ class CheckUp extends CI_Model {
                         ->row();
 		return $result;
     }
+
+    public function pos_periksa($id_pengguna, $id_penyakit) {
+        $data = array(
+            'id_pengguna' => $id_pengguna,
+            'id_penyakit' => $id_penyakit
+        );
+        $this->db->insert('periksa', $data);
+    }
 }

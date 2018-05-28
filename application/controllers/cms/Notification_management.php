@@ -69,7 +69,7 @@ class Notification_management extends CI_Controller {
     public function checkSend($status = '', $data = '') {
         $result = '';
         $style = '';
-        if (!$status && $data->answer) {
+        if ($status=='false' && $data->answer) {
             $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab">'
                     . '<i class="fa fa-send"></i>'
                     . '</button>';
@@ -83,7 +83,8 @@ class Notification_management extends CI_Controller {
         $data = array(
             "consul_id" => $this->input->post('consul_id'),
             "answer" => addslashes($this->input->post('answer')),
-            "answer_status" => 'true'
+            "answer_status" => 'true',
+            "send_status" => 'false'
         );
         $result = $this->notifications->post_answer($data);
         if ($result['status']) {
