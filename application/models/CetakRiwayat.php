@@ -7,9 +7,9 @@ class CetakRiwayat extends CI_Model {
 
     var $table = 'cetak_riwayat';
     //set column field database for datatable orderable
-    var $column_order = array('name', 'tanggal_dibuat');
+    var $column_order = array(null, 'name', 'username', 'tanggal_dibuat');
     //set column field database for datatable searchable 
-    var $column_search = array('name', 'tanggal_dibuat');
+    var $column_search = array(null, 'name', 'username', 'tanggal_dibuat');
     // default order 
     var $order = array('id' => 'asc');
 

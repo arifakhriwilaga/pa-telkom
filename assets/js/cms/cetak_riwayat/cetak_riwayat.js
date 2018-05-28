@@ -24,6 +24,10 @@ var table = $("#tabel_cetak_riwayat").DataTable({
         {
             "targets": [0],
             "orderable": false,
+        },
+        {
+            "targets": [4],
+            "orderable": false,
         }
     ]
 });
