@@ -4,24 +4,24 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class User extends CI_Model {
+class m_user extends CI_Model {
     var $table = 'users';
 
-    public function get_user($id) {
-        $result = $this->db->where('user_id', $id)
+    public function mengambil_user($id) {
+        $result = $this->db->where('id_user', $id)
                         ->get($this->table)
                         ->row();
         $user = array(
-            'user_id' => $result->user_id,
+            'id_user' => $result->id_user,
             'username' => $result->username,
-            'name' => $result->name,
+            'nama_user' => $result->nama_user,
             'email' => $result->email,
-            'gender' => $result->gender,
-            'born_date' => $result->born_date,
+            'jk_user' => $result->jk_user,
+            'tgl_lahir' => $result->tgl_lahir,
             'password' => $result->password,
             'level_user' => $result->level_user,
-            'profile_picture' => $result->profile_picture,
-            'created_date' => $result->created_date
+            'foto' => $result->foto,
+            'tgl_registrasi' => $result->tgl_registrasi
         );
         return $user;
     }

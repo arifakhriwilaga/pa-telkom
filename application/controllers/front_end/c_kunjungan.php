@@ -3,16 +3,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class c_kunjungan extends CI_Controller {
 
+	public $user;
+
 	public function __construct() {
-    parent::__construct();
-    $user = $this->session->userdata('user');
-    if (empty($user)) {
-    	redirect('masuk-akun');
-    }
-    if ($user['level_user'] == 'admin') {
-    	redirect('dasbor');
-    }
-  }
+		parent::__construct();
+		$this->load->model('CheckUp','checkup');
+		$this->user = $this->session->userdata('user');
+		if (empty($this->user)) {
+			redirect('masuk-akun');
+		}
+		if ($this->user['level_user'] == 'admin') {
+			redirect('dasbor');
+		}
+	}
 
 	public function index()	{
 		$page_title = "Kunjungan";
@@ -24,4 +27,26 @@ class c_kunjungan extends CI_Controller {
 
 		$this->load->view('front_end/v_base',$data);
 	}
+
+    public function ambil_kunjungan() {
+        $list = $this->checkup->ambil_kunjungan($this->user['user_id']);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $checkup) {
+            $date = explode(' ', $checkup->tanggal_dibuat);
+            $no++;
+            $row = array();
+            $row[] = $date[0];
+            $row[] = $date[1];
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->checkup->count_all(),
+            "recordsFiltered" => $this->checkup->count_filtered($this->user['user_id']),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
 }

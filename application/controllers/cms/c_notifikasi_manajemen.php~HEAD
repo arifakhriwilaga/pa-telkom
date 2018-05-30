@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Notification_management extends CI_Controller {
+class c_notifikasi_manajemen extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -15,14 +15,19 @@ class Notification_management extends CI_Controller {
 
     public function index() {
         $page_title = "Kelola Notifikasi";
+        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');
+        $this->db->from('consul_doctors');
+        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');
+        $query = $this->db->get();
         $data = array(
             'page_title' => $page_title,
-            '_content' => 'cms/notification/notification',
-            '_css' => 'assets/css/cms/notification/notification.css',
-            '_js' => 'assets/js/cms/notification/notification.js'
+            '_content' => 'cms/notifikasi/v_notifikasi',
+            '_css' => 'assets/css/cms/notifikasi/notifikasi.css',
+            '_js' => 'assets/js/cms/notifikasi/notifikasi.js',
+            'query' => $query
         );
 
-        $this->load->view('cms/base', $data);
+        $this->load->view('cms/v_base', $data);
     }
 
     public function get_notifications() {
@@ -64,7 +69,7 @@ class Notification_management extends CI_Controller {
     public function checkSend($status = '', $data = '') {
         $result = '';
         $style = '';
-        if ($status=='false' && $data->answer) {
+        if (!$status && $data->answer) {
             $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab">'
                     . '<i class="fa fa-send"></i>'
                     . '</button>';
@@ -78,8 +83,7 @@ class Notification_management extends CI_Controller {
         $data = array(
             "consul_id" => $this->input->post('consul_id'),
             "answer" => addslashes($this->input->post('answer')),
-            "answer_status" => 'true',
-            "send_status" => 'false'
+            "answer_status" => 'true'
         );
         $result = $this->notifications->post_answer($data);
         if ($result['status']) {

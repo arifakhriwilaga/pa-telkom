@@ -36,10 +36,35 @@
                 <h4 class="modal-title"><i class="fa fa-share"></i> Form Jawaban</h4>
             </div>
             <div class="modal-body">
-                <form id="answerForm" action="<?php echo site_url('cms/notification_management/post_answer') ?>" method="post"> 
+                <form id="answerForm" action="<?php echo site_url('cms/c_notifikasi_manajemen/post_answer') ?>" method="post"> 
                     <input type="hidden" id="consul_id" name="consul_id" value="">
                     <div class="form-group">
                         <textarea class="form-control" name="answer" id="answer" rows="22" placeholder="Ketik jawaban disini..." style="resize: none;"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button id="btnanswer" type="submit" class="btn btn-default btn-md pull-right">Jawab</button>
+                        </div>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal answer -->
+<div class="modal fade" id="editAnswerModal" tabindex="-1" role="dialog" aria-labelledby="answerModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" onclick="hideModal()" aria-label="Close"><span aria-hidden="true" style="color:#fff">&times;</span></button>
+                <h4 class="modal-title"><i class="fa fa-share"></i> Form Jawaban</h4>
+            </div>
+            <div class="modal-body">
+                <form id="editAnswerForm" action="<?php echo site_url('cms/c_notifikasi_manajemen/update_answer') ?>" method="post"> 
+                    <input type="hidden" id="edit_consul_id" name="edit_consul_id" value="">
+                    <div class="form-group">
+                        <textarea class="form-control" name="edit_answer" id="edit_answer" rows="22" placeholder="Ketik jawaban disini..." style="resize: none;"></textarea>
                     </div>
                     <div class="row">
                         <div class="col-md-12">

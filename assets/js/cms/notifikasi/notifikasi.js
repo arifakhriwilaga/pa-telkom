@@ -34,6 +34,11 @@ function showModal(id) {
     consul_id = id;
     $('#answerModal').modal('show');
 }
+function editModal(id) {
+    consul_id = id;
+    $('#editAnswerModal').modal('show');
+    $('#edit_answer').val($('#table-notifications').find('td').find('button.edit#'+id).attr('data-answer'));
+}
 function hideModal() {
     $('#answerModal').modal('hide');
     $('#answer').val('');
@@ -53,6 +58,28 @@ $(document)
                 },
                 fields: {
                     answer: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Jawaban tidak boleh kosong!'
+                            }
+                        }
+                    }
+                }
+            });
+        })
+        .on('shown.bs.modal', '#editAnswerModal', function () {
+            $('#edit_answer').focus();
+            $('#edit_consul_id').val(consul_id);
+            // baru validasinya
+            $('#editAnswerForm').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    edit_answer: {
                         validators: {
                             notEmpty: {
                                 message: 'Jawaban tidak boleh kosong!'

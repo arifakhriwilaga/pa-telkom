@@ -38,7 +38,7 @@ $(document)
         .on('click', '.delete-acc', function () {
             if (confirm('Anda yakin ingin menghapus akun ' + $(this).data('name') + '?')) {
                 $.ajax({
-                    url: site_url('cms/account_management/delete_account'),
+                    url: site_url('cms/c_akun_manajemen/hapus_akun'),
                     type: 'POST',
                     data: {
                         user_id: $(this).attr('id')

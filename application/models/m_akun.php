@@ -3,15 +3,15 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Accounts extends CI_Model {
+class m_akun extends CI_Model {
 
     var $table = 'users';
     //set column field database for datatable orderable
-    var $column_order = array(null, 'name', 'email', 'gender', 'born_date', 'username');
+    var $column_order = array(null, 'nama_user', 'email', 'jk_user', 'tgl_lahir', 'username');
     //set column field database for datatable searchable 
-    var $column_search = array('name', 'email', 'born_date', 'username');
+    var $column_search = array('nama_user', 'email', 'tgl_lahir', 'username');
     // default order 
-    var $order = array('user_id' => 'asc');
+    var $order = array('id_user' => 'asc');
 
     private function _get_accounts_query() {
 
@@ -63,8 +63,8 @@ class Accounts extends CI_Model {
 
     public function delete_account() {
         $result = array();
-        $user_id = $this->input->post('user_id');
-        $this->db->where('user_id', $user_id);
+        $id_user = $this->input->post('user_id');
+        $this->db->where('id_user', $id_user);
 
         if ($this->db->delete($this->table)) {
             $result = array(

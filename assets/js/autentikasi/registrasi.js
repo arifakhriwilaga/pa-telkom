@@ -1,5 +1,5 @@
 // config datepicker borndate
-    $('#born_date').datetimepicker({
+    $('#tgl_lahir').datetimepicker({
         locale: moment.locale('id', {
             months : ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],
             monthsShort : ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des']
@@ -9,14 +9,14 @@
         minDate: moment().add(-28, 'years').endOf('years'), // set last month of -2 years from now
         defaultDate: ''
     });
-    $('#born_date').val('') // remove initial value
+    $('#tgl_lahir').val('') // remove initial value
 
-    $('#born_date').on('dp.change dp.show', function() {
-        $('#register').formValidation('revalidateField', 'born_date');
+    $('#tgl_lahir').on('dp.change dp.show', function() {
+        $('#registrasi').formValidation('revalidateField', 'tgl_lahir');
     });
 
     // config form validation
-    $('#register').formValidation({
+    $('#registrasi').formValidation({
         framework: 'bootstrap',
         icon: {
             valid: 'glyphicon glyphicon-ok',
@@ -24,10 +24,14 @@
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            name: {
+            nama_user: {
                 validators: {
                     notEmpty: {
                         message: 'Nama Lengkap tidak boleh kosong'
+                    },
+                    stringLength: {
+                        min: 3,
+                        message: 'Nama pengguna harus lebih dari 2 karakter'
                     }
                 }
             },
@@ -56,14 +60,14 @@
                     }
                 }
             },
-            gender: {
+            jk_user: {
                 validators: {
                     notEmpty: {
                         message: 'Pilih jenis kelamin'
                     }
                 }
             },
-            born_date: {
+            tgl_lahir: {
                 validators: {
                     notEmpty: {
                         message: 'Tanggal lahir tidak boleh kosong'
@@ -86,7 +90,7 @@
                     }
                 }
             },
-            confirm_password: {
+            konfirmasi_password: {
                 validators: {
                     notEmpty: {
                         message: 'Memastikan kata sandi tidak boleh kosong'

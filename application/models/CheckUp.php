@@ -62,4 +62,39 @@ class CheckUp extends CI_Model {
         $penyakit = $this->get_sickness_by_id($periksa->id_penyakit);
         return $penyakit;
     }
+
+
+    var $order = array('id' => 'asc');
+
+    private function _get_kunjungan_query($id_pengguna) {
+
+        $this->db->select('*');
+        $this->db->from('periksa');
+        $this->db->where('id_pengguna', $id_pengguna);
+
+        if ($_POST['search']['value']) { // if datatable send POST for search
+            $this->db->like('tanggal_dibuat', $_POST['search']['value']);
+        }
+        $order = $this->order;
+        $this->db->order_by(key($order), $order[key($order)]);
+    }
+
+    function ambil_kunjungan($id_pengguna) {
+        $this->_get_kunjungan_query($id_pengguna);
+        if ($_POST['length'] != -1)
+            $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function count_filtered($id_pengguna) {
+        $this->_get_kunjungan_query($id_pengguna);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function count_all() {
+        $this->db->from('periksa');
+        return $this->db->count_all_results();
+    }
 }

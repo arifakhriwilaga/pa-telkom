@@ -6,7 +6,7 @@ class c_akun_manajemen extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Accounts', 'accounts');
+        $this->load->model('m_akun', 'accounts');
         $user = $this->session->userdata('user');
         if (empty($user) || $user['level_user'] == 'user') {
             redirect('/');
@@ -30,18 +30,18 @@ class c_akun_manajemen extends CI_Controller {
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $accounts) {
-            $date = preg_split('/\-/', strval($accounts->born_date));
+            $date = preg_split('/\-/', strval($accounts->tgl_lahir));
             $born_date = $date[2] . '/' . $date[1] . '/' . $date[0];;
             
             $no++;
             $row = array();
-            $row[] = $accounts->user_id;
-            $row[] = $accounts->name;
+            $row[] = $accounts->id_user;
+            $row[] = $accounts->nama_user;
             $row[] = $accounts->email;
-            $row[] = $accounts->gender == 'male' ? 'Laki-laki' : 'Perempuan';
+            $row[] = $accounts->jk_user == 'male' ? 'Laki-laki' : 'Perempuan';
             $row[] = $born_date ;
             $row[] = $accounts->username;
-            $row[] = '<button class="btn btn-danger btn-sm delete-acc" id="' . $accounts->user_id . '" data-name="' . $accounts->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+            $row[] = '<button class="btn btn-danger btn-sm delete-acc" id="' . $accounts->id_user . '" data-name="' . $accounts->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
 
             $data[] = $row;
         }

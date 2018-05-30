@@ -87,18 +87,10 @@ $route['notifikasi'] = 'front_end/c_notifikasi';
 $route['detail-notifikasi/(:num)'] = 'front_end/c_notifikasi/detail/$1';
 
 // Routes CMS
-<<<<<<< Updated upstream
-$route['dasbor'] = 'cms/dashboard';
-$route['kelola-akun'] = 'cms/account_management';
-$route['kelola-notifikasi'] = 'cms/notification_management';
-$route['kelola-konsultasi'] = 'cms/consultation_management';
-$route['detail-konsultasi'] = 'cms/consultation_management/detail_consul';
-$route['cetak-riwayat'] = 'cms/cetak_riwayat';
-=======
 $route['dasbor'] = 'cms/c_dasbor';
 $route['kelola-akun'] = 'cms/c_akun_manajemen';
 $route['kelola-notifikasi'] = 'cms/c_notifikasi_manajemen';
 $route['kelola-konsultasi'] = 'cms/c_notifikasi_manajemen';
 $route['detail-konsultasi'] = 'cms/c_notifikasi_manajemen/detail_consul';
 $route['cetak-riwayat'] = 'cms/consultation_management/detail_history';
->>>>>>> Stashed changes
+$route['cetak-riwayat'] = 'cms/c_cetak_riwayat';

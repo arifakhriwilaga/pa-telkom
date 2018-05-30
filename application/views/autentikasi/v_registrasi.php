@@ -10,7 +10,7 @@
                 <div class="box">
                     <div class="panel-form basic-form form" style="margin:15px 0">
                         <h2 class="text-center">REGISTRASI AKUN</h2>
-                        <form action="<?php echo site_url('c_autentikasi/lakukan_registrasi'); ?>" method="POST" id="register" class="form-horizontal" style="padding-left:15px;padding-right:15px">
+                        <form action="<?php echo site_url('c_autentikasi/lakukan_registrasi'); ?>" method="POST" id="registrasi" class="form-horizontal" style="padding-left:15px;padding-right:15px">
                             <div class="form-group">
                                 <input type="hidden" name="level_user" value="user" id="level_user" class="form-control">
                                 <input type="text" name="name" id="name" class="form-control" placeholder="Nama Lengkap" required="" autocomplete="false">

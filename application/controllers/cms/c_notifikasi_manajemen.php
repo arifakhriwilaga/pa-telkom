@@ -15,16 +15,11 @@ class c_notifikasi_manajemen extends CI_Controller {
 
     public function index() {
         $page_title = "Kelola Notifikasi";
-        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');
-        $this->db->from('consul_doctors');
-        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');
-        $query = $this->db->get();
         $data = array(
             'page_title' => $page_title,
             '_content' => 'cms/notifikasi/v_notifikasi',
             '_css' => 'assets/css/cms/notifikasi/notifikasi.css',
-            '_js' => 'assets/js/cms/notifikasi/notifikasi.js',
-            'query' => $query
+            '_js' => 'assets/js/cms/notifikasi/notifikasi.js'
         );
 
         $this->load->view('cms/v_base', $data);
@@ -62,6 +57,10 @@ class c_notifikasi_manajemen extends CI_Controller {
             $button .= '&nbsp;<button class="btn btn-success btn-sm" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab" onclick="showModal(' . $data->consul_id . ')">'
                     . '<i class="fa fa-share"></i>'
                     . '</button>';
+        } else if($status == 'true' && $data->send_status == 'false') {
+            $button .= '&nbsp;<button class="btn btn-default btn-sm edit" id="' . $data->consul_id . '" data-name="' . $data->name . '" data-answer="' . $data->answer . '" title="Edit" onclick="editModal(' . $data->consul_id . ')">'
+                    . '<i class="fa fa-pencil"></i>'
+                    . '</button>';
         }
         return $button;
     }
@@ -69,7 +68,7 @@ class c_notifikasi_manajemen extends CI_Controller {
     public function checkSend($status = '', $data = '') {
         $result = '';
         $style = '';
-        if (!$status && $data->answer) {
+        if ($status == 'false' && $data->answer) {
             $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab">'
                     . '<i class="fa fa-send"></i>'
                     . '</button>';
@@ -86,6 +85,20 @@ class c_notifikasi_manajemen extends CI_Controller {
             "answer_status" => 'true'
         );
         $result = $this->notifications->post_answer($data);
+        if ($result['status']) {
+            $this->session->set_flashdata('success', $result['message']);
+        } else {
+            $this->session->set_flashdata('error', $result['message']);
+        }
+        return redirect('kelola-notifikasi');
+    }
+
+    public function update_answer() {
+        $data = array(
+            "consul_id" => $this->input->post('edit_consul_id'),
+            "answer" => addslashes($this->input->post('edit_answer'))
+        );
+        $result = $this->notifications->update_answer($data);
         if ($result['status']) {
             $this->session->set_flashdata('success', $result['message']);
         } else {

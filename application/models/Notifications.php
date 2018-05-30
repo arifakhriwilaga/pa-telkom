@@ -1,17 +1,12 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Notifications extends CI_Model {
 
-<<<<<<< Updated upstream
-    var $table = 'consul_doctors';
-=======
     public function __construct() {    }
 
     var $tabel = 'consul_doctors';
->>>>>>> Stashed changes
     //set column field database for datatable orderable
     var $urutan_kolom = array(null, null, null, 'questions', 'answer_status', 'answer', null);
     //set column field database for datatable searchable 
@@ -22,9 +17,9 @@ class Notifications extends CI_Model {
 
     private function _get_notifications_query() {
 
-        $this->db->select('consul_doctors.*, CONCAT(users.name) AS name, CONCAT(users.username) AS username');
+        $this->db->select('consul_doctors.*, CONCAT(users.nama_user) AS name, CONCAT(users.username) AS username');
         $this->db->from('consul_doctors');
-        $this->db->join('users', 'consul_doctors.user_id = users.user_id', 'left');
+        $this->db->join('users', 'consul_doctors.user_id = users.id_user', 'left');
         $i = 0;
 
         foreach ($this->pencarian_kolom as $item) { // loop column 
@@ -98,6 +93,26 @@ class Notifications extends CI_Model {
             $result = array(
                 'status' => true,
                 'message' => 'Jawaban berhasil disimpan!',
+                'data' => null
+            );
+            return $result;
+        } else {
+            $error = $this->db->error();
+            $result = array(
+                'status' => false,
+                'message' => $error['message'],
+                'data' => null
+            );
+            return $result;
+        }
+    }
+
+    public function update_answer($data = []) {
+        $query = $this->db->where('consul_id', $data['consul_id']);
+        if ($this->db->update($this->tabel, $data)) {
+            $result = array(
+                'status' => true,
+                'message' => 'Jawaban berhasil diubah!',
                 'data' => null
             );
             return $result;

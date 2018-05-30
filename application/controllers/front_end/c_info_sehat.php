@@ -115,7 +115,7 @@ class c_info_sehat extends CI_Controller {
 		$page_title = "3 Makanan Sumber Gandum Utuh yang Sehat untuk Sarapan";
 		$data = array(
 			'page_title' => $page_title,
-			'_content' => 'front_end/info_sehat/v_detail_info_sehat0'
+			'_content' => 'front_end/info_sehat/v_detail_info_sehat10'
 		);
 
 		$this->load->view('front_end/v_base',$data);

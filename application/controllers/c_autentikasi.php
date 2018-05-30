@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class c_autentikasi extends CI_Controller {
 	public function __construct() {
         parent::__construct();
-        $this->load->model('Auth', 'auth');
-        $this->load->model('User', 'user');
-        $this->load->model('LoginHistory', 'login_history');
+        $this->load->model('m_auth', 'auth');
+        $this->load->model('m_user', 'user');
+        $this->load->model('m_history_login', 'login_history');
         $this->load->helper(array('Form', 'Cookie', 'String'));
     }
 
@@ -33,18 +33,15 @@ class c_autentikasi extends CI_Controller {
 	public function lakukan_login()	{
 		$result = $this->auth->login();
 		if ($result['status']) {
-			$user = $this->user->get_user($result['data']->user_id);
+			$user = $this->user->mengambil_user($result['data']->id_user);
 			$this->session->set_userdata('user', $user);
 			$this->session->set_flashdata('success', $result['message']);
 			
 			if ($result['data']->level_user == 'user') {
 				return redirect('/');
 			} elseif ($result['data']->level_user == 'admin') {
-      	$result_record = $this->login_history->post($result['data']->user_id);
-      	return $result_record ? redirect('dasbor') : $this->logout();
-        // var_dump($result_record);exit();
-        // echo "<pre>"; $result_record ;"</pre>";exit();
-				;
+				$result_record = $this->login_history->simpan_history($result['data']->id_user);
+				return $result_record ? redirect('dasbor') : $this->logout();
 			}
 		} else {
 			$this->session->set_flashdata('error', $result['message']);
@@ -79,7 +76,7 @@ class c_autentikasi extends CI_Controller {
 	}
 
 	public function lakukan_registrasi() {
-		$result = $this->auth->save();
+		$result = $this->auth->simpan();
 		if ($result['status']) {
 			$this->session->set_flashdata('success', $result['message']);
 			return redirect('masuk-akun');

@@ -4,7 +4,7 @@
                 <div class="box">
                     <div class="panel-form basic-form">
                         <h2 class="text-center">Lupa Password</h2>
-                        <form action="<?php echo site_url('c_autentikasi/lakukan_reset_kata_sandi'); ?>" method="post" id="forgot-password">
+                        <form action="<?php echo site_url('c_autentikasi/lakukan_reset_kata_sandi'); ?>" method="post" id="lupa-kata-sandi">
                             <div class="form-group">
                                 <input type="text" name="username" id="username" class="form-control" placeholder="Nama Pengguna" autocomplete="false">
                             </div>

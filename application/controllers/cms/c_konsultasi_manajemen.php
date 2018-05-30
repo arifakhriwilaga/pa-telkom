@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Consultation_management extends CI_Controller {
+class c_konsultasi_manajemen extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -17,8 +17,8 @@ class Consultation_management extends CI_Controller {
 
         $data = array(
             'page_title' => $page_title,
-            '_content' => 'cms/consultation/consultation',
-            '_js' => 'assets/js/cms/consultation/consultation.js'
+            '_content' => 'cms/konsultasi/v_konsultasi',
+            '_js' => 'assets/js/cms/konsultasi/konsultasi.js'
         );
 
         $this->load->view('cms/base', $data);
@@ -29,8 +29,8 @@ class Consultation_management extends CI_Controller {
 
         $data = array(
             'page_title' => $page_title,
-            '_content' => 'cms/consultation/detail_consultation',
-            '_js' => 'assets/js/cms/consultation/detail_consultation.js'
+            '_content' => 'cms/konsultasi/detail_konsultasi',
+            '_js' => 'assets/js/cms/konsultasi/detail_konsultasi.js'
         );
 
         $this->load->view('cms/base', $data);

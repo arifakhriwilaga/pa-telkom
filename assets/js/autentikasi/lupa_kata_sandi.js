@@ -1,4 +1,4 @@
-$('#forgot-password').formValidation({
+$('#lupa-kata-sandi').formValidation({
     framework: 'bootstrap',
     fields: {
         username: {

@@ -1,4 +1,4 @@
-<!--Dependencies Package-->
+<!--library yang diinstall -->
 <script src="<?php echo base_url('assets/includes/jquery/dist/jquery.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/admin-lte/dist/js/adminlte.min.js'); ?>"></script>
@@ -11,12 +11,9 @@
 <script src="<?php echo base_url('assets/includes/moment/min/moment.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'); ?>"></script>
 
-<!--This is link only for gmaps-->
-<!-- <script src="<?php echo base_url('assets/includes/google-maps/lib/Google.min.js'); ?>"></script> -->
-<!-- <script src="<?php echo base_url('assets/js/gmaps.min.js'); ?>"></script> -->
-
-<!--Custom JS-->
+<!--JS CUSTOM-->
 <script>
+    // variable untuk config toastr info pada pojok kanan atas
     var config = {
         toastr : {
             closeButton:true,
@@ -61,7 +58,7 @@
             rtl: false
         }
     }
-
+    
     function base_url(path) {
         return <?php echo json_encode(base_url()); ?> + path.replace(/^\//g, '');
     }
@@ -69,6 +66,7 @@
         return <?php echo json_encode(site_url()); ?> + path.replace(/^\//g, '');
     }
     
+    // kondisi ketika toastr info pada pojok kanan atas mana yang akan muncul
     <?php if($this->session->flashdata('success')){ ?>
         toastr.success("<?php echo $this->session->flashdata('success'); ?>", '', config.toastr);
     <?php }else if($this->session->flashdata('error')){  ?>
@@ -80,8 +78,9 @@
     <?php } ?>
 </script>
 <script src="<?php echo base_url('assets/js/functions.js'); ?>"></script>
+
 <?php
-/* ----- JS HANDLE ----- */
+// kondisi ini untuk menampilkan '_js' yang dikirim melalui controller PHP
 if (isset($_js) && $_js) {
     if (!is_array($_js)) {
         $_js = array((string) $_js);

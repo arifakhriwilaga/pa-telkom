@@ -6,10 +6,10 @@ class c_dasbor extends CI_Controller {
 
 	public function __construct() {
     parent::__construct();
-    $this->load->model('LoginHistory','login_history');
+    $this->load->model('m_history_login','login_history');
     
     $user = $this->session->userdata('user');
-    $date = preg_split('/\-/', strval($user['born_date']));
+    $date = date('d/m/Y', strtotime($user['tgl_lahir']));
     
     $this->born_date = $date[2] . '/' . $date[1] . '/' . $date[0];
     if (empty($user) || $user['level_user'] == 'user') {
@@ -18,16 +18,16 @@ class c_dasbor extends CI_Controller {
   }
 
 	public function index()	{
-		$result = $this->login_history->get_history($this->session->userdata('user')['user_id']);
+		$result = $this->login_history->mengambil_history($this->session->userdata('user')['id_user']);
 		
 		$login_histories = array();
 		if (isset($result)) {
 			foreach ($result as $key => $value) {
 					$login_histories[] = array(
-						'user_id' => $value->user_id,
-						'date' => date('d/m/Y', strtotime($value->created_date)),
-						'day' => $this->change_format_day(date('l', strtotime($value->created_date))),
-						'time' => date('H.i', strtotime($value->created_date)),
+						'user_id' => $value->id_user,
+						'date' => date('d/m/Y', strtotime($value->tgl_login)),
+						'day' => $this->change_format_day(date('l', strtotime($value->tgl_login))),
+						'time' => date('H.i', strtotime($value->tgl_login)),
 					);
 			}
 		}

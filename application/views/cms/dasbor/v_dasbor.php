@@ -6,11 +6,11 @@
       <div class="box box-widget widget-user">
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header bg-aqua-active">
-          <h3 class="widget-user-username"><?php echo $user['name']; ?></h3>
+          <h3 class="widget-user-username"><?php echo $user['nama_user']; ?></h3>
           <h5 class="widget-user-desc">Admin Kesdika</h5>
         </div>
         <div class="widget-user-image">
-          <img class="img-circle" src="<?php echo($user['profile_picture'] ? base_url($user['profile_picture']) : base_url('assets/images/home/header/default-avatar.png')); ?>" onerror="imgError(this);" alt="User Avatar">
+          <img class="img-circle" src="<?php echo($user['foto'] ? base_url($user['foto']) : base_url('assets/images/home/header/default-avatar.png')); ?>" onerror="imgError(this);" alt="User Avatar">
         </div>
         <div class="box-body" style="padding-top:50px">
         	<div class="col-md-6">
@@ -23,7 +23,7 @@
           <hr>
           <strong><i class="fa fa-venus-mars margin-r-5"></i> Jenis Kelamin</strong>
           <p class="text-muted">
-            <?php echo($user['gender'] == "male" ? 'Laki-laki' : 'Perempuan'); ?>
+            <?php echo($user['jk_user'] == "male" ? 'Laki-laki' : 'Perempuan'); ?>
           </p>
 
           <hr>
