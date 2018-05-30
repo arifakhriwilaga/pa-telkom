@@ -50,8 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'home';
-$route['default_controller'] = 'front_end/front_end/home';
+$route['default_controller'] = 'c_home';
+$route['default_controller'] = 'front_end/front_end/c_home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
  
@@ -59,39 +59,37 @@ $route['translate_uri_dashes'] = FALSE;
 $route['widgets/(:any)'] = 'widgets/$1/Widget';
 $route['widgets/(:any)/(:any)'] = 'widgets/$1/Widget/$2';
  
-// authentications
-$route['masuk-akun'] = 'authentication';
-$route['registrasi'] = 'authentication/register';
-$route['lupa-kata-sandi'] = 'authentication/forgot_password';
-$route['ubah-profil'] = 'front_end/profile';
+// autentikasi
+$route['masuk-akun'] = 'c_autentikasi';
+$route['registrasi'] = 'c_autentikasi/registrasi';
+$route['lupa-kata-sandi'] = 'c_autentikasi/lupa_kata_sandi';
+$route['ubah-profil'] = 'front_end/c_profil';
 
 // Front End
+$route['info-sehat'] = 'front_end/c_info_sehat';
+$route['info-sehat/13-tips-makan-sehat-untuk-orang-sibuk'] = 'front_end/c_info_sehat/detail1';
+$route['info-sehat/makan-daging-tingkatkan-risiko-diabetes'] = 'front_end/c_info_sehat/detail2';
+$route['info-sehat/mengenal-asam-amino-fungsinya-bagi-tubuh-dan-sumber-makanannya'] = 'front_end/c_info_sehat/detail3';
+$route['info-sehat/5-resep-brunch-lezat-buat-anda-yang-suka-sarapan-siang-siang'] = 'front_end/c_info_sehat/detail4';
+$route['info-sehat/4-manfaat-jamu-kunyit-asam-tak-cuma-redakan-nyeri-haid-lho'] = 'front_end/c_info_sehat/detail5';
+$route['info-sehat/berapa-batas-asupan-karbohidrat-yang-ideal-per-hari'] = 'front_end/c_info_sehat/detail6';
+$route['info-sehat/mengapa-semakin-tua-kebutuhan-kalori-semakin-berkurang'] = 'front_end/c_info_sehat/detail7';
+$route['info-sehat/bolehkah-ngemil-dulu-sebelum-menyantap-menu-makanan-utama'] = 'front_end/c_info_sehat/detail8';
+$route['info-sehat/makanan-untuk-ambeien-mana-yang-harus-dikonsumsi-mana-yang-dihindari'] = 'front_end/c_info_sehat/detail9';
+$route['info-sehat/3-makanan-sumber-gandum-utuh-yang-sehat-untuk-sarapan'] = 'front_end/c_info_sehat/detail10';
 
-$route['info-sehat'] = 'front_end/healty_info';
-$route['info-sehat/13-tips-makan-sehat-untuk-orang-sibuk'] = 'front_end/healty_info/detail1';
-$route['info-sehat/makan-daging-tingkatkan-risiko-diabetes'] = 'front_end/healty_info/detail2';
-$route['info-sehat/mengenal-asam-amino-fungsinya-bagi-tubuh-dan-sumber-makanannya'] = 'front_end/healty_info/detail3';
-$route['info-sehat/5-resep-brunch-lezat-buat-anda-yang-suka-sarapan-siang-siang'] = 'front_end/healty_info/detail4';
-$route['info-sehat/4-manfaat-jamu-kunyit-asam-tak-cuma-redakan-nyeri-haid-lho'] = 'front_end/healty_info/detail5';
-$route['info-sehat/berapa-batas-asupan-karbohidrat-yang-ideal-per-hari'] = 'front_end/healty_info/detail6';
-$route['info-sehat/mengapa-semakin-tua-kebutuhan-kalori-semakin-berkurang'] = 'front_end/healty_info/detail7';
-$route['info-sehat/bolehkah-ngemil-dulu-sebelum-menyantap-menu-makanan-utama'] = 'front_end/healty_info/detail8';
-$route['info-sehat/makanan-untuk-ambeien-mana-yang-harus-dikonsumsi-mana-yang-dihindari'] = 'front_end/healty_info/detail9';
-$route['info-sehat/3-makanan-sumber-gandum-utuh-yang-sehat-untuk-sarapan'] = 'front_end/healty_info/detail10';
-
-
-$route['kunjungan'] = 'front_end/visit';
-$route['periksa/step-1'] = 'front_end/check';
-$route['periksa/step-2'] = 'front_end/check/check_step_2';
-$route['periksa/step-final'] = 'front_end/check/check_step_final';
-$route['konsul-dokter'] = 'front_end/consul_doctor';
-$route['notifikasi'] = 'front_end/notification';
-$route['detail-notifikasi/(:num)'] = 'front_end/notification/detail/$1';
+$route['kunjungan'] = 'front_end/c_kunjungan';
+$route['periksa/step-1'] = 'front_end/c_periksa';
+$route['periksa/step-2'] = 'front_end/c_periksa/check_step_2';
+$route['periksa/step-final'] = 'front_end/c_periksa/check_step_final';
+$route['konsul-dokter'] = 'front_end/c_konsultasi_dokter';
+$route['notifikasi'] = 'front_end/c_notifikasi';
+$route['detail-notifikasi/(:num)'] = 'front_end/c_notifikasi/detail/$1';
 
 // Routes CMS
-$route['dasbor'] = 'cms/dashboard';
-$route['kelola-akun'] = 'cms/account_management';
-$route['kelola-notifikasi'] = 'cms/notification_management';
-$route['kelola-konsultasi'] = 'cms/consultation_management';
-$route['detail-konsultasi'] = 'cms/consultation_management/detail_consul';
-$route['cetak-riwayat'] = 'cms/cetak_riwayat';
+$route['dasbor'] = 'cms/c_dasbor';
+$route['kelola-akun'] = 'cms/c_akun_manajemen';
+$route['kelola-notifikasi'] = 'cms/c_notifikasi_manajemen';
+$route['kelola-konsultasi'] = 'cms/c_notifikasi_manajemen';
+$route['detail-konsultasi'] = 'cms/c_notifikasi_manajemen/detail_consul';
+$route['cetak-riwayat'] = 'cms/c_cetak_riwayat';

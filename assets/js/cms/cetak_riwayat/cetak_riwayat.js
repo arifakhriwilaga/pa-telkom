@@ -17,7 +17,7 @@ var table = $("#tabel_cetak_riwayat").DataTable({
     "serverSide": true,
     "order": [],
     "ajax": {
-        "url": site_url('cms/cetak_riwayat/ambil_cetak_riwayat'),
+        "url": site_url('cms/c_cetak_riwayat/ambil_cetak_riwayat'),
         "type": "POST"
     },
     "columnDefs": [
@@ -32,35 +32,35 @@ var table = $("#tabel_cetak_riwayat").DataTable({
     ]
 });
 $(document)
-        .on('click', '.hapus-cetak-riwayat', function () {
-            if (confirm('Anda yakin ingin menghapus riwayat dari ' + $(this).data('name') + '?')) {
-                $.ajax({
-                    url: site_url('cms/cetak_riwayat/hapus_cetak_riwayat'),
-                    type: 'POST',
-                    data: {
-                        id: $(this).attr('id')
-                    }
-                }).done(function (data) {
-                    if (data.status) {
-                        toastr.success(data.message,'',config.toastr);
-                        table.ajax.reload(null, false);
-                    } else {
-                        toastr.error(data.message,'',config.toastr);
-                    }
-                }).fail(function (xhr, status, error) {
-                    var msg = '';
-                    if (xhr.status === 404) {
-                        msg = 'Requested page not found.';
-                    } else if (xhr.status === 500) {
-                        msg = 'Internal Server Error.';
-                    } else if (error === 'parsererror') {
-                        msg = 'Requested failed.';
-                    } else if (error === 'timeout') {
-                        msg = 'Time out error.';
-                    } else if (error === 'abort') {
-                        msg = 'Request aborted.';
-                    }
-                    toastr.error(msg);
-                });
+.on('click', '.hapus-cetak-riwayat', function () {
+    if (confirm('Anda yakin ingin menghapus riwayat dari ' + $(this).data('name') + '?')) {
+        $.ajax({
+            url: site_url('cms/c_cetak_riwayat/hapus_cetak_riwayat'),
+            type: 'POST',
+            data: {
+                id: $(this).attr('id')
             }
-        })
+        }).done(function (data) {
+            if (data.status) {
+                toastr.success(data.message,'',config.toastr);
+                table.ajax.reload(null, false);
+            } else {
+                toastr.error(data.message,'',config.toastr);
+            }
+        }).fail(function (xhr, status, error) {
+            var msg = '';
+            if (xhr.status === 404) {
+                msg = 'Requested page not found.';
+            } else if (xhr.status === 500) {
+                msg = 'Internal Server Error.';
+            } else if (error === 'parsererror') {
+                msg = 'Requested failed.';
+            } else if (error === 'timeout') {
+                msg = 'Time out error.';
+            } else if (error === 'abort') {
+                msg = 'Request aborted.';
+            }
+            toastr.error(msg);
+        });
+    }
+})
