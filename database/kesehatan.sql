@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2018 at 04:30 AM
+-- Generation Time: Jun 04, 2018 at 11:23 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.0.29
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `codeigniter`
+-- Database: `kesehatan`
 --
 
 -- --------------------------------------------------------
@@ -46,27 +46,76 @@ INSERT INTO `cetak_riwayat` (`id`, `id_pengguna`, `tanggal_dibuat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `consul_doctors`
+-- Table structure for table `dokter`
 --
 
-CREATE TABLE `consul_doctors` (
-  `consul_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `doctor_id` int(11) NOT NULL,
-  `questions` text NOT NULL,
-  `answer_status` enum('true','false') NOT NULL,
-  `answer` text NOT NULL,
-  `send_status` enum('true','false') NOT NULL,
-  `read_status` enum('true','false') NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `answer_date` datetime NOT NULL
+CREATE TABLE `dokter` (
+  `id_dokter` int(11) NOT NULL,
+  `nama_dokter` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `jk_dokter` varchar(250) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `no_telp` varchar(250) NOT NULL,
+  `tgl_join` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `consul_doctors`
+-- Dumping data for table `dokter`
 --
 
-INSERT INTO `consul_doctors` (`consul_id`, `user_id`, `doctor_id`, `questions`, `answer_status`, `answer`, `send_status`, `read_status`, `created_date`, `answer_date`) VALUES
+INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `email`, `jk_dokter`, `tgl_lahir`, `no_telp`, `tgl_join`) VALUES
+(1, 'Nika Ghea', 'nika21@gmail.com', 'F', '1985-10-06', '089990811303', '2018-03-17 14:16:46'),
+(2, 'Yuan Miko', 'mikoyuan@gmail.com', 'M', '1983-01-01', '081211160908', '2018-03-17 14:16:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal_login`
+--
+
+CREATE TABLE `jadwal_login` (
+  `id_history_login` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `tgl_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jadwal_login`
+--
+
+INSERT INTO `jadwal_login` (`id_history_login`, `id_user`, `tgl_login`) VALUES
+(1, 16, '2018-05-09 05:29:00'),
+(2, 16, '2018-05-27 01:21:00'),
+(3, 16, '2018-05-28 04:25:00'),
+(4, 16, '2018-05-28 17:43:00'),
+(5, 16, '2018-05-29 21:19:00'),
+(6, 16, '2018-06-01 01:29:00'),
+(7, 16, '2018-06-04 15:28:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `konsul_dokter`
+--
+
+CREATE TABLE `konsul_dokter` (
+  `id_konsul` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_dokter` int(11) NOT NULL,
+  `pertanyaan_konsul` text NOT NULL,
+  `status_pertanyaan` enum('true','false') NOT NULL,
+  `jawaban_konsul` text NOT NULL,
+  `status_kirim` enum('true','false') NOT NULL,
+  `status_baca` enum('true','false') NOT NULL,
+  `tgl_konsul` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `tgl_kirim` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konsul_dokter`
+--
+
+INSERT INTO `konsul_dokter` (`id_konsul`, `id_user`, `id_dokter`, `pertanyaan_konsul`, `status_pertanyaan`, `jawaban_konsul`, `status_kirim`, `status_baca`, `tgl_konsul`, `tgl_kirim`) VALUES
 (1, 6, 2, 'saya suka sakit perut pagi hari setelah sarapan kenapa ya?', 'true', 'itu karena kamu lelah, makanya banyak istirahat ya.', 'true', 'true', '2018-04-10 03:16:37', '2018-04-11 06:33:56'),
 (2, 6, 1, 'yaa', 'true', 'iya', 'true', 'true', '2018-04-05 00:11:15', '2018-04-06 08:13:35'),
 (3, 6, 1, 'aku pusing dok', 'true', 'haduh haduh sabar ya', 'true', 'true', '2018-04-08 12:06:21', '2018-04-09 11:38:14'),
@@ -75,57 +124,19 @@ INSERT INTO `consul_doctors` (`consul_id`, `user_id`, `doctor_id`, `questions`, 
 (6, 6, 2, 'Hallo dokter. Saya sandra 23 tahun. Saya mau cerita sedikit dok. Saya sering pusing dok, kadang kadang sampe pingsan. Trus disertai mual, sesek dibagian dada, itu kepala saya terasa berat dok trus badan saya gemeteran. Saya cek keklinik tensi saya 130 lebih . Saya bingung kenapa saya sering merasakan itu ya dok? Seminggu sampe sekitar 3 kali dok.', 'true', 'Selamat pagi Sandra, terima kasih telah bertanya di Alodokter. Pusing hingga pingsan, bisa disebabkan oleh berbagai macam hal, diantaranya adalah tekanan darah terlalu rendah, tekanan darah terlalu tinggi, kadar kolesterol tinggi, kondisi kekurangan darah dan kelainan jantung.\r\n\r\nSaran kami, karena Anda juga mengeluhkan adanya gangguan berupa mual dan sesak pada dada, sebaiknya Anda periksakan kembali kondisi Anda ke dokter spesialis penyakit dalam dan minta untuk dilakukan rekam jantung atau pemeriksaan EKG untuk menyingkirkan kelainan pada jantung Anda. Selain itu perlu diperhatikan mengenai pola makan, berat badan dan riwayat keluarga Anda, karena tidak umum pada seseorang berusia 23 tahun untuk memiliki tekanan darah lebih dari 130.\r\n\r\nSementara itu saran kami hindari asap rokok dan stress, jaga berat badan ideal, rutin berolahraga dan istirahat yang cukup, dan tidak memaksakan diri untuk beraktifitas berat. Semoga Anda dan keluarga sehat selalu.\r\n\r\nSekian, semoga membantu.\r\n\r\ndr. Yuan', 'true', 'true', '2018-04-11 05:49:44', '2018-04-11 07:50:33'),
 (7, 6, 1, 'Dok aku sakit perut obatnya apa ya?', 'true', 'kurang minum', 'true', 'true', '2018-04-26 07:21:36', '2018-04-26 09:44:54'),
 (8, 6, 2, 'Hallo dokter. Saya sandra 23 tahun. Saya mau cerita sedikit dok. Saya sering pusing dok, kadang kadang sampe pingsan. Trus disertai mual, sesek dibagian dada, itu kepala saya terasa berat dok trus badan saya gemeteran. Saya cek keklinik', 'true', 'Selamat pagi Sandra, terima kasih telah bertanya di Alodokter. Pusing hingga pingsan, bisa disebabkan oleh berbagai macam hal, diantaranya adalah tekanan darah terlalu rendah, tekanan darah terlalu tinggi, kadar kolesterol tinggi, kondisi kekurangan darah dan kelainan jantung.\r\n\r\nSaran kami, karena Anda juga mengeluhkan adanya gangguan berupa mual dan sesak pada dada, sebaiknya Anda periksakan kembali kondisi Anda ke dokter spesialis penyakit dalam dan minta untuk dilakukan rekam jantung atau pemeriksaan EKG untuk menyingkirkan kelainan pada jantung Anda. Selain itu perlu diperhatikan mengenai pola makan, berat badan dan riwayat keluarga Anda, karena tidak umum pada seseorang berusia 23 tahun untuk memiliki tekanan darah lebih dari 130.\r\n\r\nSementara itu saran kami hindari asap rokok dan stress, jaga berat badan ideal, rutin berolahraga dan istirahat yang cukup, dan tidak memaksakan diri untuk beraktifitas berat. Semoga Anda dan keluarga sehat selalu.\r\n\r\nSekian, semoga membantu.\r\n\r\ndr. Yuan', 'true', 'true', '2018-04-26 07:32:14', '2018-04-26 09:44:59'),
-(9, 6, 2, 'cek\r\n', 'true', 'oke', 'true', 'true', '2018-05-27 06:21:38', '0000-00-00 00:00:00'),
-(10, 6, 1, 'coba lagi ini kenapa pusing', 'true', 'coba banyak minum', 'true', 'true', '2018-05-27 06:26:41', '2018-05-27 08:30:37'),
 (11, 6, 2, 'dok saya suka mual dan pusing ketika puasa itu kenapa ya?', 'true', 'mungkin itu dikarenakan anda memiliki penyakit magh, bisa jadi ketika anda puasa asam lambung menjadi naik.', 'true', 'true', '2018-05-28 01:47:38', '2018-05-28 03:49:13'),
-(12, 6, 1, 'gea', 'true', 'iya apa?', 'true', 'true', '2018-05-28 09:12:50', '2018-05-28 13:29:11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doctors`
---
-
-CREATE TABLE `doctors` (
-  `doctor_id` int(11) NOT NULL,
-  `name` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `gender` varchar(250) NOT NULL,
-  `born_date` date NOT NULL,
-  `phone` varchar(250) NOT NULL,
-  `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `doctors`
---
-
-INSERT INTO `doctors` (`doctor_id`, `name`, `email`, `gender`, `born_date`, `phone`, `created_date`) VALUES
-(1, 'Nika Ghea', 'nika21@gmail.com', 'F', '1985-10-06', '089990811303', '2018-03-17 14:16:46'),
-(2, 'Yuan Miko', 'mikoyuan@gmail.com', 'M', '1983-01-01', '081211160908', '2018-03-17 14:16:26');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login_histories`
---
-
-CREATE TABLE `login_histories` (
-  `id_history_login` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `tgl_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `login_histories`
---
-
-INSERT INTO `login_histories` (`id_history_login`, `id_user`, `tgl_login`) VALUES
-(1, 16, '2018-05-09 05:29:00'),
-(2, 16, '2018-05-27 01:21:00'),
-(3, 16, '2018-05-28 04:25:00'),
-(4, 16, '2018-05-28 17:43:00'),
-(5, 16, '2018-05-29 21:19:00');
+(12, 6, 1, 'gea', 'true', 'iya apa?', 'true', 'true', '2018-05-28 09:12:50', '2018-05-28 13:29:11'),
+(15, 6, 1, 'hallo dokter ghea?', 'false', '', 'true', 'true', '2018-06-01 06:25:17', '0000-00-00 00:00:00'),
+(16, 6, 2, 'miko?', 'false', '', 'true', 'true', '2018-06-01 06:25:35', '0000-00-00 00:00:00'),
+(17, 6, 2, 'hallo dokter miko?', 'true', '', 'true', 'true', '2018-06-01 06:26:50', '0000-00-00 00:00:00'),
+(18, 6, 2, 'hallo dokter miko?', 'false', '', 'true', 'true', '2018-06-01 06:27:18', '0000-00-00 00:00:00'),
+(19, 6, 2, 'hallo miko?', 'true', 'iya?', 'true', 'true', '2018-06-01 06:27:25', '0000-00-00 00:00:00'),
+(20, 6, 2, 'miko 123?', 'true', 'oioi ap?', 'false', 'false', '2018-06-01 07:02:30', '0000-00-00 00:00:00'),
+(21, 6, 1, 'dok mau tanya dong? saya sakit kaki udh 3 hari ni kenapa ya?\r\n', 'true', 'coba istirahatin jangan lari lari ya', 'true', 'true', '2018-06-01 07:03:50', '2018-06-01 09:17:40'),
+(22, 17, 1, 'dr ghea nami mau tanya nih?', 'true', 'iya silahkan nami', 'true', 'true', '2018-06-04 20:24:35', '2018-06-04 22:28:52'),
+(23, 17, 1, 'nik', 'false', '', 'false', 'false', '2018-06-04 20:25:52', '0000-00-00 00:00:00'),
+(24, 17, 1, 'nik', 'false', '', 'false', 'false', '2018-06-04 20:27:50', '0000-00-00 00:00:00'),
+(25, 17, 2, 'hai miko?', 'false', '', 'false', 'false', '2018-06-04 21:06:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -248,10 +259,10 @@ INSERT INTO `symptoms` (`id`, `symptom`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `nama_user` varchar(250) NOT NULL,
@@ -267,12 +278,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `users` (`id_user`, `username`, `nama_user`, `email`, `jk_user`, `tgl_lahir`, `password`, `level_user`, `remember`, `cookie`, `foto`, `tgl_registrasi`) VALUES
+INSERT INTO `user` (`id_user`, `username`, `nama_user`, `email`, `jk_user`, `tgl_lahir`, `password`, `level_user`, `remember`, `cookie`, `foto`, `tgl_registrasi`) VALUES
 (6, 'hana', 'Hana Ervani F', 'hanaervani@gmail.com', 'female', '1997-10-26', '5e477ff86c321e4cdcf98b0f139dae5f', 'user', '0', '', '/uploads/profile_picture/Hana_Ervani_Fprofile_picture_20180311071255.jpg', '2018-05-28 02:59:14'),
-(16, 'admin', 'Admin Gaul', 'admin@gmail.com', 'female', '1970-01-01', '71637b92d28d25a5774135d8740f9bc6', 'admin', '0', '', '/uploads/profile_picture/Admin_Gaulprofile_picture_20180307053510.jpg', '2018-05-28 04:21:29');
+(16, 'admin', 'Admin Gaul', 'admin@gmail.com', 'female', '1970-01-01', '71637b92d28d25a5774135d8740f9bc6', 'admin', '0', '', '/uploads/profile_picture/Admin_Gaulprofile_picture_20180307053510.jpg', '2018-05-28 04:21:29'),
+(17, 'namican', 'nami can', 'nami@gmail.com', 'female', '1997-12-01', '5b9f2c8a67d36c9b5178e66ba0777804', 'user', '0', '', '', '2018-06-04 20:53:02');
 
 --
 -- Indexes for dumped tables
@@ -285,24 +297,24 @@ ALTER TABLE `cetak_riwayat`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `consul_doctors`
+-- Indexes for table `dokter`
 --
-ALTER TABLE `consul_doctors`
-  ADD PRIMARY KEY (`consul_id`),
-  ADD KEY `doctor_id` (`doctor_id`),
-  ADD KEY `user_id` (`user_id`);
+ALTER TABLE `dokter`
+  ADD PRIMARY KEY (`id_dokter`);
 
 --
--- Indexes for table `doctors`
+-- Indexes for table `jadwal_login`
 --
-ALTER TABLE `doctors`
-  ADD PRIMARY KEY (`doctor_id`);
-
---
--- Indexes for table `login_histories`
---
-ALTER TABLE `login_histories`
+ALTER TABLE `jadwal_login`
   ADD PRIMARY KEY (`id_history_login`),
+  ADD KEY `user_id` (`id_user`);
+
+--
+-- Indexes for table `konsul_dokter`
+--
+ALTER TABLE `konsul_dokter`
+  ADD PRIMARY KEY (`id_konsul`),
+  ADD KEY `doctor_id` (`id_dokter`),
   ADD KEY `user_id` (`id_user`);
 
 --
@@ -335,9 +347,9 @@ ALTER TABLE `symptoms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD UNIQUE KEY `username` (`username`);
 
@@ -352,22 +364,22 @@ ALTER TABLE `cetak_riwayat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `consul_doctors`
+-- AUTO_INCREMENT for table `dokter`
 --
-ALTER TABLE `consul_doctors`
-  MODIFY `consul_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `dokter`
+  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `doctors`
+-- AUTO_INCREMENT for table `jadwal_login`
 --
-ALTER TABLE `doctors`
-  MODIFY `doctor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `jadwal_login`
+  MODIFY `id_history_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `login_histories`
+-- AUTO_INCREMENT for table `konsul_dokter`
 --
-ALTER TABLE `login_histories`
-  MODIFY `id_history_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `konsul_dokter`
+  MODIFY `id_konsul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `periksa`
@@ -394,33 +406,33 @@ ALTER TABLE `symptoms`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+ALTER TABLE `user`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `consul_doctors`
+-- Constraints for table `jadwal_login`
 --
-ALTER TABLE `consul_doctors`
-  ADD CONSTRAINT `consul_doctors_ibfk_1` FOREIGN KEY (`doctor_id`) REFERENCES `doctors` (`doctor_id`),
-  ADD CONSTRAINT `consul_doctors_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id_user`);
+ALTER TABLE `jadwal_login`
+  ADD CONSTRAINT `jadwal_login_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Constraints for table `login_histories`
+-- Constraints for table `konsul_dokter`
 --
-ALTER TABLE `login_histories`
-  ADD CONSTRAINT `login_histories_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+ALTER TABLE `konsul_dokter`
+  ADD CONSTRAINT `konsul_dokter_ibfk_1` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`),
+  ADD CONSTRAINT `konsul_dokter_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Constraints for table `periksa`
 --
 ALTER TABLE `periksa`
-  ADD CONSTRAINT `periksa_ibfk_1` FOREIGN KEY (`id_pengguna`) REFERENCES `users` (`id_user`),
+  ADD CONSTRAINT `periksa_ibfk_1` FOREIGN KEY (`id_pengguna`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `periksa_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `sickness` (`id`);
 
 --

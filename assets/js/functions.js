@@ -57,12 +57,12 @@ function imgError(image) {
     return true;
 }
 
-function count_notification(user_id) {
+function count_notification(id_user) {
     $.ajax({
-        url: site_url('front_end/notification/count_notif'),
+        url: site_url('front_end/c_notifikasi/count_notif'),
         type: 'POST',
         data: {
-            user_id: user_id
+            id_user: id_user
         }
     }).done(function (data) {
         if(data > 0) {
@@ -72,7 +72,7 @@ function count_notification(user_id) {
             $('#count-notif').removeClass('badge1');        
         }
         setTimeout(function () {
-            count_notification(user_id);
+            count_notification(id_user);
         }, 3000);
     }).fail(function (xhr, status, error) {
         var msg = '';

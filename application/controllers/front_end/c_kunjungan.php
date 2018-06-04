@@ -29,7 +29,7 @@ class c_kunjungan extends CI_Controller {
 	}
 
     public function ambil_kunjungan() {
-        $list = $this->checkup->ambil_kunjungan($this->user['user_id']);
+        $list = $this->checkup->ambil_kunjungan($this->user['id_user']);
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $checkup) {
@@ -44,7 +44,7 @@ class c_kunjungan extends CI_Controller {
         $output = array(
             "draw" => $_POST['draw'],
             "recordsTotal" => $this->checkup->count_all(),
-            "recordsFiltered" => $this->checkup->count_filtered($this->user['user_id']),
+            "recordsFiltered" => $this->checkup->count_filtered($this->user['id_user']),
             "data" => $data
         );
         echo json_encode($output);

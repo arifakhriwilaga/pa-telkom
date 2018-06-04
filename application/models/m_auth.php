@@ -11,7 +11,7 @@ if (!defined('BASEPATH'))
     - preg_split ()
 */
 class m_auth extends CI_Model {
-    var $table = 'users'; // variable untuk set nama table
+    var $table = 'user'; // variable untuk set nama table
 
     /*  
 		nama fungsi : login

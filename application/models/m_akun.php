@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 class m_akun extends CI_Model {
 
-    var $table = 'users';
+    var $table = 'user';
     //set column field database for datatable orderable
     var $column_order = array(null, 'nama_user', 'email', 'jk_user', 'tgl_lahir', 'username');
     //set column field database for datatable searchable 

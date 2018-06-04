@@ -1,6 +1,6 @@
-var user_id = "<?php echo json_encode($user['user_id']); ?>"
+var id_user = "<?php echo json_encode($user['id_user']); ?>"
 // config datepicker borndate
-$('#born_date').datetimepicker({
+$('#tgl_lahir').datetimepicker({
     locale: moment.locale('id', {
         months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
         monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
@@ -11,10 +11,10 @@ $('#born_date').datetimepicker({
     defaultDate: ''
 });
 
-$('#born_date').val($('#born_date').data('born_date')); // remove initial value
+$('#tgl_lahir').val($('#tgl_lahir').data('tgl_lahir')); // remove initial value
 
-$('#born_date').on('dp.change dp.show', function () {
-    $('#update-profile').formValidation('revalidateField', 'born_date');
+$('#tgl_lahir').on('dp.change dp.show', function () {
+    $('#update-profile').formValidation('revalidateField', 'tgl_lahir');
 });
 
 // config form validation
@@ -26,7 +26,7 @@ $('#edit-profile').formValidation({
         validating: 'glyphicon glyphicon-refresh'
     },
     fields: {
-        name: {
+        nama_user: {
             validators: {
                 notEmpty: {
                     message: 'Nama Lengkap tidak boleh kosong'
@@ -58,14 +58,14 @@ $('#edit-profile').formValidation({
                 }
             }
         },
-        gender: {
+        jk_user: {
             validators: {
                 notEmpty: {
                     message: 'Pilih jenis kelamin'
                 }
             }
         },
-        born_date: {
+        tgl_lahir: {
             validators: {
                 notEmpty: {
                     message: 'Tanggal lahir tidak boleh kosong'
@@ -85,7 +85,7 @@ $('#edit-profile').formValidation({
                 }
             }
         },
-        confirm_password: {
+        konfirmasi_password: {
             validators: {
                 identical: {
                     field: 'password',
@@ -99,7 +99,7 @@ $("#edit-profile #input-profile-picture").on('change', function () {
     var input = this;
     $("#edit-profile").ajaxSubmit({
         type: "post",
-        url: site_url('front_end/profile/upload_picture/'+user_id),
+        url: site_url('front_end/profile/upload_picture/'+id_user),
         dataType: 'json',
         success: function (status, message, data) {
             if (status) {

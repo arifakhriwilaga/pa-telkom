@@ -3,17 +3,21 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class ConsulDoctor extends CI_Model {
-    var $table = 'consul_doctors';
+class m_konsultasi_dokter extends CI_Model {
+    var $table = 'konsul_dokter';
 
     public function post() {
         $data = array(
-            'user_id' => $this->input->post('user_id'),
-            'doctor_id' => $this->input->post('doctor_id'),
-            'questions' => $this->input->post('question'),
-            'answer_status' => 'false'
+            'id_user' => $this->input->post('id_user'),
+            'id_dokter' => $this->input->post('id_dokter'),
+            'pertanyaan_konsul' => $this->input->post('pertanyaan_konsul'),
+            'status_pertanyaan' => 'false',
+            'status_kirim' => 'false',
+            'status_baca' => 'false',
         );
-        if ($this->db->insert($this->table, $data)) {
+ 
+        $result = $this->db->insert($this->table, $data);
+        if ($result) {
             $result = array(
                 'status' => true,
                 'message' => 'Pertanyaan berhasil dikirim!'

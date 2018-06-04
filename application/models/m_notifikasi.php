@@ -2,24 +2,24 @@
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Notifications extends CI_Model {
+class m_notifikasi extends CI_Model {
 
     public function __construct() {    }
 
-    var $tabel = 'consul_doctors';
+    var $tabel = 'konsul_dokter';
     //set column field database for datatable orderable
-    var $urutan_kolom = array(null, null, null, 'questions', 'answer_status', 'answer', null);
+    var $urutan_kolom = array(null, null, null, 'pertanyaan_konsul', 'status_pertanyaan', 'jawaban_konsul', null);
     //set column field database for datatable searchable 
-    var $pencarian_kolom = array('questions', 'answer');
+    var $pencarian_kolom = array('pertanyaan_konsul', 'jawaban_konsul');
     // default order 
-    var $urutan = array('consul_id' => 'asc');
+    var $urutan = array('id_konsul' => 'asc');
 
 
     private function _get_notifications_query() {
 
-        $this->db->select('consul_doctors.*, CONCAT(users.nama_user) AS name, CONCAT(users.username) AS username');
-        $this->db->from('consul_doctors');
-        $this->db->join('users', 'consul_doctors.user_id = users.id_user', 'left');
+        $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS name, CONCAT(user.username) AS username');
+        $this->db->from('konsul_dokter');
+        $this->db->join('user', 'konsul_dokter.id_user = user.id_user', 'left');
         $i = 0;
 
         foreach ($this->pencarian_kolom as $item) { // loop column 
@@ -66,8 +66,8 @@ class Notifications extends CI_Model {
 
     public function delete_notification() {
         $result = array();
-        $consul_id = $this->input->post('consul_id');
-        $this->db->where('consul_id', $consul_id);
+        $id_konsul = $this->input->post('id_konsul');
+        $this->db->where('id_konsul', $id_konsul);
 
         if ($this->db->delete($this->tabel)) {
             $result = array(
@@ -88,7 +88,7 @@ class Notifications extends CI_Model {
     }
 
     public function post_answer($data = []) {
-        $query = $this->db->where('consul_id', $data['consul_id']);
+        $query = $this->db->where('id_konsul', $data['id_konsul']);
         if ($this->db->update($this->tabel, $data)) {
             $result = array(
                 'status' => true,
@@ -108,7 +108,7 @@ class Notifications extends CI_Model {
     }
 
     public function update_answer($data = []) {
-        $query = $this->db->where('consul_id', $data['consul_id']);
+        $query = $this->db->where('id_konsul', $data['id_konsul']);
         if ($this->db->update($this->tabel, $data)) {
             $result = array(
                 'status' => true,
@@ -128,7 +128,7 @@ class Notifications extends CI_Model {
     }
 
     public function send_answer($data = []) {
-        $this->db->where('consul_id', $data['consul_id']);
+        $this->db->where('id_konsul', $data['id_konsul']);
         if ($this->db->update($this->tabel, $data)) {
             $result = array(
                 'status' => true,
@@ -147,34 +147,35 @@ class Notifications extends CI_Model {
         }
     }
     
-    public function get_all($user_id) {
-        $this->db->select('consul_doctors.*, CONCAT(doctors.name) AS doctor');
-        $this->db->from('consul_doctors');
-        $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id AND consul_doctors.user_id = '.$user_id, 'left');
-        $this->db->where('consul_doctors.send_status', 'true');
-        $this->db->where('consul_doctors.user_id', $user_id);
-        $this->db->order_by('consul_doctors.created_date', 'DESC');
+    public function get_all($id_user) {
+        $this->db->select('konsul_dokter.*, CONCAT(dokter.nama_dokter) AS dokter');
+        $this->db->from('konsul_dokter');
+        $this->db->join('dokter', 'dokter.id_dokter = konsul_dokter.id_dokter AND konsul_dokter.id_user = '.$id_user, 'left');
+        $this->db->where('konsul_dokter.status_kirim', 'true');
+        $this->db->where('konsul_dokter.id_user', $id_user);
+        $this->db->order_by('konsul_dokter.tgl_konsul', 'DESC');
         $query = $this->db->get();
+        // var_dump($query->result());exit();
         return $query->result();
     }
     
     public function detail($id) {
-        $this->db->select('consul_doctors.*, CONCAT(doctors.name) AS doctor');
-        $this->db->from('consul_doctors');
-        $this->db->join('doctors', 'doctors.doctor_id = consul_doctors.doctor_id', 'left');
-        $this->db->where('consul_doctors.consul_id', $id);
+        $this->db->select('konsul_dokter.*, CONCAT(dokter.nama_dokter) AS dokter');
+        $this->db->from('konsul_dokter');
+        $this->db->join('dokter', 'dokter.id_dokter = konsul_dokter.id_dokter', 'left');
+        $this->db->where('konsul_dokter.id_konsul', $id);
         $query = $this->db->get();
         $sql = $this->db->last_query();
         return $query->result();
     }
     
     public function read_notif($id) {
-        $this->db->where('consul_id', $id);
-        $this->db->update($this->tabel, array('read_status' => 'true'));
+        $this->db->where('id_konsul', $id);
+        $this->db->update($this->tabel, array('status_baca' => 'true'));
     }
     
-    public function count_notif($user_id) {
-        $query = $this->db->get_where($this->tabel, array('user_id' => $user_id, 'read_status' => 'false'));
+    public function count_notif($id_user) {
+        $query = $this->db->get_where($this->tabel, array('id_user' => $id_user, 'status_baca' => 'false'));
         return $query->num_rows();
     }
 }

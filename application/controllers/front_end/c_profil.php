@@ -29,11 +29,11 @@ class c_profil extends CI_Controller {
 		$this->load->view('front_end/v_base',$data);
 	}
 
-    public function update_profil($user_id) {
-        $result = $this->user->update($user_id);
+    public function update_profil($id_user) {
+        $result = $this->user->update($id_user);
 
         if ($result['status']) {    
-            $user = $this->user->get_user($user_id);
+            $user = $this->user->mengambil_user($id_user);
             $this->session->set_userdata('user', $user);
             $this->session->set_flashdata('success', $result['message']);
             return redirect('ubah-profil');

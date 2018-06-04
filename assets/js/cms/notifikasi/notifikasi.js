@@ -1,4 +1,4 @@
-var table = $('#table-notifications').DataTable({
+var table = $('#table-notifikasi').DataTable({
     "language": {
         "search": "Cari data:",
         "lengthMenu": "Lihat _MENU_ data",
@@ -17,7 +17,7 @@ var table = $('#table-notifications').DataTable({
     "serverSide": true,
     "order": [],
     "ajax": {
-        "url": site_url('cms/c_notifikasi_manajemen/get_notifications'),
+        "url": site_url('cms/c_notifikasi_manajemen/ambil_notifikasi'),
         "type": "POST"
     },
     "columnDefs": [
@@ -28,28 +28,29 @@ var table = $('#table-notifications').DataTable({
     ]
 });
 
-var consul_id;
+var id_konsul;
 
-function showModal(id) {
-    consul_id = id;
-    $('#answerModal').modal('show');
+function tampilkanMJawaban(id) {
+    id_konsul = id;
+    $('#modalJawaban').modal('show');
 }
-function editModal(id) {
-    consul_id = id;
-    $('#editAnswerModal').modal('show');
-    $('#edit_answer').val($('#table-notifications').find('td').find('button.edit#'+id).attr('data-answer'));
+function tampilkanMEditJawaban(id) {
+    id_konsul = id;
+    $('#modalEditJawaban').modal('show');
+    $('#edit_jawaban_konsul').val($('#table-notifikasi').find('td').find('button.edit#'+id).attr('data-answer'));
 }
-function hideModal() {
-    $('#answerModal').modal('hide');
-    $('#answer').val('');
-    $('#consul_id').val('');
+function tutupModal() {
+    $('#modalEditJawaban').modal('hide');
+    $('#modalJawaban').modal('hide');
+    $('#jawaban_konsul').val('');
+    $('#id_konsul').val('');
 }
 $(document)
-        .on('shown.bs.modal', '#answerModal', function () {
-            $('#answer').focus();
-            $('#consul_id').val(consul_id);
+        .on('shown.bs.modal', '#modalJawaban', function () {
+            $('#jawaban_konsul').focus();
+            $('#id_konsul').val(id_konsul);
             // baru validasinya
-            $('#answerForm').formValidation({
+            $('#formJawaban').formValidation({
                 framework: 'bootstrap',
                 icon: {
                     valid: 'glyphicon glyphicon-ok',
@@ -57,7 +58,7 @@ $(document)
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    answer: {
+                    jawaban_konsul: {
                         validators: {
                             notEmpty: {
                                 message: 'Jawaban tidak boleh kosong!'
@@ -67,11 +68,11 @@ $(document)
                 }
             });
         })
-        .on('shown.bs.modal', '#editAnswerModal', function () {
-            $('#edit_answer').focus();
-            $('#edit_consul_id').val(consul_id);
+        .on('shown.bs.modal', '#modalEditJawaban', function () {
+            $('#edit_jawaban_konsul').focus();
+            $('#edit_id_konsul').val(id_konsul);
             // baru validasinya
-            $('#editAnswerForm').formValidation({
+            $('#formEditJawaban').formValidation({
                 framework: 'bootstrap',
                 icon: {
                     valid: 'glyphicon glyphicon-ok',
@@ -79,7 +80,7 @@ $(document)
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    edit_answer: {
+                    edit_jawaban_konsul: {
                         validators: {
                             notEmpty: {
                                 message: 'Jawaban tidak boleh kosong!'
@@ -92,10 +93,10 @@ $(document)
         .on('click', '.delete-acc', function () {
             if (confirm('Anda yakin ingin menghapus pertanyaan ' + $(this).data('name') + '?')) {
                 $.ajax({
-                    url: site_url('cms/notification_management/delete_notification'),
+                    url: site_url('cms/c_notifikasi_manajemen/hapus_notifikasi'),
                     type: 'POST',
                     data: {
-                        consul_id: $(this).attr('id')
+                        id_konsul: $(this).attr('id')
                     }
                 }).done(function (data) {
                     if (data.status) {
@@ -124,10 +125,10 @@ $(document)
         .on('click', '.btn-send-answer', function () {
             if (confirm('Anda yakin ingin mengirim jawaban kepada ' + $(this).data('name') + '?')) {
                 $.ajax({
-                    url: site_url('cms/notification_management/send_answer'),
+                    url: site_url('cms/c_notifikasi_manajemen/kirim_jawaban'),
                     type: 'POST',
                     data: {
-                        consul_id: $(this).attr('id')
+                        id_konsul: $(this).attr('id')
                     }
                 }).done(function (data) {
                     if (data.status) {

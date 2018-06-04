@@ -12,7 +12,7 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="Kata sandi baru">
                             </div>
                             <div class="form-group">
-                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Ulang Kata sandi" required="" maxlength="15">
+                                <input type="password" name="konfirmasi_password" id="konfirmasi_password" class="form-control" placeholder="Ulang Kata sandi" required="" maxlength="15">
                             </div>
                             <button type="submit" class="btn btn-block btn-login btn-lg">Process</button><br>
                         </form>

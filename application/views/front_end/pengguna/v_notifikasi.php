@@ -11,20 +11,20 @@
                     if (sizeof($notifications) > 0) {
                         $no = 1;
                         foreach ($notifications as $key => $value) {
-                            $date = date_format(new DateTime($value->created_date), 'D, d F Y - H:i');
+                            $date = date_format(new DateTime($value->tgl_konsul), 'D, d F Y - H:i');
                     ?>
                     <div class="row">
                         <div class="col-md-1" style="padding-right: 0;width: 40px"><?php echo $no; ?>.</div>
                         <div class="col-md-11" style="padding-left: 0">
                             <div class="form-group">
-                                <a class="detail-info-slider" title="<?php echo $value->questions; ?>" href="<?php echo site_url('detail-notifikasi/'.$value->consul_id); ?>">
-                                    <?php echo $value->questions; ?>
+                                <a class="detail-info-slider" title="<?php echo $value->pertanyaan_konsul; ?>" href="<?php echo site_url('detail-notifikasi/'.$value->id_konsul); ?>">
+                                    <?php echo $value->pertanyaan_konsul; ?>
                                 </a>
                                 <p class="no-padding">Waktu <?php echo $date; ?><br>
-                                    <?php if($value->read_status == 'false') { ?>
+                                    <?php if($value->status_baca == 'false') { ?>
                                         <b>
                                             <i class="glyphicon glyphicon-info-sign"></i> 
-                                            Pertanyaan anda telah dijawab oleh dr. <?php echo $value->doctor; ?>
+                                            Pertanyaan anda telah dijawab oleh dr. <?php echo $value->dokter; ?>
                                         </b>
                                     <?php } ?>
                                 </p>

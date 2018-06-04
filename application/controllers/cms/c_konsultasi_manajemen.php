@@ -24,6 +24,32 @@ class c_konsultasi_manajemen extends CI_Controller {
         $this->load->view('cms/base', $data);
     }
 
+    public function ambil_konsultasi() {
+        $list = $this->notifications->get_notifications();
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $notifications) {
+            $no++;
+            $row = array();
+            $row[] = $notifications->consul_id;
+            $row[] = $notifications->name;
+            $row[] = $notifications->username;
+            $row[] = (strlen($notifications->questions) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . $notifications->questions . '</div>' : $notifications->questions);
+            $row[] = $this->checkSend($notifications->send_status, $notifications);
+            $row[] = $this->checkAnswer($notifications->answer_status, $notifications);
+
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $_POST['draw'],
+            "recordsTotal" => $this->notifications->count_all(),
+            "recordsFiltered" => $this->notifications->count_filtered(),
+            "data" => $data
+        );
+        echo json_encode($output);
+    }
+
     public function detail_consul() {
         $page_title = "Detail Konsultasi";
 

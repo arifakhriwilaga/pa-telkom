@@ -20,7 +20,7 @@ $('#lupa-kata-sandi').formValidation({
                 }
             }
         },
-        confirm_password: {
+        konfirmasi_password: {
             validators: {
                 notEmpty: {
                     message: 'Ulang kata sandi tidak boleh kosong'

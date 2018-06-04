@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class m_user extends CI_Model {
-    var $table = 'users';
+    var $table = 'user';
 
     public function mengambil_user($id) {
         $result = $this->db->where('id_user', $id)
@@ -26,22 +26,22 @@ class m_user extends CI_Model {
         return $user;
     }
 
-    public function update($user_id) {
-        $date = preg_split('/\//', strval($this->input->post('born_date')));
+    public function update($id_user) {
+        $date = preg_split('/\//', strval($this->input->post('tgl_lahir')));
         $born_date = $date[2] . '-' . $date[1] . '-' . $date[0];
         $data = array(
             "username" => $this->input->post('username'),
-            "name" => $this->input->post('name'),
+            "nama_user" => $this->input->post('nama_user'),
             "email" => $this->input->post('email'),
-            "gender" => $this->input->post('gender'),
-            "born_date" => $born_date,
+            "jk_user" => $this->input->post('jk_user'),
+            "tgl_lahir" => $born_date,
             "level_user" => $this->input->post('level_user')
         );
         if ($this->input->post('password')) {
             $data["password"] = md5($this->input->post('password'));
         }
 
-        $this->db->where('user_id', $user_id);
+        $this->db->where('id_user', $id_user);
         if ($this->db->update($this->table, $data)) {
             $result = array(
                 'status' => true,
@@ -60,10 +60,10 @@ class m_user extends CI_Model {
         }
     }
 
-    public function update_picture($user_id, $picture) {
-        $this->db->where('user_id', $user_id);
+    public function update_picture($id_user, $picture) {
+        $this->db->where('id_user', $id_user);
         if ($this->db->update($this->table, $picture)) {
-            $user = $this->get_user($user_id);
+            $user = $this->mengambil_user($id_user);
             $result = array(
                 'status' => true,
                 'message' => 'Foto profil berhasil diubah!',

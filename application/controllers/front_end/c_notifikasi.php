@@ -6,7 +6,7 @@ class c_notifikasi extends CI_Controller {
     var $user;
     public function __construct() {
         parent::__construct();
-        $this->load->model('notifications', 'notifications');
+        $this->load->model('m_notifikasi', 'notifications');
         $this->user = $this->session->userdata('user');
         if ($this->user['level_user'] == 'admin') {
             redirect('dasbor');
@@ -15,7 +15,7 @@ class c_notifikasi extends CI_Controller {
 
     public function index() {
         $page_title = "Notifikasi";
-        $notifications = $this->notifications->get_all($this->user['user_id']);
+        $notifications = $this->notifications->get_all($this->user['id_user']);
         $data = array(
             'page_title' => $page_title,
             'notifications' => $notifications,

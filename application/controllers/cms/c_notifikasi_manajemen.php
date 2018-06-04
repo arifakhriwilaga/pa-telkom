@@ -25,19 +25,19 @@ class c_notifikasi_manajemen extends CI_Controller {
         $this->load->view('cms/v_base', $data);
     }
 
-    public function get_notifications() {
+    public function ambil_notifikasi() {
         $list = $this->notifications->get_notifications();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $notifications) {
             $no++;
             $row = array();
-            $row[] = $notifications->consul_id;
+            $row[] = $notifications->id_konsul;
             $row[] = $notifications->name;
             $row[] = $notifications->username;
-            $row[] = (strlen($notifications->questions) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . $notifications->questions . '</div>' : $notifications->questions);
-            $row[] = $this->checkSend($notifications->send_status, $notifications);
-            $row[] = $this->checkAnswer($notifications->answer_status, $notifications);
+            $row[] = (strlen($notifications->pertanyaan_konsul) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . $notifications->pertanyaan_konsul . '</div>' : $notifications->pertanyaan_konsul);
+            $row[] = $this->checkSend($notifications->status_kirim, $notifications);
+            $row[] = $this->checkAnswer($notifications->status_pertanyaan, $notifications);
 
             $data[] = $row;
         }
@@ -52,13 +52,13 @@ class c_notifikasi_manajemen extends CI_Controller {
     }
 
     public function checkAnswer($status = '', $data = '') {
-        $button = '<button class="btn btn-danger btn-sm delete-acc" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+        $button = '<button class="btn btn-danger btn-sm delete-acc" id="' . $data->id_konsul . '" data-name="' . $data->name . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
         if ($status == 'false') {
-            $button .= '&nbsp;<button class="btn btn-success btn-sm" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab" onclick="showModal(' . $data->consul_id . ')">'
+            $button .= '&nbsp;<button class="btn btn-success btn-sm" id="' . $data->id_konsul . '" data-name="' . $data->name . '" title="Jawab" onclick="tampilkanMJawaban(' . $data->id_konsul . ')">'
                     . '<i class="fa fa-share"></i>'
                     . '</button>';
-        } else if($status == 'true' && $data->send_status == 'false') {
-            $button .= '&nbsp;<button class="btn btn-default btn-sm edit" id="' . $data->consul_id . '" data-name="' . $data->name . '" data-answer="' . $data->answer . '" title="Edit" onclick="editModal(' . $data->consul_id . ')">'
+        } else if($status == 'true' && $data->status_kirim == 'false') {
+            $button .= '&nbsp;<button class="btn btn-default btn-sm edit" id="' . $data->id_konsul . '" data-name="' . $data->name . '" data-answer="' . $data->jawaban_konsul . '" title="Edit" onclick="tampilkanMEditJawaban(' . $data->id_konsul . ')">'
                     . '<i class="fa fa-pencil"></i>'
                     . '</button>';
         }
@@ -68,21 +68,21 @@ class c_notifikasi_manajemen extends CI_Controller {
     public function checkSend($status = '', $data = '') {
         $result = '';
         $style = '';
-        if ($status == 'false' && $data->answer) {
-            $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->consul_id . '" data-name="' . $data->name . '" title="Jawab">'
+        if ($status == 'false' && $data->jawaban_konsul) {
+            $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->id_konsul . '" data-name="' . $data->name . '" title="Kirim">'
                     . '<i class="fa fa-send"></i>'
                     . '</button>';
             $style = "width:85%;";
         }
-        $result .= (strlen($data->answer) > 240 ? '<div style="'. $style .'max-height:150px;overflow-y:scroll;">' . $data->answer . '</div>' : $data->answer);
+        $result .= (strlen($data->jawaban_konsul) > 240 ? '<div style="'. $style .'max-height:150px;overflow-y:scroll;">' . $data->jawaban_konsul . '</div>' : $data->jawaban_konsul);
         return $result;
     }
 
-    public function post_answer() {
+    public function buat_jawaban() {
         $data = array(
-            "consul_id" => $this->input->post('consul_id'),
-            "answer" => addslashes($this->input->post('answer')),
-            "answer_status" => 'true'
+            "id_konsul" => $this->input->post('id_konsul'),
+            "jawaban_konsul" => addslashes($this->input->post('jawaban_konsul')),
+            "status_pertanyaan" => 'true'
         );
         $result = $this->notifications->post_answer($data);
         if ($result['status']) {
@@ -93,10 +93,10 @@ class c_notifikasi_manajemen extends CI_Controller {
         return redirect('kelola-notifikasi');
     }
 
-    public function update_answer() {
+    public function rubah_jawaban() {
         $data = array(
-            "consul_id" => $this->input->post('edit_consul_id'),
-            "answer" => addslashes($this->input->post('edit_answer'))
+            "id_konsul" => $this->input->post('edit_id_konsul'),
+            "jawaban_konsul" => addslashes($this->input->post('edit_jawaban_konsul'))
         );
         $result = $this->notifications->update_answer($data);
         if ($result['status']) {
@@ -107,19 +107,19 @@ class c_notifikasi_manajemen extends CI_Controller {
         return redirect('kelola-notifikasi');
     }
 
-    public function delete_notification() {
+    public function hapus_notifikasi() {
         $result = $this->notifications->delete_notification();
         $this->output
                 ->set_content_type('json')
                 ->set_output(json_encode($result));
     }
     
-    public function send_answer() {
+    public function kirim_jawaban() {
         $data = array(
-            "consul_id" => $this->input->post('consul_id'),
-            "send_status" => 'true',
-            "read_status" => 'false',
-            "answer_date" => date('Y-m-d H:i:s')
+            "id_konsul" => $this->input->post('id_konsul'),
+            "status_kirim" => 'true',
+            "status_baca" => 'false',
+            "tgl_kirim" => date('Y-m-d H:i:s')
         );
         $result = $this->notifications->send_answer($data);
         $this->output

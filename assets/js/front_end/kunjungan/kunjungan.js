@@ -2,22 +2,23 @@ $(function () {
     var table = $("#kunjungan").DataTable({
         "language": {
             "search": "Cari data:",
-            "lengthMenu": "Filter _MENU_ data",
+            "lengthMenu": "Lihat _MENU_ data",
             "zeroRecords": "Data tidak tersedia",
             "paginate": {
-                "first":      "Pertama",
-                "last":       "Terakhir",
-                "next":       "Selanjutnya",
-                "previous":   "Kembali"
+                "first": "Pertama",
+                "last": "Terakhir",
+                "next": "Selanjutnya",
+                "previous": "Kembali"
             },
-            "info":           "Menampilkan _START_ - _END_ dari _TOTAL_ data",
-            "infoEmpty":      "Data 0 - 0 dari 0 data",
+            "info": "Menampilkan _START_ - _END_ dari _TOTAL_ data",
+            "infoEmpty": "Data 0 - 0 dari 0 data",
+            "infoFiltered": "",
         },
         "processing": true,
         "serverSide": true,
         "order": [],
         "ajax": {
-            "url": site_url('front_end/visit/ambil_kunjungan'),
+            "url": site_url('front_end/c_kunjungan/ambil_kunjungan'),
             "type": "POST"
         },
         "columnDefs": [

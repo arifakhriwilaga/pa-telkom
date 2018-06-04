@@ -7,8 +7,8 @@ class c_konsultasi_dokter extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $user = $this->session->userdata('user');
-        $this->load->model('ConsulDoctor', 'consul_doctor');
-        $this->load->model('Doctors', 'doctors');
+        $this->load->model('m_konsultasi_dokter', 'consul_doctor');
+        $this->load->model('m_dokter', 'doctors');
 
         if (empty($user)) {
             redirect('masuk-akun');

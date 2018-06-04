@@ -12,15 +12,15 @@ if (!defined('BASEPATH'))
 class m_history_login extends CI_Model {
     
     // variable untuk set nama table dan query-query yang akan dipakai
-    var $table = 'login_histories';
-    var $q_check_duplicate = "SELECT * FROM login_histories WHERE tgl_login LIKE ?";
+    var $table = 'jadwal_login';
+    var $q_check_duplicate = "SELECT * FROM jadwal_login WHERE tgl_login LIKE ?";
 
     /*  
 		nama fungsi : mengambil_history
 		deskripsi : method untuk pengambilan data history login yang nantinya akan dikembalikan pada controller
 	*/
     public function mengambil_history($id) {
-        $hasil = $this->db->query("SELECT * FROM login_histories ORDER BY tgl_login DESC LIMIT 5")->result();
+        $hasil = $this->db->query("SELECT * FROM jadwal_login ORDER BY tgl_login DESC LIMIT 5")->result();
         return $hasil;
     }
 

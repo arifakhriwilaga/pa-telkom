@@ -3,8 +3,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Doctors extends CI_Model {
-    var $table = 'doctors';
+class m_dokter extends CI_Model {
+    var $table = 'dokter';
 
     public function get_doctors() {
         $query = $this->db->get($this->table)->result();

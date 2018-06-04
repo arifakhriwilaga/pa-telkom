@@ -10,30 +10,30 @@
                         <?php foreach ($doctors as $key => $val) { ?>
                             <div class="col-md-6" style="height: 130px">
                                 <div class="panel-form basic-form-card list-doctor">
-                                    <input type="hidden" name="doctor_ids" value="<?php echo $val->doctor_id; ?>">
+                                    <input type="hidden" name="doctor_ids" value="<?php echo $val->id_dokter; ?>">
                                     <div class="col-md-3 no-padding">
                                         <img src="<?php echo base_url('assets/images/home/header/default-avatar.png'); ?>" alt="Avatar" class="avatar-basic-form">
                                     </div>
                                     <div class="col-md-8 pull-right">
                                         <div class="form-group no-padding">
-                                            <b class="no-padding doctor-name"><?php echo $val->name; ?></b>
+                                            <b class="no-padding doctor-name"><?php echo $val->nama_dokter; ?></b>
                                             <span><?php echo $val->email; ?></span><br>
-                                            <span><?php echo $val->phone; ?></span>
+                                            <span><?php echo $val->no_telp; ?></span>
                                         </div> 
                                     </div>
                                 </div>
                             </div>
                         <?php } ?>
                         <div class="col-md-12 form-group">
-                            <input type="hidden" name="doctor_id" value="">
+                            <input type="hidden" name="id_dokter" value="">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <textarea name="question" id="question" class="form-control" placeholder="Pertanyaan" rows="5"></textarea>
-                                <input type="hidden" name="user_id" value="<?php echo $user['user_id']; ?>">
+                                <textarea name="pertanyaan_konsul" id="pertanyaan_konsul" class="form-control" placeholder="Pertanyaan" rows="5"></textarea>
+                                <input type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
                             </div>
                             <div class="no-padding text-center">
                                 <button type="submit" class="btn btn-consul btn-login btn-lg"> Kirim </button>
