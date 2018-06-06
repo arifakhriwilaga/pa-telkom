@@ -62,7 +62,7 @@ class c_cetak_riwayat extends CI_Controller {
             $row[] = $cetak_riwayat->id;
             $row[] = $cetak_riwayat->name;
             $row[] = $cetak_riwayat->username;
-            $row[] = $cetak_riwayat->tanggal_dibuat;
+            $row[] = date('d-m-Y', strtotime($cetak_riwayat->tanggal_dibuat));
             $row[] = '<button class="btn btn-danger btn-sm hapus-cetak-riwayat" id="' . $cetak_riwayat->id . '" data-name="' . $cetak_riwayat->name . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
             $data[] = $row;
         }

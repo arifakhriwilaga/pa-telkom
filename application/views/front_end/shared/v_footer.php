@@ -36,7 +36,7 @@
         toastr.info("<?php echo $this->session->flashdata('info'); ?>", '', Object.assign(config.toastr,{ iconClass: 'toast-info' }));
     <?php } ?>
         
-    var user_id = "<?php echo $user['user_id']; ?>";
+    var user_id = "<?php echo $user['id_user']; ?>";
     count_notification(user_id);
 
     $(window).on('unload', function(e) {

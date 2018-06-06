@@ -6,7 +6,7 @@ class c_notifikasi_manajemen extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('Notifications', 'notifications');
+        $this->load->model('m_notifikasi', 'notifications');
         $user = $this->session->userdata('user');
         if (empty($user) || $user['level_user'] == 'user') {
             redirect('/');

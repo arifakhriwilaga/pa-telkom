@@ -8,7 +8,7 @@
                     <h4>Informasi yang Anda peroleh dari hasil fitur pemeriksaan gejala ini tidak dapat digunakan sebagai pengganti rekomendasi, diagnosis dan/atau perawatan yang disarankan oleh ahli medis profesional.<br> Jika Anda mengalami keadaan darurat, segera hubungi dokter.</h4>
                 </div>
                 <div class="col-md-12" style="padding-bottom: 30px"><hr>
-                    <form id="form-check" action="<?php echo site_url('periksa/step-2'); ?>" method="post" style="padding-left:25px;padding-right:25px;padding-top: 10px;">
+                    <form id="form-periksa" action="<?php echo site_url('periksa/step-2'); ?>" method="post" style="padding-left:25px;padding-right:25px;padding-top: 10px;">
                         <div class="col-md-5" style="padding-top: 45px;">
                             <div class="form-group">
                                 <h4 class="margin-0" style="color:#e67e22">Kenali Gejala Penyakit Anda</h4>
@@ -16,11 +16,11 @@
                                 <p class="margin-0">Cari tahu penyebab dan solusinya sekarang juga!</p>
                             </div>
                             <div class="form-group">
-                                <select id="check-search" name="symptom_id" onchange="checkChange()" style="width: 300px;max-height: 300px">
+                                <select id="pencarian-gejala" name="id_gejala" onchange="checkChange()" style="width: 300px;max-height: 300px">
                                     <option>Cari gejala...</option>
                                     <?php
-                                        foreach ($symptoms as $key => $value) {
-                                            echo '<option value="'. $value->id .'">'. $value->symptom .'</option>';
+                                        foreach ($gejala as $key => $value) {
+                                            echo '<option value="'. $value->id_gejala .'">'. $value->gejala .'</option>';
                                         }
                                     ?>
                                 </select>

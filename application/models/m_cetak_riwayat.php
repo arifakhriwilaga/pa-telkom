@@ -20,9 +20,9 @@ class m_cetak_riwayat extends CI_Model {
 
     private function _get_riwayat_query() {
 
-        $this->db->select('cetak_riwayat.*, CONCAT(users.nama_user) AS name, CONCAT(users.username) AS username');
+        $this->db->select('cetak_riwayat.*, CONCAT(user.nama_user) AS name, CONCAT(user.username) AS username');
         $this->db->from('cetak_riwayat');
-        $this->db->join('users', 'cetak_riwayat.id_pengguna = users.id_user', 'left');
+        $this->db->join('user', 'cetak_riwayat.id_user = user.id_user', 'left');
         $i = 0;
 
         foreach ($this->kolom_pencarian as $item) { // loop column 

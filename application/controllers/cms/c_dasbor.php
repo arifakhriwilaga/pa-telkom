@@ -9,9 +9,8 @@ class c_dasbor extends CI_Controller {
     $this->load->model('m_history_login','login_history');
     
     $user = $this->session->userdata('user');
-    $date = date('d/m/Y', strtotime($user['tgl_lahir']));
+    $this->born_date = date('d/m/Y', strtotime($user['tgl_lahir']));
     
-    $this->born_date = $date[2] . '/' . $date[1] . '/' . $date[0];
     if (empty($user) || $user['level_user'] == 'user') {
     	redirect('/');
     }

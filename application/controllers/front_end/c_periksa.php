@@ -5,7 +5,7 @@ class c_periksa extends CI_Controller {
 	public $user;
 	public function __construct() {
 	    parent::__construct();
-	    $this->load->model('CheckUp', 'checkup');
+	    $this->load->model('m_periksa', 'checkup');
 	    $this->user = $this->session->userdata('user','User');
 	    if (empty($this->user)) {
             redirect('masuk-akun');
@@ -17,12 +17,12 @@ class c_periksa extends CI_Controller {
 
 	public function index()	{
 		$page_title = "Periksa";
-		$symptoms = $this->checkup->get_symptoms();
+		$gejala = $this->checkup->ambil_gejala();
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_step_1',
 			'_js' => 'assets/js/front_end/periksa/step_1.js',
-			'symptoms' => $symptoms
+			'gejala' => $gejala
 		);
 
 		$this->load->view('front_end/v_base',$data);
@@ -30,43 +30,43 @@ class c_periksa extends CI_Controller {
 
 	public function check_step_2() {
 		$page_title = "Periksa";
-		$symptom_id = $this->input->post('symptom_id') ? $this->input->post('symptom_id') : $this->session->flashdata('symptom_id');
-		$step_checkup_id = $this->session->flashdata('step_checkup_id');
+		$id_gejala = $this->input->post('id_gejala') ? $this->input->post('id_gejala') : $this->session->flashdata('id_gejala');
+		$id_tahap_periksaan = $this->session->flashdata('id_tahap_periksa');
 		$answer = $this->session->flashdata('answer');
-		$step_checkup = null;
-		if ($step_checkup_id) {
-			$step_checkup = $this->checkup->checkup_by_parent_id($step_checkup_id, $answer);
+		$tahap_pemeriksaan = null;
+		if ($id_tahap_periksaan) {
+			$tahap_pemeriksaan = $this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksaan, $answer);
 		} else {
-			$step_checkup = $this->checkup->checkup_by_symptom_id($symptom_id);
+			$tahap_pemeriksaan = $this->checkup->pemeriksaan_dengan_id_gejala($id_gejala);
 		}
 
-		$symptom = $this->checkup->get_symptom($symptom_id);
-
+		$gejala = $this->checkup->ambil_gejala_dengan_id($id_gejala);
+		// var_dump($tahap_pemeriksaan);exit();
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_step_2',
 			'_js' => 'assets/js/front_end/periksa/step_2.js',
-			'step_checkup' => $step_checkup,
-			'symptom' => $symptom
+			'tahap_pemeriksaan' => $tahap_pemeriksaan,
+			'gejala' => $gejala
 		);
 
 		$this->load->view('front_end/v_base',$data);
 	}
 
-	public function validation_checker() {
-		$step_checkup_id = $this->input->post('step_checkup_id');
-		$answer = $this->input->post('answer');
-		$symptom_id = $this->input->post('symptom_id');
-		$sickness_false = $this->input->post('sickness_false');
-		$sickness_true = $this->input->post('sickness_true');
+	public function pengecekan_pertanyaan() {
+		$id_tahap_periksa = $this->input->post('id_tahap_periksa');
+		$jawaban = $this->input->post('jawaban');
+		$id_gejala = $this->input->post('id_gejala');
+		$penyakit_benar = $this->input->post('penyakit_benar');
+		$penyakit_salah = $this->input->post('penyakit_salah');
 
-		$this->session->set_flashdata('step_checkup_id', $step_checkup_id);
-		$this->session->set_flashdata('answer', $answer);
-		$this->session->set_flashdata('symptom_id', $symptom_id);
-		$this->session->set_flashdata('sickness_false', $sickness_false);
-		$this->session->set_flashdata('sickness_true', $sickness_true);
-		
-		if ($this->checkup->checkup_by_parent_id($step_checkup_id, $answer)) {
+		$this->session->set_flashdata('id_tahap_periksa', $id_tahap_periksa);
+		$this->session->set_flashdata('jawaban', $jawaban);
+		$this->session->set_flashdata('id_gejala', $id_gejala);
+		$this->session->set_flashdata('penyakit_benar', $penyakit_benar);
+		$this->session->set_flashdata('penyakit_salah', $penyakit_salah);
+		var_dump($this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksa, $jawaban));exit();
+		if ($this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksa, $jawaban)) {
 			return redirect('periksa/step-2');
 		} else {
 			return redirect('periksa/step-final');
@@ -76,23 +76,23 @@ class c_periksa extends CI_Controller {
 
 	public function check_step_final() {
 		$page_title = "Periksa";
-		$answer = $this->session->flashdata('answer');
+		$jawaban = $this->session->flashdata('jawaban');
 		$id_penyakit = null;
 
-		if ($answer=="true") {
-			$id_penyakit = $this->session->flashdata('sickness_true');
+		if ($jawaban=="true") {
+			$id_penyakit = $this->session->flashdata('penyakit_benar');
 		} else {
-			$id_penyakit = $this->session->flashdata('sickness_false');
+			$id_penyakit = $this->session->flashdata('penyakit_salah');
 		}
 
-		$sickness = $this->checkup->get_sickness_by_id($id_penyakit);
-		$this->checkup->pos_periksa($this->user['user_id'], $id_penyakit);
+		$penyakit = $this->checkup->ambil_penyakit_dengan_id($id_penyakit);
+		$this->checkup->simpan_periksa($this->user['id_user'], $id_penyakit);
 
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_step_final',
 			'_js' => 'assets/js/front_end/periksa/step_final.js',
-			'sickness' => $sickness
+			'penyakit' => $penyakit
 		);
 		$this->load->view('front_end/v_base',$data);
 	}

@@ -7,7 +7,7 @@ class c_kunjungan extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('CheckUp','checkup');
+		$this->load->model('m_periksa','checkup');
 		$this->user = $this->session->userdata('user');
 		if (empty($this->user)) {
 			redirect('masuk-akun');
@@ -36,8 +36,8 @@ class c_kunjungan extends CI_Controller {
             $date = explode(' ', $checkup->tanggal_dibuat);
             $no++;
             $row = array();
-            $row[] = $date[0];
-            $row[] = $date[1];
+            $row[] = date('d-m-Y', strtotime($checkup->tanggal_dibuat));
+            $row[] = date('H.i', strtotime($checkup->tanggal_dibuat));
             $data[] = $row;
         }
 

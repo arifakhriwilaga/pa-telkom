@@ -1,5 +1,5 @@
 $(function () {
-	$('input[type=radio][name=answer]').change(function() {
-	    $('#form-check-2').submit();
+	$('input[type=radio][name=jawaban]').change(function() {
+	    $('#form-periksa-2').submit();
 	});
 });

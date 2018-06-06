@@ -60,7 +60,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <?php echo replace_newline($sickness->diagnosis); ?>
+                <?php echo replace_newline($penyakit->diagnosa); ?>
             </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <?php echo replace_newline($sickness->food_recommendations); ?>
+                <?php echo replace_newline($penyakit->rekomendasi_makanan); ?>
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <?php echo replace_newline($sickness->solutions); ?>
+                <?php echo replace_newline($penyakit->solusi_solusi); ?>
             </div>
         </div>
     </div>
@@ -121,13 +121,13 @@
                     <div class="col-md-12">
                         <table class="table">
                             <tr>
-                                <td style="width:150px;border-top:0">Nama</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo $user['name']; ?></td>
+                                <td style="width:150px;border-top:0">Nama</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo $user['nama_user']; ?></td>
                             </tr>
                             <tr>
-                                <td style="width:150px;border-top:0">Usia</td><td style="width:10px;border-top:0">:</td><td style="border-top:0">20 Tahun</td>
+                                <!-- <td style="width:150px;border-top:0">Usia</td><td style="width:10px;border-top:0">:</td><td style="border-top:0">20 Tahun</td> -->
                             </tr>
                             <tr>
-                                <td style="width:150px;border-top:0">Tanggal Lahir</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo $user['born_date']; ?></td>
+                                <td style="width:150px;border-top:0">Tanggal Lahir</td><td style="width:10px;border-top:0">:</td><td style="border-top:0"><?php echo $user['tgl_lahir']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -135,7 +135,7 @@
                 <hr class="no-padding">
 
                 <div class="" style="text-align:middle">
-                    <?php echo replace_newline($sickness->diagnosis); ?>
+                    <?php echo replace_newline($penyakit->diagnosa); ?>
                 </div>
             </div>
             <div class="modal-footer" style="text-align:center">

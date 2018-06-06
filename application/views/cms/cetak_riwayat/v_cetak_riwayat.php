@@ -12,11 +12,11 @@
           <table id="tabel_cetak_riwayat" class="table table-bordered table-striped">
             <thead>
             <tr>
-              <th>ID</th>
-              <th>NAMA</th>
-              <th>NAMA PENGGUNA</th>
-              <th>TANGGAL CETAK</th>
-              <th>OPSI</th>
+              <th width="10px">ID</th>
+              <th width="300px">NAMA</th>
+              <th width="200px">NAMA PENGGUNA</th>
+              <th width="80px">TANGGAL CETAK</th>
+              <th width="10px">OPSI</th>
             </tr>
             </thead>
 
