@@ -43,7 +43,7 @@ class c_notifikasi extends CI_Controller {
     }
     
     public function count_notif() {
-        $user_id = $this->input->post('user_id');
+        $user_id = $this->input->post('id_user');
         $result = $this->notifications->count_notif($user_id);
         $this->output
                 ->set_content_type('json')
