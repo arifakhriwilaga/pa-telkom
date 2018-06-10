@@ -35,7 +35,7 @@ class c_notifikasi_manajemen extends CI_Controller {
             $row[] = $notifications->id_konsul;
             $row[] = $notifications->name;
             $row[] = $notifications->username;
-            $row[] = (strlen($notifications->pertanyaan_konsul) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . $notifications->pertanyaan_konsul . '</div>' : $notifications->pertanyaan_konsul);
+            $row[] = (strlen($notifications->pertanyaan_konsul) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . replace_newline($notifications->pertanyaan_konsul) . '</div>' : replace_newline($notifications->pertanyaan_konsul));
             $row[] = $this->checkSend($notifications->status_kirim, $notifications);
             $row[] = $this->checkAnswer($notifications->status_pertanyaan, $notifications);
 

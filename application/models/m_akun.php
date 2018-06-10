@@ -16,6 +16,7 @@ class m_akun extends CI_Model {
     private function _get_accounts_query() {
 
         $this->db->from($this->table);
+        $this->db->where('level_user !=', 'admin');
 
         $i = 0;
 

@@ -10,27 +10,19 @@
 
         <div class="box box-info">
           <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="table-konsultasi" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>ID</th>
-                <th>NAMA</th>
-                <th>NAMA PENGGUNA</th>
-                <th>JENIS KELAMIN</th>
-                <th>TANGGAL LAHIR</th>
-                <th>DETAIL</th>
-                <th>OPSI</th>
+                <th class="text-center">ID</th>
+                <th class="text-center">NAMA</th>
+                <th class="text-center">NAMA PENGGUNA</th>
+                <th class="text-center">JENIS KELAMIN</th>
+                <th class="text-center">TANGGAL LAHIR</th>
+                <th class="text-center">DETAIL</th>
+                <th class="text-center">OPSI</th>
               </tr>
               </thead>
-              <tbody>
-              <!-- <tr>
-                <td>H001</td>
-                <td>Lala</td>
-                <td>laladipsi</td>
-                <td>12-05-2016</td>
-                <td><button class="btn btn-danger btn-sm btn-action" id="" name="" title="Hapus" style=""><i class="glyphicon glyphicon-trash"></i></button></td>
-              </tr> -->
-              </tbody>
+              <tbody> </tbody>
             </table>
           </div>
         </div>

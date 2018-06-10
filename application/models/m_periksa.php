@@ -96,4 +96,36 @@ class m_periksa extends CI_Model {
         $this->db->from('periksa');
         return $this->db->count_all_results();
     }
+
+    private function _get_konsultasi_query($id_user) {
+        $this->db->select('periksa.*, CONCAT(user.nama_user) AS nama_user, CONCAT(penyakit.penyakit) AS penyakit, CONCAT(penyakit.solusi_solusi) AS solusi_solusi');
+        $this->db->from('periksa');
+        $this->db->join('user', 'user.id_user = periksa.id_user', 'left');
+        $this->db->join('penyakit', 'penyakit.id_penyakit = periksa.id_penyakit', 'left');
+        $this->db->where('periksa.id_user', $id_user);
+
+        $order = $this->order;
+        $this->db->order_by(key($order), $order[key($order)]);
+    }
+
+    public function ambil_detail_konsultasi($id_user = null){
+        $this->_get_konsultasi_query($id_user);
+        
+        if ($_POST['length'] != -1)
+            $this->db->limit($_POST['length'], $_POST['start']);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function count_detail_filtered($id_user = null) {
+        $this->_get_konsultasi_query($id_user);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+    public function count_detail_all($id_user = null) {
+        $this->db->select('*');
+        $this->db->from('periksa');
+        $this->db->where('id_user', $id_user);        
+        return $this->db->count_all_results();
+    }
 }
