@@ -26,16 +26,19 @@ class m_user extends CI_Model {
         return $user;
     }
 
-    public function update($id_user) {
+    public function update($id_user, $foto = null) {
+
         $date = preg_split('/\//', strval($this->input->post('tgl_lahir')));
         $born_date = $date[2] . '-' . $date[1] . '-' . $date[0];
+
         $data = array(
             "username" => $this->input->post('username'),
             "nama_user" => $this->input->post('nama_user'),
             "email" => $this->input->post('email'),
             "jk_user" => $this->input->post('jk_user'),
             "tgl_lahir" => $born_date,
-            "level_user" => $this->input->post('level_user')
+            "level_user" => $this->input->post('level_user'),
+            "foto" => $foto
         );
         if ($this->input->post('password')) {
             $data["password"] = md5($this->input->post('password'));
@@ -67,7 +70,7 @@ class m_user extends CI_Model {
             $result = array(
                 'status' => true,
                 'message' => 'Foto profil berhasil diubah!',
-                'data' => $user['profile_picture']
+                'data' => $user['foto']
             );
             return $result;
         } else {

@@ -10,6 +10,7 @@
                                 <div class="ava-image">
                                     <span>
                                         <img id="profile-image" class="placeholder-img" src="<?php echo($user['foto'] ? base_url($user['foto']) : base_url('assets/images/home/header/default-avatar.png')); ?>" alt="<?php echo $user['nama_user']; ?>" />
+                                        <!-- <img id="image-preview" class="placeholder-img" alt="image preview"/> -->
                                     </span>
 
                                     <label for="input-profile-picture" class="edit-photo">

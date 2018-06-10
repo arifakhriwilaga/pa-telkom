@@ -1,4 +1,3 @@
-var id_user = "<?php echo json_encode($user['id_user']); ?>"
 // config datepicker borndate
 $('#tgl_lahir').datetimepicker({
     locale: moment.locale('id', {
@@ -96,15 +95,10 @@ $('#edit-profile').formValidation({
     }
 });
 $("#edit-profile #input-profile-picture").on('change', function () {
-    var input = this;
-    $("#edit-profile").ajaxSubmit({
-        type: "post",
-        url: site_url('front_end/profile/upload_picture/'+id_user),
-        dataType: 'json',
-        success: function (status, message, data) {
-            if (status) {
-                $('#profile-image').attr('src', base_url(data.responseJSON.data));
-            }
-        }
-    });
+    var oFReader = new FileReader();
+     oFReader.readAsDataURL(document.getElementById("input-profile-picture").files[0]);
+
+    oFReader.onload = function(oFREvent) {
+      document.getElementById("profile-image").src = oFREvent.target.result;
+    };
 });
