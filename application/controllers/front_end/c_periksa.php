@@ -41,7 +41,6 @@ class c_periksa extends CI_Controller {
 		}
 
 		$gejala = $this->checkup->ambil_gejala_dengan_id($id_gejala);
-		// var_dump($tahap_pemeriksaan);exit();
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_step_2',
@@ -65,7 +64,6 @@ class c_periksa extends CI_Controller {
 		$this->session->set_flashdata('id_gejala', $id_gejala);
 		$this->session->set_flashdata('penyakit_benar', $penyakit_benar);
 		$this->session->set_flashdata('penyakit_salah', $penyakit_salah);
-		var_dump($this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksa, $jawaban));exit();
 		if ($this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksa, $jawaban)) {
 			return redirect('periksa/step-2');
 		} else {
