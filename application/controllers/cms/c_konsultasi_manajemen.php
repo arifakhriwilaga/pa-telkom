@@ -26,32 +26,6 @@ class c_konsultasi_manajemen extends CI_Controller {
         $this->load->view('cms/v_base', $data);
     }
 
-    // public function ambil_konsultasi() {
-    //     $list = $this->notifications->get_notifications();
-    //     $data = array();
-    //     $no = $_POST['start'];
-    //     foreach ($list as $notifications) {
-    //         $no++;
-    //         $row = array();
-    //         $row[] = $notifications->consul_id;
-    //         $row[] = $notifications->name;
-    //         $row[] = $notifications->username;
-    //         $row[] = (strlen($notifications->questions) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . $notifications->questions . '</div>' : $notifications->questions);
-    //         $row[] = $this->checkSend($notifications->send_status, $notifications);
-    //         $row[] = $this->checkAnswer($notifications->answer_status, $notifications);
-
-    //         $data[] = $row;
-    //     }
-
-    //     $output = array(
-    //         "draw" => $_POST['draw'],
-    //         "recordsTotal" => $this->notifications->count_all(),
-    //         "recordsFiltered" => $this->notifications->count_filtered(),
-    //         "data" => $data
-    //     );
-    //     echo json_encode($output);
-    // }
-
     public function ambil_konsultasi() {
         $list = $this->accounts->get_accounts();
         $data = array();
@@ -95,15 +69,10 @@ class c_konsultasi_manajemen extends CI_Controller {
     }
 
     public function ambil_detail_konsultasi($id_user) {
-        // var_dump($id_user);exit();
         $list = $this->periksa->ambil_detail_konsultasi($id_user);
-        // var_dump($list);exit();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $konsultasi) {
-            // var_dump($konsultasi);exit();
-            // $date = preg_split('/\-/', strval($konsultasi->tanggal_dibuat));
-            // $tanggal_konsultasi = $date[2] . '/' . $date[1] . '/' . $date[0];;
             
             $no++;
             $row = array();
@@ -115,7 +84,7 @@ class c_konsultasi_manajemen extends CI_Controller {
 
             $data[] = $row;
         }
-        // exit();
+        
         $output = array(
             "draw" => $_POST['draw'],
             "recordsTotal" => $this->periksa->count_detail_all($id_user),
@@ -123,6 +92,14 @@ class c_konsultasi_manajemen extends CI_Controller {
             "data" => $data,
         );
         echo json_encode($output);
+    }
+
+    public function hapus_semua_konsultasi($id_user = null) {
+        // var_dump($id_user);exit();
+        $result = $this->periksa->delete_all_konsultasi($id_user);
+        $this->output
+                ->set_content_type('json')
+                ->set_output(json_encode($result));
     }
 
 }

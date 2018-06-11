@@ -52,7 +52,7 @@ class m_periksa extends CI_Model {
                         ->limit(1)
                         ->get('periksa')
                         ->row();
-        $penyakit = $this->get_sickness_by_id($periksa->id_penyakit);
+        $penyakit = $this->ambil_penyakit_dengan_id($periksa->id_penyakit);
         return $penyakit;
     }
 
@@ -122,10 +122,57 @@ class m_periksa extends CI_Model {
         $query = $this->db->get();
         return $query->num_rows();
     }
+
     public function count_detail_all($id_user = null) {
         $this->db->select('*');
         $this->db->from('periksa');
         $this->db->where('id_user', $id_user);        
         return $this->db->count_all_results();
+    }
+
+    public function delete_all_konsultasi($id_user = null) {
+        $this->db->select('*');
+        $this->db->from('periksa');
+        $this->db->where('id_user', $id_user);
+        $result_query = $this->db->get()->result();
+        $count_all = count($result_query);
+        $no = 0;
+        
+        if($count_all > 0) {
+            foreach ($result_query as $value) {
+                $this->db->select('*');
+                $this->db->from('periksa');
+                $this->db->where('id_user', $value->id_user);
+                if ($this->db->delete('periksa')) {
+                    $no++;
+                } else {
+                    $error = $this->db->error();
+                }
+            }
+            
+            if ($no == $count_all) {
+                $result = array(
+                    'status' => true,
+                    'message' => 'Konsultasi berhasil dihapus!',
+                    'data' => null
+                );
+                return $result;
+            } else {
+                $error = $this->db->error();
+                $result = array(
+                    'status' => false,
+                    'message' => $error['message'],
+                    'data' => null
+                );
+                return $result;
+            }
+        } else {
+            $result = array(
+                'status' => false,
+                'message' => "User belum melakukan konsultasi",
+                'data' => null
+            );
+            return $result;
+        }
     }
 }

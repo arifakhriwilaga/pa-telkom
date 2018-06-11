@@ -1,6 +1,8 @@
 var table;
+var id_konsultasi;
 $(document)
         .ready(function () {
+            // id_konsultasi = $('table#table-detail-konsultasi').attr('data-id');            
             table = $('#table-konsultasi').DataTable({
                 "language": {
                     "infoFiltered": "",
@@ -36,12 +38,12 @@ $(document)
             });
         })
         .on('click', '.delete-acc', function () {
-            if (confirm('Anda yakin ingin menghapus akun ' + $(this).data('name') + '?')) {
+            if (confirm('Anda yakin ingin menghapus semua history konsultasi ?')) {
                 $.ajax({
-                    url: site_url('cms/c_akun_manajemen/hapus_akun'),
+                    url: site_url('cms/c_konsultasi_manajemen/hapus_semua_konsultasi/'+$(this).attr('id')),
                     type: 'POST',
                     data: {
-                        user_id: $(this).attr('id')
+                        id_user : $(this).attr('id')
                     }
                 }).done(function (data) {
                     if (data.status) {

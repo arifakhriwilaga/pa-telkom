@@ -5,7 +5,8 @@ class c_periksa extends CI_Controller {
 	public $user;
 	public function __construct() {
 	    parent::__construct();
-	    $this->load->model('m_periksa', 'checkup');
+		$this->load->model('m_periksa', 'checkup');
+		$this->load->model('m_cetak_riwayat', 'cetak_riwayat');
 	    $this->user = $this->session->userdata('user','User');
 	    if (empty($this->user)) {
             redirect('masuk-akun');
@@ -97,26 +98,27 @@ class c_periksa extends CI_Controller {
 
 	public function print_sick_letter() {
 		$this->load->library('pdfgenerator');
-		$now = date('m-d'); 
-		$born =	date('m-d', strtotime($this->user['born_date']));
+
+		$this->cetak_riwayat->submit($this->user['id_user']);
+		$diagnosa = $this->checkup->hasil_periksa($this->user['id_user']);
 		
-		$age = strval((intval(date('Y')) - intval(date('Y',strtotime($this->user['born_date']))) - 1) + (($now > $born) == true ? 1 : 0));
 		$page_title = "Surat Prediksi Penyakit";
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_pdf_sick_letter',
-			'_js' => 'assets/js/front_end/periksa/step_2.js',
+			'_js' => 'assets/js/front_end/check/step_2.js',
 			'users' => array(
-				'age' => $age,
-				'name' => ucwords($this->user['name']), 
-				'born_date' => $this->format_day_month_year(date('j',strtotime($this->user['born_date'])),$this->user['born_date'],date('Y',strtotime($this->user['born_date']))),
-				'today' => $this->format_day_month_year("",date('Y-m-d'))
+				'nama_user' => ucwords($this->user['nama_user']), 
+				'tgl_lahir' => date_formater(date('j F Y',strtotime($this->user['tgl_lahir']))),
+				'hari_ini' => date_formater(date('j F Y')),
+				'diagnosa' => $diagnosa->diagnosa
 			)
 		);
- 
+
 	    $html = $this->load->view('front_end/v_base_print',$data,true);
+	    
 	    $this->pdfgenerator->generate($html,'Surat Keterangan Sakit');
-	}
+	 }
 
 	public function change_month($month) {
 		switch ($month) {
