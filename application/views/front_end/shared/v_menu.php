@@ -48,7 +48,7 @@
                 </div>
             </div>
         <?php } 
-            if (($page_title != 'Masuk Akun') and ($page_title != 'Daftar Akun Baru') and ($page_title != 'Edit Profile') and ($page_title != 'Periksa') and ($page_title != 'Konsul Dokter') and ($page_title != 'Kunjungan')) { ?>
+            if (($page_title != 'Lupa Password') and ($page_title != 'Masuk Akun') and ($page_title != 'Daftar Akun Baru') and ($page_title != 'Edit Profile') and ($page_title != 'Periksa') and ($page_title != 'Konsul Dokter') and ($page_title != 'Kunjungan')) { ?>
                 <div class="main-nav navbar-collapse collapse">
                     <div class="container">
                         <div class="minilogo">
