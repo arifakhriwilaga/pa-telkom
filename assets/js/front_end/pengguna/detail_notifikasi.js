@@ -1,12 +1,14 @@
 $(document).ready(function () {
     var text = $('#question'),
-            btn = $('.btn-show'),
-            h = text[0].scrollHeight;
+    btn = $('.btn-show'),
+    h = text[0].scrollHeight;
 
     if (h > 95) {
         btn.addClass('more');
         btn.text('Show More');
         text.addClass('question');
+    } else {
+        $(".btn-show").remove();
     }
     btn.click(function (e) {
         e.stopPropagation();

@@ -15,8 +15,7 @@
                             <?php echo $notif->pertanyaan_konsul; ?>
                         </div>
                     </div>
-                    <div class="btn-show">
-                    </div>
+                    <div class="btn-show"></div>
                 </li>
                 <li class="right clearfix">
                     <span class="chat-img pull-right">
@@ -24,7 +23,9 @@
                     </span>
                     <div class="chat-body clearfix">
                         <div class="header">
-                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span><?php echo time_since(strtotime($notif->tgl_kirim)); ?></small>
+                        <?php if ($notif->jawaban_konsul != 'Pertanyaan belum dijawab dokter') { ?>
+                            <small class=" text-muted"><span class="glyphicon glyphicon-time"></span><?php echo time_since(strtotime($notif->tgl_kirim)); ?> </small>
+                        <?php } ?>
                             <strong class="pull-right primary-font">Dr. <?php echo $notif->dokter; ?></strong>
                         </div>
                         <textarea rows="22" class="form-control" name="answer" readonly="true"><?php echo $notif->jawaban_konsul; ?></textarea>
