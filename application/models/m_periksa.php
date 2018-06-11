@@ -5,6 +5,13 @@ if (!defined('BASEPATH'))
 
 class m_periksa extends CI_Model {
 
+    public function cari_gejala($keyword = '') {
+        $this->db->select('*');
+        $this->db->from('penyakit');
+        $this->db->like('penyakit', $keyword);
+        return $this->db->get()->result_array();
+    }
+
     public function ambil_gejala() {
         $query = $this->db->get('gejala')->result();
         return $query;

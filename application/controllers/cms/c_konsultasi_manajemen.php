@@ -41,7 +41,7 @@ class c_konsultasi_manajemen extends CI_Controller {
             $row[] = $konsultasi->email;
             $row[] = $konsultasi->jk_user == 'male' ? 'Laki-laki' : 'Perempuan';
             $row[] = $born_date ;
-            $row[] = '<a href="detail-konsultasi/'.$konsultasi->id_user.'"><button class="btn btn-info btn-sm info-acc" id="' . $konsultasi->id_user . '" data-name="' . $konsultasi->username . '" title="Detail Konsultasi">Detail Konsultasi<i class="glyphicon glyphicon-"></i></button></a>';
+            $row[] = '<a href="detail-konsultasi/'.$konsultasi->id_user.'"><button class="btn btn-info btn-sm info-acc" id="' . $konsultasi->id_user . '" data-name="' . $konsultasi->username . '" title="Detail Konsultasi"><i class="glyphicon glyphicon-search"></i> Detail Konsultasi</button></a>';
             $row[] = '<button class="btn btn-danger btn-sm delete-acc" id="' . $konsultasi->id_user . '" data-name="' . $konsultasi->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
 
             $data[] = $row;

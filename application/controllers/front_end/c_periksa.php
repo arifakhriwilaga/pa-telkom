@@ -31,6 +31,7 @@ class c_periksa extends CI_Controller {
 
 	public function check_step_2() {
 		$page_title = "Periksa";
+		// var_dump($this->input->post('id_gejala'));
 		$id_gejala = $this->input->post('id_gejala') ? $this->input->post('id_gejala') : $this->session->flashdata('id_gejala');
 		$id_tahap_periksaan = $this->session->flashdata('id_tahap_periksa');
 		$answer = $this->session->flashdata('answer');
@@ -40,7 +41,7 @@ class c_periksa extends CI_Controller {
 		} else {
 			$tahap_pemeriksaan = $this->checkup->pemeriksaan_dengan_id_gejala($id_gejala);
 		}
-
+		
 		$gejala = $this->checkup->ambil_gejala_dengan_id($id_gejala);
 		$data = array(
 			'page_title' => $page_title,
@@ -121,24 +122,11 @@ class c_periksa extends CI_Controller {
 	 }
 
 	public function cari_gejala(){
-		// var_dump($this->input->get("q"));exit();
 		$json = [];
 
-
-		$this->load->database();
-
-		
 		if(!empty($this->input->get("q"))){
-			$this->db->select('*');
-			$this->db->from('penyakit');
-			$this->db->like('penyakit', $this->input->get("q"));
-			$json = $this->db->get()->result_array();
-			// $query = $this->db->select('penyakit')
-			// 			->limit(10)
-			// 			->get("penyakit");
-			// $json = $query->result();
+			$json = $this->checkup->cari_gejala($this->input->get("q"));
 		}
-
 		
 		echo json_encode($json);
 	}

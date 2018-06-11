@@ -15,7 +15,7 @@
                                 <th width="150px" class="text-center">NAMA PENGGUNA</th>
                                 <th width="200px" class="text-center">PERTANYAAN</th>
                                 <th width="200px" class="text-center">JAWABAN</th>
-                                <th width="50px" class="text-center">OPSI</th>
+                                <th width="70px" class="text-center">OPSI</th>
                             </tr>
                         </thead>
                         <tbody>
