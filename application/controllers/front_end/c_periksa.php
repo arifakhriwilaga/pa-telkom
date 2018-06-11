@@ -120,6 +120,29 @@ class c_periksa extends CI_Controller {
 	    $this->pdfgenerator->generate($html,'Surat Keterangan Sakit');
 	 }
 
+	public function cari_gejala(){
+		// var_dump($this->input->get("q"));exit();
+		$json = [];
+
+
+		$this->load->database();
+
+		
+		if(!empty($this->input->get("q"))){
+			$this->db->select('*');
+			$this->db->from('penyakit');
+			$this->db->like('penyakit', $this->input->get("q"));
+			$json = $this->db->get()->result_array();
+			// $query = $this->db->select('penyakit')
+			// 			->limit(10)
+			// 			->get("penyakit");
+			// $json = $query->result();
+		}
+
+		
+		echo json_encode($json);
+	}
+
 	public function change_month($month) {
 		switch ($month) {
 			case 'January':

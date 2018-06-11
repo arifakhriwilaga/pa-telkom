@@ -11,11 +11,11 @@
                     <div class="form-group row">
                         <label class="col-md-9"><?php echo $tahap_pemeriksaan->pertanyaan; ?></label>
                         <label class="col-md-3">
-                            <label class="col-md-6">
-                                <input type="radio" name="jawaban" value="true" class="col-md-2"> Ya
+                            <label class="col-md-6 pointer">
+                                <input type="radio" name="jawaban" value="true" class="col-md-2 pointer" style="margin-right:3px">Ya
                             </label>
-                            <label class="col-md-6">
-                                <input type="radio" name="jawaban" value="false" class="col-md-2"> Tidak
+                            <label class="col-md-6 pointer">
+                                <input type="radio" name="jawaban" value="false" class="col-md-2" style="margin-right:3px"> Tidak
                             </label>
                         </label>
                     </div>

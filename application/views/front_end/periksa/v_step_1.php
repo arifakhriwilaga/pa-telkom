@@ -17,12 +17,13 @@
                             </div>
                             <div class="form-group">
                                 <select id="pencarian-gejala" name="id_gejala" onchange="checkChange()" style="width: 300px;max-height: 300px">
-                                    <option>Cari gejala...</option>
+                                    <option></option>
+                                    <!-- <option>Cari gejala...</option>
                                     <?php
                                         foreach ($gejala as $key => $value) {
                                             echo '<option value="'. $value->id_gejala .'">'. $value->gejala .'</option>';
                                         }
-                                    ?>
+                                    ?> -->
                                 </select>
                             </div>
                         </div>

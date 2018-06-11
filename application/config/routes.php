@@ -80,6 +80,7 @@ $route['info-sehat/3-makanan-sumber-gandum-utuh-yang-sehat-untuk-sarapan'] = 'fr
 
 $route['kunjungan'] = 'front_end/c_kunjungan';
 $route['periksa/step-1'] = 'front_end/c_periksa';
+$route['periksa/cari-gejala/:any'] = 'front_end/c_periksa/cari_gejala';
 $route['periksa/step-2'] = 'front_end/c_periksa/check_step_2';
 $route['periksa/step-final'] = 'front_end/c_periksa/check_step_final';
 $route['konsul-dokter'] = 'front_end/c_konsultasi_dokter';
