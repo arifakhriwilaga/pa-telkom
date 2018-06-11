@@ -2,6 +2,7 @@ $(function () {
     var table = $("#kunjungan").DataTable({
         "language": {
             "search": "Cari data:",
+            "searchPlaceholder": "contoh: 2016-06-01",
             "lengthMenu": "Lihat _MENU_ data",
             "zeroRecords": "Data tidak tersedia",
             "paginate": {
