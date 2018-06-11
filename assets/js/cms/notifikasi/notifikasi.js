@@ -24,6 +24,9 @@ var table = $('#table-notifikasi').DataTable({
         {
             "targets": [0],
             "orderable": false,
+        },{
+            "targets": [5],
+            "orderable": false,
         }
     ]
 });
