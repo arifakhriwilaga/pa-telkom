@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-md-6 pull-right">
                             <a href="<?php echo site_url('front_end/c_periksa/print_sick_letter') ?>" target="_blank" class="btn btn-login btn-purple btn-block btn-lg">
-                                <i class="glyphicon glyphicon-print"></i> 
+                                <i class="glyphicon glyphicon-print" style="color:#fff"></i> 
                                 Cetak Surat Prediksi Penyakit
                             </a>
                         </div>

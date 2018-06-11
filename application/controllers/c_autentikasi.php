@@ -7,7 +7,8 @@ class c_autentikasi extends CI_Controller {
         $this->load->model('m_auth', 'auth');
         $this->load->model('m_user', 'user');
         $this->load->model('m_history_login', 'login_history');
-        $this->load->helper(array('Form', 'Cookie', 'String'));
+		$this->load->helper(array('Form', 'Cookie', 'String'));
+		// var_dump(date());exit();
     }
 
 	public function index()	{

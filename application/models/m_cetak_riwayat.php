@@ -67,9 +67,9 @@ class m_cetak_riwayat extends CI_Model {
         return $query->result();
     }
     
-    public function submit($id_pengguna) {
+    public function submit($id_user) {
         $data = array(
-            'id_pengguna' => $id_pengguna
+            'id_user' => $id_user
         );
         $this->db->insert($this->tabel, $data);
     }

@@ -38,11 +38,14 @@ class m_history_login extends CI_Model {
 		deskripsi : method untuk save kapan admin login dan jika login pada hari yang sama maka akan diupdate
 	*/
     public function simpan_history($id_user) {
+
+        date_default_timezone_set('Asia/Jakarta');
+        $hari_ini = date('Y-m-d H:i:s');
         $data = array(
             "id_user" => $id_user,
-            "tgl_login" => date('Y-m-d H:i')
+            "tgl_login" => $hari_ini
         );
-
+        
         // pengecekan login, jika admin baru melakukan login maka akan masuk pada if (count($this->mengambil_duplikasi_login()) < 1) untuk disave
         if (count($this->mengambil_duplikasi_login()) < 1) {
 
@@ -56,7 +59,7 @@ class m_history_login extends CI_Model {
         // kondisi untuk update
         }  else {
             
-            $query = $this->db->where('id_history_login',$this->mengambil_duplikasi_login()[0]->login_history_id);
+            $query = $this->db->where('id_history_login', $this->mengambil_duplikasi_login()[0]->id_history_login);
             if ($this->db->update($this->table, $data)) {
                 return $result = true;
             } else {

@@ -11,7 +11,7 @@
                     if (sizeof($notifications) > 0) {
                         $no = 1;
                         foreach ($notifications as $key => $value) {
-                            $date = date_format(new DateTime($value->tgl_konsul), 'D, d F Y - H:i');
+                            $date = $value->tgl_konsul;
                     ?>
                     <div class="row">
                         <div class="col-md-1" style="padding-right: 0;width: 40px"><?php echo $no; ?>.</div>
@@ -20,8 +20,8 @@
                                 <a class="detail-info-slider" title="<?php echo $value->pertanyaan_konsul; ?>" href="<?php echo site_url('detail-notifikasi/'.$value->id_konsul); ?>">
                                     <?php echo $value->pertanyaan_konsul; ?>
                                 </a>
-                                <p class="no-padding">Waktu <?php echo $date; ?><br>
-                                    <?php if($value->status_baca == 'false') { ?>
+                                <p class="no-padding">Waktu: <?php echo $date; ?><br>
+                                    <?php if($value->status_baca == 'false' && $value->status_kirim == 'true') { ?>
                                         <b>
                                             <i class="glyphicon glyphicon-info-sign"></i> 
                                             Pertanyaan anda telah dijawab oleh dr. <?php echo $value->dokter; ?>

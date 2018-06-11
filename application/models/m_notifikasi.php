@@ -151,7 +151,7 @@ class m_notifikasi extends CI_Model {
         $this->db->select('konsul_dokter.*, CONCAT(dokter.nama_dokter) AS dokter');
         $this->db->from('konsul_dokter');
         $this->db->join('dokter', 'dokter.id_dokter = konsul_dokter.id_dokter AND konsul_dokter.id_user = '.$id_user, 'left');
-        $this->db->where('konsul_dokter.status_kirim', 'true');
+        // $this->db->where('konsul_dokter.status_kirim', 'true');
         $this->db->where('konsul_dokter.id_user', $id_user);
         $this->db->order_by('konsul_dokter.tgl_konsul', 'DESC');
         $query = $this->db->get();
@@ -175,7 +175,7 @@ class m_notifikasi extends CI_Model {
     }
     
     public function count_notif($id_user) {
-        $query = $this->db->get_where($this->tabel, array('id_user' => $id_user, 'status_baca' => 'false'));
+        $query = $this->db->get_where($this->tabel, array('id_user' => $id_user, 'status_baca' => 'false', 'status_kirim' => 'true'));
         return $query->num_rows();
     }
 }
