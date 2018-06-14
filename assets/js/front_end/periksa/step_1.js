@@ -17,8 +17,8 @@ $(function () {
 
         $.each(data, function(index, item){
             results.push({
-                id: item.id_penyakit,
-                text: item.penyakit
+                id: item.id_gejala,
+                text: item.gejala
             });
         });
         return {

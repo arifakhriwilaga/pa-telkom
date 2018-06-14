@@ -7,8 +7,8 @@ class m_periksa extends CI_Model {
 
     public function cari_gejala($keyword = '') {
         $this->db->select('*');
-        $this->db->from('penyakit');
-        $this->db->like('penyakit', $keyword);
+        $this->db->from('gejala');
+        $this->db->like('gejala', $keyword);
         return $this->db->get()->result_array();
     }
 
@@ -34,7 +34,13 @@ class m_periksa extends CI_Model {
     public function pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id, $status) {
     	$result = $this->db
 						->get_where('tahap_pemeriksaan', array('status_muncul_setelah_id_pemeriksaan' => $id, 'status' => $status))
-						->row();
+                        ->row();
+        if(!$result) {
+            $result = $this->db
+						->get_where('tahap_pemeriksaan', array('status_muncul_setelah_id_pemeriksaan' => $id, 'status' => 'netral'))
+                        ->row();
+        }
+        // print_r($result);die();
 		return $result;
     }
 

@@ -34,7 +34,7 @@ class c_periksa extends CI_Controller {
 		// var_dump($this->input->post('id_gejala'));
 		$id_gejala = $this->input->post('id_gejala') ? $this->input->post('id_gejala') : $this->session->flashdata('id_gejala');
 		$id_tahap_periksaan = $this->session->flashdata('id_tahap_periksa');
-		$answer = $this->session->flashdata('answer');
+		$answer = $this->session->flashdata('jawaban');
 		$tahap_pemeriksaan = null;
 		if ($id_tahap_periksaan) {
 			$tahap_pemeriksaan = $this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksaan, $answer);
