@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2018 at 02:48 PM
+-- Generation Time: Jul 02, 2018 at 06:33 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.0.29
 
@@ -51,31 +51,15 @@ INSERT INTO `cetak_riwayat` (`id`, `id_user`, `tanggal_dibuat`) VALUES
 (12, 18, '2018-06-11 00:06:53'),
 (13, 1, '2018-06-12 06:17:09'),
 (14, 1, '2018-06-13 02:22:35'),
-(15, 1, '2018-06-13 02:31:51');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `dokter`
---
-
-CREATE TABLE `dokter` (
-  `id_dokter` int(11) NOT NULL,
-  `nama_dokter` varchar(250) NOT NULL,
-  `email` varchar(250) NOT NULL,
-  `jk_dokter` varchar(250) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `no_telp` varchar(250) NOT NULL,
-  `tgl_join` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `dokter`
---
-
-INSERT INTO `dokter` (`id_dokter`, `nama_dokter`, `email`, `jk_dokter`, `tgl_lahir`, `no_telp`, `tgl_join`) VALUES
-(1, 'Nika Ghea', 'nika21@gmail.com', 'F', '1985-10-06', '089990811303', '2018-03-17 14:16:46'),
-(2, 'Yuan Miko', 'mikoyuan@gmail.com', 'M', '1983-01-01', '081211160908', '2018-03-17 14:16:26');
+(15, 1, '2018-06-13 02:31:51'),
+(16, 4, '2018-07-02 02:53:30'),
+(17, 4, '2018-07-02 03:04:41'),
+(18, 4, '2018-07-02 03:14:02'),
+(19, 4, '2018-07-02 03:15:46'),
+(20, 4, '2018-07-02 03:16:11'),
+(21, 4, '2018-07-02 03:18:16'),
+(22, 2, '2018-07-02 03:27:56'),
+(23, 2, '2018-07-02 03:28:29');
 
 -- --------------------------------------------------------
 
@@ -167,6 +151,15 @@ CREATE TABLE `jadwal_login` (
   `tgl_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jadwal_login`
+--
+
+INSERT INTO `jadwal_login` (`id_history_login`, `id_user`, `tgl_login`) VALUES
+(1, 2, '2018-06-28 04:30:20'),
+(2, 3, '2018-06-29 06:08:16'),
+(3, 1, '2018-07-02 04:31:01');
+
 -- --------------------------------------------------------
 
 --
@@ -185,6 +178,16 @@ CREATE TABLE `konsul_dokter` (
   `tgl_konsul` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tgl_kirim` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konsul_dokter`
+--
+
+INSERT INTO `konsul_dokter` (`id_konsul`, `id_user`, `id_dokter`, `pertanyaan_konsul`, `status_pertanyaan`, `jawaban_konsul`, `status_kirim`, `status_baca`, `tgl_konsul`, `tgl_kirim`) VALUES
+(1, 1, 1, 'dokter ghea aku sakit hati, perlu obat apa ya?', 'true', 'ohh km harus cari pengganti sidia fy', 'true', 'false', '2018-06-28 23:47:52', '2018-06-29 01:48:34'),
+(2, 4, 2, 'hallo miko?', 'false', '', 'false', 'false', '2018-06-29 02:34:46', '0000-00-00 00:00:00'),
+(3, 4, 2, 'dokter miko kenapa saya sakit tenggorokan terus ya?', 'true', 'kayanya ushop terlalu banyak makan gorengan ni', 'true', 'true', '2018-07-02 02:46:04', '2018-07-02 05:24:16'),
+(4, 4, 1, 'hallo dokter ghea', 'false', '', 'false', 'true', '2018-07-02 02:48:45', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -319,7 +322,20 @@ INSERT INTO `periksa` (`id`, `id_user`, `id_penyakit`, `tanggal_dibuat`) VALUES
 (90, 1, 21, '2018-06-14 11:42:48'),
 (91, 1, 6, '2018-06-14 11:57:03'),
 (95, 1, 10, '2018-06-14 12:19:13'),
-(96, 1, 2, '2018-06-14 12:48:29');
+(96, 1, 2, '2018-06-14 12:48:29'),
+(97, 4, 5, '2018-07-02 02:53:28'),
+(98, 4, 5, '2018-07-02 03:04:37'),
+(99, 4, 5, '2018-07-02 03:05:26'),
+(100, 4, 5, '2018-07-02 03:08:03'),
+(101, 4, 5, '2018-07-02 03:08:34'),
+(102, 4, 7, '2018-07-02 03:13:30'),
+(103, 4, 5, '2018-07-02 03:13:54'),
+(104, 4, 5, '2018-07-02 03:15:45'),
+(105, 4, 5, '2018-07-02 03:16:10'),
+(106, 4, 7, '2018-07-02 03:18:15'),
+(107, 2, 5, '2018-07-02 03:27:27'),
+(108, 2, 5, '2018-07-02 03:28:23'),
+(109, 2, 5, '2018-07-02 03:46:32');
 
 -- --------------------------------------------------------
 
@@ -610,7 +626,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `nama_user`, `email`, `jk_user`, `tgl_lahir`, `password`, `level_user`, `remember`, `cookie`, `foto`, `tgl_registrasi`) VALUES
-(1, 'luffy', 'luffy', 'luffy@gmail.com', 'male', '1998-12-23', 'b9aef595b63ea780947adcc0419468e3', 'user', '0', '', '', '2018-06-12 05:15:10');
+(1, 'admin', 'admin', 'admin@gmail.com', 'M', '1983-01-01', '21232f297a57a5a743894a0e4a801fc3', 'admin', '0', '', '', '2018-07-02 03:26:12'),
+(2, 'ushop', 'ushop', 'ushop@gmail.com', 'male', '1998-12-16', 'e158cfbb057f12c8a1909b36f983601d', 'user', '0', '', '', '2018-07-02 04:30:37'),
+(3, 'nami', 'nami', 'nami@gmail.com', 'female', '1998-12-09', '1a34268cf4d5356d69badfc8b53303b4', 'user', '', '', '', '2018-07-02 04:30:14');
 
 --
 -- Indexes for dumped tables
@@ -621,12 +639,6 @@ INSERT INTO `user` (`id_user`, `username`, `nama_user`, `email`, `jk_user`, `tgl
 --
 ALTER TABLE `cetak_riwayat`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `dokter`
---
-ALTER TABLE `dokter`
-  ADD PRIMARY KEY (`id_dokter`);
 
 --
 -- Indexes for table `gejala`
@@ -687,13 +699,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cetak_riwayat`
 --
 ALTER TABLE `cetak_riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `dokter`
---
-ALTER TABLE `dokter`
-  MODIFY `id_dokter` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `gejala`
@@ -705,13 +711,13 @@ ALTER TABLE `gejala`
 -- AUTO_INCREMENT for table `jadwal_login`
 --
 ALTER TABLE `jadwal_login`
-  MODIFY `id_history_login` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_history_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `konsul_dokter`
 --
 ALTER TABLE `konsul_dokter`
-  MODIFY `id_konsul` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_konsul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `penyakit`
@@ -723,7 +729,7 @@ ALTER TABLE `penyakit`
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `tahap_pemeriksaan`
@@ -735,7 +741,7 @@ ALTER TABLE `tahap_pemeriksaan`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -751,7 +757,7 @@ ALTER TABLE `jadwal_login`
 -- Constraints for table `konsul_dokter`
 --
 ALTER TABLE `konsul_dokter`
-  ADD CONSTRAINT `konsul_dokter_ibfk_1` FOREIGN KEY (`id_dokter`) REFERENCES `dokter` (`id_dokter`),
+  ADD CONSTRAINT `konsul_dokter_ibfk_1` FOREIGN KEY (`id_dokter`) REFERENCES `dokterlho` (`id_dokter`),
   ADD CONSTRAINT `konsul_dokter_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --

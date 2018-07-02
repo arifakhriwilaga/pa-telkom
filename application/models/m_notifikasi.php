@@ -4,7 +4,12 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class m_notifikasi extends CI_Model {
 
-    public function __construct() {    }
+    var $user;
+
+    public function __construct() {    
+        $this->user = $this->session->userdata('user');
+
+    }
 
     var $tabel = 'konsul_dokter';
     //set column field database for datatable orderable
@@ -19,6 +24,7 @@ class m_notifikasi extends CI_Model {
 
         $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS name, CONCAT(user.username) AS username');
         $this->db->from('konsul_dokter');
+        $this->db->where('konsul_dokter.id_dokter', $this->user['id_user']);
         $this->db->join('user', 'konsul_dokter.id_user = user.id_user', 'left');
         $i = 0;
 
@@ -148,9 +154,9 @@ class m_notifikasi extends CI_Model {
     }
     
     public function get_all($id_user) {
-        $this->db->select('konsul_dokter.*, CONCAT(dokter.nama_dokter) AS dokter');
+        $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS dokter');
         $this->db->from('konsul_dokter');
-        $this->db->join('dokter', 'dokter.id_dokter = konsul_dokter.id_dokter AND konsul_dokter.id_user = '.$id_user, 'left');
+        $this->db->join('user', 'user.id_user = konsul_dokter.id_dokter AND konsul_dokter.id_user = '.$id_user, 'left');
         // $this->db->where('konsul_dokter.status_kirim', 'true');
         $this->db->where('konsul_dokter.id_user', $id_user);
         $this->db->order_by('konsul_dokter.tgl_konsul', 'DESC');
@@ -160,9 +166,9 @@ class m_notifikasi extends CI_Model {
     }
     
     public function detail($id) {
-        $this->db->select('konsul_dokter.*, CONCAT(dokter.nama_dokter) AS dokter');
+        $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS dokter');
         $this->db->from('konsul_dokter');
-        $this->db->join('dokter', 'dokter.id_dokter = konsul_dokter.id_dokter', 'left');
+        $this->db->join('user', 'user.id_user = konsul_dokter.id_dokter', 'left');
         $this->db->where('konsul_dokter.id_konsul', $id);
         $query = $this->db->get();
         $sql = $this->db->last_query();

@@ -66,4 +66,36 @@ $(document)
                     toastr.error(msg);
                 });
             }
-        });
+        }).on('click', '.change-level-acc', function () {
+            if (confirm('Anda yakin ingin menjadikan ' + $(this).data('name') + ' sebagai ' + ($(this).attr('level_user') == 'user' ? 'Dokter' : 'User') + '?')) {
+                $.ajax({
+                    url: site_url('cms/c_akun_manajemen/ganti_level'),
+                    type: 'POST',
+                    data: {
+                        user_id: $(this).attr('id'),
+                        level: $(this).attr('level_user')
+                    }
+                }).done(function (data) {
+                    if (data.status) {
+                        toastr.success(data.message,'',config.toastr);
+                        table.ajax.reload(null, false);
+                    } else {
+                        toastr.error(data.message,'',config.toastr);
+                    }
+                }).fail(function (xhr, status, error) {
+                    var msg = '';
+                    if (xhr.status === 404) {
+                        msg = 'Requested page not found.';
+                    } else if (xhr.status === 500) {
+                        msg = 'Internal Server Error.';
+                    } else if (error === 'parsererror') {
+                        msg = 'Requested failed.';
+                    } else if (error === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (error === 'abort') {
+                        msg = 'Request aborted.';
+                    }
+                    toastr.error(msg);
+                });
+            }
+        });;

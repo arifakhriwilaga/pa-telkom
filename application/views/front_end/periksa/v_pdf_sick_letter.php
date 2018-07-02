@@ -29,7 +29,7 @@
   <div class="col-md-7 pull-right" style="text-align:center;padding-top: 50px">
     <label style="font-size:14px;"><strong>Bandung, <?php echo($users['hari_ini']); ?></strong></label><br><br><br><br><br>
     <!-- <span style="font-size:12px;"><u>Rekomendasi Kesehatan Untuk Prediksi Penyakit</u></span><br> -->
-    <label><strong>Dr. Yuan Miko</strong></label>
+    <label><?php echo 'Dr.'. $users['dokter'] ?></label>
   </div>
   </div>
 </div>

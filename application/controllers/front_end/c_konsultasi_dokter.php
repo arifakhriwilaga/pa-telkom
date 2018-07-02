@@ -15,7 +15,10 @@ class c_konsultasi_dokter extends CI_Controller {
         }
         if ($user['level_user'] == 'admin') {
             redirect('dasbor');
-        }
+        } 
+        if($user['level_user'] == 'dokter') {
+			redirect('dasbor');
+		}
     }
 
     public function index() {

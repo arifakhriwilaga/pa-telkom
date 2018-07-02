@@ -17,6 +17,9 @@ class c_autentikasi extends CI_Controller {
 	    	if ($user['level_user'] == 'user') {
 		    	redirect('/');
 	    	} elseif ($user['level_user'] == 'admin') {
+				redirect('dasbor');
+				
+		    } elseif ($user['level_user'] == 'dokter') {
 		    	redirect('dasbor');
 		    }
 	    }
@@ -41,6 +44,10 @@ class c_autentikasi extends CI_Controller {
 			if ($result['data']->level_user == 'user') {
 				return redirect('/');
 			} elseif ($result['data']->level_user == 'admin') {
+				$result_record = $this->login_history->simpan_history($result['data']->id_user);
+				return $result_record ? redirect('dasbor') : $this->logout();
+
+			} elseif ($result['data']->level_user == 'dokter') {
 				$result_record = $this->login_history->simpan_history($result['data']->id_user);
 				return $result_record ? redirect('dasbor') : $this->logout();
 			}

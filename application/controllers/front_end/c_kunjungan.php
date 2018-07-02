@@ -14,6 +14,9 @@ class c_kunjungan extends CI_Controller {
 		}
 		if ($this->user['level_user'] == 'admin') {
 			redirect('dasbor');
+        }
+        if($this->user['level_user'] == 'dokter') {
+			redirect('dasbor');
 		}
 	}
 

@@ -27,7 +27,7 @@ class c_konsultasi_manajemen extends CI_Controller {
     }
 
     public function ambil_konsultasi() {
-        $list = $this->accounts->get_accounts();
+        $list = $this->accounts->get_accounts('konsultasi');
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $konsultasi) {
@@ -50,7 +50,7 @@ class c_konsultasi_manajemen extends CI_Controller {
         $output = array(
             "draw" => $_POST['draw'],
             "recordsTotal" => $this->accounts->count_all(),
-            "recordsFiltered" => $this->accounts->count_filtered(),
+            "recordsFiltered" => $this->accounts->count_filtered('konsultasi'),
             "data" => $data,
         );
         echo json_encode($output);

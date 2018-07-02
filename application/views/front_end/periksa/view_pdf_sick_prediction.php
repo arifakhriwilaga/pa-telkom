@@ -33,7 +33,7 @@
   <div class="col-md-7 pull-right" style="text-align:center;padding-top: 50px">
     <label style="font-size:14px;">Bandung, <?php echo($users['today']); ?></label><br><br><br><br><br>
     <!-- <span style="font-size:12px;"><u>Rekomendasi Kesehatan Untuk Prediksi Penyakit</u></span><br> -->
-    <label>Dr. Yuan Miko</label>
+    <label><?php echo 'Dr.'. $dokter ?></label>
   </div>
   </div>
 </div>

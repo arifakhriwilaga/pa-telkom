@@ -142,7 +142,7 @@
                 <div class="col-md-7 pull-right" style="text-align:center">
                     <label style="font-size:14px;">Bandung, 10 Oktober 2017</label><br><br><br>
                     <span style="font-size:12px;"><u>Rekomendasi Kesehatan Untuk Prediksi Penyakit</u></span><br>
-                    <label>Dr. Yuan Miko</label>
+                    <label><?php echo 'Dr.'. $dokter ?></label>
                 </div>
                 <div class="col-md-12" style="text-align:center">
                     <button type="button" data-dismiss="modal" class="btn btn-login btn-lg" style="margin-top:15%;font-size:15px;background-color:#b2bec3;border-color:#b2bec3;height:40px;min-width:60px;padding-top:9px">OK</button>

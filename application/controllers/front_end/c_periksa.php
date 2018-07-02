@@ -13,7 +13,10 @@ class c_periksa extends CI_Controller {
         }
 	    if ($this->user['level_user'] == 'admin') {
 	    	redirect('dasbor');
-	    }
+		}
+		if($this->user['level_user'] == 'dokter') {
+			redirect('dasbor');
+		}
 	}
 
 	public function index()	{
@@ -87,12 +90,14 @@ class c_periksa extends CI_Controller {
 
 		$penyakit = $this->checkup->ambil_penyakit_dengan_id($id_penyakit);
 		$this->checkup->simpan_periksa($this->user['id_user'], $id_penyakit);
-
+		$dokter = $this->checkup->ambil_dokter_random();
+		
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_step_final',
 			'_js' => 'assets/js/front_end/periksa/step_final.js',
-			'penyakit' => $penyakit
+			'penyakit' => $penyakit,
+			'dokter' => $dokter,
 		);
 		$this->load->view('front_end/v_base',$data);
 	}
@@ -102,6 +107,7 @@ class c_periksa extends CI_Controller {
 
 		$this->cetak_riwayat->submit($this->user['id_user']);
 		$diagnosa = $this->checkup->hasil_periksa($this->user['id_user']);
+		$dokter = $this->checkup->ambil_dokter_random();
 		
 		$page_title = "Surat Prediksi Penyakit";
 		$data = array(
@@ -112,7 +118,8 @@ class c_periksa extends CI_Controller {
 				'nama_user' => ucwords($this->user['nama_user']), 
 				'tgl_lahir' => date_formater(date('j F Y',strtotime($this->user['tgl_lahir']))),
 				'hari_ini' => date_formater(date('j F Y')),
-				'diagnosa' => $diagnosa->diagnosa
+				'diagnosa' => $diagnosa->diagnosa,
+				'dokter' => $dokter
 			)
 		);
 

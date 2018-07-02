@@ -51,6 +51,13 @@ class m_periksa extends CI_Model {
 		return $result;
     }
 
+    public function ambil_dokter_random() {
+    	$result = $this->db->where('level_user', 'dokter')
+                        ->get('user')
+                        ->row();
+		return $result ? $result->nama_user : 'KEDISKA';
+    }
+
     public function simpan_periksa($id_user, $id_penyakit) {
         $data = array(
             'id_user' => $id_user,

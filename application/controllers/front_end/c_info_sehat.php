@@ -8,7 +8,9 @@ class c_info_sehat extends CI_Controller {
     $user = $this->session->userdata('user');
     if ($user['level_user'] == 'admin') {
     	redirect('dasbor');
-    }
+    } elseif($user['level_user'] == 'dokter') {
+		redirect('dasbor');
+	}
   }
 
 	public function index()	{

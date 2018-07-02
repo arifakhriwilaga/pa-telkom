@@ -15,6 +15,9 @@ class c_profil extends CI_Controller {
         if ($this->user_temp['level_user'] == 'admin') {
             redirect('dasbor');
         }
+        elseif($this->user_temp['level_user'] == 'dokter') {
+            redirect('dasbor');
+        }
     }
 
 	public function index()	{

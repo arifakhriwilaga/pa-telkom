@@ -10,7 +10,10 @@ class c_notifikasi extends CI_Controller {
         $this->user = $this->session->userdata('user');
         if ($this->user['level_user'] == 'admin') {
             redirect('dasbor');
+        } elseif($this->user['level_user'] == 'dokter') {
+            redirect('dasbor');
         }
+        
     }
 
     public function index() {

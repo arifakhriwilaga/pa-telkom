@@ -13,10 +13,15 @@ class m_akun extends CI_Model {
     // default order 
     var $order = array('id_user' => 'asc');
 
-    private function _get_accounts_query() {
-
+    private function _get_accounts_query($status_from = null) {
+        // var_dump($status_from);exit();
         $this->db->from($this->table);
-        $this->db->where('level_user !=', 'admin');
+        if($status_from == null){
+            $this->db->where('level_user !=', 'admin');
+        } else {
+            $this->db->where('level_user !=', 'admin');
+            $this->db->where('level_user !=','dokter');
+        }
 
         $i = 0;
 
@@ -43,16 +48,16 @@ class m_akun extends CI_Model {
         }
     }
 
-    function get_accounts() {
-        $this->_get_accounts_query();
+    function get_accounts($status_from = null) {
+        $this->_get_accounts_query($status_from);
         if ($_POST['length'] != -1)
             $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
     }
 
-    function count_filtered() {
-        $this->_get_accounts_query();
+    function count_filtered($status_from = null) {
+        $this->_get_accounts_query($status_from);
         $query = $this->db->get();
         return $query->num_rows();
     }
@@ -71,6 +76,33 @@ class m_akun extends CI_Model {
             $result = array(
                 'status' => true,
                 'message' => 'Akun berhasil dihapus!',
+                'data' => null
+            );
+            return $result;
+        } else {
+            $error = $this->db->error();
+            $result = array(
+                'status' => false,
+                'message' => $error['message'],
+                'data' => null
+            );
+            return $result;
+        }
+    }
+
+    public function ganti_level_akun() {
+        // $result = array();
+        $id_user = $this->input->post('user_id');
+        $this->db->where('id_user', $id_user);
+
+        $data = array(
+            "level_user" => $this->input->post('level') == 'user' ? 'dokter' : 'user',
+        );
+
+        if ($this->db->update($this->table, $data)) {
+            $result = array(
+                'status' => true,
+                'message' => 'Level user berhasil dirubah!',
                 'data' => null
             );
             return $result;

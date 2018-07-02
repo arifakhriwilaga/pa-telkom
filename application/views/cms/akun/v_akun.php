@@ -13,12 +13,12 @@
                         <thead>
                             <tr>
                                 <th width="10px" class="text-center">Id</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Email</th>
+                                <th width="130px" class="text-center">Nama</th>
+                                <th width="130px" class="text-center">Email</th>
                                 <th width="50px" class="text-center">Jenis Kelamin</th>
-                                <th width="100px" class="text-center">Tanggal Lahir</th>
+                                <th width="80px" class="text-center">Tanggal Lahir</th>
                                 <th width="130px" class="text-center">Nama Pengguna</th>
-                                <th width="10px" class="text-center">Opsi</th>
+                                <th width="50px" class="text-center">Opsi</th>
                             </tr>
                         </thead>
                         <tbody>

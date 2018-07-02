@@ -41,7 +41,7 @@ class c_akun_manajemen extends CI_Controller {
             $row[] = $accounts->jk_user == 'male' ? 'Laki-laki' : 'Perempuan';
             $row[] = $born_date ;
             $row[] = $accounts->username;
-            $row[] = '<button class="btn btn-danger btn-sm delete-acc" id="' . $accounts->id_user . '" data-name="' . $accounts->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+            $row[] = $this->check_level_user($accounts);
 
             $data[] = $row;
         }
@@ -55,11 +55,32 @@ class c_akun_manajemen extends CI_Controller {
         echo json_encode($output);
     }
 
-    public function delete_account() {
+    public function hapus_akun() {
         $result = $this->accounts->delete_account();
         $this->output
                 ->set_content_type('json')
                 ->set_output(json_encode($result));
+    }
+
+    public function ganti_level(){
+        $result = $this->accounts->ganti_level_akun();
+        $this->output
+                ->set_content_type('json')
+                ->set_output(json_encode($result));
+    }
+
+    public function check_level_user($user) {
+        // var_dump($user);exit();
+        switch ($user->level_user) {
+			case 'dokter':
+				return '<button class="btn btn-info btn-sm change-level-acc" level_user="' . $user->level_user . '" id="' . $user->id_user . '" data-name="' . $user->username . '" title="Jadikan User"> Jadikan User</button> <button class="btn btn-danger btn-sm delete-acc" id="' . $user->id_user . '" data-name="' . $user->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+				break;
+                default:
+				return '<button class="btn btn-info btn-sm change-level-acc" level_user="' . $user->level_user . '" id="' . $user->id_user . '" data-name="' . $user->username . '" title="Jadikan Dokter"> Jadikan Dokter</button> <button class="btn btn-danger btn-sm delete-acc" id="' . $user->id_user . '" data-name="' . $user->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+				// return '<button class="btn btn-danger btn-sm delete-acc" id="' . $user->id_user . '" data-name="' . $user->username . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+				break;
+		}
+        
     }
 
 }

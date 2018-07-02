@@ -4,12 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class c_home extends CI_Controller {
 
 	public function __construct() {
-    parent::__construct();
-    $user = $this->session->userdata('user');
-    if ($user['level_user'] == 'admin') {
-    	redirect('dasbor');
-    }
-  }
+		parent::__construct();
+		$user = $this->session->userdata('user');
+		if ($user['level_user'] == 'admin') {
+			redirect('dasbor');
+		} elseif($user['level_user'] == 'dokter') {
+			redirect('dasbor');
+		}
+	}
 
 	public function index()	{
 		$page_title = "Home";
