@@ -88,19 +88,19 @@ class c_autentikasi extends CI_Controller {
 	public function lakukan_registrasi() {
 		$berkas;
 		$nip;
-        $config['upload_path'] = './uploads/berkas/'; //path folder
-	    $config['allowed_types'] = 'gif|jpg|png|jpeg'; //type yang dapat diakses bisa anda sesuaikan
-	    $config['overwrite'] = TRUE; 
-	    $config['file_name'] = $this->input->post('nama_user'). "_foto_berkas_" . date('Ymdhis'); // nama yang terupload
+		$result;
+		if (file_exists($_FILES['berkas']['tmp_name'])) {
+	        $config['upload_path'] = './uploads/berkas/'; //path folder
+		    $config['allowed_types'] = 'gif|jpg|png|jpeg'; //type yang dapat diakses bisa anda sesuaikan
+		    $config['overwrite'] = TRUE; 
+		    $config['file_name'] = $this->input->post('nama_user'). "_foto_berkas_" . date('Ymdhis'); // nama yang terupload
+			$this->upload->initialize($config);
 
-		$this->upload->initialize($config);
-		// var_dump();exit();
-		if($this->input->post('berkas') !== null) {
-			if ($this->upload->do_upload($this->input->post('berkas'))) {
-				// var_dump('hi');exit();
+			if ($this->upload->do_upload('berkas')) {
                 $uploaded = $this->upload->data();
                 $berkas = '/uploads/berkas/' . $uploaded['file_name'];
-
+                $nip = $this->input->post('nip');
+                $result = $this->auth->simpan($berkas, $nip);
             } else {
                 $error = $this->upload->display_errors();
                 $result = array(
@@ -110,10 +110,8 @@ class c_autentikasi extends CI_Controller {
                 );
             }
 		} else {
-			$berkas = null;
-			$nip = $this->input->post('nip');
+			$result = $this->auth->simpan();
         }
-		$result = $this->auth->simpan($berkas, $nip);
 		if ($result['status']) {
 			$this->session->set_flashdata('success', $result['message']);
 			return redirect('masuk-akun');
