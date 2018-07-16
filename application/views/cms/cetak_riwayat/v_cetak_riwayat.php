@@ -16,7 +16,7 @@
               <th width="300px">NAMA</th>
               <th width="200px">NAMA PENGGUNA</th>
               <th width="80px">TANGGAL CETAK</th>
-              <th width="10px">OPSI</th>
+              <!-- <th width="10px">OPSI</th> -->
             </tr>
             </thead>
 

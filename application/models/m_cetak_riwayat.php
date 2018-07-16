@@ -15,7 +15,7 @@ class m_cetak_riwayat extends CI_Model {
     var $tabel = 'cetak_riwayat';
     var $kolom_urutan = array(null, 'name', 'username', 'tanggal_dibuat');
     var $kolom_pencarian = array('name', 'username', 'tanggal_dibuat');
-    var $order = array('id' => 'asc');
+    var $order = array('id_cetak' => 'asc');
 
 
     private function _get_riwayat_query() {

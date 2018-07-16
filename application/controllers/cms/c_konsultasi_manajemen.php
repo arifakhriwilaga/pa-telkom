@@ -76,7 +76,7 @@ class c_konsultasi_manajemen extends CI_Controller {
             
             $no++;
             $row = array();
-            $row[] = $konsultasi->id;
+            $row[] = $konsultasi->id_periksa;
             $row[] = $konsultasi->nama_user;
             $row[] = $konsultasi->penyakit;
             $row[] = replace_newline($konsultasi->solusi_solusi);

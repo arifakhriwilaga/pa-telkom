@@ -32,5 +32,14 @@
     <label><?php echo 'Dr.'. $users['dokter'] ?></label>
   </div>
   </div>
+
+  <div class="row">
+        <div class="col-md-12">
+        <div class="col-md-3"> 
+            <span style="font-size:11px;color:#000000;font-family: Helvetica
+            ;position: absolute;top: 820px;left:9px"><span style="color:#e67e22">*</span> Hasil Diagnosa yang didapatkan hanya sebatas prediksi, anda harus tetap konsultasikan penyakit anda ke dokter</span>
+        </div>  
+        </div>
+    </div>
 </div>
 </div>

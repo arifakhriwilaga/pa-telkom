@@ -83,7 +83,7 @@ class m_periksa extends CI_Model {
 		return $result;
     }
 
-    var $order = array('id' => 'asc');
+    var $order = array('id_periksa' => 'asc');
 
     private function _get_kunjungan_query($id_user) {
 

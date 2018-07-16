@@ -59,11 +59,11 @@ class c_cetak_riwayat extends CI_Controller {
         foreach ($list as $cetak_riwayat) {
             $no++;
             $row = array();
-            $row[] = $cetak_riwayat->id;
+            $row[] = $cetak_riwayat->id_cetak;
             $row[] = $cetak_riwayat->name;
             $row[] = $cetak_riwayat->username;
             $row[] = date('d-m-Y', strtotime($cetak_riwayat->tanggal_dibuat));
-            $row[] = '<button class="btn btn-danger btn-sm hapus-cetak-riwayat" id="' . $cetak_riwayat->id . '" data-name="' . $cetak_riwayat->name . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
+            // $row[] = '<button class="btn btn-danger btn-sm hapus-cetak-riwayat" id="' . $cetak_riwayat->id_cetak . '" data-name="' . $cetak_riwayat->name . '" title="Hapus"><i class="glyphicon glyphicon-trash"></i></button>';
             $data[] = $row;
         }
 
