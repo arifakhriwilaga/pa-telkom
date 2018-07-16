@@ -36,7 +36,7 @@ class c_notifikasi_manajemen extends CI_Controller {
             $row[] = $notifications->name;
             $row[] = $notifications->username;
             $row[] = (strlen($notifications->pertanyaan_konsul) > 240 ? '<div style="max-height:150px;overflow-y:scroll;">' . replace_newline($notifications->pertanyaan_konsul) . '</div>' : replace_newline($notifications->pertanyaan_konsul));
-            $row[] = $this->checkSend($notifications->status_kirim, $notifications);
+            $row[] = $this->checkSend($notifications->status_notif, $notifications);
             $row[] = $this->checkAnswer($notifications->status_pertanyaan, $notifications);
 
             $data[] = $row;
@@ -57,7 +57,7 @@ class c_notifikasi_manajemen extends CI_Controller {
             $button .= '&nbsp;<button class="btn btn-success btn-sm" id="' . $data->id_konsul . '" data-name="' . $data->name . '" title="Jawab" onclick="tampilkanMJawaban(' . $data->id_konsul . ')">'
                     . '<i class="fa fa-share"></i>'
                     . '</button>';
-        } else if($status == 'true' && $data->status_kirim == 'false') {
+        } else if($status == 'true' && $data->status_notif == 'pertanyaan') {
             $button .= '&nbsp;<button class="btn btn-default btn-sm edit" id="' . $data->id_konsul . '" data-name="' . $data->name . '" data-answer="' . $data->jawaban_konsul . '" title="Edit" onclick="tampilkanMEditJawaban(' . $data->id_konsul . ')">'
                     . '<i class="fa fa-pencil"></i>'
                     . '</button>';
@@ -68,7 +68,7 @@ class c_notifikasi_manajemen extends CI_Controller {
     public function checkSend($status = '', $data = '') {
         $result = '';
         $style = '';
-        if ($status == 'false' && $data->jawaban_konsul) {
+        if ($status == 'pertanyaan' && $data->jawaban_konsul) {
             $result .= '<button class="btn btn-info btn-sm pull-right btn-send-answer" id="' . $data->id_konsul . '" data-name="' . $data->name . '" title="Kirim">'
                     . '<i class="fa fa-send"></i>'
                     . '</button>';
@@ -117,8 +117,7 @@ class c_notifikasi_manajemen extends CI_Controller {
     public function kirim_jawaban() {
         $data = array(
             "id_konsul" => $this->input->post('id_konsul'),
-            "status_kirim" => 'true',
-            "status_baca" => 'false',
+            "status_notif" => 'kirim',
             "tgl_kirim" => date('Y-m-d H:i:s')
         );
         $result = $this->notifications->send_answer($data);

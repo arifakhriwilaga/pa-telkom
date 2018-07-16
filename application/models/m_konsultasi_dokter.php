@@ -9,11 +9,9 @@ class m_konsultasi_dokter extends CI_Model {
     public function post() {
         $data = array(
             'id_user' => $this->input->post('id_user'),
-            'id_dokter' => $this->input->post('id_dokter'),
+            'nomor_dokter' => $this->input->post('id_dokter'),
             'pertanyaan_konsul' => $this->input->post('pertanyaan_konsul'),
-            'status_pertanyaan' => 'false',
-            'status_kirim' => 'false',
-            'status_baca' => 'false',
+            'status_pertanyaan' => 'false'
         );
  
         $result = $this->db->insert($this->table, $data);

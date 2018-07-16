@@ -24,7 +24,7 @@ class m_notifikasi extends CI_Model {
 
         $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS name, CONCAT(user.username) AS username');
         $this->db->from('konsul_dokter');
-        $this->db->where('konsul_dokter.id_dokter', $this->user['id_user']);
+        $this->db->where('konsul_dokter.nomor_dokter', $this->user['id_user']);
         $this->db->join('user', 'konsul_dokter.id_user = user.id_user', 'left');
         $i = 0;
 
@@ -156,7 +156,7 @@ class m_notifikasi extends CI_Model {
     public function get_all($id_user) {
         $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS dokter');
         $this->db->from('konsul_dokter');
-        $this->db->join('user', 'user.id_user = konsul_dokter.id_dokter AND konsul_dokter.id_user = '.$id_user, 'left');
+        $this->db->join('user', 'user.id_user = konsul_dokter.nomor_dokter AND konsul_dokter.id_user = '.$id_user, 'left');
         // $this->db->where('konsul_dokter.status_kirim', 'true');
         $this->db->where('konsul_dokter.id_user', $id_user);
         $this->db->order_by('konsul_dokter.tgl_konsul', 'DESC');
@@ -168,7 +168,7 @@ class m_notifikasi extends CI_Model {
     public function detail($id) {
         $this->db->select('konsul_dokter.*, CONCAT(user.nama_user) AS dokter');
         $this->db->from('konsul_dokter');
-        $this->db->join('user', 'user.id_user = konsul_dokter.id_dokter', 'left');
+        $this->db->join('user', 'user.id_user = konsul_dokter.nomor_dokter', 'left');
         $this->db->where('konsul_dokter.id_konsul', $id);
         $query = $this->db->get();
         $sql = $this->db->last_query();
@@ -177,11 +177,11 @@ class m_notifikasi extends CI_Model {
     
     public function read_notif($id) {
         $this->db->where('id_konsul', $id);
-        $this->db->update($this->tabel, array('status_baca' => 'true'));
+        $this->db->update($this->tabel, array('status_notif' => 'baca'));
     }
     
     public function count_notif($id_user) {
-        $query = $this->db->get_where($this->tabel, array('id_user' => $id_user, 'status_baca' => 'false', 'status_kirim' => 'true'));
+        $query = $this->db->get_where($this->tabel, array('id_user' => $id_user, 'status_notif' => 'kirim'));
         return $query->num_rows();
     }
 }

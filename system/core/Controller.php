@@ -77,6 +77,13 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
+		$this->load->helper('cookie');
+
+		// if($this->ambil_user() == false) {
+		// 	$this->session->userdata = array();
+		// 	$this->session->sess_destroy(); 
+		// }
+		// var_dump($this->ambil_user());exit();
 		log_message('info', 'Controller Class Initialized');
 	}
 
@@ -91,6 +98,22 @@ class CI_Controller {
 	public static function &get_instance()
 	{
 		return self::$instance;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Get the CI singleton
+	 *
+	 * @static
+	 * @return	object
+	 */
+	public function ambil_user()
+	{
+		 $this->load->model('m_auth','auth');
+		// var_dump(get_cookie('lrmsp'));exit();
+		return $this->auth->remember_user(get_cookie('lrmps'));
+		// return self::$instance;
 	}
 
 }

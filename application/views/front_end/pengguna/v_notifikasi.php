@@ -21,7 +21,7 @@
                                     <?php echo $value->pertanyaan_konsul; ?>
                                 </a>
                                 <p class="no-padding">Waktu: <?php echo $date; ?><br>
-                                    <?php if($value->status_baca == 'false' && $value->status_kirim == 'true') { ?>
+                                    <?php if($value->status_notif == 'kirim') { ?>
                                         <b>
                                             <i class="glyphicon glyphicon-info-sign"></i> 
                                             Pertanyaan anda telah dijawab oleh dr. <?php echo $value->dokter; ?>

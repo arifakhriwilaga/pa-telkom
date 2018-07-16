@@ -12,7 +12,7 @@
             <li class="<?php echo($page_title == 'Kelola Akun' ? 'active' : ''); ?>"><a href="<?php echo site_url('kelola-akun'); ?>" style="font-weight: normal;"><i class="fa fa-users"></i> <span>Kelola Akun</span></a></li>
         <?php } ?>
         <!-- menu kelola notifikasi -->
-        <?php if ((isset($user)) && ($user['level_user'] == 'dokter') || ($user['level_user'] == 'admin')) { ?>
+        <?php if ((isset($user)) && ($user['level_user'] == 'dokter')) { ?>
             <li class="<?php echo($page_title == 'Kelola Notifikasi' ? 'active' : ''); ?>"><a href="<?php echo site_url('kelola-notifikasi'); ?>" style="font-weight: normal;"><i class="fa fa-wechat"></i> <span>Kelola Notifikasi</span></a></li>
         <?php } ?>
     </ul>

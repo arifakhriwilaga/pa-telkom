@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2018 at 06:33 AM
+-- Generation Time: Jul 02, 2018 at 11:42 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.0.29
 
@@ -33,33 +33,6 @@ CREATE TABLE `cetak_riwayat` (
   `id_user` int(11) NOT NULL,
   `tanggal_dibuat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cetak_riwayat`
---
-
-INSERT INTO `cetak_riwayat` (`id`, `id_user`, `tanggal_dibuat`) VALUES
-(2, 6, '2018-05-28 04:40:58'),
-(3, 6, '2018-05-28 04:43:09'),
-(4, 6, '2018-05-28 04:43:17'),
-(5, 18, '2018-06-11 00:01:48'),
-(7, 18, '2018-06-11 00:04:12'),
-(8, 18, '2018-06-11 00:04:19'),
-(9, 18, '2018-06-11 00:04:25'),
-(10, 18, '2018-06-11 00:04:47'),
-(11, 18, '2018-06-11 00:04:52'),
-(12, 18, '2018-06-11 00:06:53'),
-(13, 1, '2018-06-12 06:17:09'),
-(14, 1, '2018-06-13 02:22:35'),
-(15, 1, '2018-06-13 02:31:51'),
-(16, 4, '2018-07-02 02:53:30'),
-(17, 4, '2018-07-02 03:04:41'),
-(18, 4, '2018-07-02 03:14:02'),
-(19, 4, '2018-07-02 03:15:46'),
-(20, 4, '2018-07-02 03:16:11'),
-(21, 4, '2018-07-02 03:18:16'),
-(22, 2, '2018-07-02 03:27:56'),
-(23, 2, '2018-07-02 03:28:29');
 
 -- --------------------------------------------------------
 
@@ -156,9 +129,7 @@ CREATE TABLE `jadwal_login` (
 --
 
 INSERT INTO `jadwal_login` (`id_history_login`, `id_user`, `tgl_login`) VALUES
-(1, 2, '2018-06-28 04:30:20'),
-(2, 3, '2018-06-29 06:08:16'),
-(3, 1, '2018-07-02 04:31:01');
+(1, 3, '2018-07-02 09:37:24');
 
 -- --------------------------------------------------------
 
@@ -173,8 +144,7 @@ CREATE TABLE `konsul_dokter` (
   `pertanyaan_konsul` text NOT NULL,
   `status_pertanyaan` enum('true','false') NOT NULL,
   `jawaban_konsul` text NOT NULL,
-  `status_kirim` enum('true','false') NOT NULL,
-  `status_baca` enum('true','false') NOT NULL,
+  `status_notif` varchar(10) NOT NULL DEFAULT 'pertanyaan',
   `tgl_konsul` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tgl_kirim` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -183,11 +153,10 @@ CREATE TABLE `konsul_dokter` (
 -- Dumping data for table `konsul_dokter`
 --
 
-INSERT INTO `konsul_dokter` (`id_konsul`, `id_user`, `id_dokter`, `pertanyaan_konsul`, `status_pertanyaan`, `jawaban_konsul`, `status_kirim`, `status_baca`, `tgl_konsul`, `tgl_kirim`) VALUES
-(1, 1, 1, 'dokter ghea aku sakit hati, perlu obat apa ya?', 'true', 'ohh km harus cari pengganti sidia fy', 'true', 'false', '2018-06-28 23:47:52', '2018-06-29 01:48:34'),
-(2, 4, 2, 'hallo miko?', 'false', '', 'false', 'false', '2018-06-29 02:34:46', '0000-00-00 00:00:00'),
-(3, 4, 2, 'dokter miko kenapa saya sakit tenggorokan terus ya?', 'true', 'kayanya ushop terlalu banyak makan gorengan ni', 'true', 'true', '2018-07-02 02:46:04', '2018-07-02 05:24:16'),
-(4, 4, 1, 'hallo dokter ghea', 'false', '', 'false', 'true', '2018-07-02 02:48:45', '0000-00-00 00:00:00');
+INSERT INTO `konsul_dokter` (`id_konsul`, `id_user`, `id_dokter`, `pertanyaan_konsul`, `status_pertanyaan`, `jawaban_konsul`, `status_notif`, `tgl_konsul`, `tgl_kirim`) VALUES
+(1, 2, 3, 'hallo namican', 'true', 'hallo ushop lan', 'baca', '2018-07-02 09:24:14', '0000-00-00 00:00:00'),
+(2, 2, 3, 'bu nami kenapa saya sakit perut terus', 'false', '', '', '2018-07-02 09:29:36', '0000-00-00 00:00:00'),
+(3, 2, 3, 'dokter nami saya mules ni', 'true', 'ohh makan apa?', 'baca', '2018-07-02 09:36:30', '2018-07-02 11:37:53');
 
 -- --------------------------------------------------------
 
@@ -242,100 +211,6 @@ CREATE TABLE `periksa` (
   `id_penyakit` int(11) NOT NULL,
   `tanggal_dibuat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `periksa`
---
-
-INSERT INTO `periksa` (`id`, `id_user`, `id_penyakit`, `tanggal_dibuat`) VALUES
-(2, 1, 5, '2018-06-12 06:07:52'),
-(3, 1, 2, '2018-06-12 06:16:57'),
-(4, 1, 3, '2018-06-12 06:19:58'),
-(5, 1, 4, '2018-06-12 06:20:30'),
-(6, 1, 1, '2018-06-12 06:21:07'),
-(7, 1, 1, '2018-06-12 06:26:24'),
-(8, 1, 2, '2018-06-13 02:22:28'),
-(12, 1, 1, '2018-06-13 02:26:10'),
-(13, 1, 2, '2018-06-13 02:27:24'),
-(14, 1, 6, '2018-06-13 02:31:19'),
-(15, 1, 21, '2018-06-13 02:31:41'),
-(16, 1, 1, '2018-06-13 02:35:37'),
-(17, 1, 21, '2018-06-13 02:35:49'),
-(18, 1, 21, '2018-06-13 03:13:59'),
-(19, 1, 6, '2018-06-13 03:14:08'),
-(22, 1, 21, '2018-06-13 03:45:01'),
-(23, 1, 1, '2018-06-13 07:21:27'),
-(24, 1, 21, '2018-06-13 07:21:36'),
-(25, 1, 21, '2018-06-13 07:21:46'),
-(26, 1, 7, '2018-06-13 07:34:45'),
-(27, 1, 21, '2018-06-13 07:34:54'),
-(29, 1, 21, '2018-06-13 07:47:40'),
-(30, 1, 10, '2018-06-13 07:50:09'),
-(31, 1, 21, '2018-06-13 07:50:19'),
-(32, 1, 4, '2018-06-13 16:35:44'),
-(33, 1, 5, '2018-06-14 01:28:07'),
-(34, 1, 14, '2018-06-14 01:28:22'),
-(37, 1, 21, '2018-06-14 01:29:57'),
-(38, 1, 6, '2018-06-14 01:35:16'),
-(39, 1, 3, '2018-06-14 01:35:45'),
-(40, 1, 21, '2018-06-14 01:42:38'),
-(41, 1, 2, '2018-06-14 01:45:12'),
-(42, 1, 9, '2018-06-14 01:58:41'),
-(43, 1, 21, '2018-06-14 02:01:48'),
-(44, 1, 9, '2018-06-14 02:05:46'),
-(45, 1, 21, '2018-06-14 02:06:03'),
-(46, 1, 10, '2018-06-14 02:08:08'),
-(47, 1, 21, '2018-06-14 02:10:03'),
-(49, 1, 21, '2018-06-14 02:14:35'),
-(50, 1, 11, '2018-06-14 02:14:48'),
-(51, 1, 11, '2018-06-14 02:19:40'),
-(52, 1, 18, '2018-06-14 02:19:56'),
-(53, 1, 18, '2018-06-14 02:23:03'),
-(54, 1, 21, '2018-06-14 02:26:22'),
-(55, 1, 13, '2018-06-14 02:32:33'),
-(56, 1, 12, '2018-06-14 02:37:06'),
-(57, 1, 12, '2018-06-14 02:39:35'),
-(58, 1, 4, '2018-06-14 02:45:12'),
-(59, 1, 21, '2018-06-14 03:00:22'),
-(60, 1, 21, '2018-06-14 03:03:28'),
-(62, 1, 21, '2018-06-14 03:06:23'),
-(63, 1, 5, '2018-06-14 03:06:35'),
-(64, 1, 14, '2018-06-14 03:11:29'),
-(65, 1, 21, '2018-06-14 03:11:47'),
-(66, 1, 5, '2018-06-14 03:12:07'),
-(67, 1, 21, '2018-06-14 03:12:19'),
-(68, 1, 13, '2018-06-14 03:39:25'),
-(69, 1, 14, '2018-06-14 03:43:26'),
-(72, 1, 21, '2018-06-14 03:47:00'),
-(73, 1, 21, '2018-06-14 03:49:06'),
-(74, 1, 15, '2018-06-14 03:51:30'),
-(75, 1, 17, '2018-06-14 05:24:34'),
-(76, 1, 21, '2018-06-14 05:24:47'),
-(78, 1, 21, '2018-06-14 05:37:18'),
-(79, 1, 20, '2018-06-14 05:37:32'),
-(80, 1, 21, '2018-06-14 05:37:42'),
-(81, 1, 20, '2018-06-14 05:37:55'),
-(82, 1, 21, '2018-06-14 06:16:21'),
-(85, 1, 8, '2018-06-14 06:31:51'),
-(88, 1, 21, '2018-06-14 06:43:45'),
-(89, 1, 4, '2018-06-14 07:52:56'),
-(90, 1, 21, '2018-06-14 11:42:48'),
-(91, 1, 6, '2018-06-14 11:57:03'),
-(95, 1, 10, '2018-06-14 12:19:13'),
-(96, 1, 2, '2018-06-14 12:48:29'),
-(97, 4, 5, '2018-07-02 02:53:28'),
-(98, 4, 5, '2018-07-02 03:04:37'),
-(99, 4, 5, '2018-07-02 03:05:26'),
-(100, 4, 5, '2018-07-02 03:08:03'),
-(101, 4, 5, '2018-07-02 03:08:34'),
-(102, 4, 7, '2018-07-02 03:13:30'),
-(103, 4, 5, '2018-07-02 03:13:54'),
-(104, 4, 5, '2018-07-02 03:15:45'),
-(105, 4, 5, '2018-07-02 03:16:10'),
-(106, 4, 7, '2018-07-02 03:18:15'),
-(107, 2, 5, '2018-07-02 03:27:27'),
-(108, 2, 5, '2018-07-02 03:28:23'),
-(109, 2, 5, '2018-07-02 03:46:32');
 
 -- --------------------------------------------------------
 
@@ -628,7 +503,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `username`, `nama_user`, `email`, `jk_user`, `tgl_lahir`, `password`, `level_user`, `remember`, `cookie`, `foto`, `tgl_registrasi`) VALUES
 (1, 'admin', 'admin', 'admin@gmail.com', 'M', '1983-01-01', '21232f297a57a5a743894a0e4a801fc3', 'admin', '0', '', '', '2018-07-02 03:26:12'),
 (2, 'ushop', 'ushop', 'ushop@gmail.com', 'male', '1998-12-16', 'e158cfbb057f12c8a1909b36f983601d', 'user', '0', '', '', '2018-07-02 04:30:37'),
-(3, 'nami', 'nami', 'nami@gmail.com', 'female', '1998-12-09', '1a34268cf4d5356d69badfc8b53303b4', 'user', '', '', '', '2018-07-02 04:30:14');
+(3, 'nami', 'nami', 'nami@gmail.com', 'female', '1998-12-09', '1a34268cf4d5356d69badfc8b53303b4', 'dokter', '0', '', '', '2018-07-02 09:23:44');
 
 --
 -- Indexes for dumped tables
@@ -699,7 +574,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `cetak_riwayat`
 --
 ALTER TABLE `cetak_riwayat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `gejala`
@@ -711,13 +586,13 @@ ALTER TABLE `gejala`
 -- AUTO_INCREMENT for table `jadwal_login`
 --
 ALTER TABLE `jadwal_login`
-  MODIFY `id_history_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_history_login` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `konsul_dokter`
 --
 ALTER TABLE `konsul_dokter`
-  MODIFY `id_konsul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_konsul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `penyakit`
@@ -729,7 +604,7 @@ ALTER TABLE `penyakit`
 -- AUTO_INCREMENT for table `periksa`
 --
 ALTER TABLE `periksa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tahap_pemeriksaan`
@@ -757,7 +632,7 @@ ALTER TABLE `jadwal_login`
 -- Constraints for table `konsul_dokter`
 --
 ALTER TABLE `konsul_dokter`
-  ADD CONSTRAINT `konsul_dokter_ibfk_1` FOREIGN KEY (`id_dokter`) REFERENCES `dokterlho` (`id_dokter`),
+  ADD CONSTRAINT `konsul_dokter_ibfk_1` FOREIGN KEY (`id_dokter`) REFERENCES `user` (`id_user`),
   ADD CONSTRAINT `konsul_dokter_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --

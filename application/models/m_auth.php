@@ -17,10 +17,10 @@ class m_auth extends CI_Model {
 		nama fungsi : login
 		deskripsi : method untuk pengecekan login jika username dan password valid maka akan dikembalikan 'true' pada controller, sebaliknya jika salah akan mengembalikan 'false'
 	*/
-    public function login() {
+    public function login($tempUsername, $tempPassword) {
         $result = array();
-        $username = $this->input->post('username'); // mengambil value dari input username di html
-        $password = $this->input->post('password'); // mengambil value dari input password di html
+        $username = $tempUsername ? $tempUsername : $this->input->post('username'); // mengambil value dari input username di html
+        $password = $tempPassword ? $tempPassword : $this->input->post('password'); // mengambil value dari input password di html
 
         // pengecekan username
         $q_username = $this->db->get_where($this->table, array('username' => $username))->row();
@@ -48,12 +48,13 @@ class m_auth extends CI_Model {
         // jika user mencentang 'remember_me' maka cookie akan disave
         // config untuk create cookie
         $key = random_string('alnum', 64);
+        // set_cookie('lrmps', $key, 36*1); // set kedaluarsa 30 hari
         set_cookie('lrmps', $key, 3600*24*30); // set kedaluarsa 30 hari
         
         $remember_me = $this->input->post('remember_me') == 'on' ? true : false;
         $data = array(
             'remember' => $remember_me, 
-            'cookie' => $remember_me ? $key : ''
+            'cookie' => $key
         );
 
         $this->db->where('username', $username);
@@ -71,12 +72,13 @@ class m_auth extends CI_Model {
 		nama fungsi : simpan
 		deskripsi : method untuk penyimpanan user baru
 	*/
-    public function simpan() {
+    public function simpan($foto_berkas = null,$nip = null) {
         $result = array();
         
         // merubah format tanggal lahir agar sesuai dengan db yaitu 'yyyy-mm-dd' 
         $date = preg_split('/\//', strval($this->input->post('tgl_lahir')));
         $born_date = $date[2] . '-' . $date[1] . '-' . $date[0];
+        
         $data = array(
             "username" => $this->input->post('username'),
             "nama_user" => $this->input->post('nama_user'),
@@ -84,8 +86,22 @@ class m_auth extends CI_Model {
             "tgl_lahir" => $born_date,
             "jk_user" => $this->input->post('jk_user'),
             "password" => md5($this->input->post('password')),
-            "level_user" => $this->input->post('level_user')
+            "level_user" => $this->input->post('level_user'),
+            "nip" => $nip,
+            "foto_berkas" => $foto_berkas
+
         );
+
+        $q_username = $this->db->get_where($this->table, array('username' => $this->input->post('username')))->row();
+        // var_dump($q_username);exit();
+        if ($q_username) {
+            $result = array(
+                'status' => false,
+                'message' => 'Nama pengguna sudah digunakan!',
+                'data' => null
+            );
+            return $result;
+        }
 
         // penyimpanan user, jika benar
         if ($this->db->insert($this->table, $data)) {
@@ -138,6 +154,24 @@ class m_auth extends CI_Model {
             'data' => null
         );
         return $result;
+    }
+
+    public function remember_user($cookie) {
+        $result = $this->db->get_where($this->table, array('cookie' => $cookie))->row();
+        // var_dump($result->remember);exit();
+        if($result->remember !== "0"){
+            $this->login($result->username,$result->password);
+        } else {
+            // return $this->logout();
+            return false;
+        }
+    }
+    
+    public function logout(){
+        $this->session->userdata = array();
+        $this->session->sess_destroy();
+        return false;
+        // var_dump('hello logout');exit();
     }
 
 }

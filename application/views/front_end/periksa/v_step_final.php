@@ -100,7 +100,8 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <?php echo replace_newline($penyakit->solusi_solusi); ?>
+                <?php echo replace_newline($penyakit->saran_solusi); ?>
+                <a href="<?php echo $penyakit->link_you_tube; ?>" target="_blank">Lihat saran dan solusi di youtube</a>
             </div>
         </div>
     </div>

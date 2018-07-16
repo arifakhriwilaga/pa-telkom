@@ -38,3 +38,70 @@
 .form-control:focus {
     border-color: #dfe6e9!important;
 }
+
+
+/* profile */
+.ava-image {
+    text-align: center;
+    position: relative;
+}
+
+.ava-image span {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+.ava-image span img {
+    width: 100px;
+    height: 100px;
+}
+.ava-image .edit-photo {
+    position: absolute;
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    color: #000;
+    line-height: 25px;
+    border-radius: 100px;
+    box-shadow: 0 1px 3px #999;
+    right: 5%;
+    z-index: 9;
+    cursor: pointer;
+    bottom:70%;
+}
+.ava-image .btn-remove {
+    position: absolute;
+    background: #da1702;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    line-height: 25px;
+    border-radius: 100px;
+    box-shadow: 0 1px 3px #da1702;
+    right: 55%;
+    z-index: 9;
+    cursor: pointer;
+    bottom:-9%;
+}
+.ava-image .btn-save {
+    position: absolute;
+    background: #007e34;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    line-height: 25px;
+    border-radius: 100px;
+    box-shadow: 0 1px 3px #007e34;
+    right: 24%;
+    z-index: 9;
+    cursor: pointer;
+    bottom:-9%;
+}
+
+#input-profile-picture
+{
+    display: none;
+}

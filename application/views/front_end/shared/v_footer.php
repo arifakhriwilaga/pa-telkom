@@ -10,6 +10,7 @@
 <script src="<?php echo base_url('assets/includes/moment/min/moment.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'); ?>"></script>
 <script src="<?php echo base_url('assets/includes/select2/dist/js/select2.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/includes/bootstrap-toggle/js/bootstrap-toggle.min.js')?>"></script>
 
 <!--This is link only for gmaps-->
 <!-- <script src="<?php echo base_url('assets/includes/google-maps/lib/Google.min.js'); ?>"></script> -->
@@ -23,6 +24,14 @@
     function site_url(path) {
         return <?php echo json_encode(site_url()); ?> + path.replace(/^\//g, '');
     }
+    $('window').unload(function() {
+        return "Bye now!";
+    });
+    // $('document').ready({
+    //     window.unload = unloadHandler;
+
+    // })
+    // $('')
 </script>
 <script src="<?php echo base_url('assets/js/functions.js'); ?>"></script>
 <script>

@@ -21,25 +21,33 @@ class m_user extends CI_Model {
             'password' => $result->password,
             'level_user' => $result->level_user,
             'foto' => $result->foto,
+            'nip' => $result->nip,
+            'foto_berkas' => $result->foto_berkas,
             'tgl_registrasi' => $result->tgl_registrasi
         );
         return $user;
     }
 
-    public function update($id_user, $foto = null) {
+    public function update($id_user, $foto = null, $from = null) {
 
         $date = preg_split('/\//', strval($this->input->post('tgl_lahir')));
         $born_date = $date[2] . '-' . $date[1] . '-' . $date[0];
 
-        $data = array(
-            "username" => $this->input->post('username'),
-            "nama_user" => $this->input->post('nama_user'),
-            "email" => $this->input->post('email'),
-            "jk_user" => $this->input->post('jk_user'),
-            "tgl_lahir" => $born_date,
-            "level_user" => $this->input->post('level_user'),
-            "foto" => $foto
-        );
+        if($from) {
+            $data = array(
+                "foto" => $foto
+            );    
+        } else {
+            $data = array(
+                "username" => $this->input->post('username'),
+                "nama_user" => $this->input->post('nama_user'),
+                "email" => $this->input->post('email'),
+                "jk_user" => $this->input->post('jk_user'),
+                "tgl_lahir" => $born_date,
+                "level_user" => $this->input->post('level_user'),
+                "foto" => $foto
+            );
+        }
         if ($this->input->post('password')) {
             $data["password"] = md5($this->input->post('password'));
         }

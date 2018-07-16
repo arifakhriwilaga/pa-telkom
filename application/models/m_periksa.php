@@ -33,11 +33,11 @@ class m_periksa extends CI_Model {
 
     public function pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id, $status) {
     	$result = $this->db
-						->get_where('tahap_pemeriksaan', array('status_muncul_setelah_id_pemeriksaan' => $id, 'status' => $status))
+						->get_where('tahap_pemeriksaan', array('pertanyaan_masuk' => $id, 'status' => $status))
                         ->row();
         if(!$result) {
             $result = $this->db
-						->get_where('tahap_pemeriksaan', array('status_muncul_setelah_id_pemeriksaan' => $id, 'status' => 'netral'))
+						->get_where('tahap_pemeriksaan', array('pertanyaan_masuk' => $id, 'status' => 'netral'))
                         ->row();
         }
         // print_r($result);die();
@@ -118,7 +118,7 @@ class m_periksa extends CI_Model {
     }
 
     private function _get_konsultasi_query($id_user) {
-        $this->db->select('periksa.*, CONCAT(user.nama_user) AS nama_user, CONCAT(penyakit.penyakit) AS penyakit, CONCAT(penyakit.solusi_solusi) AS solusi_solusi');
+        $this->db->select('periksa.*, CONCAT(user.nama_user) AS nama_user, CONCAT(penyakit.penyakit) AS penyakit, CONCAT(penyakit.saran_solusi) AS solusi_solusi');
         $this->db->from('periksa');
         $this->db->join('user', 'user.id_user = periksa.id_user', 'left');
         $this->db->join('penyakit', 'penyakit.id_penyakit = periksa.id_penyakit', 'left');

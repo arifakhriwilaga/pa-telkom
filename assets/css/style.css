@@ -1058,6 +1058,11 @@ a i{
     display: block;
     color: #5c5c5c;
 }
+.basic-form span{
+    text-align: left;
+    /* display: block; */
+    color: #5c5c5c;
+}
 .basic-form .checkbox{
     font-size: 14px;
     padding-left: 25px;

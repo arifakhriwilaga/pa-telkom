@@ -54,6 +54,9 @@ class c_periksa extends CI_Controller {
 			'gejala' => $gejala
 		);
 
+		if (!$gejala || !$tahap_pemeriksaan) {
+			return redirect('periksa/step-1');			
+		}
 		$this->load->view('front_end/v_base',$data);
 	}
 
@@ -69,6 +72,7 @@ class c_periksa extends CI_Controller {
 		$this->session->set_flashdata('id_gejala', $id_gejala);
 		$this->session->set_flashdata('penyakit_benar', $penyakit_benar);
 		$this->session->set_flashdata('penyakit_salah', $penyakit_salah);
+
 		if ($this->checkup->pemeriksaan_dengan_status_muncul_setelah_id_pemeriksaan($id_tahap_periksa, $jawaban)) {
 			return redirect('periksa/step-2');
 		} else {
@@ -89,9 +93,11 @@ class c_periksa extends CI_Controller {
 		}
 
 		$penyakit = $this->checkup->ambil_penyakit_dengan_id($id_penyakit);
+		if (!$jawaban) {
+			return redirect('periksa/step-2');			
+		}
 		$this->checkup->simpan_periksa($this->user['id_user'], $id_penyakit);
 		$dokter = $this->checkup->ambil_dokter_random();
-		
 		$data = array(
 			'page_title' => $page_title,
 			'_content' => 'front_end/periksa/v_step_final',

@@ -1,10 +1,10 @@
 $('#login').formValidation({
-    framework: 'bootstrap',
-    icon: {
-        valid: 'glyphicon glyphicon-ok',
-        invalid: 'glyphicon glyphicon-remove',
-        validating: 'glyphicon glyphicon-refresh'
-    },
+    // framework: 'bootstrap',
+    // icon: {
+    //     valid: 'glyphicon glyphicon-ok',
+    //     invalid: 'glyphicon glyphicon-remove',
+    //     validating: 'glyphicon glyphicon-refresh'
+    // },
     fields: {
         username: {
             validators: {
@@ -16,7 +16,7 @@ $('#login').formValidation({
         password: {
             validators: {
                 notEmpty: {
-                    message: 'Kata sandi tidak boleh kosong'
+                    message: ' '
                 }
             }
         }

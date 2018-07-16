@@ -6,7 +6,8 @@ class c_autentikasi extends CI_Controller {
         parent::__construct();
         $this->load->model('m_auth', 'auth');
         $this->load->model('m_user', 'user');
-        $this->load->model('m_history_login', 'login_history');
+		$this->load->model('m_history_login', 'login_history');
+        $this->load->library('upload');		
 		$this->load->helper(array('Form', 'Cookie', 'String'));
 		// var_dump(date());exit();
     }
@@ -58,6 +59,7 @@ class c_autentikasi extends CI_Controller {
 	}
 
 	function logout() {
+		// $this->auth->logout();
 		$this->session->userdata = array();
         $this->session->sess_destroy();
 		redirect(base_url('/'));
@@ -84,13 +86,39 @@ class c_autentikasi extends CI_Controller {
 	}
 
 	public function lakukan_registrasi() {
-		$result = $this->auth->simpan();
+		$berkas;
+		$nip;
+        $config['upload_path'] = './uploads/berkas/'; //path folder
+	    $config['allowed_types'] = 'gif|jpg|png|jpeg'; //type yang dapat diakses bisa anda sesuaikan
+	    $config['overwrite'] = TRUE; 
+	    $config['file_name'] = $this->input->post('nama_user'). "_foto_berkas_" . date('Ymdhis'); // nama yang terupload
+
+		$this->upload->initialize($config);
+		// var_dump();exit();
+		if($this->input->post('berkas') !== null) {
+			if ($this->upload->do_upload($this->input->post('berkas'))) {
+				// var_dump('hi');exit();
+                $uploaded = $this->upload->data();
+                $berkas = '/uploads/berkas/' . $uploaded['file_name'];
+
+            } else {
+                $error = $this->upload->display_errors();
+                $result = array(
+                    'status' => false,
+                    'message' => $error,
+                    'data' => null
+                );
+            }
+		} else {
+			$berkas = null;
+			$nip = $this->input->post('nip');
+        }
+		$result = $this->auth->simpan($berkas, $nip);
 		if ($result['status']) {
 			$this->session->set_flashdata('success', $result['message']);
 			return redirect('masuk-akun');
 		} else {
 			$this->session->set_flashdata('error', $result['message']);
-			
 			return redirect('registrasi');
 		}
 	}

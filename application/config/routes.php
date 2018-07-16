@@ -79,6 +79,7 @@ $route['info-sehat/makanan-untuk-ambeien-mana-yang-harus-dikonsumsi-mana-yang-di
 $route['info-sehat/3-makanan-sumber-gandum-utuh-yang-sehat-untuk-sarapan'] = 'front_end/c_info_sehat/detail10';
 
 $route['kunjungan'] = 'front_end/c_kunjungan';
+$route['detail-kunjungan/(:num)'] = 'front_end/c_kunjungan/detail/$1';
 $route['periksa/step-1'] = 'front_end/c_periksa';
 $route['periksa/cari-gejala/:any'] = 'front_end/c_periksa/cari_gejala';
 $route['periksa/step-2'] = 'front_end/c_periksa/check_step_2';

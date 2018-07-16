@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/pg-calendar/dist/css/pignose.calendar.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/toastr/toastr.min.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo base_url('assets/includes/bootstrap-toggle/css/bootstrap-toggle.css')?>" />
         <link rel="stylesheet" href="<?php echo base_url('assets/includes/select2/dist/css/select2.min.css')?>" rel="stylesheet" />
         
         <!--External Dependencies-->

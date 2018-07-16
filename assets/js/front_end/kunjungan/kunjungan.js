@@ -28,7 +28,7 @@ $(function () {
                 "orderable": false,
             },
             {
-                "targets": [1],
+                "targets": [2],
                 "orderable": false,
             }
         ]

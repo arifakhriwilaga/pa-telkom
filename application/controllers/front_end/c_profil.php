@@ -41,7 +41,8 @@ class c_profil extends CI_Controller {
 	    $config['overwrite'] = TRUE; 
 	    $config['file_name'] = $this->user_temp['nama_user']. "_foto_profil_" . date('Ymdhis'); // nama yang terupload
 
-	    $this->upload->initialize($config);
+        $this->upload->initialize($config);
+        // var_dump($_FILES['foto']['name']);exit();
         if (!empty($_FILES['foto']['name'])) {
             $user = $this->session->userdata('user');
 

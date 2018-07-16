@@ -8,8 +8,9 @@
                     <table id="kunjungan" class="table table-hover">
                         <thead>
                             <tr>
-                                <th>TANGGAL</th>
-                                <th>JAM</th>
+                                <th width="300px">TANGGAL</th>
+                                <th width="160px">JAM</th>
+                                <th width="20px" class="text-center">Detail</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
