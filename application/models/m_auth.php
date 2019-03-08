@@ -17,10 +17,10 @@ class m_auth extends CI_Model {
 		nama fungsi : login
 		deskripsi : method untuk pengecekan login jika username dan password valid maka akan dikembalikan 'true' pada controller, sebaliknya jika salah akan mengembalikan 'false'
 	*/
-    public function login($tempUsername, $tempPassword) {
+    public function login() {
         $result = array();
-        $username = $tempUsername ? $tempUsername : $this->input->post('username'); // mengambil value dari input username di html
-        $password = $tempPassword ? $tempPassword : $this->input->post('password'); // mengambil value dari input password di html
+        $username = $this->input->post('username'); // mengambil value dari input username di html
+        $password = $this->input->post('password'); // mengambil value dari input password di html
 
         // pengecekan username
         $q_username = $this->db->get_where($this->table, array('username' => $username))->row();
